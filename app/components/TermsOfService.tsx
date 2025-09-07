@@ -95,7 +95,7 @@ const TermsOfService = ({ isOpen, onClose }: TermsOfServiceProps) => {
           <p className="mb-4">
             If you have any questions about these Terms, please contact us at:
             <br />
-            Email: citycrosslink.ministries@gmail.com
+            Email: fountofhopedevotionals@gmail.com
           </p>
         </div>
 
