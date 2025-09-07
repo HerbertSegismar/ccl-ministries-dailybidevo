@@ -223,7 +223,7 @@ const Footer = () => {
               <p className="text-green-400">
                 Email us at{" "}
                 <span className="font-bold text-green-500">
-                  citycrosslink.ministries@gmail.com
+                  herbert.segismar@gmail.com
                 </span>
               </p>
               <p className="m-2 text-sm text-gray-400">
@@ -261,7 +261,7 @@ const Footer = () => {
             </div>
             <p className="text-xs text-gray-500 capitalize">
               <span className="text-amber-400">&copy;</span>{" "}
-              {new Date().getFullYear()} City Cross Link Ministries. All rights
+              {new Date().getFullYear()} FountOfHope Ministries. All rights
               reserved.
             </p>
           </div>
@@ -521,8 +521,8 @@ const Footer = () => {
                       Privacy Policy
                     </button>
                     . After making your donation, please email us at
-                    citycrosslink.ministries@gmail.com with your details so we
-                    can properly acknowledge your gift. City Cross Link
+                    herbert.segismar@gmail.com with your details so we
+                    can properly acknowledge your gift. Fount Of Hope
                     Ministries is maintained and operated by Mr. Herbert
                     Segismar, the author and founder of this Daily Bible
                     Devotional App.

@@ -86,7 +86,7 @@ const Navbar = () => {
             </div>
             <div className="flex flex-col">
               <span className="text-lg md:text-xl font-base md:font-semibold text-white">
-                City Cross Link Ministries
+                Fount Of Hope 
               </span>
               <span className="text-sm font-thin text-white italic">
                 Daily Bible Devotional
