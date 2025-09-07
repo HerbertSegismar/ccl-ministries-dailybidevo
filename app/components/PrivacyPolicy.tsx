@@ -103,7 +103,7 @@ const PrivacyPolicy = ({ isOpen, onClose }: PrivacyPolicyProps) => {
             If you have any questions about this Privacy Policy, please contact
             us at:
             <br />
-            Email: citycrosslink.ministries@gmail.com
+            Email: fountofhopedevotionals@gmail.com
           </p>
         </div>
 

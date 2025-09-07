@@ -31,9 +31,9 @@ const TermsOfService = ({ isOpen, onClose }: TermsOfServiceProps) => {
             1. Acceptance of Terms
           </h3>
           <p className="mb-4">
-            By accessing or using the Daily Bible Devotional App ({`"the App"`}),
-            you agree to be bound by these Terms of Service. If you do not agree
-            to these terms, please do not use our App.
+            By accessing or using the Daily Bible Devotional App ({`"the App"`}
+            ), you agree to be bound by these Terms of Service. If you do not
+            agree to these terms, please do not use our App.
           </p>
 
           <h3 className="text-lg font-semibold mt-6 mb-3">
@@ -66,16 +66,16 @@ const TermsOfService = ({ isOpen, onClose }: TermsOfServiceProps) => {
           </h3>
           <p className="mb-4">
             All content provided through the App, including but not limited to
-            text, graphics, logos, and images, is the property of City Cross
-            Link Ministries or its content suppliers and protected by
-            international copyright laws.
+            text, graphics, logos, and images, is the property of Fount Of Hope
+            Devotionals or its content suppliers and protected by international
+            copyright laws.
           </p>
 
           <h3 className="text-lg font-semibold mt-6 mb-3">
             6. Limitation of Liability
           </h3>
           <p className="mb-4">
-            City Cross Link Ministries shall not be liable for any indirect,
+            Fount Of Hope Devotionals shall not be liable for any indirect,
             incidental, special, consequential, or punitive damages resulting
             from your use of or inability to use the App.
           </p>

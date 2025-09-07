@@ -32,10 +32,6 @@ h1, h2, h3 {
   font-style: italic;
 }
 
-.contact {
-  margin: 0;
-}
-
 /* Enhanced glass effect */
 .glass-effect {
   background: rgba(255, 255, 255, 0.7);

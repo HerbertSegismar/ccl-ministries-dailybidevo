@@ -215,17 +215,26 @@ const Footer = () => {
                 className="mb-5 md:w-[30vw]"
               />
             </div>
-            <div className="flex flex-col items-center justify-center space-x-4 bg-black/70 p-8 rounded-3xl">
-              <p className="text-sm text-gray-200 contact">
+            <div className="flex flex-col items-center justify-center bg-black/70 p-8 rounded-3xl">
+              <p className="text-sm text-gray-200 mb-2">
                 Made With L<FaHeart className="inline text-red-500" />
                 VE For All Believers Worldwide.
               </p>
-              <p className="text-green-400">
+              <p className="text-green-400 mb-2">
                 Email us at{" "}
                 <span className="font-bold text-green-500">
-                  herbert.segismar@gmail.com
+                  fountofhopedevotionals@gmail.com
                 </span>
               </p>
+              <div className="flex w-full items-center justify-center">
+                <div className="bg-slate-200 w-[30%] h-[1px]" />
+                <div className="bg-slate-200 size-1 rounded-full ml-1" />
+                <div className="border border-slate-200 size-2 rounded-full mx-1" />
+                <div className="size-4 rounded-full border border-slate-200" />
+                <div className="border border-slate-200 size-2 rounded-full mx-1" />
+                <div className="bg-slate-200 size-1 rounded-full mr-1" />
+                <div className="bg-slate-200 w-[30%] h-[1px]" />
+              </div>
               <p className="m-2 text-sm text-gray-400">
                 Support us by making a donation, click the button below
               </p>
@@ -261,7 +270,7 @@ const Footer = () => {
             </div>
             <p className="text-xs text-gray-500 capitalize">
               <span className="text-amber-400">&copy;</span>{" "}
-              {new Date().getFullYear()} FountOfHope Ministries. All rights
+              {new Date().getFullYear()} FountOfHope Devotionals. All rights
               reserved.
             </p>
           </div>
@@ -521,11 +530,10 @@ const Footer = () => {
                       Privacy Policy
                     </button>
                     . After making your donation, please email us at
-                    herbert.segismar@gmail.com with your details so we
-                    can properly acknowledge your gift. Fount Of Hope
-                    Ministries is maintained and operated by Mr. Herbert
-                    Segismar, the author and founder of this Daily Bible
-                    Devotional App.
+                    fountofhopedevotionals@gmail.com with your details so we can
+                    properly acknowledge your gift. Fount Of Hope Devotionals is
+                    maintained and operated by Mr. Herbert Segismar, the author
+                    and founder of this Daily Bible Devotional App.
                   </p>
                 </div>
               </>
