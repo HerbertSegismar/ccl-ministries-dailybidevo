@@ -444,7 +444,7 @@ const Footer = () => {
                 )}
 
                 {/* Credit Card Donation Form */}
-                {activeTab === "card" && (
+                {/* {activeTab === "card" && (
                   <div className="bg-gray-100 p-4 rounded-lg mb-6">
                     <h3 className="font-semibold text-lg mb-3">
                       Donate with Visa/MasterCard
@@ -505,7 +505,7 @@ const Footer = () => {
                       </div>
                     </div>
                   </div>
-                )}
+                )} */}
 
                 <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
                   <p className="text-yellow-700 text-sm">
