@@ -327,7 +327,7 @@ const Footer = () => {
                     <FaCopy className="mr-2" />
                     Bank Transfer
                   </button>
-                  <button
+                  {/* <button
                     className={`py-2 px-4 font-medium text-sm flex items-center ${
                       activeTab === "card"
                         ? "text-purple-800 border-b-2 border-purple-800"
@@ -337,7 +337,7 @@ const Footer = () => {
                   >
                     <FaCreditCard className="mr-2" />
                     Credit/Debit Card
-                  </button>
+                  </button> */}
                 </div>
 
                 {/* Bank Transfer Details */}
