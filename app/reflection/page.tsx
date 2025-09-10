@@ -95,8 +95,19 @@ const Reflection = () => {
         (prompt: ReflectionPrompt, index: number) => {
           const reflectionText =
             reflections[prompt.id] || "No reflection written yet";
-          // Strip HTML tags from the reflection text
-          const plainText = reflectionText.replace(/<[^>]*>/g, "");
+
+          // Convert HTML to plain text, handling entities and tags
+          const tempDiv = document.createElement("div");
+          tempDiv.innerHTML = reflectionText;
+
+          // Replace non-breaking spaces with regular spaces
+          let plainText = tempDiv.textContent || tempDiv.innerText || "";
+          plainText = plainText.replace(/\s+/g, " ").trim();
+
+          // Handle empty reflections
+          if (!plainText || plainText === "") {
+            plainText = "No reflection written yet";
+          }
 
           content += `${index + 1}. ${prompt.question}\n`;
           content += `${plainText}\n\n`;
@@ -133,7 +144,6 @@ const Reflection = () => {
       );
     }
   };
-
   if (!devotional) {
     return (
       <div className="flex items-center justify-center h-screen bg-gray-50 dark:bg-gray-900">
