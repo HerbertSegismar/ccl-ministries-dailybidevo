@@ -1,3 +1,4 @@
+// components/RichTextEditor.tsx
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -29,17 +30,10 @@ const RichTextEditor = ({
 
   useEffect(() => {
     if (editorRef.current) {
-      // Always show actual content if it exists, regardless of focus state
-      if (!isEmpty) {
-        editorRef.current.innerHTML = value;
-      }
-      // Show placeholder only when empty and not focused
-      else if (!isFocused) {
+      if (isEmpty && !isFocused) {
         editorRef.current.innerHTML = `<span class="placeholder-text">${placeholder}</span>`;
-      }
-      // Clear when focused and empty
-      else if (isFocused && isEmpty) {
-        editorRef.current.innerHTML = "";
+      } else if (editorRef.current.innerHTML.includes("placeholder-text")) {
+        editorRef.current.innerHTML = value;
       }
     }
   }, [value, isFocused, placeholder, isEmpty]);
@@ -90,13 +84,11 @@ const RichTextEditor = ({
 
   const handleContentChange = () => {
     if (editorRef.current) {
-      const content = editorRef.current.innerHTML;
-      // Only update if it's not the placeholder
-      if (!content.includes("placeholder-text")) {
-        onChange(content);
-      } else {
-        onChange("");
-      }
+      onChange(
+        !editorRef.current.innerHTML.includes("placeholder-text")
+          ? editorRef.current.innerHTML
+          : ""
+      );
     }
   };
 
