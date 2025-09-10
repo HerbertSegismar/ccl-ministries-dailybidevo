@@ -29,6 +29,7 @@ const Home = () => {
   const [bookmarked, setBookmarked] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [verseGradient, setVerseGradient] = useState("");
 
   const appRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -204,7 +205,11 @@ const Home = () => {
       updateBookmarkStatus(selectedDevotional);
       runContentAnimations();
     },
-    [getDevotionalForDate, runContentAnimations, updateBookmarkStatus]
+    [
+      getDevotionalForDate,
+      runContentAnimations,
+      updateBookmarkStatus,
+    ]
   );
 
   const handleReflection = useCallback((): void => {
@@ -264,22 +269,18 @@ const Home = () => {
             {/* Verse */}
             <div
               ref={verseRef}
-              className={`mb-6 ${
-                theme === "dark" ? "text-gray-200" : "text-gray-800"
+              className={`bg-gradient-to-b ${
+                colorClasses.gradient
+              }/95 mb-6 p-4 rounded-lg ${
+                theme === "dark" ? "text-blue-100" : "text-blue-700"
               }`}
             >
               <div className="flex items-start mb-2">
-                <FaBook className={`${colorClasses.text} mt-1 mr-2`} />
+                <FaBook className="text-white mt-1 mr-2" />
                 <h2 className="text-lg font-semibold">Today&apos;s Verse</h2>
               </div>
-              <p
-                className={`mb-2 italic ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-600"
-                }`}
-              >
-                &ldquo;{verseText}&rdquo;
-              </p>
-              <p className={`text-right ${colorClasses.text} font-medium`}>
+              <p className="mb-2 italic text-2xl">&ldquo;{verseText}&rdquo;</p>
+              <p className="text-right font-medium">
                 {currentDevotional.verse.reference} ({bibleVersion})
               </p>
             </div>
