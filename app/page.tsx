@@ -29,7 +29,8 @@ const Home = () => {
   const [bookmarked, setBookmarked] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const [verseGradient, setVerseGradient] = useState("");
+  const [readingPlanVerses, setReadingPlanVerses] = useState<string>("");
+  const [isLoadingVerses, setIsLoadingVerses] = useState(false);
 
   const appRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -46,6 +47,70 @@ const Home = () => {
       devotionals.find((d) => parseInt(d.id) === day) || devotionals[0],
     []
   );
+
+  // Function to parse reading plan (e.g., "John 1:1-5")
+  const parseReadingPlan = (plan: string) => {
+    // Match patterns like "John 1:1-5" or "1 John 1:1-5"
+    const match = plan.match(/(\d?\s?\w+)\s(\d+):(\d+)-(\d+)/);
+    if (match) {
+      return {
+        book: match[1].toLowerCase().replace(/\s+/g, ""), // Convert to lowercase and remove spaces
+        chapter: match[2],
+        startVerse: parseInt(match[3]),
+        endVerse: parseInt(match[4]),
+      };
+    }
+    return null;
+  };
+
+  useEffect(() => {
+    if (!currentDevotional) return;
+
+    const parsedPlan = parseReadingPlan(currentDevotional.readingPlan);
+    if (!parsedPlan) {
+      setReadingPlanVerses("Unable to parse reading plan.");
+      return;
+    }
+
+    const { book, chapter, startVerse, endVerse } = parsedPlan;
+    const version = bibleVersion.toLowerCase();
+
+    // Construct dynamic API URL
+    const url = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/en-${version}/books/${book}/chapters/${chapter}.json`;
+
+    setIsLoadingVerses(true);
+
+    fetch(url)
+      .then((response) => {
+        if (!response.ok)
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        return response.json();
+      })
+      .then((data) => {
+        const versesArray = data.verses || [];
+
+        if (versesArray.length === 0) {
+          setReadingPlanVerses("Verses not available");
+          return;
+        }
+
+        const filteredVerses = versesArray
+          .filter(
+            (verse: any) => verse.verse >= startVerse && verse.verse <= endVerse
+          )
+          .map((verse: any) => verse.text)
+          .join(" ");
+
+        setReadingPlanVerses(filteredVerses);
+      })
+      .catch((error) => {
+        console.error("Error fetching verses:", error);
+        setReadingPlanVerses("Unable to load verses.");
+      })
+      .finally(() => {
+        setIsLoadingVerses(false);
+      });
+  }, [currentDevotional, bibleVersion]);
 
   const runContentAnimations = useCallback(() => {
     const tl = gsap.timeline();
@@ -205,11 +270,7 @@ const Home = () => {
       updateBookmarkStatus(selectedDevotional);
       runContentAnimations();
     },
-    [
-      getDevotionalForDate,
-      runContentAnimations,
-      updateBookmarkStatus,
-    ]
+    [getDevotionalForDate, runContentAnimations, updateBookmarkStatus]
   );
 
   const handleReflection = useCallback((): void => {
@@ -337,6 +398,21 @@ const Home = () => {
                   {currentDevotional.readingPlan}
                 </span>
               </p>
+              <div>
+                {isLoadingVerses ? (
+                  <div className="mt-2 p-2 bg-gray-100 dark:bg-gray-700 rounded">
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Loading verses...
+                    </p>
+                  </div>
+                ) : readingPlanVerses ? (
+                  <div className="mt-2 p-2 bg-gray-100 dark:bg-gray-700 rounded">
+                    <p className="text-gray-700 dark:text-gray-300">
+                      {readingPlanVerses}
+                    </p>
+                  </div>
+                ) : null}
+              </div>
             </div>
           </div>
 
