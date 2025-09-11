@@ -142,7 +142,7 @@ const Home = () => {
       } catch (error) {
         console.error("Error fetching verses:", error);
         setVerseError(
-          "Unable to load verses at this time. Check if the chapter or verse is valid."
+          "Unable to load verses at this time. Check if the book, chapter or verse is valid."
         );
         setReadingPlanVerses(""); // Clear any previous verses
       } finally {
@@ -545,7 +545,7 @@ const Home = () => {
                 ) : verseError ? (
                   <div className="mt-2 p-2 bg-red-100 dark:bg-red-900/30 rounded flex items-start">
                     <FaExclamationTriangle className="text-red-500 mt-1 mr-2 flex-shrink-0" />
-                    <p className="text-red-700 dark:text-red-300">
+                    <p className="dark:text-red-500">
                       {verseError}
                     </p>
                   </div>
