@@ -19,6 +19,15 @@ import { devotionals } from "./data/devotionals-sep";
 import { getColorClasses } from "./contexts/ThemeContext";
 import type { Devotional } from "@/app/types";
 
+interface BibleVerse {
+  verse: number;
+  text: string;
+}
+
+interface BibleChapter {
+  verses: BibleVerse[];
+}
+
 const Home = () => {
   const router = useRouter();
   const { theme, colorScheme } = useTheme();
@@ -86,7 +95,7 @@ const Home = () => {
           throw new Error(`HTTP error! Status: ${response.status}`);
         return response.json();
       })
-      .then((data) => {
+      .then((data: BibleChapter) => {
         const versesArray = data.verses || [];
 
         if (versesArray.length === 0) {
@@ -96,9 +105,9 @@ const Home = () => {
 
         const filteredVerses = versesArray
           .filter(
-            (verse: any) => verse.verse >= startVerse && verse.verse <= endVerse
+            (verse) => verse.verse >= startVerse && verse.verse <= endVerse
           )
-          .map((verse: any) => verse.text)
+          .map((verse) => verse.text)
           .join(" ");
 
         setReadingPlanVerses(filteredVerses);

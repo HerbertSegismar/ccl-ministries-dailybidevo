@@ -6,141 +6,11 @@ import {
   FaHeart,
   FaTimes,
   FaCopy,
-  FaCreditCard,
   FaCheck,
 } from "react-icons/fa";
 import TermsOfService from "./TermsOfService";
 import PrivacyPolicy from "./PrivacyPolicy";
 import Image from "next/image";
-
-// Stripe imports
-import { loadStripe } from "@stripe/stripe-js";
-import {
-  Elements,
-  CardElement,
-  useStripe,
-  useElements,
-} from "@stripe/react-stripe-js";
-
-// Initialize Stripe
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-);
-
-const StripeCheckoutForm = ({
-  amount,
-  onSuccess,
-}: {
-  amount: number;
-  onSuccess: () => void;
-  onClose: () => void;
-}) => {
-  const stripe = useStripe();
-  const elements = useElements();
-  const [error, setError] = useState<string | null>(null);
-  const [processing, setProcessing] = useState(false);
-  const [name, setName] = useState("");
-
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-    if (!stripe || !elements) return;
-
-    setProcessing(true);
-    setError(null);
-
-    try {
-      const { error: stripeError, paymentMethod } =
-        await stripe.createPaymentMethod({
-          type: "card",
-          card: elements.getElement(CardElement)!,
-          billing_details: { name },
-        });
-
-      if (stripeError) {
-        setError(stripeError.message || "An error occurred");
-        setProcessing(false);
-        return;
-      }
-
-      const response = await fetch("/api/create-payment-intent", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          paymentMethodId: paymentMethod.id,
-          amount: amount * 100,
-          currency: "usd",
-        }),
-      });
-
-      const { clientSecret, error: serverError } = await response.json();
-
-      if (serverError) {
-        setError(serverError);
-        setProcessing(false);
-        return;
-      }
-
-      const { error: confirmError } = await stripe.confirmCardPayment(
-        clientSecret
-      );
-
-      if (confirmError) {
-        setError(confirmError.message || "Payment failed");
-      } else {
-        onSuccess();
-      }
-    } catch (err) {
-      setError("An unexpected error occurred");
-      console.error(err);
-    } finally {
-      setProcessing(false);
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label className="block text-sm text-gray-500 mb-1">Name on Card</label>
-        <input
-          type="text"
-          placeholder="John Doe"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-          required
-        />
-      </div>
-
-      <div>
-        <label className="block text-sm text-gray-500 mb-1">Card Details</label>
-        <div className="p-3 border border-gray-300 rounded-lg focus-within:ring-2 focus-within:ring-purple-600 focus-within:border-transparent">
-          <CardElement
-            options={{
-              style: {
-                base: {
-                  fontSize: "16px",
-                  color: "#424770",
-                  "::placeholder": { color: "#aab7c4" },
-                },
-                invalid: { color: "#9e2146" },
-              },
-            }}
-          />
-        </div>
-      </div>
-
-      {error && <div className="text-red-600 text-sm">{error}</div>}
-
-      <button
-        type="submit"
-        disabled={!stripe || processing}
-        className="w-full bg-purple-700 text-white py-3 rounded-lg font-medium hover:bg-purple-800 transition-colors flex items-center justify-center disabled:opacity-50"
-      >
-        {processing ? "Processing..." : `Donate $${amount.toFixed(2)}`}
-      </button>
-    </form>
-  );
-};
 
 const Footer = () => {
   const footerRef = useRef<HTMLElement>(null);
@@ -154,7 +24,6 @@ const Footer = () => {
     bank: false,
     swift: false,
   });
-  const [donationAmount, setDonationAmount] = useState(50);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
 
   useEffect(() => {
@@ -179,16 +48,6 @@ const Footer = () => {
     setCopied({ ...copied, [field]: true });
     setTimeout(() => setCopied({ ...copied, [field]: false }), 2000);
   };
-
-  const handlePaymentSuccess = () => {
-    setPaymentSuccess(true);
-    setTimeout(() => {
-      setShowModal(false);
-      setPaymentSuccess(false);
-    }, 3000);
-  };
-
-  const presetAmounts = [10, 25, 50, 100, 250];
 
   return (
     <>
