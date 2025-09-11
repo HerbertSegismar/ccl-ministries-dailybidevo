@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect, useRef, useCallback } from "react";
 import {
   FaBook,
@@ -10,6 +9,7 @@ import {
   FaCalendar,
   FaChevronLeft,
   FaChevronRight,
+  FaExclamationTriangle,
 } from "react-icons/fa";
 import { gsap } from "gsap";
 import { useRouter } from "next/navigation";
@@ -40,6 +40,7 @@ const Home = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [readingPlanVerses, setReadingPlanVerses] = useState<string>("");
   const [isLoadingVerses, setIsLoadingVerses] = useState(false);
+  const [verseError, setVerseError] = useState<string | null>(null);
 
   const appRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -72,6 +73,45 @@ const Home = () => {
     return null;
   };
 
+  const fetchBibleVerses = useCallback(
+    async (parsedPlan: any, version: string) => {
+      const { book, chapter, startVerse, endVerse } = parsedPlan;
+
+      // Try multiple API endpoints with fallbacks
+      const apiEndpoints = [
+        // Primary API - this one returns structured verse data
+        `https://bible-api.com/${book}+${chapter}:${startVerse}-${endVerse}?translation=kjv`,
+        // Fallback API
+        `https://api.biblia.com/v1/bible/content/kjv.json?passage=${book}${chapter}:${startVerse}-${endVerse}&key=fd37d8f28e95d3be8cb4fbc37e15e18e`,
+      ];
+
+      for (const url of apiEndpoints) {
+        try {
+          const response = await fetch(url);
+          if (response.ok) {
+            const data = await response.json();
+
+            // Handle different API response formats
+            if (data.verses) {
+              // Format verses with numbers
+              return data.verses
+                .map((v: any) => `${v.verse}. ${v.text}`)
+                .join("\n");
+            } else if (data.text) {
+              // If we only get text, try to parse it
+              return data.text;
+            }
+          }
+        } catch (error) {
+          console.log(`Failed to fetch from ${url}, trying next endpoint...`);
+        }
+      }
+
+      throw new Error("All API endpoints failed");
+    },
+    []
+  );
+
   useEffect(() => {
     if (!currentDevotional) return;
 
@@ -81,45 +121,36 @@ const Home = () => {
       return;
     }
 
-    const { book, chapter, startVerse, endVerse } = parsedPlan;
-    const version = bibleVersion.toLowerCase();
-
-    // Construct dynamic API URL
-    const url = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/en-${version}/books/${book}/chapters/${chapter}.json`;
-
     setIsLoadingVerses(true);
+    setVerseError(null);
 
-    fetch(url)
-      .then((response) => {
-        if (!response.ok)
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        return response.json();
-      })
-      .then((data: BibleChapter) => {
-        const versesArray = data.verses || [];
+    // Map our version names to API-compatible version codes
+    const versionMap: Record<string, string> = {
+      ASV: "asv",
+      KJV: "kjv",
+      ESV: "esv",
+      NIV: "niv",
+      NKJV: "nkjv",
+      // Add more version mappings as needed
+    };
 
-        if (versesArray.length === 0) {
-          setReadingPlanVerses("Verses not available");
-          return;
-        }
+    const versionCode = versionMap[bibleVersion] || "kjv"; // Default to KJV
 
-        const filteredVerses = versesArray
-          .filter(
-            (verse) => verse.verse >= startVerse && verse.verse <= endVerse
-          )
-          .map((verse) => verse.text)
-          .join(" ");
-
-        setReadingPlanVerses(filteredVerses);
+    fetchBibleVerses(parsedPlan, versionCode)
+      .then((versesText) => {
+        setReadingPlanVerses(versesText);
       })
       .catch((error) => {
         console.error("Error fetching verses:", error);
-        setReadingPlanVerses("Unable to load verses.");
+        setVerseError(
+          "Unable to load verses at this time. Please try again later."
+        );
+        setReadingPlanVerses(""); // Clear any previous verses
       })
       .finally(() => {
         setIsLoadingVerses(false);
       });
-  }, [currentDevotional, bibleVersion]);
+  }, [currentDevotional, bibleVersion, fetchBibleVerses]);
 
   const runContentAnimations = useCallback(() => {
     const tl = gsap.timeline();
@@ -400,7 +431,9 @@ const Home = () => {
             </div>
 
             {/* Reading Plan */}
-            <div className="text-sm text-gray-400 border-t border-gray-200/50 dark:border-gray-600/50 pt-4">
+            <div
+              className={`text-base text-gray-400 border-t border-gray-200/50 dark:border-gray-600/50 pt-4`}
+            >
               <p>
                 Today&apos;s Reading:{" "}
                 <span className={`font-medium ${colorClasses.text}`}>
@@ -414,11 +447,57 @@ const Home = () => {
                       Loading verses...
                     </p>
                   </div>
-                ) : readingPlanVerses ? (
-                  <div className="mt-2 p-2 bg-gray-100 dark:bg-gray-700 rounded">
-                    <p className="text-gray-700 dark:text-gray-300">
-                      {readingPlanVerses}
+                ) : verseError ? (
+                  <div className="mt-2 p-2 bg-red-100 dark:bg-red-900/30 rounded flex items-start">
+                    <FaExclamationTriangle className="text-red-500 mt-1 mr-2 flex-shrink-0" />
+                    <p className="text-red-700 dark:text-red-300">
+                      {verseError}
                     </p>
+                  </div>
+                ) : readingPlanVerses ? (
+                  <div
+                    className={`mt-2 p-4 ${
+                      theme === "dark" ? "bg-gray-800" : "bg-gray-100"
+                    } rounded-lg`}
+                  >
+                    <div
+                      className={`${
+                        theme === "dark" ? "text-gray-200" : "text-gray-800"
+                      } space-y-2`}
+                    >
+                      {readingPlanVerses.split("\n").map((verse, index) => {
+                        // Check if the verse already has a number format (from the API)
+                        const verseMatch = verse.match(/^(\d+)\.\s+(.*)/);
+
+                        if (verseMatch) {
+                          // If verse already has a number format like "1. Text"
+                          return (
+                            <p key={index} className="flex items-baseline">
+                              <sup className="text-xs text-gray-500 dark:text-gray-400 italic mr-1">
+                                {verseMatch[1]}
+                              </sup>
+                              <span>{verseMatch[2]}</span>
+                            </p>
+                          );
+                        } else {
+                          // If verse doesn't have a number, try to extract it
+                          const alternativeMatch = verse.match(/^(\d+)\s+(.*)/);
+                          if (alternativeMatch) {
+                            return (
+                              <p key={index} className="flex items-baseline">
+                                <sup className="text-xs text-gray-500 dark:text-gray-400 italic mr-1">
+                                  {alternativeMatch[1]}
+                                </sup>
+                                <span>{alternativeMatch[2]}</span>
+                              </p>
+                            );
+                          } else {
+                            // If no verse number found, just display the text
+                            return <p key={index}>{verse}</p>;
+                          }
+                        }
+                      })}
+                    </div>
                   </div>
                 ) : null}
               </div>
