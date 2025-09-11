@@ -27,9 +27,7 @@ interface BibleVerse {
   text: string;
 }
 
-interface BibleChapter {
-  verses: BibleVerse[];
-}
+// Removed unused BibleChapter interface
 
 const Home = () => {
   const router = useRouter();
@@ -82,51 +80,55 @@ const Home = () => {
     return null;
   };
 
-  const fetchBibleVerses = useCallback(
-    async (parsedPlan: any, version: string) => {
-      const { book, chapter, startVerse, endVerse } = parsedPlan;
+  interface ParsedPlan {
+    book: string;
+    chapter: string;
+    startVerse: number;
+    endVerse: number;
+  }
 
-      // Handle single verse or range of verses
-      const verseRange =
-        startVerse === endVerse ? startVerse : `${startVerse}-${endVerse}`;
+  const fetchBibleVerses = useCallback(async (parsedPlan: ParsedPlan) => {
+    const { book, chapter, startVerse, endVerse } = parsedPlan;
 
-      // Try multiple API endpoints with fallbacks
-      const apiEndpoints = [
-        // Primary API - this one returns structured verse data
-        `https://bible-api.com/${book}+${chapter}:${verseRange}?translation=kjv`,
-        // Fallback API
-        `https://api.biblia.com/v1/bible/content/kjv.json?passage=${book}${chapter}:${verseRange}&key=fd37d8f28e95d3be8cb4fbc37e15e18e`,
-      ];
+    // Handle single verse or range of verses
+    const verseRange =
+      startVerse === endVerse ? startVerse : `${startVerse}-${endVerse}`;
 
-      for (const url of apiEndpoints) {
-        try {
-          const response = await fetch(url);
-          if (response.ok) {
-            const data = await response.json();
+    // Try multiple API endpoints with fallbacks
+    const apiEndpoints = [
+      // Primary API - this one returns structured verse data
+      `https://bible-api.com/${book}+${chapter}:${verseRange}?translation=kjv`,
+      // Fallback API
+      `https://api.biblia.com/v1/bible/content/kjv.json?passage=${book}${chapter}:${verseRange}&key=fd37d8f28e95d3be8cb4fbc37e15e18e`,
+    ];
 
-            // Handle different API response formats
-            if (data.verses) {
-              // Format verses with numbers
-              return data.verses
-                .map((v: any) => `${v.verse}. ${v.text}`)
-                .join("\n");
-            } else if (data.text) {
-              // If we only get text, try to parse it
-              return data.text;
-            }
+    for (const url of apiEndpoints) {
+      try {
+        const response = await fetch(url);
+        if (response.ok) {
+          const data = await response.json();
+
+          // Handle different API response formats
+          if (data.verses) {
+            // Format verses with numbers
+            return data.verses
+              .map((v: any) => `${v.verse}. ${v.text}`)
+              .join("\n");
+          } else if (data.text) {
+            // If we only get text, try to parse it
+            return data.text;
           }
-        } catch (error) {
-          console.log(`Failed to fetch from ${url}, trying next endpoint...`);
         }
+      } catch {
+        console.log(`Failed to fetch from ${url}, trying next endpoint...`);
       }
+    }
 
-      throw new Error("All API endpoints failed");
-    },
-    []
-  );
+    throw new Error("All API endpoints failed");
+  }, []);
 
   const loadVerses = useCallback(
-    async (plan: string, version: string) => {
+    async (plan: string) => {
       const parsedPlan = parseReadingPlan(plan);
       if (!parsedPlan) {
         setReadingPlanVerses("Unable to parse reading plan.");
@@ -136,25 +138,13 @@ const Home = () => {
       setIsLoadingVerses(true);
       setVerseError(null);
 
-      // Map our version names to API-compatible version codes
-      const versionMap: Record<string, string> = {
-        ASV: "asv",
-        KJV: "kjv",
-        ESV: "esv",
-        NIV: "niv",
-        NKJV: "nkjv",
-        // Add more version mappings as needed
-      };
-
-      const versionCode = versionMap[version] || "kjv"; // Default to KJV
-
       try {
-        const versesText = await fetchBibleVerses(parsedPlan, versionCode);
+        const versesText = await fetchBibleVerses(parsedPlan);
         setReadingPlanVerses(versesText);
       } catch (error) {
         console.error("Error fetching verses:", error);
         setVerseError(
-          "Unable to load verses at this time. Please try again later."
+          "Unable to load verses at this time. Check if the chapter or verse is valid."
         );
         setReadingPlanVerses(""); // Clear any previous verses
       } finally {
@@ -171,7 +161,7 @@ const Home = () => {
     setCustomReadingPlan(currentDevotional.readingPlan);
 
     // Load verses for the current devotional
-    loadVerses(currentDevotional.readingPlan, bibleVersion);
+    loadVerses(currentDevotional.readingPlan);
   }, [currentDevotional, bibleVersion, loadVerses]);
 
   const runContentAnimations = useCallback(() => {
@@ -351,7 +341,7 @@ const Home = () => {
 
   const handleReadingPlanSave = () => {
     setIsEditingReadingPlan(false);
-    loadVerses(customReadingPlan, bibleVersion);
+    loadVerses(customReadingPlan);
   };
 
   const handleReadingPlanCancel = () => {
