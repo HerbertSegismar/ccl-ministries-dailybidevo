@@ -27,8 +27,6 @@ interface BibleVerse {
   text: string;
 }
 
-// Removed unused BibleChapter interface
-
 const Home = () => {
   const router = useRouter();
   const { theme, colorScheme } = useTheme();
@@ -112,7 +110,7 @@ const Home = () => {
           if (data.verses) {
             // Format verses with numbers
             return data.verses
-              .map((v: any) => `${v.verse}. ${v.text}`)
+              .map((v: BibleVerse) => `${v.verse}. ${v.text}`)
               .join("\n");
           } else if (data.text) {
             // If we only get text, try to parse it
