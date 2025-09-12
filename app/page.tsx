@@ -13,7 +13,7 @@ import {
   FaEdit,
   FaCheck,
   FaTimes,
-  FaChevronDown,
+  FaCaretDown,
 } from "react-icons/fa";
 import { gsap } from "gsap";
 import { useRouter } from "next/navigation";
@@ -52,20 +52,34 @@ const Home = () => {
   const verseRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const prayerRef = useRef<HTMLDivElement>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const versionDropdownRef = useRef<HTMLDivElement>(null);
 
   const colorClasses = getColorClasses(colorScheme);
   const currentDay = new Date().getDate();
   const currentMonth = new Date().toLocaleString("default", { month: "long" });
 
-  // Available Bible versions
+  // Bible versions available (same as in settings)
   const bibleVersions = [
-    { value: "kjv", label: "KJV" },
-    { value: "niv", label: "NIV" },
-    { value: "esv", label: "ESV" },
-    { value: "nasb", label: "NASB" },
-    { value: "nlt", label: "NLT" },
-    { value: "nkjv", label: "NKJV" },
+    { value: "NIV", label: "NIV" },
+    { value: "ESV", label: "ESV" },
+    { value: "KJV", label: "KJV" },
+    { value: "NKJV", label: "NKJV" },
+    { value: "NASB", label: "NASB" },
+    { value: "ASV", label: "ASV" },
+    { value: "BBE", label: "BBE" },
+    { value: "DARBY", label: "DARBY" },
+    { value: "DRA", label: "DRA" },
+    { value: "WEB", label: "WEB" },
+    { value: "WEBBE", label: "WEBBE" },
+    { value: "YLT", label: "YLT" },
+    { value: "OEB-CW", label: "OEB-CW" },
+    { value: "OEB-US", label: "OEB-US" },
+    { value: "CHEROKEE", label: "CHEROKEE" },
+    { value: "CUV", label: "CUV" },
+    { value: "BKR", label: "BKR" },
+    { value: "CLEMENTINE", label: "CLEMENTINE" },
+    { value: "ALMEIDA", label: "ALMEIDA" },
+    { value: "RCCV", label: "RCCV" },
   ];
 
   const getDevotionalForDate = useCallback(
@@ -73,6 +87,23 @@ const Home = () => {
       devotionals.find((d) => parseInt(d.id) === day) || devotionals[0],
     []
   );
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        versionDropdownRef.current &&
+        !versionDropdownRef.current.contains(event.target as Node)
+      ) {
+        setShowVersionDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   // Function to parse reading plan (e.g., "John 1:1-5")
   const parseReadingPlan = (plan: string) => {
@@ -115,6 +146,7 @@ const Home = () => {
       const apiEndpoints = [
         // Primary API - this one returns structured verse data
         `https://bible-api.com/${book}+${chapter}:${verseRange}?translation=${versionToUse}`,
+        `https://bible-api.com/${book}+${chapter}:${verseRange}?translation=kjv`,
       ];
 
       for (const url of apiEndpoints) {
@@ -154,7 +186,7 @@ const Home = () => {
   );
 
   const fetchDailyVerse = useCallback(
-    async (verseReference: string, version: string) => {
+    async (verseReference: string) => {
       // Parse the verse reference (e.g., "John 1:1")
       const match = verseReference.match(/(\d?\s?\w+)\s(\d+):(\d+)/);
       if (!match) return null;
@@ -164,21 +196,36 @@ const Home = () => {
       const verse = match[3];
 
       try {
-        // Try with the specified version
+        // First try with the selected version
         const response = await fetch(
-          `https://bible-api.com/${book}+${chapter}:${verse}?translation=${version}`
+          `https://bible-api.com/${book}+${chapter}:${verse}?translation=${bibleVersion}`
         );
         if (response.ok) {
           const data = await response.json();
           return data.text?.replace(/\s+/g, " ").trim() || "";
         }
       } catch {
-        console.log(`Failed to fetch daily verse with ${version}`);
+        console.log(
+          `Failed to fetch daily verse with ${bibleVersion}, trying KJV...`
+        );
+      }
+
+      // If the selected version fails, try with KJV
+      try {
+        const response = await fetch(
+          `https://bible-api.com/${book}+${chapter}:${verse}?translation=kjv`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          return data.text?.replace(/\s+/g, " ").trim() || "";
+        }
+      } catch {
+        console.log("Failed to fetch daily verse with KJV");
       }
 
       return null;
     },
-    []
+    [bibleVersion]
   );
 
   const loadVerses = useCallback(
@@ -221,45 +268,39 @@ const Home = () => {
     [fetchBibleVerses, bibleVersion]
   );
 
-  const loadDailyVerse = useCallback(
-    async (version?: string) => {
-      if (!currentDevotional) return;
+  const loadDailyVerse = useCallback(async () => {
+    if (!currentDevotional) return;
 
-      const versionToUse = version || bibleVersion;
+    // Check if the verse is available in the selected version
+    const verseText = currentDevotional.verse.text[bibleVersion];
+    if (verseText) {
+      setDailyVerseText(verseText);
+      return;
+    }
 
-      // Check if the verse is available in the selected version
-      const verseText = currentDevotional.verse.text[versionToUse];
-      if (verseText) {
-        setDailyVerseText(verseText);
-        return;
-      }
-
-      // If not available, fetch it from the API
-      setIsLoadingDailyVerse(true);
-      try {
-        const fetchedVerse = await fetchDailyVerse(
-          currentDevotional.verse.reference,
-          versionToUse
-        );
-        if (fetchedVerse) {
-          setDailyVerseText(fetchedVerse);
-        } else {
-          // If API fails, fall back to KJV version from the data
-          setDailyVerseText(
-            currentDevotional.verse.text.kjv || "Verse not available"
-          );
-        }
-      } catch (error) {
-        console.error("Error fetching daily verse:", error);
+    // If not available, fetch it from the API
+    setIsLoadingDailyVerse(true);
+    try {
+      const fetchedVerse = await fetchDailyVerse(
+        currentDevotional.verse.reference
+      );
+      if (fetchedVerse) {
+        setDailyVerseText(fetchedVerse);
+      } else {
+        // If API fails, fall back to KJV version from the data
         setDailyVerseText(
           currentDevotional.verse.text.kjv || "Verse not available"
         );
-      } finally {
-        setIsLoadingDailyVerse(false);
       }
-    },
-    [currentDevotional, bibleVersion, fetchDailyVerse]
-  );
+    } catch (error) {
+      console.error("Error fetching daily verse:", error);
+      setDailyVerseText(
+        currentDevotional.verse.text.kjv || "Verse not available"
+      );
+    } finally {
+      setIsLoadingDailyVerse(false);
+    }
+  }, [currentDevotional, bibleVersion, fetchDailyVerse]);
 
   useEffect(() => {
     if (!currentDevotional) return;
@@ -273,23 +314,6 @@ const Home = () => {
     // Load the daily verse
     loadDailyVerse();
   }, [currentDevotional, bibleVersion, loadVerses, loadDailyVerse]);
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setShowVersionDropdown(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   const runContentAnimations = useCallback(() => {
     const tl = gsap.timeline();
@@ -489,7 +513,6 @@ const Home = () => {
   const handleVersionChange = (version: string) => {
     setBibleVersion(version);
     setShowVersionDropdown(false);
-    loadDailyVerse(version);
   };
 
   if (!currentDevotional || !isMounted) {
@@ -501,9 +524,6 @@ const Home = () => {
   }
 
   const currentId = parseInt(currentDevotional.id);
-  const currentVersionLabel =
-    bibleVersions.find((v) => v.value === bibleVersion)?.label ||
-    bibleVersion.toUpperCase();
 
   // ------------------- Button Styles -------------------
   const actionButtonClass =
@@ -544,58 +564,12 @@ const Home = () => {
                 colorClasses.gradient
               }/95 mb-6 p-4 rounded-lg ${
                 theme === "dark" ? "text-blue-100" : "text-blue-700"
-              }`}
+              } relative`}
             >
-              <div className="flex items-start justify-between mb-2">
-                <div className="flex items-start">
-                  <FaBook className="text-white mt-1 mr-2" />
-                  <h2 className="text-lg font-semibold">Today&apos;s Verse</h2>
-                </div>
-
-                {/* Version Dropdown */}
-                <div className="relative" ref={dropdownRef}>
-                  <button
-                    onClick={() => setShowVersionDropdown(!showVersionDropdown)}
-                    className={`flex items-center space-x-1 px-2 py-1 rounded ${
-                      theme === "dark"
-                        ? "bg-gray-600/80 hover:bg-gray-500/80"
-                        : "bg-white/80 hover:bg-gray-100/80"
-                    } transition-colors`}
-                  >
-                    <span className="text-sm font-medium">
-                      {currentVersionLabel}
-                    </span>
-                    <FaChevronDown className="text-xs" />
-                  </button>
-
-                  {showVersionDropdown && (
-                    <div
-                      className={`absolute right-0 mt-1 py-1 rounded shadow-lg z-10 ${
-                        theme === "dark"
-                          ? "bg-gray-700 border border-gray-600"
-                          : "bg-white border border-gray-200"
-                      }`}
-                    >
-                      {bibleVersions.map((version) => (
-                        <button
-                          key={version.value}
-                          onClick={() => handleVersionChange(version.value)}
-                          className={`block w-full text-left px-4 py-2 text-sm ${
-                            bibleVersion === version.value
-                              ? colorClasses.text + " font-medium"
-                              : theme === "dark"
-                              ? "text-gray-300 hover:bg-gray-600"
-                              : "text-gray-700 hover:bg-gray-100"
-                          }`}
-                        >
-                          {version.label}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
+              <div className="flex items-start mb-2">
+                <FaBook className="text-white mt-1 mr-2" />
+                <h2 className="text-lg font-semibold">Today&apos;s Verse</h2>
               </div>
-
               {isLoadingDailyVerse ? (
                 <p className="mb-2 italic text-2xl">Loading verse...</p>
               ) : (
@@ -603,9 +577,64 @@ const Home = () => {
                   <p className="mb-2 italic text-2xl">
                     &ldquo;{dailyVerseText}&rdquo;
                   </p>
-                  <p className="text-right font-medium">
-                    {currentDevotional.verse.reference} ({currentVersionLabel})
-                  </p>
+                  <div className="flex items-center justify-end">
+                    <p className="text-right font-medium mr-2">
+                      {currentDevotional.verse.reference}
+                    </p>
+                    <div className="relative" ref={versionDropdownRef}>
+                      <button
+                        onClick={() =>
+                          setShowVersionDropdown(!showVersionDropdown)
+                        }
+                        className={`flex items-center px-2 py-1 rounded ${
+                          theme === "dark"
+                            ? "bg-gray-700/80 hover:bg-gray-600/80"
+                            : "bg-white/80 hover:bg-gray-100/80"
+                        } text-sm font-medium border ${
+                          theme === "dark"
+                            ? "border-gray-600"
+                            : "border-gray-300"
+                        }`}
+                      >
+                        {bibleVersion}
+                        <FaCaretDown className="ml-1" />
+                      </button>
+
+                      {showVersionDropdown && (
+                        <div className="absolute right-0 mt-1 w-48 rounded-md shadow-lg z-50">
+                          <div
+                            className={`rounded-md shadow-xs ${
+                              theme === "dark"
+                                ? "bg-gray-800 border border-gray-700"
+                                : "bg-white border border-gray-200"
+                            }`}
+                          >
+                            <div className="py-1 max-h-60 overflow-auto">
+                              {bibleVersions.map((version) => (
+                                <button
+                                  key={version.value}
+                                  onClick={() =>
+                                    handleVersionChange(version.value)
+                                  }
+                                  className={`block w-full text-left px-4 py-2 text-sm ${
+                                    bibleVersion === version.value
+                                      ? theme === "dark"
+                                        ? "bg-purple-700 text-white"
+                                        : "bg-purple-100 text-purple-800"
+                                      : theme === "dark"
+                                      ? "text-gray-300 hover:bg-gray-700"
+                                      : "text-gray-700 hover:bg-gray-100"
+                                  }`}
+                                >
+                                  {version.label}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </>
               )}
             </div>
