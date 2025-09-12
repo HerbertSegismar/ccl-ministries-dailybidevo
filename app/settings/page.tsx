@@ -327,7 +327,7 @@ const Settings = () => {
                 World English Bible, British Edition (WEBBE)
               </option>
               <option value="YLT">
-                Young's Literal Translation (NT ONLY) (YLT)
+                Young&lsquo;s Literal Translation (NT ONLY) (YLT)
               </option>
               <option value="OEB-CW">
                 Open English Bible, Commonwealth Edition (OEB-CW)
