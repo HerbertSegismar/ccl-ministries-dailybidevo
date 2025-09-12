@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   creator: "Fount Of Hope Devotionals",
   publisher: "Fount Of Hope Devotionals",
   metadataBase: new URL(baseUrl),
+  icons: {
+    icon: "/icon.svg",
+  },
 
   // Open Graph for social media sharing
   openGraph: {
@@ -55,8 +58,7 @@ export const metadata: Metadata = {
 
   // Additional metadata
   verification: {
-    google:
-      "gAaD2oPgemntA9aBOM0YF8mNCyf_gG5CgloF5JaEhTI", // For Google Search Console
+    google: "gAaD2oPgemntA9aBOM0YF8mNCyf_gG5CgloF5JaEhTI", // For Google Search Console
   },
   alternates: {
     canonical: baseUrl,
