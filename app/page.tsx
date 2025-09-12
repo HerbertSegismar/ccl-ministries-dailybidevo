@@ -108,13 +108,16 @@ const Home = () => {
 
           // Handle different API response formats
           if (data.verses) {
-            // Format verses with numbers
+            // Format verses with numbers and remove unnecessary spaces
             return data.verses
-              .map((v: BibleVerse) => `${v.verse}. ${v.text}`)
-              .join("\n");
+              .map(
+                (v: BibleVerse) =>
+                  `${v.verse}. ${v.text.trim().replace(/\s+/g, " ")}`
+              )
+              .join("\n\n");
           } else if (data.text) {
-            // If we only get text, try to parse it
-            return data.text;
+            // If we only get text, try to parse it and remove unnecessary spaces
+            return data.text.replace(/\s+/g, " ").trim();
           }
         }
       } catch {
@@ -142,7 +145,7 @@ const Home = () => {
       } catch (error) {
         console.error("Error fetching verses:", error);
         setVerseError(
-          "Unable to load verses at this time. Check if the book, chapter or verse is valid."
+          "Unable to load verses. Check if the book, chapter or verse is valid."
         );
         setReadingPlanVerses(""); // Clear any previous verses
       } finally {
@@ -545,9 +548,7 @@ const Home = () => {
                 ) : verseError ? (
                   <div className="mt-2 p-2 bg-red-100 dark:bg-red-900/30 rounded flex items-start">
                     <FaExclamationTriangle className="text-red-500 mt-1 mr-2 flex-shrink-0" />
-                    <p className="dark:text-red-500">
-                      {verseError}
-                    </p>
+                    <p className="dark:text-red-500">{verseError}</p>
                   </div>
                 ) : readingPlanVerses ? (
                   <div
@@ -558,9 +559,9 @@ const Home = () => {
                     <div
                       className={`${
                         theme === "dark" ? "text-gray-200" : "text-gray-800"
-                      } space-y-2`}
+                      } space-y-3`}
                     >
-                      {readingPlanVerses.split("\n").map((verse, index) => {
+                      {readingPlanVerses.split("\n\n").map((verse, index) => {
                         // Check if the verse already has a number format (from the API)
                         const verseMatch = verse.match(/^(\d+)\.\s+(.*)/);
 
