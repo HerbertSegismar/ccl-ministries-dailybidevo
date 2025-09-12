@@ -552,6 +552,7 @@ const Home = () => {
               ? "bg-gray-700/70 border-gray-600/30"
               : "bg-white/90 border-white/30"
           }`}
+          style={{ isolation: "isolate" }} // Prevent z-index issues
         >
           <div
             className={`bg-gradient-to-r ${colorClasses.gradient} text-white py-2 px-4 text-sm font-semibold`}
@@ -568,6 +569,7 @@ const Home = () => {
               }/95 mb-6 p-4 rounded-lg ${
                 theme === "dark" ? "text-blue-100" : "text-blue-700"
               } relative`}
+              style={{ zIndex: 10 }} // Ensure verse section has higher z-index
             >
               <div className="flex items-start mb-2">
                 <FaBook className="text-white mt-1 mr-2" />
@@ -605,7 +607,7 @@ const Home = () => {
                       </button>
 
                       {showVersionDropdown && (
-                        <div className="absolute right-0 mt-1 w-48 rounded-md shadow-lg z-100">
+                        <div className="absolute right-0 mt-1 w-48 rounded-md shadow-lg z-50">
                           <div
                             className={`rounded-md shadow-xs ${
                               theme === "dark"
@@ -645,7 +647,11 @@ const Home = () => {
             </div>
 
             {/* Devotional Content */}
-            <div ref={contentRef} className="mb-6">
+            <div
+              ref={contentRef}
+              className="mb-6"
+              style={{ position: "relative", zIndex: 1 }}
+            >
               <h2 className={`text-xl font-bold ${colorClasses.text} mb-3`}>
                 {currentDevotional.title}
               </h2>
@@ -668,6 +674,7 @@ const Home = () => {
                   ? "bg-gray-600/70 border-gray-500/30"
                   : `${colorClasses.lightBg}/70 ${colorClasses.lightBorder}/30`
               }`}
+              style={{ position: "relative", zIndex: 1 }}
             >
               <div className="flex items-start mb-2">
                 <FaPrayingHands className={`${colorClasses.text} mt-1 mr-2`} />
@@ -691,6 +698,7 @@ const Home = () => {
             {/* Reading Plan */}
             <div
               className={`text-base text-gray-400 border-t border-gray-200/50 dark:border-gray-600/50 pt-4`}
+              style={{ position: "relative", zIndex: 1 }}
             >
               <div className="flex items-center justify-between mb-2">
                 <p>Today&apos;s Reading:</p>
@@ -824,7 +832,10 @@ const Home = () => {
           </div>
 
           {/* Action Buttons */}
-          <div className="absolute top-4 right-4 flex space-x-2">
+          <div
+            className="absolute top-4 right-4 flex space-x-2"
+            style={{ zIndex: 10 }}
+          >
             <button
               onClick={() => setShowCalendar(!showCalendar)}
               className={`${actionButtonClass} ${
