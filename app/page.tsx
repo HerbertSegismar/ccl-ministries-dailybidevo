@@ -53,6 +53,7 @@ const Home = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const prayerRef = useRef<HTMLDivElement>(null);
   const versionDropdownRef = useRef<HTMLDivElement>(null);
+  const versionButtonRef = useRef<HTMLButtonElement>(null);
 
   const colorClasses = getColorClasses(colorScheme);
   const currentDay = new Date().getDate();
@@ -93,7 +94,9 @@ const Home = () => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         versionDropdownRef.current &&
-        !versionDropdownRef.current.contains(event.target as Node)
+        !versionDropdownRef.current.contains(event.target as Node) &&
+        versionButtonRef.current &&
+        !versionButtonRef.current.contains(event.target as Node)
       ) {
         setShowVersionDropdown(false);
       }
@@ -583,6 +586,7 @@ const Home = () => {
                     </p>
                     <div className="relative" ref={versionDropdownRef}>
                       <button
+                        ref={versionButtonRef}
                         onClick={() =>
                           setShowVersionDropdown(!showVersionDropdown)
                         }
@@ -601,7 +605,7 @@ const Home = () => {
                       </button>
 
                       {showVersionDropdown && (
-                        <div className="absolute right-0 mt-1 w-48 rounded-md shadow-lg z-50">
+                        <div className="absolute right-0 mt-1 w-48 rounded-md shadow-lg z-100">
                           <div
                             className={`rounded-md shadow-xs ${
                               theme === "dark"
@@ -613,9 +617,10 @@ const Home = () => {
                               {bibleVersions.map((version) => (
                                 <button
                                   key={version.value}
-                                  onClick={() =>
-                                    handleVersionChange(version.value)
-                                  }
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleVersionChange(version.value);
+                                  }}
                                   className={`block w-full text-left px-4 py-2 text-sm ${
                                     bibleVersion === version.value
                                       ? theme === "dark"
