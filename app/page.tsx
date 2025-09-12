@@ -13,6 +13,7 @@ import {
   FaEdit,
   FaCheck,
   FaTimes,
+  FaChevronDown,
 } from "react-icons/fa";
 import { gsap } from "gsap";
 import { useRouter } from "next/navigation";
@@ -30,7 +31,7 @@ interface BibleVerse {
 const Home = () => {
   const router = useRouter();
   const { theme, colorScheme } = useTheme();
-  const { bibleVersion } = useBibleVersion();
+  const { bibleVersion, setBibleVersion } = useBibleVersion();
   const [currentDevotional, setCurrentDevotional] = useState<Devotional | null>(
     null
   );
@@ -42,16 +43,30 @@ const Home = () => {
   const [verseError, setVerseError] = useState<string | null>(null);
   const [isEditingReadingPlan, setIsEditingReadingPlan] = useState(false);
   const [customReadingPlan, setCustomReadingPlan] = useState("");
+  const [dailyVerseText, setDailyVerseText] = useState<string>("");
+  const [isLoadingDailyVerse, setIsLoadingDailyVerse] = useState(false);
+  const [showVersionDropdown, setShowVersionDropdown] = useState(false);
 
   const appRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const verseRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const prayerRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const colorClasses = getColorClasses(colorScheme);
   const currentDay = new Date().getDate();
   const currentMonth = new Date().toLocaleString("default", { month: "long" });
+
+  // Available Bible versions
+  const bibleVersions = [
+    { value: "kjv", label: "KJV" },
+    { value: "niv", label: "NIV" },
+    { value: "esv", label: "ESV" },
+    { value: "nasb", label: "NASB" },
+    { value: "nlt", label: "NLT" },
+    { value: "nkjv", label: "NKJV" },
+  ];
 
   const getDevotionalForDate = useCallback(
     (day: number) =>
@@ -85,48 +100,86 @@ const Home = () => {
     endVerse: number;
   }
 
-  const fetchBibleVerses = useCallback(async (parsedPlan: ParsedPlan) => {
-    const { book, chapter, startVerse, endVerse } = parsedPlan;
+  const fetchBibleVerses = useCallback(
+    async (parsedPlan: ParsedPlan, useFallback = false) => {
+      const { book, chapter, startVerse, endVerse } = parsedPlan;
 
-    // Handle single verse or range of verses
-    const verseRange =
-      startVerse === endVerse ? startVerse : `${startVerse}-${endVerse}`;
+      // Handle single verse or range of verses
+      const verseRange =
+        startVerse === endVerse ? startVerse : `${startVerse}-${endVerse}`;
 
-    // Try multiple API endpoints with fallbacks
-    const apiEndpoints = [
-      // Primary API - this one returns structured verse data
-      `https://bible-api.com/${book}+${chapter}:${verseRange}?translation=kjv`,
-      // Fallback API
-      `https://api.biblia.com/v1/bible/content/kjv.json?passage=${book}${chapter}:${verseRange}&key=fd37d8f28e95d3be8cb4fbc37e15e18e`,
-    ];
+      // Determine which version to use
+      const versionToUse = useFallback ? "kjv" : bibleVersion;
 
-    for (const url of apiEndpoints) {
+      // Try multiple API endpoints with fallbacks
+      const apiEndpoints = [
+        // Primary API - this one returns structured verse data
+        `https://bible-api.com/${book}+${chapter}:${verseRange}?translation=${versionToUse}`,
+      ];
+
+      for (const url of apiEndpoints) {
+        try {
+          const response = await fetch(url);
+          if (response.ok) {
+            const data = await response.json();
+
+            // Handle different API response formats
+            if (data.verses) {
+              // Format verses with numbers and remove unnecessary spaces
+              return {
+                text: data.verses
+                  .map(
+                    (v: BibleVerse) =>
+                      `${v.verse}. ${v.text.trim().replace(/\s+/g, " ")}`
+                  )
+                  .join("\n\n"),
+                version: versionToUse,
+              };
+            } else if (data.text) {
+              // If we only get text, try to parse it and remove unnecessary spaces
+              return {
+                text: data.text.replace(/\s+/g, " ").trim(),
+                version: versionToUse,
+              };
+            }
+          }
+        } catch {
+          console.log(`Failed to fetch from ${url}, trying next endpoint...`);
+        }
+      }
+
+      throw new Error("All API endpoints failed");
+    },
+    [bibleVersion]
+  );
+
+  const fetchDailyVerse = useCallback(
+    async (verseReference: string, version: string) => {
+      // Parse the verse reference (e.g., "John 1:1")
+      const match = verseReference.match(/(\d?\s?\w+)\s(\d+):(\d+)/);
+      if (!match) return null;
+
+      const book = match[1].toLowerCase().replace(/\s+/g, "");
+      const chapter = match[2];
+      const verse = match[3];
+
       try {
-        const response = await fetch(url);
+        // Try with the specified version
+        const response = await fetch(
+          `https://bible-api.com/${book}+${chapter}:${verse}?translation=${version}`
+        );
         if (response.ok) {
           const data = await response.json();
-
-          // Handle different API response formats
-          if (data.verses) {
-            // Format verses with numbers and remove unnecessary spaces
-            return data.verses
-              .map(
-                (v: BibleVerse) =>
-                  `${v.verse}. ${v.text.trim().replace(/\s+/g, " ")}`
-              )
-              .join("\n\n");
-          } else if (data.text) {
-            // If we only get text, try to parse it and remove unnecessary spaces
-            return data.text.replace(/\s+/g, " ").trim();
-          }
+          return data.text?.replace(/\s+/g, " ").trim() || "";
         }
       } catch {
-        console.log(`Failed to fetch from ${url}, trying next endpoint...`);
+        console.log(`Failed to fetch daily verse with ${version}`);
       }
-    }
 
-    throw new Error("All API endpoints failed");
-  }, []);
+      return null;
+    },
+    []
+  );
 
   const loadVerses = useCallback(
     async (plan: string) => {
@@ -140,19 +193,72 @@ const Home = () => {
       setVerseError(null);
 
       try {
-        const versesText = await fetchBibleVerses(parsedPlan);
-        setReadingPlanVerses(versesText);
+        // First try with the selected version
+        const result = await fetchBibleVerses(parsedPlan);
+        setReadingPlanVerses(result.text);
       } catch (error) {
         console.error("Error fetching verses:", error);
-        setVerseError(
-          "Unable to load verses. Check if the book, chapter or verse is valid."
-        );
-        setReadingPlanVerses(""); // Clear any previous verses
+
+        // If the selected version failed, try with KJV as fallback
+        try {
+          const fallbackResult = await fetchBibleVerses(parsedPlan, true);
+          setReadingPlanVerses(fallbackResult.text);
+          setVerseError(`Using KJV (${bibleVersion} not available)`);
+        } catch (fallbackError) {
+          console.error(
+            "Error fetching verses with KJV fallback:",
+            fallbackError
+          );
+          setVerseError(
+            "Unable to load verses. Check if the book, chapter or verse is valid."
+          );
+          setReadingPlanVerses(""); // Clear any previous verses
+        }
       } finally {
         setIsLoadingVerses(false);
       }
     },
-    [fetchBibleVerses]
+    [fetchBibleVerses, bibleVersion]
+  );
+
+  const loadDailyVerse = useCallback(
+    async (version?: string) => {
+      if (!currentDevotional) return;
+
+      const versionToUse = version || bibleVersion;
+
+      // Check if the verse is available in the selected version
+      const verseText = currentDevotional.verse.text[versionToUse];
+      if (verseText) {
+        setDailyVerseText(verseText);
+        return;
+      }
+
+      // If not available, fetch it from the API
+      setIsLoadingDailyVerse(true);
+      try {
+        const fetchedVerse = await fetchDailyVerse(
+          currentDevotional.verse.reference,
+          versionToUse
+        );
+        if (fetchedVerse) {
+          setDailyVerseText(fetchedVerse);
+        } else {
+          // If API fails, fall back to KJV version from the data
+          setDailyVerseText(
+            currentDevotional.verse.text.kjv || "Verse not available"
+          );
+        }
+      } catch (error) {
+        console.error("Error fetching daily verse:", error);
+        setDailyVerseText(
+          currentDevotional.verse.text.kjv || "Verse not available"
+        );
+      } finally {
+        setIsLoadingDailyVerse(false);
+      }
+    },
+    [currentDevotional, bibleVersion, fetchDailyVerse]
   );
 
   useEffect(() => {
@@ -163,7 +269,27 @@ const Home = () => {
 
     // Load verses for the current devotional
     loadVerses(currentDevotional.readingPlan);
-  }, [currentDevotional, bibleVersion, loadVerses]);
+
+    // Load the daily verse
+    loadDailyVerse();
+  }, [currentDevotional, bibleVersion, loadVerses, loadDailyVerse]);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setShowVersionDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const runContentAnimations = useCallback(() => {
     const tl = gsap.timeline();
@@ -274,7 +400,7 @@ const Home = () => {
     }
 
     if (typeof window !== "undefined" && navigator.share && currentDevotional) {
-      const verseText = currentDevotional.verse.text[bibleVersion];
+      const verseText = dailyVerseText || currentDevotional.verse.text.kjv;
       const verseref = currentDevotional.verse.reference;
 
       navigator
@@ -287,7 +413,7 @@ const Home = () => {
     } else {
       alert("Devotional shared!");
     }
-  }, [bibleVersion, currentDevotional]);
+  }, [dailyVerseText, currentDevotional]);
 
   const handleDevotionalNavigation = useCallback(
     (direction: "prev" | "next") => {
@@ -360,6 +486,12 @@ const Home = () => {
     }
   };
 
+  const handleVersionChange = (version: string) => {
+    setBibleVersion(version);
+    setShowVersionDropdown(false);
+    loadDailyVerse(version);
+  };
+
   if (!currentDevotional || !isMounted) {
     return (
       <div className="flex items-center justify-center h-screen bg-gray-50 dark:bg-gray-900">
@@ -368,9 +500,10 @@ const Home = () => {
     );
   }
 
-  // Get the verse text for the current Bible version
-  const verseText = currentDevotional.verse.text[bibleVersion];
   const currentId = parseInt(currentDevotional.id);
+  const currentVersionLabel =
+    bibleVersions.find((v) => v.value === bibleVersion)?.label ||
+    bibleVersion.toUpperCase();
 
   // ------------------- Button Styles -------------------
   const actionButtonClass =
@@ -413,14 +546,68 @@ const Home = () => {
                 theme === "dark" ? "text-blue-100" : "text-blue-700"
               }`}
             >
-              <div className="flex items-start mb-2">
-                <FaBook className="text-white mt-1 mr-2" />
-                <h2 className="text-lg font-semibold">Today&apos;s Verse</h2>
+              <div className="flex items-start justify-between mb-2">
+                <div className="flex items-start">
+                  <FaBook className="text-white mt-1 mr-2" />
+                  <h2 className="text-lg font-semibold">Today&apos;s Verse</h2>
+                </div>
+
+                {/* Version Dropdown */}
+                <div className="relative" ref={dropdownRef}>
+                  <button
+                    onClick={() => setShowVersionDropdown(!showVersionDropdown)}
+                    className={`flex items-center space-x-1 px-2 py-1 rounded ${
+                      theme === "dark"
+                        ? "bg-gray-600/80 hover:bg-gray-500/80"
+                        : "bg-white/80 hover:bg-gray-100/80"
+                    } transition-colors`}
+                  >
+                    <span className="text-sm font-medium">
+                      {currentVersionLabel}
+                    </span>
+                    <FaChevronDown className="text-xs" />
+                  </button>
+
+                  {showVersionDropdown && (
+                    <div
+                      className={`absolute right-0 mt-1 py-1 rounded shadow-lg z-10 ${
+                        theme === "dark"
+                          ? "bg-gray-700 border border-gray-600"
+                          : "bg-white border border-gray-200"
+                      }`}
+                    >
+                      {bibleVersions.map((version) => (
+                        <button
+                          key={version.value}
+                          onClick={() => handleVersionChange(version.value)}
+                          className={`block w-full text-left px-4 py-2 text-sm ${
+                            bibleVersion === version.value
+                              ? colorClasses.text + " font-medium"
+                              : theme === "dark"
+                              ? "text-gray-300 hover:bg-gray-600"
+                              : "text-gray-700 hover:bg-gray-100"
+                          }`}
+                        >
+                          {version.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
-              <p className="mb-2 italic text-2xl">&ldquo;{verseText}&rdquo;</p>
-              <p className="text-right font-medium">
-                {currentDevotional.verse.reference} ({bibleVersion})
-              </p>
+
+              {isLoadingDailyVerse ? (
+                <p className="mb-2 italic text-2xl">Loading verse...</p>
+              ) : (
+                <>
+                  <p className="mb-2 italic text-2xl">
+                    &ldquo;{dailyVerseText}&rdquo;
+                  </p>
+                  <p className="text-right font-medium">
+                    {currentDevotional.verse.reference} ({currentVersionLabel})
+                  </p>
+                </>
+              )}
             </div>
 
             {/* Devotional Content */}
@@ -534,7 +721,7 @@ const Home = () => {
                 </div>
               ) : (
                 <p className={`font-medium ${colorClasses.text} mb-2`}>
-                  {customReadingPlan}&nbsp;(KJV)
+                  {customReadingPlan}
                 </p>
               )}
 
