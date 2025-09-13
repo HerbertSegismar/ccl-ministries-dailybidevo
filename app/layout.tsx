@@ -21,7 +21,23 @@ export const metadata: Metadata = {
   publisher: "Fount Of Hope Devotionals",
   metadataBase: new URL(baseUrl),
   icons: {
-    icon: "/icon.svg",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png" }],
+    other: [
+      {
+        rel: "apple-touch-icon-precomposed",
+        url: "/apple-touch-icon.png",
+      },
+    ],
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Daily Devotional",
   },
 
   // Open Graph for social media sharing
@@ -100,7 +116,7 @@ export default function RootLayout({
       <head>
         {/* Preload critical resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="icon" href="/icon.svg" />
+        <link rel="icon" href="/favicon.ico" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
