@@ -847,10 +847,10 @@ const Home = () => {
                     }`}
                     aria-label="Edit reading plan"
                   >
-                    <FaEdit className="text-sm" />
+                    <FaEdit className={`text-xl ${colorClasses.text}`} />
                   </button>
                 ) : (
-                  <div className="flex space-x-1">
+                  <div className="flex space-x-1 gap-4">
                     <button
                       onClick={handleReadingPlanSave}
                       className={`p-1 rounded ${
