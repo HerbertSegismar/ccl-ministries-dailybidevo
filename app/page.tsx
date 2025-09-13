@@ -339,7 +339,7 @@ const Home = () => {
             fallbackError
           );
           setVerseError(
-            "Unable to load verses. Check if the book, chapter or verse is valid."
+            "Input may have exceeded available verses. Try typing the chapter only without verses."
           );
           setReadingPlanVerses(""); // Clear any previous verses
         }
