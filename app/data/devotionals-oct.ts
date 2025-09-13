@@ -22,7 +22,7 @@ export const devotionals: Devotional[] = [
         NASB: "Do not fear, for I am with you; Do not be afraid, for I am your God. I will strengthen you, I will also help you, I will also uphold you with My righteous right hand.",
       },
       reference: "Isaiah 41:10",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "Do Not Fear, For I Am With You",
     content: `Anxiety and fear are common human experiences, but God's Word meets us in the midst of them with a powerful promise of His presence. This verse isn't a simplistic command to "stop being afraid"; it is an invitation to replace our fear with the concrete reality of who God is.
@@ -65,7 +65,7 @@ export const devotionals: Devotional[] = [
         NASB: "Do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God.",
       },
       reference: "Philippians 4:6",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "Peace in Prayer",
     content: `Anxiety can creep into our lives in many ways—through worries about health, relationships, finances, or the future. But God invites us to bring every concern to Him in prayer.
@@ -105,7 +105,7 @@ export const devotionals: Devotional[] = [
         NASB: "Trust in the Lord with all your heart and do not lean on your own understanding. In all your ways acknowledge Him, and He will make your paths straight.",
       },
       reference: "Proverbs 3:5-6",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "Trust Over Understanding",
     content: `Human understanding is limited, but God's wisdom is infinite. These verses invite us to trust God completely, even when we can't see the full picture or understand His ways.
@@ -147,7 +147,7 @@ export const devotionals: Devotional[] = [
         NASB: "Watch over your heart with all diligence, For from it flow the springs of life.",
       },
       reference: "Proverbs 4:23",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "Guard Your Heart",
     content: `Our heart—the core of our emotions, thoughts, and will—is the wellspring of our life. What we allow to reside there inevitably shapes our actions, words, and decisions.
@@ -190,7 +190,7 @@ export const devotionals: Devotional[] = [
         NASB: "Honor the Lord from your wealth, And from the first of all your produce; Then your barns will be filled with plenty, And your vats will overflow with new wine.",
       },
       reference: "Proverbs 3:9-10",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "The Firstfruits Principle",
     content: `God doesn't ask for our leftovers. He asks for our first and our best. This principle of giving the "firstfruits" is a tangible act of trust that declares God is our ultimate provider, not our wealth or our own effort.
@@ -234,7 +234,7 @@ export const devotionals: Devotional[] = [
         NASB: "The fear of the Lord is the beginning of wisdom, And the knowledge of the Holy One is understanding.",
       },
       reference: "Proverbs 9:10",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "The Foundation of Wisdom",
     content: `All true wisdom finds its source in a right relationship with God. "The fear of the Lord" is not about being terrified, but about holding Him in reverent awe. It is acknowledging His holiness, power, and authority, and living in light of that reality.
@@ -278,7 +278,7 @@ export const devotionals: Devotional[] = [
         NASB: "A gentle answer turns away wrath, But a harsh word stirs up anger.",
       },
       reference: "Proverbs 15:1",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "The Power of a Gentle Answer",
     content: `Conflict is inevitable, but escalation is a choice. This proverb reveals the incredible power we hold in our responses. A gentle, soft, or thoughtful answer has the power to defuse tension and create space for peace.
@@ -321,7 +321,7 @@ export const devotionals: Devotional[] = [
         NASB: "The name of the Lord is a strong tower; The righteous runs into it and is safe.",
       },
       reference: "Proverbs 18:10",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "Your Strong Tower",
     content: `In ancient times, a strong tower was a place of refuge and defense against any enemy. This verse offers a breathtaking image: God Himself is our ultimate place of safety.
@@ -364,7 +364,7 @@ export const devotionals: Devotional[] = [
         NASB: "Trust in the Lord with all your heart And do not lean on your own understanding. In all your ways acknowledge Him, And He will make your paths straight.",
       },
       reference: "Proverbs 3:5-6",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "The Path Maker",
     content: `Our own understanding is limited, shaped by our fears, past experiences, and finite perspective. God's understanding is infinite. This famous proverb isn't a call to abandon intellect, but to place our confidence in a Person, not our own perception of the problem.
@@ -406,7 +406,7 @@ text
         NASB: "I can do all things through Him who strengthens me.",
       },
       reference: "Philippians 4:13",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "Strength for the Journey",
     content: `This verse is often quoted for athletic achievements, but its context is one of profound contentment. Paul wrote this from prison, having learned the secret of being content in plenty and in want. The "all things" is the ability to endure any circumstance through the strength Christ provides.
@@ -448,7 +448,7 @@ text
         NASB: "Do not be anxious about anything, but in everything by prayer and pleading with thanksgiving let your requests be made known to God.",
       },
       reference: "Philippians 4:6",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "The Antidote to Anxiety",
     content: `Anxiety is a natural human response, but it doesn't have to be our master. This verse gives us a divine alternative: intentional prayer. Notice the progression. We are to replace anxiety not with nothing, but with something—a conscious turning to God.
@@ -490,7 +490,7 @@ text
         NASB: "Your word is a lamp to my feet And a light to my path.",
       },
       reference: "Psalm 119:105",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "Light for the Next Step",
     content: `In the ancient world, a small oil lamp provided just enough light to see the next step on a dark, treacherous path. God's Word often functions the same way for us. We may want a floodlight illuminating the next ten years, but God faithfully gives us enough light for the next step.
@@ -531,7 +531,7 @@ text
         NASB: "Come to Me, all who are weary and heavy-laden, and I will give you rest.",
       },
       reference: "Matthew 11:28",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "The Gift of Rest",
     content: `This is one of the most tender invitations in all of Scripture. Jesus doesn't stand at a distance and shout instructions. He draws near and offers Himself as the solution to our soul-deep exhaustion. The rest He offers is more than a nap; it's a rest of the soul—a ceasing from striving, performing, and earning.
@@ -572,7 +572,7 @@ text
         NASB: "And we know that God causes all things to work together for good to those who love God, to those who are called according to His purpose.",
       },
       reference: "Romans 8:28",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "The Weaver of Good",
     content: `This is not a promise that all things are good. Evil, pain, and suffering are very real. This is a promise that God is so powerful and sovereign that He can weave every thread of our lives—even the painful, dark, and confusing ones—into a tapestry of ultimate good.
@@ -614,7 +614,7 @@ text
         NASB: "Cease striving and know that I am God; I will be exalted among the nations, I will be exalted in the earth.",
       },
       reference: "Psalm 46:10",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "The Practice of Stillness",
     content: `In our busy world, stillness is countercultural. Yet God calls us to be still and recognize His sovereignty. This isn't about physical inactivity but about quieting our souls before Him.
@@ -656,7 +656,7 @@ text
         NASB: "Trust in the LORD with all your heart and do not lean on your own understanding.",
       },
       reference: "Proverbs 3:5",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "The Wisdom of Trust",
     content: `True wisdom begins when we release our need to understand everything and instead place our confidence in God's character. Human understanding is limited, but God's perspective is eternal.
@@ -692,7 +692,7 @@ text
         NASB: "The LORD is my strength and my shield; My heart trusts in Him, and I am helped;",
       },
       reference: "Psalm 28:7",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "Divine Protection",
     content: `In seasons of vulnerability, God offers Himself as both strength and shield. His protection isn't always visible to our eyes, but it is constantly active in the spiritual realm.
@@ -728,7 +728,7 @@ text
         NASB: "Yet those who wait for the LORD Will gain new strength; They will mount up with wings like eagles;",
       },
       reference: "Isaiah 40:31",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "Renewed Strength",
     content: `Waiting isn't passive—it's an active posture of hopeful expectation. God promises to renew those who fix their hope on Him, exchanging weariness for divine energy.
@@ -765,7 +765,7 @@ text
         NASB: "For I am convinced that neither death, nor life [...] nor any other created thing, will be able to separate us from the love of God",
       },
       reference: "Romans 8:38-39",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "Unbreakable Love",
     content: `God's love isn't based on our performance or circumstances. It's a steadfast, unbreakable reality that surrounds us even when we feel unworthy or alone.
@@ -801,7 +801,7 @@ text
         NASB: "Therefore let us draw near with confidence to the throne of grace, so that we may receive mercy and find grace to help in time of need.",
       },
       reference: "Hebrews 4:16",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "Throne of Grace",
     content: `God doesn't expect us to have it all together before we approach Him. His throne is characterized by grace—not judgment—where we find mercy exactly when we need it most.
@@ -837,7 +837,7 @@ text
         NASB: "And the peace of God, which surpasses all comprehension, will guard your hearts and your minds in Christ Jesus.",
       },
       reference: "Philippians 4:7",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "A Guarded Heart",
     content: `God's peace is not the absence of trouble but a supernatural presence that stands guard in the midst of it. This peace "transcends understanding"—it doesn't always make logical sense given our circumstances.
@@ -874,7 +874,7 @@ Allow God's peace to be the guardian of your heart today.`,
         NASB: "Your ears will hear a word behind you, saying, 'This is the way, walk in it,' whenever you turn to the right or to the left.",
       },
       reference: "Isaiah 30:21",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "The Guide's Voice",
     content: `God is not a silent observer but an active guide. He promises direction for every crossroad and confusion. His guidance is often not a detailed map for the entire journey, but a gentle whisper for the very next step.
@@ -910,7 +910,7 @@ Listen for His voice today. He is speaking.`,
         NASB: "Your word is a lamp to my feet And a light to my path.",
       },
       reference: "Psalm 119:105",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "Light for the Next Step",
     content: `In a world of spiritual darkness and uncertainty, God's Word provides clarity and direction. It doesn't always illuminate the entire horizon, but it always gives enough light to take the next faithful step.
@@ -947,7 +947,7 @@ Let Scripture be the light that guides your choices today.`,
         NASB: "The joy of the LORD is your strength.",
       },
       reference: "Nehemiah 8:10",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "The Source of Strength",
     content: `Biblical joy is deeper than happiness; it is a deep-seated confidence in God's goodness and sovereignty, regardless of circumstances. This joy is not manufactured by us but is a gift from the Lord.
@@ -982,7 +982,7 @@ Don't seek strength alone today. Seek the joy of the Lord, and strength will fol
         NASB: "The LORD is the one who goes ahead of you; He will be with you. He will not fail you or forsake you. Do not fear or be dismayed.",
       },
       reference: "Deuteronomy 31:8",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "The God Who Goes Before",
     content: `We serve a God who is not only with us in the present but is already in our future. He goes before us to prepare the way, to fight battles we haven't yet faced, and to make a way where there seems to be no way.
@@ -1018,7 +1018,7 @@ Wherever you are headed, remember: God is already there.`,
         NASB: "Yet those who wait for the LORD Will gain new strength; They will mount up with wings like eagles, They will run and not get tired, They will walk and not become weary.",
       },
       reference: "Isaiah 40:31",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "Renewed Strength",
     content: `Waiting can be one of the most difficult disciplines of the faith. We wait for answers, for healing, for direction, for change. But this verse redefines waiting. It is not a passive, hopeless inactivity; it is an active, hopeful trust in the Lord.
@@ -1053,7 +1053,7 @@ This kind of waiting—this hoping in the Lord—is the very source of our stren
         NASB: "And we know that God causes all things to work together for good to those who love God, to those who are called according to His purpose.",
       },
       reference: "Romans 8:28",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "All Things for Good",
     content: `This is not a promise that all things *are* good. Pain, loss, and evil are very real. Instead, it is the profound promise that God is a master weaver, taking every thread of our lives—the bright colors of joy and the dark hues of suffering—and weaving them together into a tapestry of purpose and good.
@@ -1087,7 +1087,7 @@ Our God is so powerful and sovereign that He can even redeem our pain and mistak
         NASB: "The name of the LORD is a strong tower; The righteous runs into it and is safe.",
       },
       reference: "Proverbs 18:10",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "Your Strong Tower",
     content: `In ancient times, a strong tower was a place of refuge from attacking enemies. It represented safety, security, and a vantage point from which to see clearly. This verse tells us that the very name of the Lord—His character, His reputation, all that He is—is such a place for us.
@@ -1122,7 +1122,7 @@ When fear, anxiety, or trouble attacks, we don't have to stand and fight in our 
         NASB: "Casting all your anxiety on Him, because He cares about you.",
       },
       reference: "1 Peter 5:7",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "Cast Your Cares",
     content: `The word "cast" is an action word. It implies a deliberate, forceful throwing. We are not gently suggesting our worries to God; we are hurling them at Him. Why can we do this with such confidence? Because of the profound truth that follows: *He cares for you.*
@@ -1157,7 +1157,7 @@ Your worries are not trivial to God. Your anxieties are not a burden to Him. He 
         NASB: "Have I not commanded you? Be strong and courageous! Do not be terrified nor dismayed, for the LORD your God is with you wherever you go.",
       },
       reference: "Joshua 1:9",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "Wherever You Go",
     content: `This command was given to Joshua as he faced the daunting task of leading Israel into the Promised Land. It is a command rooted not in Joshua's own ability, but in God's faithful presence. The call to courage is directly tied to the promise of companionship.
@@ -1191,7 +1191,7 @@ This same promise is for us. We are not called to be strong and courageous becau
         NASB: "Therefore if anyone is in Christ, this person is a new creation; the old things passed away; behold, new things have come.",
       },
       reference: "2 Corinthians 5:17",
-      defaultVersion: "NIV",
+      defaultVersion: "KJV",
     },
     title: "New Creation in Christ",
     content: `As we end this month of devotionals, we're reminded of our identity in Christ. We are not merely improved versions of our old selves; we are completely new creations.

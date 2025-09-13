@@ -116,7 +116,7 @@ const Settings = () => {
     if (Notification.permission === "granted") {
       const notification = new Notification("Daily Devotional Reminder", {
         body: "Time for your daily devotional reading!",
-        icon: "/icon-192.png",
+        icon: "/android-chrome-192x192.png",
         tag: "daily-devotional",
       });
 
