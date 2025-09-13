@@ -454,8 +454,8 @@ const Bookmarks = () => {
                     {b.title}
                   </h2>
                   <div
-                    className={`flex items-center text-sm px-3 py-1 rounded-full ${
-                      theme === "dark" ? "bg-gray-200" : colorClasses.lightBg
+                    className={`${colorClasses.text} flex items-center text-sm px-3 py-1 rounded-full ${
+                      theme === "dark" ? "bg-gray-600" : colorClasses.lightBg
                     }`}
                   >
                     {b.date}
