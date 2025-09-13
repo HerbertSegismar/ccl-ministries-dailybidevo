@@ -100,6 +100,7 @@ export default function RootLayout({
       <head>
         {/* Preload critical resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="icon" href="/icon.svg" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
