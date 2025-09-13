@@ -8,6 +8,7 @@ import { useBibleVersion } from "../contexts/BibleVersionContext";
 import { getColorClasses } from "../contexts/ThemeContext";
 import type { Devotional, ReflectionPrompt } from "../types";
 import RichTextEditor from "../components/RichTextEditor";
+import { useGSAP } from "@gsap/react";
 
 const Reflection = () => {
   const router = useRouter();
@@ -18,10 +19,10 @@ const Reflection = () => {
   const pageRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
 
   const colorClasses = getColorClasses(colorScheme);
 
-  // Replace your current useEffect with:
   useEffect(() => {
     // Get devotional data from localStorage instead of query params
     const devotionalData = localStorage.getItem("currentDevotional");
@@ -44,13 +45,43 @@ const Reflection = () => {
     } else {
       router.push("/");
     }
-
-    // ... rest of your animation code
   }, [router]);
+
+  // Page entrance animation
+  useGSAP(() => {
+    if (!devotional) return;
+
+    gsap.fromTo(pageRef.current, { opacity: 0 }, { opacity: 1, duration: 0.8 });
+
+    gsap.fromTo(
+      titleRef.current,
+      { y: -20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, delay: 0.2 }
+    );
+
+    if (cardsRef.current && cardsRef.current.children.length > 0) {
+      const cards = cardsRef.current.children;
+      gsap.fromTo(
+        cards,
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, delay: 0.4 }
+      );
+    }
+  }, [devotional]);
 
   // Get the verse text for the selected Bible version
   const getVerseText = (verse: Devotional["verse"]) => {
-    return verse.text[bibleVersion] || verse.text[verse.defaultVersion];
+    // First check if we have the API-fetched verse text in localStorage
+    const apiVerseText = localStorage.getItem(
+      `verse-${devotional?.id}-${bibleVersion}`
+    );
+
+    // If we have API-fetched text, use it, otherwise fall back to the static text
+    return (
+      apiVerseText ||
+      verse.text[bibleVersion] ||
+      verse.text[verse.defaultVersion]
+    );
   };
 
   const handleReflectionChange = (promptId: string, value: string) => {
@@ -178,7 +209,7 @@ const Reflection = () => {
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={() => router.back()}
-            className={`p-2 rounded-full ${colorClasses.text} hover:bg-black/10 dark:hover:bg-white/10`}
+            className={`p-2 rounded-full ${colorClasses.text} hover:bg-black/10 dark:hover:bg-white/10 transition-colors duration-300`}
           >
             <FaArrowLeft />
           </button>
@@ -191,7 +222,7 @@ const Reflection = () => {
           <div className="flex space-x-2">
             <button
               onClick={downloadReflections}
-              className={`download-button p-2 rounded-full ${colorClasses.text} hover:bg-black/10 dark:hover:bg-white/10`}
+              className={`download-button p-2 rounded-full ${colorClasses.text} hover:bg-black/10 dark:hover:bg-white/10 transition-colors duration-300`}
               aria-label="Download reflections"
               title="Download reflections as text file"
             >
@@ -199,7 +230,7 @@ const Reflection = () => {
             </button>
             <button
               onClick={handleSave}
-              className={`save-button p-2 rounded-full ${colorClasses.text} hover:bg-black/10 dark:hover:bg-white/10`}
+              className={`save-button p-2 rounded-full ${colorClasses.text} hover:bg-black/10 dark:hover:bg-white/10 transition-colors duration-300`}
               aria-label="Save reflections"
               title="Save reflections"
             >
@@ -214,7 +245,7 @@ const Reflection = () => {
             theme === "dark"
               ? "bg-gray-700/70 border-gray-600/30"
               : "bg-white/90 border-white/30"
-          }`}
+          } transition-all duration-300 hover:shadow-lg`}
         >
           <h2
             className={`text-lg font-semibold mb-2 ${
@@ -249,7 +280,7 @@ const Reflection = () => {
         </div>
 
         {/* Reflection Prompts */}
-        <div ref={contentRef} className="space-y-6">
+        <div ref={cardsRef} className="space-y-6">
           {devotional.reflection?.map((prompt: ReflectionPrompt) => (
             <div
               key={prompt.id}
@@ -257,7 +288,7 @@ const Reflection = () => {
                 theme === "dark"
                   ? "bg-gray-700/70 border-gray-600/30"
                   : "bg-white/90 border-white/30"
-              }`}
+              } transition-all duration-300 hover:shadow-lg`}
             >
               <h3
                 className={`text-lg mb-4 ${

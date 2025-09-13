@@ -108,20 +108,16 @@ const Home = () => {
     };
   }, []);
 
-  // Function to parse reading plan (e.g., "John 1:1-5")
+  // Function to parse reading plan (e.g., "John 1:1-5", "John 3", "John 3-4")
   const parseReadingPlan = (plan: string) => {
-    // Match patterns like "John 1:1-5", "1 John 1:1-5", "John 1:1", or "John 1"
+    // Match patterns like "John 1:1-5", "1 John 1:1-5", "John 1", or "John 3-4"
     const match = plan.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
     if (match) {
       return {
         book: match[1].toLowerCase().replace(/\s+/g, ""), // Convert to lowercase and remove spaces
         chapter: match[2],
-        startVerse: match[3] ? parseInt(match[3]) : 1,
-        endVerse: match[4]
-          ? parseInt(match[4])
-          : match[3]
-          ? parseInt(match[3])
-          : 1,
+        startVerse: match[3] ? parseInt(match[3]) : undefined, // undefined means whole chapter
+        endVerse: match[4] ? parseInt(match[4]) : undefined,
       };
     }
     return null;
@@ -130,56 +126,98 @@ const Home = () => {
   interface ParsedPlan {
     book: string;
     chapter: string;
-    startVerse: number;
-    endVerse: number;
+    startVerse?: number; // undefined means whole chapter
+    endVerse?: number;
   }
 
   const fetchBibleVerses = useCallback(
     async (parsedPlan: ParsedPlan, useFallback = false) => {
       const { book, chapter, startVerse, endVerse } = parsedPlan;
 
-      // Handle single verse or range of verses
-      const verseRange =
-        startVerse === endVerse ? startVerse : `${startVerse}-${endVerse}`;
-
       // Determine which version to use
       const versionToUse = useFallback ? "kjv" : bibleVersion;
 
+      // Build the URL based on whether we want specific verses or whole chapter
+      let url: string;
+
+      if (startVerse === undefined && endVerse === undefined) {
+        // Whole chapter request - use single_chapter_book_matching=indifferent
+        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}&single_chapter_book_matching=indifferent`;
+      } else if (
+        startVerse !== undefined &&
+        endVerse !== undefined &&
+        startVerse === endVerse
+      ) {
+        // Single verse request
+        url = `https://bible-api.com/${book}+${chapter}:${startVerse}?translation=${versionToUse}`;
+      } else if (startVerse !== undefined && endVerse !== undefined) {
+        // Verse range request
+        url = `https://bible-api.com/${book}+${chapter}:${startVerse}-${endVerse}?translation=${versionToUse}`;
+      } else {
+        // Default to whole chapter if only startVerse is provided
+        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}&single_chapter_book_matching=indifferent`;
+      }
+
       // Try multiple API endpoints with fallbacks
       const apiEndpoints = [
-        // Primary API - this one returns structured verse data
-        `https://bible-api.com/${book}+${chapter}:${verseRange}?translation=${versionToUse}`,
-        `https://bible-api.com/${book}+${chapter}:${verseRange}?translation=kjv`,
+        url,
+        url.replace(`translation=${versionToUse}`, "translation=kjv"),
       ];
 
-      for (const url of apiEndpoints) {
+      for (const endpoint of apiEndpoints) {
         try {
-          const response = await fetch(url);
+          const response = await fetch(endpoint);
           if (response.ok) {
             const data = await response.json();
 
             // Handle different API response formats
             if (data.verses) {
               // Format verses with numbers and remove unnecessary spaces
+              const versesText = data.verses
+                .map(
+                  (v: BibleVerse) =>
+                    `${v.verse}. ${v.text.trim().replace(/\s+/g, " ")}`
+                )
+                .join("\n\n");
+
+              // For full chapters, add chapter header
+              if (startVerse === undefined && endVerse === undefined) {
+                return {
+                  text: `Chapter ${chapter}\n\n${versesText}`,
+                  version: versionToUse,
+                  isFullChapter: true,
+                };
+              }
+
               return {
-                text: data.verses
-                  .map(
-                    (v: BibleVerse) =>
-                      `${v.verse}. ${v.text.trim().replace(/\s+/g, " ")}`
-                  )
-                  .join("\n\n"),
+                text: versesText,
                 version: versionToUse,
+                isFullChapter: false,
               };
             } else if (data.text) {
               // If we only get text, try to parse it and remove unnecessary spaces
+              const text = data.text.replace(/\s+/g, " ").trim();
+
+              // For full chapters, add chapter header
+              if (startVerse === undefined && endVerse === undefined) {
+                return {
+                  text: `Chapter ${chapter}\n\n${text}`,
+                  version: versionToUse,
+                  isFullChapter: true,
+                };
+              }
+
               return {
-                text: data.text.replace(/\s+/g, " ").trim(),
+                text: text,
                 version: versionToUse,
+                isFullChapter: false,
               };
             }
           }
         } catch {
-          console.log(`Failed to fetch from ${url}, trying next endpoint...`);
+          console.log(
+            `Failed to fetch from ${endpoint}, trying next endpoint...`
+          );
         }
       }
 
@@ -233,6 +271,47 @@ const Home = () => {
 
   const loadVerses = useCallback(
     async (plan: string) => {
+      // Check if this is a chapter range like "john 3-4"
+      const chapterRangeMatch = plan.match(/(\d?\s?\w+)\s(\d+)-(\d+)/);
+
+      if (chapterRangeMatch) {
+        // Handle chapter range by making multiple requests
+        const book = chapterRangeMatch[1].toLowerCase().replace(/\s+/g, "");
+        const startChapter = parseInt(chapterRangeMatch[2]);
+        const endChapter = parseInt(chapterRangeMatch[3]);
+
+        setIsLoadingVerses(true);
+        setVerseError(null);
+
+        try {
+          const allChaptersText: string[] = [];
+
+          for (let chapter = startChapter; chapter <= endChapter; chapter++) {
+            const parsedPlan = {
+              book,
+              chapter: chapter.toString(),
+              startVerse: undefined,
+              endVerse: undefined,
+            };
+
+            const result = await fetchBibleVerses(parsedPlan);
+            allChaptersText.push(result.text);
+          }
+
+          setReadingPlanVerses(allChaptersText.join("\n\n"));
+        } catch (error) {
+          console.error("Error fetching chapter range:", error);
+          setVerseError(
+            "Unable to load chapter range. Please check the book and chapter numbers."
+          );
+          setReadingPlanVerses("");
+        } finally {
+          setIsLoadingVerses(false);
+        }
+        return;
+      }
+
+      // Handle single chapter or verse range requests
       const parsedPlan = parseReadingPlan(plan);
       if (!parsedPlan) {
         setReadingPlanVerses("Unable to parse reading plan.");
@@ -271,6 +350,44 @@ const Home = () => {
     [fetchBibleVerses, bibleVersion]
   );
 
+  // Function to render verses with proper formatting
+  const renderVerses = (text: string) => {
+    const lines = text.split("\n");
+    return lines.map((line, index) => {
+      // Check if this line is a chapter header (e.g., "Chapter 3")
+      if (line.startsWith("Chapter ")) {
+        return (
+          <h4
+            key={index}
+            className={`font-bold text-lg mt-4 mb-2 ${colorClasses.text}`}
+          >
+            {line}
+          </h4>
+        );
+      }
+
+      // Check if this line is a verse (e.g., "1. Text content")
+      const verseMatch = line.match(/^(\d+)\.\s+(.*)/);
+      if (verseMatch) {
+        return (
+          <p key={index} className="flex items-baseline mb-3">
+            <sup className={`text-xs ${colorClasses.text} italic mr-1`}>
+              {verseMatch[1]}
+            </sup>
+            <span>{verseMatch[2]}</span>
+          </p>
+        );
+      }
+
+      // Regular text line
+      return (
+        <p key={index} className="mb-3">
+          {line}
+        </p>
+      );
+    });
+  };
+
   const loadDailyVerse = useCallback(async () => {
     if (!currentDevotional) return;
 
@@ -278,6 +395,11 @@ const Home = () => {
     const verseText = currentDevotional.verse.text[bibleVersion];
     if (verseText) {
       setDailyVerseText(verseText);
+      // Store in localStorage for the Reflection component
+      localStorage.setItem(
+        `verse-${currentDevotional.id}-${bibleVersion}`,
+        verseText
+      );
       return;
     }
 
@@ -289,16 +411,29 @@ const Home = () => {
       );
       if (fetchedVerse) {
         setDailyVerseText(fetchedVerse);
+        // Store in localStorage for the Reflection component
+        localStorage.setItem(
+          `verse-${currentDevotional.id}-${bibleVersion}`,
+          fetchedVerse
+        );
       } else {
         // If API fails, fall back to KJV version from the data
-        setDailyVerseText(
-          currentDevotional.verse.text.kjv || "Verse not available"
+        const fallbackText =
+          currentDevotional.verse.text.kjv || "Verse not available";
+        setDailyVerseText(fallbackText);
+        localStorage.setItem(
+          `verse-${currentDevotional.id}-${bibleVersion}`,
+          fallbackText
         );
       }
     } catch (error) {
       console.error("Error fetching daily verse:", error);
-      setDailyVerseText(
-        currentDevotional.verse.text.kjv || "Verse not available"
+      const fallbackText =
+        currentDevotional.verse.text.kjv || "Verse not available";
+      setDailyVerseText(fallbackText);
+      localStorage.setItem(
+        `verse-${currentDevotional.id}-${bibleVersion}`,
+        fallbackText
       );
     } finally {
       setIsLoadingDailyVerse(false);
@@ -788,42 +923,9 @@ const Home = () => {
                     <div
                       className={`${
                         theme === "dark" ? "text-gray-200" : "text-gray-800"
-                      } space-y-3`}
+                      }`}
                     >
-                      {readingPlanVerses.split("\n\n").map((verse, index) => {
-                        // Check if the verse already has a number format (from the API)
-                        const verseMatch = verse.match(/^(\d+)\.\s+(.*)/);
-
-                        if (verseMatch) {
-                          // If verse already has a number format like "1. Text"
-                          return (
-                            <p key={index} className="flex items-baseline">
-                              <sup
-                                className={`text-xs ${colorClasses.text} italic mr-1`}
-                              >
-                                {verseMatch[1]}
-                              </sup>
-                              <span>{verseMatch[2]}</span>
-                            </p>
-                          );
-                        } else {
-                          // If verse doesn't have a number, try to extract it
-                          const alternativeMatch = verse.match(/^(\d+)\s+(.*)/);
-                          if (alternativeMatch) {
-                            return (
-                              <p key={index} className="flex items-baseline">
-                                <sup className="text-xs text-gray-500 dark:text-gray-400 italic mr-1">
-                                  {alternativeMatch[1]}
-                                </sup>
-                                <span>{alternativeMatch[2]}</span>
-                              </p>
-                            );
-                          } else {
-                            // If no verse number found, just display the text
-                            return <p key={index}>{verse}</p>;
-                          }
-                        }
-                      })}
+                      {renderVerses(readingPlanVerses)}
                     </div>
                   </div>
                 ) : null}

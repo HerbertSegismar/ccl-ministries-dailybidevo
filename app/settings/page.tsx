@@ -320,7 +320,7 @@ const Settings = () => {
               <option value="BBE">Bible in Basic English (BBE)</option>
               <option value="DARBY">Darby Bible (DARBY)</option>
               <option value="DRA">
-                Douay-Rheims 1899 American Edition (DRA)
+                Douay-Rheims 1899 American Edition (DOUAY-RHEIMS)
               </option>
               <option value="WEB">World English Bible (WEB)</option>
               <option value="WEBBE">

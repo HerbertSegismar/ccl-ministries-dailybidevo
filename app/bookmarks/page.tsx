@@ -1,12 +1,15 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import {
   FaBookmark,
   FaTrash,
   FaArrowLeft,
   FaTimes,
   FaCalendar,
+  FaExclamationTriangle,
+  FaEdit,
+  FaCheck,
 } from "react-icons/fa";
 import { useTheme } from "../contexts/ThemeContext";
 import { useBibleVersion } from "../contexts/BibleVersionContext";
@@ -23,6 +26,11 @@ const Bookmarks = () => {
   const [bookmarks, setBookmarks] = useState<Devotional[]>([]);
   const [selectedDevotional, setSelectedDevotional] =
     useState<Devotional | null>(null);
+  const [readingPlanVerses, setReadingPlanVerses] = useState<string>("");
+  const [isLoadingVerses, setIsLoadingVerses] = useState(false);
+  const [verseError, setVerseError] = useState<string | null>(null);
+  const [isEditingReadingPlan, setIsEditingReadingPlan] = useState(false);
+  const [customReadingPlan, setCustomReadingPlan] = useState("");
 
   const pageRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -30,6 +38,248 @@ const Bookmarks = () => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const colorClasses = getColorClasses(colorScheme);
+
+  // Function to parse reading plan (e.g., "John 1:1-5", "John 3", "John 3-4")
+  const parseReadingPlan = (plan: string) => {
+    // Match patterns like "John 1:1-5", "1 John 1:1-5", "John 1", or "John 3-4"
+    const match = plan.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
+    if (match) {
+      return {
+        book: match[1].toLowerCase().replace(/\s+/g, ""), // Convert to lowercase and remove spaces
+        chapter: match[2],
+        startVerse: match[3] ? parseInt(match[3]) : undefined, // undefined means whole chapter
+        endVerse: match[4] ? parseInt(match[4]) : undefined,
+      };
+    }
+    return null;
+  };
+
+  interface ParsedPlan {
+    book: string;
+    chapter: string;
+    startVerse?: number; // undefined means whole chapter
+    endVerse?: number;
+  }
+
+  interface BibleVerse {
+    verse: number;
+    text: string;
+  }
+
+  const fetchBibleVerses = useCallback(
+    async (parsedPlan: ParsedPlan, useFallback = false) => {
+      const { book, chapter, startVerse, endVerse } = parsedPlan;
+
+      // Determine which version to use
+      const versionToUse = useFallback ? "kjv" : bibleVersion;
+
+      // Build the URL based on whether we want specific verses or whole chapter
+      let url: string;
+
+      if (startVerse === undefined && endVerse === undefined) {
+        // Whole chapter request - use single_chapter_book_matching=indifferent
+        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}&single_chapter_book_matching=indifferent`;
+      } else if (
+        startVerse !== undefined &&
+        endVerse !== undefined &&
+        startVerse === endVerse
+      ) {
+        // Single verse request
+        url = `https://bible-api.com/${book}+${chapter}:${startVerse}?translation=${versionToUse}`;
+      } else if (startVerse !== undefined && endVerse !== undefined) {
+        // Verse range request
+        url = `https://bible-api.com/${book}+${chapter}:${startVerse}-${endVerse}?translation=${versionToUse}`;
+      } else {
+        // Default to whole chapter if only startVerse is provided
+        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}&single_chapter_book_matching=indifferent`;
+      }
+
+      // Try multiple API endpoints with fallbacks
+      const apiEndpoints = [
+        url,
+        url.replace(`translation=${versionToUse}`, "translation=kjv"),
+      ];
+
+      for (const endpoint of apiEndpoints) {
+        try {
+          const response = await fetch(endpoint);
+          if (response.ok) {
+            const data = await response.json();
+
+            // Handle different API response formats
+            if (data.verses) {
+              // Format verses with numbers and remove unnecessary spaces
+              const versesText = data.verses
+                .map(
+                  (v: BibleVerse) =>
+                    `${v.verse}. ${v.text.trim().replace(/\s+/g, " ")}`
+                )
+                .join("\n\n");
+
+              // For full chapters, add chapter header
+              if (startVerse === undefined && endVerse === undefined) {
+                return {
+                  text: `Chapter ${chapter}\n\n${versesText}`,
+                  version: versionToUse,
+                  isFullChapter: true,
+                };
+              }
+
+              return {
+                text: versesText,
+                version: versionToUse,
+                isFullChapter: false,
+              };
+            } else if (data.text) {
+              // If we only get text, try to parse it and remove unnecessary spaces
+              const text = data.text.replace(/\s+/g, " ").trim();
+
+              // For full chapters, add chapter header
+              if (startVerse === undefined && endVerse === undefined) {
+                return {
+                  text: `Chapter ${chapter}\n\n${text}`,
+                  version: versionToUse,
+                  isFullChapter: true,
+                };
+              }
+
+              return {
+                text: text,
+                version: versionToUse,
+                isFullChapter: false,
+              };
+            }
+          }
+        } catch {
+          console.log(
+            `Failed to fetch from ${endpoint}, trying next endpoint...`
+          );
+        }
+      }
+
+      throw new Error("All API endpoints failed");
+    },
+    [bibleVersion]
+  );
+
+  const loadVerses = useCallback(
+    async (plan: string) => {
+      // Check if this is a chapter range like "john 3-4"
+      const chapterRangeMatch = plan.match(/(\d?\s?\w+)\s(\d+)-(\d+)/);
+
+      if (chapterRangeMatch) {
+        // Handle chapter range by making multiple requests
+        const book = chapterRangeMatch[1].toLowerCase().replace(/\s+/g, "");
+        const startChapter = parseInt(chapterRangeMatch[2]);
+        const endChapter = parseInt(chapterRangeMatch[3]);
+
+        setIsLoadingVerses(true);
+        setVerseError(null);
+
+        try {
+          const allChaptersText: string[] = [];
+
+          for (let chapter = startChapter; chapter <= endChapter; chapter++) {
+            const parsedPlan = {
+              book,
+              chapter: chapter.toString(),
+              startVerse: undefined,
+              endVerse: undefined,
+            };
+
+            const result = await fetchBibleVerses(parsedPlan);
+            allChaptersText.push(result.text);
+          }
+
+          setReadingPlanVerses(allChaptersText.join("\n\n"));
+        } catch (error) {
+          console.error("Error fetching chapter range:", error);
+          setVerseError(
+            "Unable to load chapter range. Please check the book and chapter numbers."
+          );
+          setReadingPlanVerses("");
+        } finally {
+          setIsLoadingVerses(false);
+        }
+        return;
+      }
+
+      // Handle single chapter or verse range requests
+      const parsedPlan = parseReadingPlan(plan);
+      if (!parsedPlan) {
+        setReadingPlanVerses("Unable to parse reading plan.");
+        return;
+      }
+
+      setIsLoadingVerses(true);
+      setVerseError(null);
+
+      try {
+        // First try with the selected version
+        const result = await fetchBibleVerses(parsedPlan);
+        setReadingPlanVerses(result.text);
+      } catch (error) {
+        console.error("Error fetching verses:", error);
+
+        // If the selected version failed, try with KJV as fallback
+        try {
+          const fallbackResult = await fetchBibleVerses(parsedPlan, true);
+          setReadingPlanVerses(fallbackResult.text);
+          setVerseError(`Using KJV (${bibleVersion} not available)`);
+        } catch (fallbackError) {
+          console.error(
+            "Error fetching verses with KJV fallback:",
+            fallbackError
+          );
+          setVerseError(
+            "Unable to load verses. Check if the book, chapter or verse is valid."
+          );
+          setReadingPlanVerses(""); // Clear any previous verses
+        }
+      } finally {
+        setIsLoadingVerses(false);
+      }
+    },
+    [fetchBibleVerses, bibleVersion]
+  );
+
+  // Function to render verses with proper formatting
+  const renderVerses = (text: string) => {
+    const lines = text.split("\n");
+    return lines.map((line, index) => {
+      // Check if this line is a chapter header (e.g., "Chapter 3")
+      if (line.startsWith("Chapter ")) {
+        return (
+          <h4
+            key={index}
+            className={`font-bold text-lg mt-4 mb-2 ${colorClasses.text}`}
+          >
+            {line}
+          </h4>
+        );
+      }
+
+      // Check if this line is a verse (e.g., "1. Text content")
+      const verseMatch = line.match(/^(\d+)\.\s+(.*)/);
+      if (verseMatch) {
+        return (
+          <p key={index} className="flex items-baseline mb-3">
+            <sup className={`text-xs ${colorClasses.text} italic mr-1`}>
+              {verseMatch[1]}
+            </sup>
+            <span>{verseMatch[2]}</span>
+          </p>
+        );
+      }
+
+      // Regular text line
+      return (
+        <p key={index} className="mb-3">
+          {line}
+        </p>
+      );
+    });
+  };
 
   // Load bookmarks and animate page
   useGSAP(() => {
@@ -77,10 +327,18 @@ const Bookmarks = () => {
         { opacity: 0, scale: 0.8 },
         { opacity: 1, scale: 1, duration: 0.5 }
       );
+
+      // Load verses when modal opens
+      loadVerses(selectedDevotional.readingPlan);
+      setCustomReadingPlan(selectedDevotional.readingPlan);
+      setIsEditingReadingPlan(false);
     } else {
       document.body.style.overflow = "auto";
+      // Reset states when modal closes
+      setReadingPlanVerses("");
+      setVerseError(null);
     }
-  }, [selectedDevotional]);
+  }, [selectedDevotional, loadVerses]);
 
   const openDevotional = (devotional: Devotional) =>
     setSelectedDevotional(devotional);
@@ -108,6 +366,30 @@ const Bookmarks = () => {
 
   const getVerseText = (verse: Devotional["verse"]) => {
     return verse.text[bibleVersion] || verse.text[verse.defaultVersion];
+  };
+
+  const handleReadingPlanEdit = () => {
+    setIsEditingReadingPlan(true);
+  };
+
+  const handleReadingPlanSave = () => {
+    setIsEditingReadingPlan(false);
+    loadVerses(customReadingPlan);
+  };
+
+  const handleReadingPlanCancel = () => {
+    setIsEditingReadingPlan(false);
+    if (selectedDevotional) {
+      setCustomReadingPlan(selectedDevotional.readingPlan);
+    }
+  };
+
+  const handleReadingPlanKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      handleReadingPlanSave();
+    } else if (e.key === "Escape") {
+      handleReadingPlanCancel();
+    }
   };
 
   return (
@@ -289,14 +571,108 @@ const Bookmarks = () => {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
-                  <p
-                    className={`${
-                      theme === "dark" ? "text-gray-400" : "text-gray-600"
-                    }`}
-                  >
-                    <span className="font-semibold">Reading Plan:</span>{" "}
-                    {selectedDevotional.readingPlan}
-                  </p>
+                  <div className="flex items-center justify-between mb-2">
+                    <p
+                      className={`${
+                        theme === "dark" ? "text-gray-400" : "text-gray-600"
+                      }`}
+                    >
+                      <span className="font-semibold">Reading Plan:</span>
+                    </p>
+                    {!isEditingReadingPlan ? (
+                      <button
+                        onClick={handleReadingPlanEdit}
+                        className={`p-1 rounded ${
+                          theme === "dark"
+                            ? "hover:bg-gray-600"
+                            : "hover:bg-gray-200"
+                        }`}
+                        aria-label="Edit reading plan"
+                      >
+                        <FaEdit className="text-sm" />
+                      </button>
+                    ) : (
+                      <div className="flex space-x-1">
+                        <button
+                          onClick={handleReadingPlanSave}
+                          className={`p-1 rounded ${
+                            theme === "dark"
+                              ? "hover:bg-gray-600"
+                              : "hover:bg-gray-200"
+                          }`}
+                          aria-label="Save reading plan"
+                        >
+                          <FaCheck className="text-sm text-green-500" />
+                        </button>
+                        <button
+                          onClick={handleReadingPlanCancel}
+                          className={`p-1 rounded ${
+                            theme === "dark"
+                              ? "hover:bg-gray-600"
+                              : "hover:bg-gray-200"
+                          }`}
+                          aria-label="Cancel editing"
+                        >
+                          <FaTimes className="text-sm text-red-500" />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+
+                  {isEditingReadingPlan ? (
+                    <div className="mb-2">
+                      <input
+                        type="text"
+                        value={customReadingPlan}
+                        onChange={(e) => setCustomReadingPlan(e.target.value)}
+                        onKeyDown={handleReadingPlanKeyDown}
+                        className={`w-full p-2 rounded ${
+                          theme === "dark"
+                            ? "bg-gray-700 text-white border-gray-600"
+                            : "bg-white text-gray-800 border-gray-300"
+                        } border`}
+                        placeholder="e.g., John 1:1-5"
+                        autoFocus
+                      />
+                      <p className="text-xs mt-1 text-gray-500 dark:text-gray-400">
+                        Format: Book Chapter:StartVerse-EndVerse (e.g., John
+                        1:1-5)
+                      </p>
+                    </div>
+                  ) : (
+                    <p className={`font-medium ${colorClasses.text} mb-2`}>
+                      {customReadingPlan}
+                    </p>
+                  )}
+
+                  <div>
+                    {isLoadingVerses ? (
+                      <div className="mt-2 p-2 bg-gray-100 dark:bg-gray-700 rounded">
+                        <p className="text-gray-700 dark:text-gray-300">
+                          Loading verses...
+                        </p>
+                      </div>
+                    ) : verseError ? (
+                      <div className="mt-2 p-2 bg-red-100 dark:bg-red-900/30 rounded flex items-start">
+                        <FaExclamationTriangle className="text-red-500 mt-1 mr-2 flex-shrink-0" />
+                        <p className="dark:text-red-500">{verseError}</p>
+                      </div>
+                    ) : readingPlanVerses ? (
+                      <div
+                        className={`mt-2 p-4 ${
+                          theme === "dark" ? "bg-gray-800" : "bg-gray-100"
+                        } rounded-lg`}
+                      >
+                        <div
+                          className={`${
+                            theme === "dark" ? "text-gray-200" : "text-gray-800"
+                          }`}
+                        >
+                          {renderVerses(readingPlanVerses)}
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
               </div>
             </div>
