@@ -22,6 +22,7 @@ import { useBibleVersion } from "./contexts/BibleVersionContext";
 import { devotionals } from "./data/devotionals-sep";
 import { getColorClasses } from "./contexts/ThemeContext";
 import type { Devotional } from "@/app/types";
+import ImageSection from "./components/ImageSection";
 
 interface BibleVerse {
   verse: number;
@@ -678,6 +679,7 @@ const Home = () => {
           : "bg-gradient-to-b from-blue-50 to-purple-50"
       } p-4 md:p-8`}
     >
+      <ImageSection />
       <div className="mx-auto max-w-4xl">
         {/* Devotional Card */}
         <div
@@ -1014,11 +1016,7 @@ const Home = () => {
 
               {/* Month indicator */}
               <div className="flex items-center justify-center mb-4">
-                <span
-                  className={`text-xl  font-medium ${
-                    colorClasses.text
-                  }`}
-                >
+                <span className={`text-xl  font-medium ${colorClasses.text}`}>
                   {currentMonth}&nbsp;{new Date().getFullYear()}
                 </span>
               </div>

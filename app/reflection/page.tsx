@@ -18,7 +18,6 @@ const Reflection = () => {
   const [reflections, setReflections] = useState<Record<string, string>>({});
   const pageRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
   const colorClasses = getColorClasses(colorScheme);

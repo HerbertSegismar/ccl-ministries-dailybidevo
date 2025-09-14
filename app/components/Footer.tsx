@@ -2,12 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
-import {
-  FaHeart,
-  FaTimes,
-  FaCopy,
-  FaCheck,
-} from "react-icons/fa";
+import { FaHeart, FaTimes, FaCopy, FaCheck } from "react-icons/fa";
 import TermsOfService from "./TermsOfService";
 import PrivacyPolicy from "./PrivacyPolicy";
 import Image from "next/image";
@@ -57,7 +52,17 @@ const Footer = () => {
       >
         <div className="container relative z-10 mx-auto px-4">
           <div className="flex flex-col items-center text-center relative gap-4">
-            <div className="mb-4 md:mb-0">
+            <div className="flex flex-col items-center justify-center mb-4 md:mb-0">
+              <h3 className="text-2xl font-bold text-purple-800">
+                Fount Of Hope
+              </h3>
+              <Image
+                src={"/android-chrome-512x512.png"}
+                width={200}
+                height={200}
+                alt="logo"
+              />
+
               <h3 className="text-lg font-bold text-purple-800">
                 Daily Bible Devotional
               </h3>
@@ -113,13 +118,14 @@ const Footer = () => {
           </div>
 
           <div className="mt-6 pt-6 border-t border-gray-200 text-center footer2">
-            <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6 mb-4">
+            <div className="flex justify-center items-center gap-2 mb-4">
               <button
                 onClick={() => setShowTerms(true)}
                 className="text-xs text-purple-600 hover:text-purple-800"
               >
                 Terms of Service
               </button>
+              <div className="size-1 bg-purple-600 rounded-full"/>
               <button
                 onClick={() => setShowPrivacy(true)}
                 className="text-xs text-purple-600 hover:text-purple-800"
@@ -128,7 +134,7 @@ const Footer = () => {
               </button>
             </div>
             <p className="text-xs text-gray-500 capitalize">
-              <span className="text-amber-400">&copy;</span>{" "}
+              <span className="text-purple-600">&copy;</span>{" "}
               {new Date().getFullYear()} FountOfHope Devotionals. All rights
               reserved.
             </p>

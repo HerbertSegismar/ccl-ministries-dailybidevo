@@ -14,11 +14,11 @@ import {
   FaTimes,
   FaMoon,
   FaSun,
-  FaCross,
 } from "react-icons/fa";
 import { useTheme, getColorClasses } from "@/app/contexts/ThemeContext";
 import type { NavItem } from "@/app/types";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -80,13 +80,14 @@ const Navbar = () => {
             className="flex items-center space-x-2 hover:scale-105 transition-all ease-in-out"
           >
             <div
-              className={`w-8 h-8 bg-gradient-to-r ${colors.gradient} rounded-lg flex items-center justify-center`}
+              className={`w-8 h-8 flex items-center justify-center`}
             >
-              <FaCross className="text-white text-sm" />
+              <Image src={"/android-chrome-192x192.png"} width={100} height={100} alt="logo"/>
+              {/* <FaCross className="text-white text-sm" /> */}
             </div>
             <div className="flex flex-col">
               <span className="text-lg md:text-xl font-base md:font-semibold text-white">
-                Fount Of Hope 
+                Fount Of Hope
               </span>
               <span className="text-sm font-thin text-white italic">
                 Daily Bible Devotional
