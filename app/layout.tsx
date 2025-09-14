@@ -5,6 +5,9 @@ import { BibleVersionProvider } from "./contexts/BibleVersionContext";
 import Navbar from "./components/Navbar";
 import { ClerkProvider } from "@clerk/nextjs";
 import Footer from "./components/Footer";
+import { BackgroundBeamsWithCollision } from "./components/ui/background-beams-with-collision";
+import { Meteors } from "./components/ui/meteors";
+import { ClientOnlyMeteors } from "./components/ui/client-meteors";
 
 // Define your site's base URL (important for canonical URLs and OG tags)
 const baseUrl =
@@ -137,7 +140,10 @@ export default function RootLayout({
                 Skip to main content
               </a>
               <Navbar />
-              <main id="main-content">{children}</main>
+              <main id="main-content" className="relative overflow-hidden">
+                {children}
+                <ClientOnlyMeteors number={3} className="z-0" />
+              </main>
               <Footer />
             </ClerkProvider>
           </BibleVersionProvider>

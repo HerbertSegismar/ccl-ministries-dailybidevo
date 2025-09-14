@@ -982,26 +982,62 @@ const Home = () => {
 
         {/* Calendar Modal */}
         {showCalendar && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
             <div
-              className={`rounded-2xl shadow-lg p-6 max-w-md w-full mx-4 ${
-                theme === "dark" ? "bg-gray-800" : "bg-white"
+              className={`rounded-2xl shadow-xl p-6 max-w-md w-full mx-4 transform transition-all duration-300 scale-100 opacity-100 ${
+                theme === "dark"
+                  ? "bg-gray-800/10 border border-gray-700"
+                  : "bg-transparent border border-gray-100"
               }`}
             >
-              <h3
-                className={`text-base font-semibold mb-4 ${
-                  theme === "dark" ? "text-white" : "text-gray-800"
-                }`}
-              >
-                <p className="text-sm">
-                  Select a Date for the month of &nbsp;
-                  <span
-                    className={`${colorClasses.text} text-lg font-semibold`}
-                  >
-                    {currentMonth}
-                  </span>
+              {/* Header */}
+              <div className="flex items-center justify-between mb-6">
+                <p
+                  className={`text-sm font-thin ${
+                    theme === "dark" ? "text-white" : "text-gray-100"
+                  }`}
+                >
+                  Select a Date
                 </p>
-              </h3>
+                <button
+                  onClick={() => setShowCalendar(false)}
+                  className={`p-2 rounded-full ${
+                    theme === "dark"
+                      ? "hover:bg-gray-700 text-gray-400 hover:text-white"
+                      : "hover:bg-gray-100 text-gray-500 hover:text-gray-800"
+                  } transition-colors`}
+                  aria-label="Close calendar"
+                >
+                  <FaTimes className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Month indicator */}
+              <div className="flex items-center justify-center mb-4">
+                <span
+                  className={`text-xl  font-medium ${
+                    colorClasses.text
+                  }`}
+                >
+                  {currentMonth}&nbsp;{new Date().getFullYear()}
+                </span>
+              </div>
+
+              {/* Day headers */}
+              <div className="grid grid-cols-7 gap-2 mb-2">
+                {["S", "M", "T", "W", "T", "F", "S"].map((day, index) => (
+                  <div
+                    key={index}
+                    className={`text-center text-xs font-medium p-1 ${
+                      theme === "dark" ? "text-gray-400" : "text-gray-200"
+                    }`}
+                  >
+                    {day}
+                  </div>
+                ))}
+              </div>
+
+              {/* Calendar grid */}
               <div className="grid grid-cols-7 gap-2">
                 {Array.from(
                   { length: devotionals.length },
@@ -1010,28 +1046,33 @@ const Home = () => {
                   <button
                     key={day}
                     onClick={() => handleSelectDate(day)}
-                    className={`p-2 rounded-full ${
+                    className={`aspect-square p-2 rounded-full flex items-center justify-center transition-all duration-200 ${
                       day === currentId
-                        ? `text-gray-400`
+                        ? `${colorClasses.lightBg} ${colorClasses.text} shadow-lg transform scale-105`
                         : theme === "dark"
-                        ? "bg-gray-700 text-white"
-                        : "bg-gray-200 text-gray-800"
+                        ? "bg-gray-700 text-white hover:bg-gray-600"
+                        : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+                    } ${
+                      day === currentDay && day !== currentId
+                        ? "ring-2 ring-blue-500"
+                        : ""
                     }`}
                   >
                     {day}
                   </button>
                 ))}
               </div>
-              <button
-                onClick={() => setShowCalendar(false)}
-                className={`mt-4 w-full py-2 rounded-lg ${
-                  theme === "dark"
-                    ? "bg-gray-700 text-white"
-                    : "bg-gray-200 text-gray-800"
+
+              {/* Selected date indicator */}
+              <div
+                className={`mt-4 text-sm text-center ${
+                  theme === "dark" ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                Close
-              </button>
+                {currentId
+                  ? `Selected: ${currentMonth} ${currentId}`
+                  : "No date selected"}
+              </div>
             </div>
           </div>
         )}
