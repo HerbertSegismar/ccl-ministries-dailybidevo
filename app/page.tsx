@@ -1044,7 +1044,7 @@ const Home = () => {
                   <button
                     key={day}
                     onClick={() => handleSelectDate(day)}
-                    className={`aspect-square p-2 rounded-full flex items-center justify-center transition-all duration-200 ${
+                    className={`aspect-square p-2 rounded-lg flex items-center justify-center transition-all duration-200 ${
                       day === currentId
                         ? `${colorClasses.lightBg} ${colorClasses.text} shadow-lg transform scale-105`
                         : theme === "dark"
@@ -1064,7 +1064,7 @@ const Home = () => {
               {/* Selected date indicator */}
               <div
                 className={`mt-4 text-sm text-center ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-600"
+                  theme === "dark" ? "text-gray-400" : "text-gray-200"
                 }`}
               >
                 {currentId

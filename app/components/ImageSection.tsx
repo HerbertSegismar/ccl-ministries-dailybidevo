@@ -1,5 +1,10 @@
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+
+// Define TypeScript interfaces
+interface SimpleMeteorsProps {
+  number?: number;
+}
 
 const imageFilesSm = [
   "n1.jpg",
@@ -95,67 +100,81 @@ const inspirationalTexts = [
   "For the Spirit God gave us does not make us timid, but gives us power, love and self-discipline. - 2 Timothy 1:7",
 ];
 
-const SimpleMeteors = ({ number = 5 }) => {
-  const [showMeteors, setShowMeteors] = useState(false);
+// Memoize the SimpleMeteors component to prevent unnecessary re-renders
+const SimpleMeteors: React.FC<SimpleMeteorsProps> = React.memo(
+  ({ number = 5 }) => {
+    const [showMeteors, setShowMeteors] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowMeteors(true);
-    }, 1000);
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setShowMeteors(true);
+      }, 1000);
 
-    return () => clearTimeout(timer);
-  }, []);
+      return () => clearTimeout(timer);
+    }, []);
 
-  if (!showMeteors) {
-    return null;
+    if (!showMeteors) {
+      return null;
+    }
+
+    return (
+      <>
+        {[...Array(number)].map((_, i) => (
+          <span
+            key={i}
+            className="absolute meteor-effect rounded-full bg-white shadow-[0_0_0_1px_#ffffff10]"
+            style={{
+              top: `-10px`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 2}s`,
+              animationDuration: `${Math.random() * 8 + 8}s`,
+              width: `${Math.random() * 3 + 0.5}px`,
+              height: `${Math.random() * 3 + 0.5}px`,
+              opacity: Math.random() * 0.6 + 0.2,
+              transform: `rotate(${Math.random() * 30 + 210}deg)`,
+            }}
+          >
+            <div className="absolute top-1/2 -translate-y-1/2 w-[50px] h-[1px] bg-gradient-to-r from-amber-100 to-transparent" />
+          </span>
+        ))}
+      </>
+    );
   }
+);
 
-  return (
-    <>
-      {[...Array(number)].map((_, i) => (
-        <span
-          key={i}
-          className="absolute meteor-effect rounded-full bg-white shadow-[0_0_0_1px_#ffffff10]"
-          style={{
-            top: `-10px`,
-            left: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 0.8}s`,
-            animationDuration: `${Math.random() * 8 + 3}s`,
-            width: `${Math.random() * 3 + 0.5}px`,
-            height: `${Math.random() * 3 + 0.5}px`,
-            opacity: Math.random() * 0.6 + 0.2,
-            transform: `rotate(${Math.random() * 30 + 210}deg)`,
-          }}
-        >
-          <div className="absolute top-1/2 -translate-y-1/2 w-[50px] h-[1px] bg-gradient-to-r from-amber-100 to-transparent" />
-        </span>
-      ))}
-    </>
-  );
-};
+SimpleMeteors.displayName = "SimpleMeteors";
 
-const ImageSection = () => {
+const ImageSection: React.FC = () => {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [randomText, setRandomText] = useState<string>("");
   const [imageError, setImageError] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
-  useEffect(() => {
-    // Check if we're on mobile
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+  // Throttle resize handler to prevent excessive updates
+  const checkIsMobile = useCallback(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
 
+  useEffect(() => {
     // Initial check
     checkIsMobile();
 
-    // Add event listener for window resize
-    window.addEventListener("resize", checkIsMobile);
+    // Throttled resize event listener
+    let timeoutId: NodeJS.Timeout | null = null;
+    const handleResize = () => {
+      if (timeoutId) clearTimeout(timeoutId);
+      timeoutId = setTimeout(checkIsMobile, 100);
+    };
+
+    window.addEventListener("resize", handleResize);
 
     // Clean up
-    return () => window.removeEventListener("resize", checkIsMobile);
-  }, []);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [checkIsMobile]);
 
   useEffect(() => {
     // Select random image based on screen size
@@ -171,16 +190,16 @@ const ImageSection = () => {
     setRandomText(selectedText);
   }, [isMobile]);
 
-  const handleImageError = () => {
+  const handleImageError = useCallback(() => {
     console.error(`Failed to load image: ${imageSrc}`);
     setImageError(true);
     const fallbackImage = "abstract.png";
     setImageSrc(`/images/${fallbackImage}`);
-  };
+  }, [imageSrc]);
 
-  const handleImageLoad = () => {
+  const handleImageLoad = useCallback(() => {
     setImageLoaded(true);
-  };
+  }, []);
 
   if (imageError) {
     return (
@@ -251,4 +270,4 @@ const ImageSection = () => {
   );
 };
 
-export default ImageSection;
+export default React.memo(ImageSection);

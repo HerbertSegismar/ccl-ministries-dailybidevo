@@ -79,7 +79,7 @@ h1, h2, h3 {
 
 /* Apply the appropriate animation based on screen size */
 .meteor-effect {
-  animation: meteor-desktop 5s linear infinite;
+  animation: meteor-desktop 10s linear infinite;
 }
 
 @media (max-width: 768px) {
