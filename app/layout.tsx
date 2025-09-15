@@ -5,17 +5,22 @@ import { BibleVersionProvider } from "./contexts/BibleVersionContext";
 import Navbar from "./components/Navbar";
 import { ClerkProvider } from "@clerk/nextjs";
 import Footer from "./components/Footer";
+import OGDebug from "./components/OGDebug"; // New component for debugging
 
 // Define your site's base URL (important for canonical URLs and OG tags)
 const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.fountofhope.org";
+
+// Generate a version parameter to force cache refresh (optional)
+const ogImageVersion =
+  process.env.NODE_ENV === "production" ? `?v=${Date.now()}` : "";
 
 export const metadata: Metadata = {
   title: "Daily Bible Devotional - Spiritual Growth Through Scripture",
   description:
     "Get your daily dose of the Word of God with this Bible Devotional App free of charge from Fount Of Hope Devotionals. Start each day with inspirational Bible verses and Christian devotionals.",
   keywords:
-    "daily bible devotional, bible verses, christian devotionals, spiritual growth, word of God, Bible app, free devotionals",
+    "daily bible devotional, bible verses, christian devotionals, spiritual growth, word of God, Bible app, free devotionals, fount of hope, daily devotional, bible devotional, daily bible, bible daily",
   authors: [{ name: "Fount Of Hope Devotionals" }],
   creator: "Fount Of Hope Devotionals",
   publisher: "Fount Of Hope Devotionals",
@@ -51,12 +56,22 @@ export const metadata: Metadata = {
       "Get your daily dose of the Word of God with free devotionals from Fount Of Hope.",
     images: [
       {
-        url: "/og-image.png", // You should create this image (1200x630px)
+        url: `${baseUrl}/og-image.png${ogImageVersion}`, // Use absolute URL with cache buster
         width: 1200,
         height: 630,
         alt: "Daily Bible Devotional",
       },
     ],
+  },
+
+  // Twitter Card for better Twitter sharing
+  twitter: {
+    card: "summary_large_image",
+    site: "@fountofhope", // Replace with your Twitter handle
+    title: "Daily Bible Devotional - Spiritual Growth Through Scripture",
+    description:
+      "Get your daily dose of the Word of God with free devotionals from Fount Of Hope.",
+    images: [`${baseUrl}/og-image.png${ogImageVersion}`],
   },
 
   // Robots indexing instructions
@@ -141,6 +156,8 @@ export default function RootLayout({
                 {children}
               </main>
               <Footer />
+              {/* Add OG Debug component in development */}
+              {process.env.NODE_ENV === "development" && <OGDebug />}
             </ClerkProvider>
           </BibleVersionProvider>
         </ThemeProvider>
