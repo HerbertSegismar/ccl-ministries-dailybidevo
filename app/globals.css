@@ -47,24 +47,46 @@ h1, h2, h3 {
   }
 }
 
-@theme inline {
-  --animate-meteor-effect: meteor 10s linear infinite;
-  
-  @keyframes meteor {
-    0% {
-      transform: rotate(250deg) translateX(0);
-      opacity: 1;
-    }
-    70% {
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(250deg) translateX(-1000px);
-      opacity: 0;
-    }
+/* Meteor animation for desktop */
+@keyframes meteor-desktop {
+  0% {
+    transform: rotate(205deg) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(210deg) translateX(-1000px);
+    opacity: 0;
   }
 }
 
+/* Meteor animation for mobile */
+@keyframes meteor-mobile {
+  0% {
+    transform: rotate(220deg) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(225deg) translateX(-1000px);
+    opacity: 0;
+  }
+}
+
+/* Apply the appropriate animation based on screen size */
+.meteor-effect {
+  animation: meteor-desktop 5s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .meteor-effect {
+    animation: meteor-mobile 5s linear infinite;
+  }
+}
 
 .placeholder-text {
   color: #9ca3af;
