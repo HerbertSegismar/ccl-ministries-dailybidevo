@@ -48,7 +48,7 @@ const AboutUs = () => {
     try {
       // Using FormSubmit service to send emails
       const response = await fetch(
-        "https://formsubmit.co/ajax/fountofhopedevotionals@gmail.com",
+        "https://formsubmit.co/ajax/4de0fccfbf2809f17e5c0bc597596d4b",
         {
           method: "POST",
           headers: {
