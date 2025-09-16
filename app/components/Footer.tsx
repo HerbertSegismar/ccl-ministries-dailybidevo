@@ -6,6 +6,7 @@ import { FaHeart, FaTimes, FaCopy, FaCheck } from "react-icons/fa";
 import TermsOfService from "./TermsOfService";
 import PrivacyPolicy from "./PrivacyPolicy";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   const footerRef = useRef<HTMLElement>(null);
@@ -118,6 +119,11 @@ const Footer = () => {
           </div>
 
           <div className="mt-6 pt-6 border-t border-gray-200 text-center footer2">
+            <div className="text-sm text-purple-600 hover:text-purple-800 mb-1">
+              <Link href="/about-us">
+                <p>About Us</p>
+              </Link>
+            </div>
             <div className="flex justify-center items-center gap-2 mb-4">
               <button
                 onClick={() => setShowTerms(true)}
@@ -125,7 +131,7 @@ const Footer = () => {
               >
                 Terms of Service
               </button>
-              <div className="size-1 bg-purple-600 rounded-full"/>
+              <div className="size-1 bg-purple-600 rounded-full" />
               <button
                 onClick={() => setShowPrivacy(true)}
                 className="text-xs text-purple-600 hover:text-purple-800"
