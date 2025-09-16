@@ -680,7 +680,6 @@ const Home = () => {
           : "bg-gradient-to-b from-blue-50 to-purple-50"
       } p-4 md:p-8`}
     >
-      <Matrix/>
       <ImageSection />
       <div className="mx-auto max-w-4xl">
         {/* Devotional Card */}
@@ -1127,6 +1126,16 @@ const Home = () => {
         <p className="text-center text-xs text-gray-600 dark:text-gray-400 mt-2">
           Day {currentId} of {devotionals.length}
         </p>
+        <div
+          className={`mt-4 text-center text-base md:text-xl ${
+            theme === "dark"
+              ? "text-gray-200"
+              : "text-gray-700"
+          }`}
+        >
+          <p className="p-4">Names & Attributes of the Lord Jesus Christ</p>
+          <Matrix />
+        </div>
       </div>
     </div>
   );

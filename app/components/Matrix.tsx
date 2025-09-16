@@ -5,7 +5,6 @@ const Matrix = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  // Names and attributes of Jesus Christ
   const jesusAttributes = [
     "Jesus Christ",
     "Messiah",
@@ -28,6 +27,95 @@ const Matrix = () => {
     "Wonderful Counselor",
     "Mighty God",
     "Everlasting Father",
+    // Additional attributes
+    "The Word",
+    "Son of Man",
+    "The Door",
+    "The Vine",
+    "True Vine",
+    "The Amen",
+    "Author and Finisher of Our Faith",
+    "Chief Cornerstone",
+    "Bright Morning Star",
+    "Lion of the Tribe of Judah",
+    "Root of David",
+    "Holy One of Israel",
+    "Bridegroom",
+    "Head of the Church",
+    "Mediator",
+    "Great High Priest",
+    "The Prophet",
+    "The Rock",
+    "Stone of Stumbling",
+    "Captain of Salvation",
+    "Chosen One",
+    "Image of the Invisible God",
+    "Firstborn Over Creation",
+    "Firstborn from the Dead",
+    "The Righteous One",
+    "I AM",
+    "Lord of All",
+    "Judge of the Living and the Dead",
+    "Shiloh",
+    "Sun of Righteousness",
+    "The Branch",
+    "Man of Sorrows",
+    "Faithful and True Witness",
+    "The Amen",
+    "Lord of Glory",
+    "The Power of God",
+    "The Wisdom of God",
+    "Our Passover Lamb",
+    "Shepherd of Souls",
+    "The Resurrection and the Life",
+    "The Holy One",
+    "The Just One",
+    "The Advocate",
+    "The Deliverer",
+    "The Hope of Nations",
+    "The Consolation of Israel",
+    "The Desire of All Nations",
+    "The Fountain of Living Waters",
+    "The Rod from the Stem of Jesse",
+    "The Governor Among the Nations",
+    "The Word of Life",
+    "The Beloved Son",
+    "The Light of Men",
+    "The True Light",
+    "The Horn of Salvation",
+    "The Dayspring from on High",
+    "The Upholder of All Things",
+    "The Apostle of Our Confession",
+    "The Bishop of Souls",
+    "The Christ of God",
+    "The Holy Servant Jesus",
+    "The Pioneer of Salvation",
+    "The Author of Eternal Salvation",
+    "The Forerunner",
+    "The Lawgiver",
+    "The Lord of the Harvest",
+    "The Lord of the Sabbath",
+    "The Truth of God",
+    "The Vine",
+    "The Living Stone",
+    "The Chosen Stone",
+    "The Precious Cornerstone",
+    "The Foundation",
+    "The Temple",
+    "The Light of Heaven",
+    "The King of the Jews",
+    "The King of Israel",
+    "The King of Righteousness",
+    "The King of Peace",
+    "The King of Glory",
+    "The Lord Strong and Mighty",
+    "The Lord Mighty in Battle",
+    "The Lord of Hosts",
+    "The Lord Our Righteousness",
+    "The Lord Who Heals",
+    "The Lord Who Provides",
+    "The Lord Who Sanctifies",
+    "The Lord Who Is There",
   ];
 
   useEffect(() => {
@@ -93,10 +181,10 @@ const Matrix = () => {
       textElement.textContent = randomAttribute;
       textElement.style.position = "absolute";
       textElement.style.color = "#0F0";
-      textElement.style.fontSize = `${Math.random() * 24 + 16}px`;
-      textElement.style.fontWeight = "bold";
-      textElement.style.fontFamily = "monospace";
-      textElement.style.textShadow = "0 0 5px #0F0, 0 0 10px #0F0";
+      textElement.style.fontSize = `${Math.random() * 24 + 10}px`;
+      textElement.style.fontWeight = "thin";
+      textElement.style.fontFamily = "oswald";
+      textElement.style.textShadow = "0 0 2px #0F0, 0 0 5px #0F0";
       textElement.style.left = `${Math.random() * 80}%`;
       textElement.style.top = `${Math.random() * 80}%`;
       textElement.style.opacity = "0";
@@ -142,7 +230,7 @@ const Matrix = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-64 overflow-hidden bg-black rounded-2xl shadow-lg mb-6">
+    <div className="relative mx-auto max-w-4xl h-128 overflow-hidden bg-black rounded-2xl shadow-lg mb-6">
       <canvas
         ref={canvasRef}
         className="absolute top-0 left-0 w-full h-full opacity-90"
