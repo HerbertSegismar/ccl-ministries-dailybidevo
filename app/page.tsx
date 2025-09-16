@@ -23,6 +23,7 @@ import { devotionals } from "./data/devotionals-sep";
 import { getColorClasses } from "./contexts/ThemeContext";
 import type { Devotional } from "@/app/types";
 import ImageSection from "./components/ImageSection";
+import Matrix from "./components/Matrix";
 
 interface BibleVerse {
   verse: number;
@@ -679,6 +680,7 @@ const Home = () => {
           : "bg-gradient-to-b from-blue-50 to-purple-50"
       } p-4 md:p-8`}
     >
+      <Matrix/>
       <ImageSection />
       <div className="mx-auto max-w-4xl">
         {/* Devotional Card */}
