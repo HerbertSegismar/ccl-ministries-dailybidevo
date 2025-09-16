@@ -2,7 +2,15 @@
 
 import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
-import { FaHeart, FaTimes, FaCopy, FaCheck } from "react-icons/fa";
+import {
+  FaHeart,
+  FaTimes,
+  FaCopy,
+  FaCheck,
+  FaFileContract,
+  FaShieldAlt,
+  FaInfoCircle,
+} from "react-icons/fa";
 import TermsOfService from "./TermsOfService";
 import PrivacyPolicy from "./PrivacyPolicy";
 import Image from "next/image";
@@ -120,22 +128,28 @@ const Footer = () => {
 
           <div className="mt-6 pt-6 border-t border-gray-200 text-center footer2">
             <div className="text-sm text-purple-600 hover:text-purple-800 mb-1">
-              <Link href="/about-us">
-                <p>About Us</p>
+              <Link
+                href="/about-us"
+                className="flex items-center justify-center gap-1"
+              >
+                <FaInfoCircle className="inline" />
+                About Us
               </Link>
             </div>
             <div className="flex justify-center items-center gap-2 mb-4">
               <button
                 onClick={() => setShowTerms(true)}
-                className="text-xs text-purple-600 hover:text-purple-800"
+                className="text-xs text-purple-600 hover:text-purple-800 flex items-center gap-1"
               >
+                <FaFileContract className="inline" />
                 Terms of Service
               </button>
               <div className="size-1 bg-purple-600 rounded-full" />
               <button
                 onClick={() => setShowPrivacy(true)}
-                className="text-xs text-purple-600 hover:text-purple-800"
+                className="text-xs text-purple-600 hover:text-purple-800 flex items-center gap-1"
               >
+                <FaShieldAlt className="inline" />
                 Privacy Policy
               </button>
             </div>
