@@ -93,7 +93,7 @@ const AboutUs = () => {
         {/* Header Section */}
         <div className="text-center mb-10">
           <h1
-            className={`text-4xl md:text-5xl font-bold mb-4 ${colorClasses.text}`}
+            className={`text-3xl md:text-4xl font-bold mb-4 ${colorClasses.text}`}
           >
             About Fount Of Hope Devotionals
           </h1>
