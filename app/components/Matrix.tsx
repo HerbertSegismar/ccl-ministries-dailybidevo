@@ -1,9 +1,38 @@
 "use client";
 import { useEffect, useRef } from "react";
+import { useTheme } from "@/app/contexts/ThemeContext";
 
 const Matrix = () => {
+  const { theme, colorScheme } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+
+  // Get color based on theme and color scheme
+  const getMatrixColor = () => {
+    if (theme === "dark") {
+      switch (colorScheme) {
+        case "green":
+          return "#10B981"; // Emerald green
+        case "red":
+          return "#EF4444"; // Red
+        case "yellow":
+          return "#F59E0B"; // Amber
+        default: // purple
+          return "#8B5CF6"; // Purple
+      }
+    } else {
+      switch (colorScheme) {
+        case "green":
+          return "#059669"; // Darker green for light theme
+        case "red":
+          return "#DC2626"; // Darker red for light theme
+        case "yellow":
+          return "#D97706"; // Darker amber for light theme
+        default: // purple
+          return "#7C3AED"; // Darker purple for light theme
+      }
+    }
+  };
 
   const jesusAttributes = [
     "Jesus Christ",
@@ -27,11 +56,10 @@ const Matrix = () => {
     "Wonderful Counselor",
     "Mighty God",
     "Everlasting Father",
-    // Additional attributes
     "The Word",
     "Son of Man",
     "The Door",
-    "The Vine",
+    "The Vinedresser",
     "True Vine",
     "The Amen",
     "Author and Finisher of Our Faith",
@@ -54,6 +82,7 @@ const Matrix = () => {
     "Firstborn from the Dead",
     "The Righteous One",
     "I AM",
+    "The Great I Am",
     "Lord of All",
     "Judge of the Living and the Dead",
     "Shiloh",
@@ -79,6 +108,7 @@ const Matrix = () => {
     "The Rod from the Stem of Jesse",
     "The Governor Among the Nations",
     "The Word of Life",
+    "The Spirit of Life",
     "The Beloved Son",
     "The Light of Men",
     "The True Light",
@@ -116,6 +146,32 @@ const Matrix = () => {
     "The Lord Who Provides",
     "The Lord Who Sanctifies",
     "The Lord Who Is There",
+    "The Angel of God",
+    "The Angel of the Lord",
+    // Hebrew names of God
+    "Yahweh",
+    "Jehovah",
+    "Elohim",
+    "El Shaddai",
+    "Adonai",
+    "Jehovah Jireh",
+    "Jehovah Rapha",
+    "Jehovah Nissi",
+    "Jehovah Shalom",
+    "Jehovah Raah",
+    "Jehovah Tsidkenu",
+    "Jehovah Shammah",
+    "El Elyon",
+    "El Roi",
+    "El Olam",
+    "Yahweh Yireh",
+    "Yahweh Rapha",
+    "Yahweh Nissi",
+    "Yahweh Shalom",
+    "Yahweh Raah",
+    "Yahweh Tsidkenu",
+    "Yahweh Shammah",
+    "Yahweh Sabaoth",
   ];
 
   useEffect(() => {
@@ -132,7 +188,7 @@ const Matrix = () => {
 
     // Matrix characters
     const matrixChars =
-      "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_-+=ᜀᜁᜂᜃᜄᜅᜆᜇᜈᜉᜊᜋᜌᜎᜏᜐᜑ";
 
     const fontSize = 14;
     const columns = Math.floor(canvas.width / fontSize);
@@ -143,13 +199,27 @@ const Matrix = () => {
       drops[i] = 1;
     }
 
-    // Draw the Matrix animation
+    // Dynamic interval variables
+    let time = 0;
+    let matrixIntervalId: NodeJS.Timeout;
+
+    // Function to calculate dynamic interval
+    const getDynamicInterval = () => {
+      // Create a pulsing effect between 20ms and 50ms
+      return 35 + 15 * Math.sin(time * 0.01);
+    };
+
+    // Draw the Matrix animation with dynamic interval
     const drawMatrix = () => {
+      // Update time for animation
+      time++;
+
       // Semi-transparent black to create trail effect
       ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = "#0F0"; // Green text
+      const matrixColor = getMatrixColor();
+      ctx.fillStyle = matrixColor;
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
@@ -165,9 +235,13 @@ const Matrix = () => {
 
         drops[i]++;
       }
+
+      // Schedule next frame with dynamic interval
+      matrixIntervalId = setTimeout(drawMatrix, getDynamicInterval());
     };
 
-    const matrixInterval = setInterval(drawMatrix, 35);
+    // Start the animation
+    matrixIntervalId = setTimeout(drawMatrix, getDynamicInterval());
 
     // Handle text overlay animation
     const showRandomAttribute = () => {
@@ -175,16 +249,17 @@ const Matrix = () => {
 
       const randomAttribute =
         jesusAttributes[Math.floor(Math.random() * jesusAttributes.length)];
+      const matrixColor = getMatrixColor();
 
       // Create a new div for the text
       const textElement = document.createElement("div");
       textElement.textContent = randomAttribute;
       textElement.style.position = "absolute";
-      textElement.style.color = "#0F0";
+      textElement.style.color = matrixColor;
       textElement.style.fontSize = `${Math.random() * 24 + 10}px`;
       textElement.style.fontWeight = "thin";
-      textElement.style.fontFamily = "oswald";
-      textElement.style.textShadow = "0 0 2px #0F0, 0 0 5px #0F0";
+      textElement.style.fontFamily = "Oswald, sans-serif";
+      textElement.style.textShadow = `0 0 2px ${matrixColor}, 0 0 5px ${matrixColor}`;
       textElement.style.left = `${Math.random() * 80}%`;
       textElement.style.top = `${Math.random() * 80}%`;
       textElement.style.opacity = "0";
@@ -223,11 +298,11 @@ const Matrix = () => {
 
     // Clean up
     return () => {
-      clearInterval(matrixInterval);
+      clearTimeout(matrixIntervalId);
       clearInterval(textInterval);
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [theme, colorScheme]);
 
   return (
     <div className="relative mx-auto max-w-4xl h-128 overflow-hidden bg-black rounded-2xl shadow-lg mb-6">

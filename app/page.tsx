@@ -125,6 +125,19 @@ const Home = () => {
     return null;
   };
 
+   const parseVerseReference = (reference: string) => {
+     // Match patterns like "John 3:1-5", "1 John 1:1-5", "John 3:1", or "John 3"
+     const match = reference.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
+     if (!match) return null;
+
+     return {
+       book: match[1].toLowerCase().replace(/\s+/g, ""),
+       chapter: match[2],
+       verse: match[3] || "1", // Default to first verse if not specified
+       endVerse: match[4] || match[3] || "1", // Use start verse if no end verse
+     };
+   };
+
   interface ParsedPlan {
     book: string;
     chapter: string;
@@ -230,40 +243,70 @@ const Home = () => {
 
   const fetchDailyVerse = useCallback(
     async (verseReference: string) => {
-      // Parse the verse reference (e.g., "John 1:1")
-      const match = verseReference.match(/(\d?\s?\w+)\s(\d+):(\d+)/);
-      if (!match) return null;
+      const parsedRef = parseVerseReference(verseReference);
+      if (!parsedRef) return null;
 
-      const book = match[1].toLowerCase().replace(/\s+/g, "");
-      const chapter = match[2];
-      const verse = match[3];
+      const { book, chapter, verse, endVerse } = parsedRef;
 
-      try {
-        // First try with the selected version
-        const response = await fetch(
-          `https://bible-api.com/${book}+${chapter}:${verse}?translation=${bibleVersion}`
-        );
-        if (response.ok) {
-          const data = await response.json();
-          return data.text?.replace(/\s+/g, " ").trim() || "";
+      // If it's a single verse
+      if (verse === endVerse) {
+        try {
+          const response = await fetch(
+            `https://bible-api.com/${book}+${chapter}:${verse}?translation=${bibleVersion}`
+          );
+          if (response.ok) {
+            const data = await response.json();
+            return data.text?.replace(/\s+/g, " ").trim() || "";
+          }
+        } catch {
+          console.log(
+            `Failed to fetch verse with ${bibleVersion}, trying KJV...`
+          );
         }
-      } catch {
-        console.log(
-          `Failed to fetch daily verse with ${bibleVersion}, trying KJV...`
-        );
+      } else {
+        // If it's a verse range
+        try {
+          const response = await fetch(
+            `https://bible-api.com/${book}+${chapter}:${verse}-${endVerse}?translation=${bibleVersion}`
+          );
+          if (response.ok) {
+            const data = await response.json();
+
+            // Return the text without verse numbers
+            if (data.verses) {
+              return data.verses
+                .map((v: BibleVerse) => v.text.trim().replace(/\s+/g, " "))
+                .join(" ");
+            }
+            return data.text?.replace(/\s+/g, " ").trim() || "";
+          }
+        } catch {
+          console.log(
+            `Failed to fetch verse range with ${bibleVersion}, trying KJV...`
+          );
+        }
       }
 
-      // If the selected version fails, try with KJV
+      // Fallback to KJV
       try {
         const response = await fetch(
-          `https://bible-api.com/${book}+${chapter}:${verse}?translation=kjv`
+          `https://bible-api.com/${book}+${chapter}:${verse}${
+            verse !== endVerse ? `-${endVerse}` : ""
+          }?translation=kjv`
         );
         if (response.ok) {
           const data = await response.json();
+
+          // Return the text without verse numbers
+          if (data.verses && verse !== endVerse) {
+            return data.verses
+              .map((v: BibleVerse) => v.text.trim().replace(/\s+/g, " "))
+              .join(" ");
+          }
           return data.text?.replace(/\s+/g, " ").trim() || "";
         }
       } catch {
-        console.log("Failed to fetch daily verse with KJV");
+        console.log("Failed to fetch verse with KJV");
       }
 
       return null;
@@ -1127,13 +1170,9 @@ const Home = () => {
           Day {currentId} of {devotionals.length}
         </p>
         <div
-          className={`mt-4 text-center text-base md:text-xl ${
-            theme === "dark"
-              ? "text-gray-200"
-              : "text-gray-700"
-          }`}
+          className={`mt-4 text-center text-base md:text-xl ${colorClasses.text}`}
         >
-          <p className="p-4">Names & Attributes of the Lord Jesus Christ</p>
+          <p className="p-4 m4x">Names & Attributes of the Lord Jesus Christ</p>
           <Matrix />
         </div>
       </div>

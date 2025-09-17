@@ -491,7 +491,7 @@ const Bookmarks = () => {
 
       {/* Modal */}
       {selectedDevotional && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 bg-opacity-50">
           <div
             ref={modalRef}
             className={`relative max-w-2xl w-full max-h-[90vh] rounded-xl shadow-2xl flex flex-col ${
