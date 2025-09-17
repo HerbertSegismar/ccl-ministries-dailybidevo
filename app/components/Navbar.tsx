@@ -22,6 +22,8 @@ import Image from "next/image";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
   const navbarRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -66,12 +68,65 @@ const Navbar = () => {
     }
   }, [isMenuOpen]);
 
+  // Handle scroll behavior for navbar visibility
+  useEffect(() => {
+    const controlNavbar = () => {
+      if (typeof window !== "undefined") {
+        const currentScrollY = window.scrollY;
+
+        // Always show navbar when at the top of the page
+        if (currentScrollY < 50) {
+          setIsNavbarVisible(true);
+          setLastScrollY(currentScrollY);
+          return;
+        }
+
+        // Hide navbar when scrolling down, show when scrolling up
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          setIsNavbarVisible(false);
+        } else {
+          setIsNavbarVisible(true);
+        }
+
+        setLastScrollY(currentScrollY);
+      }
+    };
+
+    window.addEventListener("scroll", controlNavbar, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, [lastScrollY]);
+
+  // Apply fade in/out effect based on isNavbarVisible
+  useEffect(() => {
+    if (navbarRef.current) {
+      if (isNavbarVisible) {
+        gsap.to(navbarRef.current, {
+          y: 0,
+          opacity: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      } else {
+        gsap.to(navbarRef.current, {
+          y: -100,
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.in",
+        });
+      }
+    }
+  }, [isNavbarVisible]);
+
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   return (
     <nav
       ref={navbarRef}
-      className={`bg-gradient-to-r ${colors.gradient} backdrop-blur-md sticky top-0 z-50 shadow-sm`}
+      className={`bg-gradient-to-r ${colors.gradient} backdrop-blur-md fixed w-full top-0 z-50 shadow-sm transition-all duration-300`}
+      style={{ transform: "translateY(0)" }}
     >
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
@@ -79,11 +134,13 @@ const Navbar = () => {
             href="/"
             className="flex items-center space-x-2 hover:scale-105 transition-all ease-in-out"
           >
-            <div
-              className={`w-8 h-8 flex items-center justify-center`}
-            >
-              <Image src={"/android-chrome-192x192.png"} width={100} height={100} alt="logo"/>
-              {/* <FaCross className="text-white text-sm" /> */}
+            <div className={`w-8 h-8 flex items-center justify-center`}>
+              <Image
+                src={"/android-chrome-192x192.png"}
+                width={100}
+                height={100}
+                alt="logo"
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-lg md:text-xl font-base md:font-semibold text-white">
