@@ -1172,7 +1172,6 @@ const Home = () => {
         <div
           className={`mt-4 text-center text-base md:text-xl ${colorClasses.text}`}
         >
-          <p className="p-4 m4x">Names & Attributes of the Lord Jesus Christ</p>
           <Matrix />
         </div>
       </div>

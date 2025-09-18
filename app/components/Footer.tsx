@@ -10,6 +10,7 @@ import {
   FaFileContract,
   FaShieldAlt,
   FaInfoCircle,
+  FaRss,
 } from "react-icons/fa";
 import TermsOfService from "./TermsOfService";
 import PrivacyPolicy from "./PrivacyPolicy";
@@ -127,14 +128,23 @@ const Footer = () => {
           </div>
 
           <div className="mt-6 pt-6 border-t border-gray-200 text-center footer2">
-            <div className="text-sm text-purple-600 hover:text-purple-800 mb-1">
+            <div className="flex items-center justify-center text-sm mb-1 gap-2">
               <Link
                 href="/about-us"
-                className="flex items-center justify-center gap-1"
+                className="flex items-center justify-center gap-1 text-purple-600 hover:text-purple-800"
               >
                 <FaInfoCircle className="inline" />
                 About Us
               </Link>
+              <div className="size-1 bg-purple-600 rounded-full" />
+              <a
+                href="/rss.xml"
+                className="flex items-center text-purple-600 hover:text-purple-800"
+                aria-label="Subscribe to RSS feed"
+              >
+                <FaRss className="mr-1" />
+                RSS Feed
+              </a>
             </div>
             <div className="flex justify-center items-center gap-2 mb-4">
               <button

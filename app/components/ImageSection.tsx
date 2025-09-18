@@ -1,5 +1,7 @@
-import Image from "next/image";
-import React, { useState, useEffect, useCallback } from "react";
+import NextImage from "next/image";
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { toPng } from "html-to-image";
+import { useTheme, getColorClasses } from "../contexts/ThemeContext";
 
 // Define TypeScript interfaces
 interface SimpleMeteorsProps {
@@ -100,6 +102,48 @@ const inspirationalTexts = [
   "For the Spirit God gave us does not make us timid, but gives us power, love and self-discipline. - 2 Timothy 1:7",
 ];
 
+const addRoundedCorners = (
+  dataUrl: string,
+  radius: number
+): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const img = new window.Image();
+    img.src = dataUrl;
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) {
+        reject(new Error("Could not get canvas context"));
+        return;
+      }
+
+      ctx.beginPath();
+      ctx.moveTo(radius, 0);
+      ctx.lineTo(img.width - radius, 0);
+      ctx.quadraticCurveTo(img.width, 0, img.width, radius);
+      ctx.lineTo(img.width, img.height - radius);
+      ctx.quadraticCurveTo(
+        img.width,
+        img.height,
+        img.width - radius,
+        img.height
+      );
+      ctx.lineTo(radius, img.height);
+      ctx.quadraticCurveTo(0, img.height, 0, img.height - radius);
+      ctx.lineTo(0, radius);
+      ctx.quadraticCurveTo(0, 0, radius, 0);
+      ctx.closePath();
+      ctx.clip();
+
+      ctx.drawImage(img, 0, 0);
+      resolve(canvas.toDataURL("image/png"));
+    };
+    img.onerror = reject;
+  });
+};
+
 // Memoize the SimpleMeteors component to prevent unnecessary re-renders
 const SimpleMeteors: React.FC<SimpleMeteorsProps> = React.memo(
   ({ number = 5 }) => {
@@ -145,11 +189,16 @@ const SimpleMeteors: React.FC<SimpleMeteorsProps> = React.memo(
 SimpleMeteors.displayName = "SimpleMeteors";
 
 const ImageSection: React.FC = () => {
+  const { theme, colorScheme } = useTheme();
+  const colorClasses = getColorClasses(colorScheme);
+
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [randomText, setRandomText] = useState<string>("");
   const [imageError, setImageError] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isConverting, setIsConverting] = useState<boolean>(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   // Throttle resize handler to prevent excessive updates
   const checkIsMobile = useCallback(() => {
@@ -201,10 +250,87 @@ const ImageSection: React.FC = () => {
     setImageLoaded(true);
   }, []);
 
+  const handleDownload = useCallback(async () => {
+    if (sectionRef.current === null || isConverting) return;
+
+    setIsConverting(true);
+    try {
+      let dataUrl;
+      try {
+        dataUrl = await toPng(sectionRef.current, {
+          cacheBust: true,
+          backgroundColor: "#000000",
+        });
+      } catch (conversionError) {
+        console.warn(
+          "Font embedding failed, trying without fonts:",
+          conversionError
+        );
+        dataUrl = await toPng(sectionRef.current, {
+          cacheBust: true,
+          backgroundColor: "#000000",
+          skipFonts: true,
+        });
+      }
+      const roundedDataUrl = await addRoundedCorners(dataUrl, 50);
+
+      const link = document.createElement("a");
+      link.download = `daily-inspiration-${new Date()
+        .toISOString()
+        .slice(0, 10)}.png`;
+      link.href = roundedDataUrl;
+      link.click();
+    } catch (err) {
+      console.error("Error converting to PNG:", err);
+      alert("Error creating image. Please try again.");
+    } finally {
+      setIsConverting(false);
+    }
+  }, [isConverting]);
+
+  const handleShare = useCallback(async () => {
+    if (sectionRef.current === null || isConverting) return;
+
+    setIsConverting(true);
+    try {
+      const dataUrl = await toPng(sectionRef.current, {
+        cacheBust: true,
+        backgroundColor: "#000000",
+      });
+
+      const roundedDataUrl = await addRoundedCorners(dataUrl, 50);
+
+      const response = await fetch(roundedDataUrl);
+      const blob = await response.blob();
+      const file = new File(
+        [blob],
+        `daily-inspiration-${new Date().toISOString().slice(0, 10)}.png`,
+        { type: blob.type }
+      );
+
+      if (navigator.share && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: "Daily Inspiration",
+          text: randomText,
+        });
+      } else {
+        handleDownload();
+      }
+    } catch (err) {
+      console.error("Error sharing:", err);
+      handleDownload();
+    } finally {
+      setIsConverting(false);
+    }
+  }, [isConverting, randomText, handleDownload]);
+
   if (imageError) {
     return (
       <div className="flex flex-col items-center justify-center mx-auto max-w-4xl mb-6">
-        <div className="w-full h-64 bg-gradient-to-r from-blue-400 to-purple-500 rounded-2xl shadow-lg flex items-center justify-center">
+        <div
+          className={`w-full h-64 ${colorClasses.gradient} rounded-2xl shadow-lg flex items-center justify-center`}
+        >
           <div className="text-center text-white p-4">
             <p className="text-xl md:text-2xl font-semibold mb-2">
               Daily Inspiration
@@ -223,15 +349,74 @@ const ImageSection: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center mx-auto max-w-4xl mb-6 relative">
+      {/* Share/Download buttons */}
+      <div className="absolute top-4 right-4 z-10 flex gap-2">
+        <button
+          onClick={handleShare}
+          disabled={isConverting}
+          className={`bg-gray-800/80 hover:bg-gray-700 p-2 rounded-full shadow-md transition-all duration-200 disabled:opacity-50 ${colorClasses.text}`}
+          title="Share image"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
+            />
+          </svg>
+        </button>
+        <button
+          onClick={handleDownload}
+          disabled={isConverting}
+          className={`bg-gray-800/80 hover:bg-gray-700 p-2 rounded-full shadow-md transition-all duration-200 disabled:opacity-50 ${colorClasses.text}`}
+          title="Download image"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+            />
+          </svg>
+        </button>
+      </div>
+
       {/* Image with overlay text */}
-      <div className="relative w-full rounded-2xl shadow-lg overflow-hidden">
+      <div
+        className="relative w-full rounded-2xl shadow-lg overflow-hidden"
+        ref={sectionRef}
+      >
         {!imageLoaded && imageSrc && (
-          <div className="w-full h-64 bg-gray-200 animate-pulse rounded-2xl flex items-center justify-center">
-            <div className="text-gray-500">Loading image...</div>
+          <div
+            className={`w-full h-64 ${
+              theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+            } animate-pulse rounded-2xl flex items-center justify-center`}
+          >
+            <div
+              className={`${
+                theme === "dark" ? "text-gray-400" : "text-gray-500"
+              }`}
+            >
+              Loading image...
+            </div>
           </div>
         )}
         {imageSrc ? (
-          <Image
+          <NextImage
             src={imageSrc}
             width={800}
             height={400}
@@ -244,8 +429,18 @@ const ImageSection: React.FC = () => {
             onLoad={handleImageLoad}
           />
         ) : (
-          <div className="w-full h-64 bg-gray-200 animate-pulse rounded-2xl flex items-center justify-center">
-            <div className="text-gray-500">Loading image...</div>
+          <div
+            className={`w-full h-64 ${
+              theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+            } animate-pulse rounded-2xl flex items-center justify-center`}
+          >
+            <div
+              className={`${
+                theme === "dark" ? "text-gray-400" : "text-gray-500"
+              }`}
+            >
+              Loading image...
+            </div>
           </div>
         )}
 
