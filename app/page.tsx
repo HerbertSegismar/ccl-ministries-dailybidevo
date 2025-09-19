@@ -61,29 +61,35 @@ const Home = () => {
   const currentDay = new Date().getDate();
   const currentMonth = new Date().toLocaleString("default", { month: "long" });
 
-  // Bible versions available (same as in settings)
+  // Bible versions available with mapping to Bolls API codes
   const bibleVersions = [
-    { value: "NIV", label: "NIV" },
-    { value: "ESV", label: "ESV" },
-    { value: "KJV", label: "KJV" },
-    { value: "NKJV", label: "NKJV" },
-    { value: "NASB", label: "NASB" },
-    { value: "ASV", label: "ASV" },
-    { value: "BBE", label: "BBE" },
-    { value: "DARBY", label: "DARBY" },
-    { value: "DRA", label: "DOUAY-RHEIMS" },
-    { value: "WEB", label: "WEB" },
-    { value: "WEBBE", label: "WEBBE" },
-    { value: "YLT", label: "YLT" },
-    { value: "OEB-CW", label: "OEB-CW" },
-    { value: "OEB-US", label: "OEB-US" },
-    { value: "CHEROKEE", label: "CHEROKEE" },
-    { value: "CUV", label: "CUV" },
-    { value: "BKR", label: "BKR" },
-    { value: "CLEMENTINE", label: "CLEMENTINE" },
-    { value: "ALMEIDA", label: "ALMEIDA" },
-    { value: "RCCV", label: "RCCV" },
+    { value: "NIV", label: "NIV", bollsCode: "NIV" },
+    { value: "ESV", label: "ESV", bollsCode: "ESV" },
+    { value: "KJV", label: "KJV", bollsCode: "KJV" },
+    { value: "NKJV", label: "NKJV", bollsCode: "NKJV" },
+    { value: "NASB", label: "NASB", bollsCode: "NASB" },
+    { value: "ASV", label: "ASV", bollsCode: "ASV" },
+    { value: "BBE", label: "BBE", bollsCode: "BBE" },
+    { value: "DARBY", label: "DARBY", bollsCode: "DARBY" },
+    { value: "DRA", label: "DOUAY-RHEIMS", bollsCode: "DRA" },
+    { value: "WEB", label: "WEB", bollsCode: "WEB" },
+    { value: "WEBBE", label: "WEBBE", bollsCode: "WEBBE" },
+    { value: "YLT", label: "YLT", bollsCode: "YLT" },
+    { value: "OEB-CW", label: "OEB-CW", bollsCode: "OEB-CW" },
+    { value: "OEB-US", label: "OEB-US", bollsCode: "OEB-US" },
+    { value: "CHEROKEE", label: "CHEROKEE", bollsCode: "CHEROKEE" },
+    { value: "CUV", label: "CUV", bollsCode: "CUV" },
+    { value: "BKR", label: "BKR", bollsCode: "BKR" },
+    { value: "CLEMENTINE", label: "CLEMENTINE", bollsCode: "CLEMENTINE" },
+    { value: "ALMEIDA", label: "ALMEIDA", bollsCode: "ALMEIDA" },
+    { value: "RCCV", label: "RCCV", bollsCode: "RCCV" },
   ];
+
+  // Helper function to get Bolls API code for a version
+  const getBollsVersionCode = (version: string) => {
+    const versionObj = bibleVersions.find((v) => v.value === version);
+    return versionObj ? versionObj.bollsCode : "KJV"; // Default to KJV if not found
+  };
 
   const getDevotionalForDate = useCallback(
     (day: number) =>
@@ -125,18 +131,18 @@ const Home = () => {
     return null;
   };
 
-   const parseVerseReference = (reference: string) => {
-     // Match patterns like "John 3:1-5", "1 John 1:1-5", "John 3:1", or "John 3"
-     const match = reference.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
-     if (!match) return null;
+  const parseVerseReference = (reference: string) => {
+    // Match patterns like "John 3:1-5", "1 John 1:1-5", "John 3:1", or "John 3"
+    const match = reference.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
+    if (!match) return null;
 
-     return {
-       book: match[1].toLowerCase().replace(/\s+/g, ""),
-       chapter: match[2],
-       verse: match[3] || "1", // Default to first verse if not specified
-       endVerse: match[4] || match[3] || "1", // Use start verse if no end verse
-     };
-   };
+    return {
+      book: match[1].toLowerCase().replace(/\s+/g, ""),
+      chapter: match[2],
+      verse: match[3] || "1", // Default to first verse if not specified
+      endVerse: match[4] || match[3] || "1", // Use start verse if no end verse
+    };
+  };
 
   interface ParsedPlan {
     book: string;
@@ -151,32 +157,33 @@ const Home = () => {
 
       // Determine which version to use
       const versionToUse = useFallback ? "kjv" : bibleVersion;
+      const bollsVersionCode = getBollsVersionCode(versionToUse);
 
       // Build the URL based on whether we want specific verses or whole chapter
       let url: string;
 
       if (startVerse === undefined && endVerse === undefined) {
-        // Whole chapter request - use single_chapter_book_matching=indifferent
-        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}&single_chapter_book_matching=indifferent`;
+        // Whole chapter request
+        url = `https://bolls.life/get-chapter/${bollsVersionCode}/${book}/${chapter}/`;
       } else if (
         startVerse !== undefined &&
         endVerse !== undefined &&
         startVerse === endVerse
       ) {
         // Single verse request
-        url = `https://bible-api.com/${book}+${chapter}:${startVerse}?translation=${versionToUse}`;
+        url = `https://bolls.life/get-text/${bollsVersionCode}/${book}/${chapter}/${startVerse}/`;
       } else if (startVerse !== undefined && endVerse !== undefined) {
         // Verse range request
-        url = `https://bible-api.com/${book}+${chapter}:${startVerse}-${endVerse}?translation=${versionToUse}`;
+        url = `https://bolls.life/get-text/${bollsVersionCode}/${book}/${chapter}/${startVerse}-${endVerse}/`;
       } else {
         // Default to whole chapter if only startVerse is provided
-        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}&single_chapter_book_matching=indifferent`;
+        url = `https://bolls.life/get-chapter/${bollsVersionCode}/${book}/${chapter}/`;
       }
 
       // Try multiple API endpoints with fallbacks
       const apiEndpoints = [
         url,
-        url.replace(`translation=${versionToUse}`, "translation=kjv"),
+        url.replace(bollsVersionCode, getBollsVersionCode("KJV")),
       ];
 
       for (const endpoint of apiEndpoints) {
@@ -185,10 +192,10 @@ const Home = () => {
           if (response.ok) {
             const data = await response.json();
 
-            // Handle different API response formats
-            if (data.verses) {
+            // Handle Bolls API response format
+            if (Array.isArray(data)) {
               // Format verses with numbers and remove unnecessary spaces
-              const versesText = data.verses
+              const versesText = data
                 .map(
                   (v: BibleVerse) =>
                     `${v.verse}. ${v.text.trim().replace(/\s+/g, " ")}`
@@ -206,24 +213,6 @@ const Home = () => {
 
               return {
                 text: versesText,
-                version: versionToUse,
-                isFullChapter: false,
-              };
-            } else if (data.text) {
-              // If we only get text, try to parse it and remove unnecessary spaces
-              const text = data.text.replace(/\s+/g, " ").trim();
-
-              // For full chapters, add chapter header
-              if (startVerse === undefined && endVerse === undefined) {
-                return {
-                  text: `Chapter ${chapter}\n\n${text}`,
-                  version: versionToUse,
-                  isFullChapter: true,
-                };
-              }
-
-              return {
-                text: text,
                 version: versionToUse,
                 isFullChapter: false,
               };
@@ -247,16 +236,17 @@ const Home = () => {
       if (!parsedRef) return null;
 
       const { book, chapter, verse, endVerse } = parsedRef;
+      const bollsVersionCode = getBollsVersionCode(bibleVersion);
 
       // If it's a single verse
       if (verse === endVerse) {
         try {
           const response = await fetch(
-            `https://bible-api.com/${book}+${chapter}:${verse}?translation=${bibleVersion}`
+            `https://bolls.life/get-text/${bollsVersionCode}/${book}/${chapter}/${verse}/`
           );
           if (response.ok) {
             const data = await response.json();
-            return data.text?.replace(/\s+/g, " ").trim() || "";
+            return data[0]?.text?.replace(/\s+/g, " ").trim() || "";
           }
         } catch {
           console.log(
@@ -267,18 +257,18 @@ const Home = () => {
         // If it's a verse range
         try {
           const response = await fetch(
-            `https://bible-api.com/${book}+${chapter}:${verse}-${endVerse}?translation=${bibleVersion}`
+            `https://bolls.life/get-text/${bollsVersionCode}/${book}/${chapter}/${verse}-${endVerse}/`
           );
           if (response.ok) {
             const data = await response.json();
 
             // Return the text without verse numbers
-            if (data.verses) {
-              return data.verses
+            if (Array.isArray(data)) {
+              return data
                 .map((v: BibleVerse) => v.text.trim().replace(/\s+/g, " "))
                 .join(" ");
             }
-            return data.text?.replace(/\s+/g, " ").trim() || "";
+            return "";
           }
         } catch {
           console.log(
@@ -290,20 +280,22 @@ const Home = () => {
       // Fallback to KJV
       try {
         const response = await fetch(
-          `https://bible-api.com/${book}+${chapter}:${verse}${
+          `https://bolls.life/get-text/${getBollsVersionCode(
+            "KJV"
+          )}/${book}/${chapter}/${verse}${
             verse !== endVerse ? `-${endVerse}` : ""
-          }?translation=kjv`
+          }/`
         );
         if (response.ok) {
           const data = await response.json();
 
           // Return the text without verse numbers
-          if (data.verses && verse !== endVerse) {
-            return data.verses
+          if (Array.isArray(data) && verse !== endVerse) {
+            return data
               .map((v: BibleVerse) => v.text.trim().replace(/\s+/g, " "))
               .join(" ");
           }
-          return data.text?.replace(/\s+/g, " ").trim() || "";
+          return data[0]?.text?.replace(/\s+/g, " ").trim() || "";
         }
       } catch {
         console.log("Failed to fetch verse with KJV");

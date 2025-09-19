@@ -116,7 +116,6 @@ const JesusAttributes = [
   "The Lord Who Sees",
   "The Angel of God",
   "The Angel of the Lord",
-  // Hebrew names of God
   "Yahweh",
   "Jehovah",
   "Elohim",
