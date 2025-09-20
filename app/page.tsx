@@ -789,7 +789,7 @@ const Home = () => {
               theme === "dark"
                 ? "bg-gray-700/80 border-gray-600/30 text-gray-200"
                 : "bg-white/80 border-white/30 text-gray-700"
-            }`}
+            } hover:scale-105 transition-all duration-100` }
           >
             <FaHeart className="mr-2 text-red-500" /> Reflection
           </button>
