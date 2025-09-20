@@ -106,7 +106,7 @@ const Reflection = () => {
     } else {
       router.push("/");
     }
-  }, [router, bibleVersion, devotional]); // Added bibleVersion as dependency
+  }, [router, bibleVersion ]); // Added bibleVersion as dependency
 
   // Page entrance animation
   useGSAP(() => {
