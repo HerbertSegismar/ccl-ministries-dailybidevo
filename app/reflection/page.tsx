@@ -27,7 +27,10 @@ const Reflection = () => {
 
   useEffect(() => {
     // Fetch verse from API
-    const fetchVerseFromAPI = async (verseReference: string) => {
+    const fetchVerseFromAPI = async (
+      verseReference: string,
+      devotionalId: string
+    ) => {
       setIsLoadingVerse(true);
       setVerseError(null);
 
@@ -53,12 +56,7 @@ const Reflection = () => {
           setVerseText(text);
 
           // Store in localStorage for future use
-          if (devotional) {
-            localStorage.setItem(
-              `verse-${devotional.id}-${bibleVersion}`,
-              text
-            );
-          }
+          localStorage.setItem(`verse-${devotionalId}-${bibleVersion}`, text);
         } else {
           // Fallback to KJV if the selected version fails
           const fallbackResponse = await fetch(
@@ -98,7 +96,10 @@ const Reflection = () => {
         }
 
         // Fetch verse text from API
-        fetchVerseFromAPI(parsedDevotional.verse.reference);
+        fetchVerseFromAPI(
+          parsedDevotional.verse.reference,
+          parsedDevotional.id
+        );
       } catch (error) {
         console.error("Error parsing devotional data:", error);
         router.push("/");
@@ -106,7 +107,7 @@ const Reflection = () => {
     } else {
       router.push("/");
     }
-  }, [router, bibleVersion ]); // Added bibleVersion as dependency
+  }, [router, bibleVersion]);
 
   // Page entrance animation
   useGSAP(() => {
