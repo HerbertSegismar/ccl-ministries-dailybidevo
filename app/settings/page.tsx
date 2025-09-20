@@ -311,11 +311,7 @@ const Settings = () => {
               onChange={(e) => setBibleVersion(e.target.value)}
               className="bg-white dark:bg-gray-600/80 border border-gray-400 dark:border-gray-500 text-gray-900 dark:text-gray-100 text-sm rounded-lg focus:ring-purple-700 focus:border-purple-700 block w-full p-2.5"
             >
-              <option value="NIV">New International Version (NIV)</option>
-              <option value="ESV">English Standard Version (ESV)</option>
               <option value="KJV">King James Version (KJV)</option>
-              <option value="NKJV">New King James Version (NKJV)</option>
-              <option value="NASB">New American Standard Bible (NASB)</option>
               <option value="ASV">American Standard Version (ASV)</option>
               <option value="BBE">Bible in Basic English (BBE)</option>
               <option value="DARBY">Darby Bible (DARBY)</option>

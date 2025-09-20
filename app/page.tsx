@@ -71,11 +71,7 @@ const Home = () => {
   const currentMonth = new Date().toLocaleString("default", { month: "long" });
 
   const bibleVersions = [
-    { value: "NIV", label: "NIV" },
-    { value: "ESV", label: "ESV" },
     { value: "KJV", label: "KJV" },
-    { value: "NKJV", label: "NKJV" },
-    { value: "NASB", label: "NASB" },
     { value: "ASV", label: "ASV" },
     { value: "BBE", label: "BBE" },
     { value: "DARBY", label: "DARBY" },

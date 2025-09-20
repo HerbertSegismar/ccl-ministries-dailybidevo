@@ -82,14 +82,39 @@ const Bookmarks = () => {
     async (reference: string) => {
       setIsLoadingVerse(true);
       try {
-        const response = await fetch(
-          `https://bible-api.com/${reference}?translation=${bibleVersion}`
-        );
-        if (response.ok) {
-          const data = await response.json();
-          return data.text || "Unable to fetch verse text";
+        // Define API endpoints to try (primary and fallbacks)
+        const apiEndpoints = [
+          `https://bible-api.com/${reference}?translation=${bibleVersion}`,
+          `https://bible-api.com/${reference}?translation=kjv`,
+        ];
+
+        let lastError: Error | null = null;
+
+        for (const endpoint of apiEndpoints) {
+          try {
+            const response = await fetch(endpoint);
+
+            if (response.ok) {
+              const data = await response.json();
+
+              // Handle different API response formats
+              if (data.text) {
+                return data.text;
+              } else if (data.data?.content) {
+                return data.data.content;
+              }
+            }
+          } catch (error) {
+            lastError =
+              error instanceof Error ? error : new Error(String(error));
+            console.warn(
+              `Failed to fetch from ${endpoint}, trying next endpoint...`
+            );
+            continue;
+          }
         }
-        return "Unable to fetch verse text";
+
+        throw lastError || new Error("All API endpoints failed");
       } catch (error) {
         console.error("Error fetching verse:", error);
         return "Unable to fetch verse text";
