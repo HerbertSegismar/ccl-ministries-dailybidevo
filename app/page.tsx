@@ -34,8 +34,8 @@ interface BibleVerse {
 const SINGLE_CHAPTER_BOOKS = new Set([
   "obadiah",
   "philemon",
-  "2john",
-  "3john",
+  "2+john",
+  "3+john",
   "jude",
 ]);
 
@@ -79,7 +79,6 @@ const Home = () => {
     { value: "ASV", label: "ASV" },
     { value: "BBE", label: "BBE" },
     { value: "DARBY", label: "DARBY" },
-    { value: "DRA", label: "DOUAY-RHEIMS" },
     { value: "WEB", label: "WEB" },
     { value: "WEBBE", label: "WEBBE" },
     { value: "YLT", label: "YLT" },
@@ -112,10 +111,13 @@ const Home = () => {
   }, []);
 
   const parseReadingPlan = (plan: string) => {
+    // Updated regex to handle single verses and ranges
     const match = plan.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
     if (match) {
+      // Add '+' between number and book name
+      const bookPart = match[1].replace(/(\d)\s?(\w)/, "$1+$2").toLowerCase();
       return {
-        book: match[1].toLowerCase().replace(/\s+/g, ""),
+        book: bookPart.replace(/\s+/g, ""),
         chapter: match[2],
         startVerse: match[3] ? parseInt(match[3]) : undefined,
         endVerse: match[4] ? parseInt(match[4]) : undefined,
@@ -123,13 +125,15 @@ const Home = () => {
     }
     return null;
   };
-
   const parseVerseReference = (reference: string) => {
     const match = reference.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
     if (!match) return null;
 
+    // Add '+' between number and book name
+    const bookPart = match[1].replace(/(\d)\s?(\w)/, "$1+$2").toLowerCase();
+
     return {
-      book: match[1].toLowerCase().replace(/\s+/g, ""),
+      book: bookPart.replace(/\s+/g, ""),
       chapter: match[2],
       verse: match[3] || "1",
       endVerse: match[4] || match[3] || "1",
@@ -160,11 +164,7 @@ const Home = () => {
       } else if (isWholeChapter) {
         // Regular whole chapter request
         url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}`;
-      } else if (
-        startVerse !== undefined &&
-        endVerse !== undefined &&
-        startVerse === endVerse
-      ) {
+      } else if (startVerse !== undefined && endVerse === undefined) {
         // Single verse request
         url = `https://bible-api.com/${book}+${chapter}:${startVerse}?translation=${versionToUse}`;
       } else if (startVerse !== undefined && endVerse !== undefined) {
@@ -920,6 +920,8 @@ const Home = () => {
                 <div className="mb-2">
                   <input
                     type="text"
+                    id="reading-plan-input"
+                    name="readingPlan"
                     value={customReadingPlan}
                     onChange={(e) => setCustomReadingPlan(e.target.value)}
                     onKeyDown={handleReadingPlanKeyDown}

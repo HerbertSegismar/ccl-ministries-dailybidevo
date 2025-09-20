@@ -38,15 +38,24 @@ const Devotionals = () => {
 
   const colorClasses = getColorClasses(colorScheme);
 
-  // Function to parse reading plan (e.g., "John 1:1-5", "John 3", "John 3-4")
+  const SINGLE_CHAPTER_BOOKS = new Set([
+    "obadiah",
+    "philemon",
+    "2+john",
+    "3+john",
+    "jude",
+  ]);
+
   const parseReadingPlan = (plan: string) => {
-    // Match patterns like "John 1:1-5", "1 John 1:1-5", "John 1", or "John 3-4"
+    // Updated regex to handle single verses and ranges
     const match = plan.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
     if (match) {
+      // Add '+' between number and book name
+      const bookPart = match[1].replace(/(\d)\s?(\w)/, "$1+$2").toLowerCase();
       return {
-        book: match[1].toLowerCase().replace(/\s+/g, ""), // Convert to lowercase and remove spaces
+        book: bookPart.replace(/\s+/g, ""),
         chapter: match[2],
-        startVerse: match[3] ? parseInt(match[3]) : undefined, // undefined means whole chapter
+        startVerse: match[3] ? parseInt(match[3]) : undefined,
         endVerse: match[4] ? parseInt(match[4]) : undefined,
       };
     }
@@ -68,29 +77,29 @@ const Devotionals = () => {
   const fetchBibleVerses = useCallback(
     async (parsedPlan: ParsedPlan, useFallback = false) => {
       const { book, chapter, startVerse, endVerse } = parsedPlan;
-
-      // Determine which version to use
       const versionToUse = useFallback ? "kjv" : bibleVersion;
 
-      // Build the URL based on whether we want specific verses or whole chapter
       let url: string;
 
-      if (startVerse === undefined && endVerse === undefined) {
-        // Whole chapter request - use single_chapter_book_matching=indifferent
-        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}&single_chapter_book_matching=indifferent`;
-      } else if (
-        startVerse !== undefined &&
-        endVerse !== undefined &&
-        startVerse === endVerse
-      ) {
+      // Check if it's a single-chapter book and we're fetching the entire chapter
+      const isSingleChapterBook = SINGLE_CHAPTER_BOOKS.has(book);
+      const isWholeChapter = startVerse === undefined && endVerse === undefined;
+
+      if (isSingleChapterBook && isWholeChapter) {
+        // Use special format for single-chapter books
+        url = `https://bible-api.com/${book}%201?translation=${versionToUse}&single_chapter_book_matching=indifferent`;
+      } else if (isWholeChapter) {
+        // Regular whole chapter request
+        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}`;
+      } else if (startVerse !== undefined && endVerse === undefined) {
         // Single verse request
         url = `https://bible-api.com/${book}+${chapter}:${startVerse}?translation=${versionToUse}`;
       } else if (startVerse !== undefined && endVerse !== undefined) {
         // Verse range request
         url = `https://bible-api.com/${book}+${chapter}:${startVerse}-${endVerse}?translation=${versionToUse}`;
       } else {
-        // Default to whole chapter if only startVerse is provided
-        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}&single_chapter_book_matching=indifferent`;
+        // Default to whole chapter
+        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}`;
       }
 
       // Try multiple API endpoints with fallbacks
@@ -684,6 +693,8 @@ const Devotionals = () => {
                     <div className="mb-2">
                       <input
                         type="text"
+                        id="reading-plan-input"
+                        name="readingPlan"
                         value={customReadingPlan}
                         onChange={(e) => setCustomReadingPlan(e.target.value)}
                         onKeyDown={handleReadingPlanKeyDown}
