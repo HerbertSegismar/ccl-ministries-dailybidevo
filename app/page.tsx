@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal } from "react";
 import {
   FaBook,
   FaPrayingHands,
@@ -24,38 +24,17 @@ import { getColorClasses } from "./contexts/ThemeContext";
 import type { Devotional } from "@/app/types";
 import ImageSection from "./components/ImageSection";
 import Matrix from "./components/Matrix";
-
-interface BibleVerse {
-  verse: number;
-  text: string;
-}
-
-// List of single-chapter books
-const SINGLE_CHAPTER_BOOKS = new Set([
-  "obadiah",
-  "philemon",
-  "2+john",
-  "3+john",
-  "jude",
-]);
+import { useDevotionalData } from "./components/DataFetcher";
 
 const Home = () => {
   const router = useRouter();
   const { theme, colorScheme } = useTheme();
   const { bibleVersion, setBibleVersion } = useBibleVersion();
-  const [currentDevotional, setCurrentDevotional] = useState<Devotional | null>(
-    null
-  );
   const [bookmarked, setBookmarked] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const [readingPlanVerses, setReadingPlanVerses] = useState<string>("");
-  const [isLoadingVerses, setIsLoadingVerses] = useState(false);
-  const [verseError, setVerseError] = useState<string | null>(null);
   const [isEditingReadingPlan, setIsEditingReadingPlan] = useState(false);
   const [customReadingPlan, setCustomReadingPlan] = useState("");
-  const [dailyVerseText, setDailyVerseText] = useState<string>("");
-  const [isLoadingDailyVerse, setIsLoadingDailyVerse] = useState(false);
   const [showVersionDropdown, setShowVersionDropdown] = useState(false);
 
   const appRef = useRef<HTMLDivElement>(null);
@@ -88,6 +67,21 @@ const Home = () => {
     []
   );
 
+  const {
+    currentDevotional,
+    setCurrentDevotional,
+    readingPlanVerses,
+    isLoadingVerses,
+    verseError,
+    dailyVerseText,
+    isLoadingDailyVerse,
+    loadVerses,
+  } = useDevotionalData({
+    currentDay,
+    getDevotionalForDate,
+    bibleVersion,
+  });
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -105,284 +99,6 @@ const Home = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
-  const parseReadingPlan = (plan: string) => {
-    // Updated regex to handle single verses and ranges
-    const match = plan.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
-    if (match) {
-      // Add '+' between number and book name
-      const bookPart = match[1].replace(/(\d)\s?(\w)/, "$1+$2").toLowerCase();
-      return {
-        book: bookPart.replace(/\s+/g, ""),
-        chapter: match[2],
-        startVerse: match[3] ? parseInt(match[3]) : undefined,
-        endVerse: match[4] ? parseInt(match[4]) : undefined,
-      };
-    }
-    return null;
-  };
-  const parseVerseReference = (reference: string) => {
-    const match = reference.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
-    if (!match) return null;
-
-    // Add '+' between number and book name
-    const bookPart = match[1].replace(/(\d)\s?(\w)/, "$1+$2").toLowerCase();
-
-    return {
-      book: bookPart.replace(/\s+/g, ""),
-      chapter: match[2],
-      verse: match[3] || "1",
-      endVerse: match[4] || match[3] || "1",
-    };
-  };
-
-  interface ParsedPlan {
-    book: string;
-    chapter: string;
-    startVerse?: number;
-    endVerse?: number;
-  }
-
-  const fetchBibleVerses = useCallback(
-    async (parsedPlan: ParsedPlan, useFallback = false) => {
-      const { book, chapter, startVerse, endVerse } = parsedPlan;
-      const versionToUse = useFallback ? "kjv" : bibleVersion;
-
-      let url: string;
-
-      // Check if it's a single-chapter book and we're fetching the entire chapter
-      const isSingleChapterBook = SINGLE_CHAPTER_BOOKS.has(book);
-      const isWholeChapter = startVerse === undefined && endVerse === undefined;
-
-      if (isSingleChapterBook && isWholeChapter) {
-        // Use special format for single-chapter books
-        url = `https://bible-api.com/${book}%201?translation=${versionToUse}&single_chapter_book_matching=indifferent`;
-      } else if (isWholeChapter) {
-        // Regular whole chapter request
-        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}`;
-      } else if (startVerse !== undefined && endVerse === undefined) {
-        // Single verse request
-        url = `https://bible-api.com/${book}+${chapter}:${startVerse}?translation=${versionToUse}`;
-      } else if (startVerse !== undefined && endVerse !== undefined) {
-        // Verse range request
-        url = `https://bible-api.com/${book}+${chapter}:${startVerse}-${endVerse}?translation=${versionToUse}`;
-      } else {
-        // Default to whole chapter
-        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}`;
-      }
-
-      const apiEndpoints = [
-        url,
-        url.replace(`translation=${versionToUse}`, "translation=kjv"),
-      ];
-
-      for (const endpoint of apiEndpoints) {
-        try {
-          const response = await fetch(endpoint);
-          if (response.ok) {
-            const data = await response.json();
-            if (data.verses) {
-              const versesText = data.verses
-                .map(
-                  (v: BibleVerse) =>
-                    `${v.verse}. ${v.text.trim().replace(/\s+/g, " ")}`
-                )
-                .join("\n\n");
-
-              if (isWholeChapter) {
-                return {
-                  text: `Chapter ${chapter}\n\n${versesText}`,
-                  version: versionToUse,
-                  isFullChapter: true,
-                };
-              }
-
-              return {
-                text: versesText,
-                version: versionToUse,
-                isFullChapter: false,
-              };
-            } else if (data.text) {
-              const text = data.text.replace(/\s+/g, " ").trim();
-              if (isWholeChapter) {
-                return {
-                  text: `Chapter ${chapter}\n\n${text}`,
-                  version: versionToUse,
-                  isFullChapter: true,
-                };
-              }
-              return {
-                text: text,
-                version: versionToUse,
-                isFullChapter: false,
-              };
-            }
-          }
-        } catch {
-          console.log(
-            `Failed to fetch from ${endpoint}, trying next endpoint...`
-          );
-        }
-      }
-
-      throw new Error("All API endpoints failed");
-    },
-    [bibleVersion]
-  );
-
-  const fetchDailyVerse = useCallback(
-    async (verseReference: string) => {
-      const parsedRef = parseVerseReference(verseReference);
-      if (!parsedRef) return null;
-
-      const { book, chapter, verse, endVerse } = parsedRef;
-
-      // If it's a single verse
-      if (verse === endVerse) {
-        try {
-          const response = await fetch(
-            `https://bible-api.com/${book}+${chapter}:${verse}?translation=${bibleVersion}`
-          );
-          if (response.ok) {
-            const data = await response.json();
-            return data.text?.replace(/\s+/g, " ").trim() || "";
-          }
-        } catch {
-          console.log(
-            `Failed to fetch verse with ${bibleVersion}, trying KJV...`
-          );
-        }
-      } else {
-        // If it's a verse range
-        try {
-          const response = await fetch(
-            `https://bible-api.com/${book}+${chapter}:${verse}-${endVerse}?translation=${bibleVersion}`
-          );
-          if (response.ok) {
-            const data = await response.json();
-
-            // Return the text without verse numbers
-            if (data.verses) {
-              return data.verses
-                .map((v: BibleVerse) => v.text.trim().replace(/\s+/g, " "))
-                .join(" ");
-            }
-            return data.text?.replace(/\s+/g, " ").trim() || "";
-          }
-        } catch {
-          console.log(
-            `Failed to fetch verse range with ${bibleVersion}, trying KJV...`
-          );
-        }
-      }
-
-      // Fallback to KJV
-      try {
-        const response = await fetch(
-          `https://bible-api.com/${book}+${chapter}:${verse}${
-            verse !== endVerse ? `-${endVerse}` : ""
-          }?translation=kjv`
-        );
-        if (response.ok) {
-          const data = await response.json();
-
-          // Return the text without verse numbers
-          if (data.verses && verse !== endVerse) {
-            return data.verses
-              .map((v: BibleVerse) => v.text.trim().replace(/\s+/g, " "))
-              .join(" ");
-          }
-          return data.text?.replace(/\s+/g, " ").trim() || "";
-        }
-      } catch {
-        console.log("Failed to fetch verse with KJV");
-      }
-
-      return null;
-    },
-    [bibleVersion]
-  );
-
-  const loadVerses = useCallback(
-    async (plan: string) => {
-      // Check if this is a chapter range like "john 3-4"
-      const chapterRangeMatch = plan.match(/(\d?\s?\w+)\s(\d+)-(\d+)/);
-
-      if (chapterRangeMatch) {
-        // Handle chapter range by making multiple requests
-        const book = chapterRangeMatch[1].toLowerCase().replace(/\s+/g, "");
-        const startChapter = parseInt(chapterRangeMatch[2]);
-        const endChapter = parseInt(chapterRangeMatch[3]);
-
-        setIsLoadingVerses(true);
-        setVerseError(null);
-
-        try {
-          const allChaptersText: string[] = [];
-
-          for (let chapter = startChapter; chapter <= endChapter; chapter++) {
-            const parsedPlan = {
-              book,
-              chapter: chapter.toString(),
-              startVerse: undefined,
-              endVerse: undefined,
-            };
-
-            const result = await fetchBibleVerses(parsedPlan);
-            allChaptersText.push(result.text);
-          }
-
-          setReadingPlanVerses(allChaptersText.join("\n\n"));
-        } catch (error) {
-          console.error("Error fetching chapter range:", error);
-          setVerseError(
-            "Unable to load chapter range. Please check the book and chapter numbers."
-          );
-          setReadingPlanVerses("");
-        } finally {
-          setIsLoadingVerses(false);
-        }
-        return;
-      }
-
-      // Handle single chapter or verse range requests
-      const parsedPlan = parseReadingPlan(plan);
-      if (!parsedPlan) {
-        setReadingPlanVerses("Unable to parse reading plan.");
-        return;
-      }
-
-      setIsLoadingVerses(true);
-      setVerseError(null);
-
-      try {
-        // First try with the selected version
-        const result = await fetchBibleVerses(parsedPlan);
-        setReadingPlanVerses(result.text);
-      } catch (error) {
-        console.error("Error fetching verses:", error);
-
-        // If the selected version failed, try with KJV as fallback
-        try {
-          const fallbackResult = await fetchBibleVerses(parsedPlan, true);
-          setReadingPlanVerses(fallbackResult.text);
-          setVerseError(`Using KJV (${bibleVersion} not available)`);
-        } catch (fallbackError) {
-          console.error(
-            "Error fetching verses with KJV fallback:",
-            fallbackError
-          );
-          setVerseError(
-            "Input may have exceeded available verses. Try typing the chapter only without verses."
-          );
-          setReadingPlanVerses(""); // Clear any previous verses
-        }
-      } finally {
-        setIsLoadingVerses(false);
-      }
-    },
-    [fetchBibleVerses, bibleVersion]
-  );
 
   // Function to render verses with proper formatting
   const renderVerses = (text: string) => {
@@ -422,71 +138,6 @@ const Home = () => {
     });
   };
 
-  const loadDailyVerse = useCallback(async () => {
-    if (!currentDevotional) return;
-
-    // Check if the verse is available in the selected version
-    const verseText = currentDevotional.verse.text[bibleVersion];
-    if (verseText) {
-      setDailyVerseText(verseText);
-      // Store in localStorage for the Reflection component
-      localStorage.setItem(
-        `verse-${currentDevotional.id}-${bibleVersion}`,
-        verseText
-      );
-      return;
-    }
-
-    // If not available, fetch it from the API
-    setIsLoadingDailyVerse(true);
-    try {
-      const fetchedVerse = await fetchDailyVerse(
-        currentDevotional.verse.reference
-      );
-      if (fetchedVerse) {
-        setDailyVerseText(fetchedVerse);
-        // Store in localStorage for the Reflection component
-        localStorage.setItem(
-          `verse-${currentDevotional.id}-${bibleVersion}`,
-          fetchedVerse
-        );
-      } else {
-        // If API fails, fall back to KJV version from the data
-        const fallbackText =
-          currentDevotional.verse.text.kjv || "Verse not available";
-        setDailyVerseText(fallbackText);
-        localStorage.setItem(
-          `verse-${currentDevotional.id}-${bibleVersion}`,
-          fallbackText
-        );
-      }
-    } catch (error) {
-      console.error("Error fetching daily verse:", error);
-      const fallbackText =
-        currentDevotional.verse.text.kjv || "Verse not available";
-      setDailyVerseText(fallbackText);
-      localStorage.setItem(
-        `verse-${currentDevotional.id}-${bibleVersion}`,
-        fallbackText
-      );
-    } finally {
-      setIsLoadingDailyVerse(false);
-    }
-  }, [currentDevotional, bibleVersion, fetchDailyVerse]);
-
-  useEffect(() => {
-    if (!currentDevotional) return;
-
-    // Set the custom reading plan to the current devotional's reading plan
-    setCustomReadingPlan(currentDevotional.readingPlan);
-
-    // Load verses for the current devotional
-    loadVerses(currentDevotional.readingPlan);
-
-    // Load the daily verse
-    loadDailyVerse();
-  }, [currentDevotional, bibleVersion, loadVerses, loadDailyVerse]);
-
   const runContentAnimations = useCallback(() => {
     const tl = gsap.timeline();
     if (verseRef.current) {
@@ -515,13 +166,11 @@ const Home = () => {
   // Set initial devotional and register service worker
   useEffect(() => {
     setIsMounted(true);
-    const todayDevotional = getDevotionalForDate(currentDay);
-    setCurrentDevotional(todayDevotional);
 
     if (typeof window !== "undefined" && "serviceWorker" in navigator) {
       navigator.serviceWorker.register("/sw.js");
     }
-  }, [currentDay, getDevotionalForDate]);
+  }, []);
 
   // Check bookmarks and run animations
   useEffect(() => {
@@ -596,13 +245,10 @@ const Home = () => {
     }
 
     if (typeof window !== "undefined" && navigator.share && currentDevotional) {
-      const verseText = dailyVerseText || currentDevotional.verse.text.kjv;
-      const verseref = currentDevotional.verse.reference;
-
       navigator
         .share({
           title: currentDevotional.title,
-          text: verseText + " " + verseref,
+          text: dailyVerseText + " " + currentDevotional.verse.reference,
           url: window.location.href,
         })
         .catch(() => alert("Devotional shared!"));
@@ -686,6 +332,12 @@ const Home = () => {
     setBibleVersion(version);
     setShowVersionDropdown(false);
   };
+
+  useEffect(() => {
+    if (currentDevotional) {
+      setCustomReadingPlan(currentDevotional.readingPlan);
+    }
+  }, [currentDevotional]);
 
   if (!currentDevotional || !isMounted) {
     return (
@@ -830,7 +482,7 @@ const Home = () => {
                   theme === "dark" ? "text-gray-200" : "text-gray-800"
                 }`}
               >
-                {currentDevotional.content.split("\n\n").map((p, i) => (
+                {currentDevotional.content.split("\n\n").map((p: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined, i: Key | null | undefined) => (
                   <p key={i}>{p}</p>
                 ))}
               </div>

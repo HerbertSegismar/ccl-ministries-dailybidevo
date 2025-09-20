@@ -14,13 +14,6 @@ export const devotionals: Devotional[] = [
     id: "1",
     date: getDevotionalDate("1"),
     verse: {
-      text: {
-        NIV: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.",
-        ESV: "For I know the plans I have for you, declares the Lord, plans for welfare and not for evil, to give you a future and a hope.",
-        KJV: "For I know the thoughts that I think toward you, saith the Lord, thoughts of peace, and not of evil, to give you an expected end.",
-        NKJV: "For I know the thoughts that I think toward you, says the Lord, thoughts of peace and not of evil, to give you a future and a hope.",
-        NASB: "For I know the plans that I have for you,' declares the Lord, 'plans for prosperity and not for disaster, to give you a future and a hope.",
-      },
       reference: "Jeremiah 29:11",
       defaultVersion: "KJV",
     },
@@ -56,13 +49,6 @@ export const devotionals: Devotional[] = [
     id: "2",
     date: getDevotionalDate("2"),
     verse: {
-      text: {
-        NIV: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.",
-        ESV: "Trust in the Lord with all your heart, and do not lean on your own understanding. In all your ways acknowledge him, and he will make straight your paths.",
-        KJV: "Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.",
-        NKJV: "Trust in the Lord with all your heart, and lean not on your own understanding; In all your ways acknowledge Him, and He shall direct your paths.",
-        NASB: "Trust in the Lord with all your heart and do not lean on your own understanding. In all your ways acknowledge Him, and He will make your paths straight.",
-      },
       reference: "Proverbs 3:5-6",
       defaultVersion: "KJV",
     },
@@ -97,13 +83,6 @@ export const devotionals: Devotional[] = [
     id: "3",
     date: getDevotionalDate("3"),
     verse: {
-      text: {
-        NIV: "The Lord is my shepherd, I lack nothing. He makes me lie down in green pastures, he leads me beside quiet waters, he refreshes my soul.",
-        ESV: "The Lord is my shepherd; I shall not want. He makes me lie down in green pastures. He leads me beside still waters. He restores my soul.",
-        KJV: "The Lord is my shepherd; I shall not want. He maketh me to lie down in green pastures: he leadeth me beside the still waters. He restoreth my soul.",
-        NKJV: "The Lord is my shepherd; I shall not want. He makes me to lie down in green pastures; He leads me beside the still waters. He restores my soul.",
-        NASB: "The Lord is my shepherd, I will not be in need. He has me lie down in green pastures; He leads me beside quiet waters. He restores my soul.",
-      },
       reference: "Psalm 23:1-3",
       defaultVersion: "KJV",
     },
@@ -138,13 +117,6 @@ export const devotionals: Devotional[] = [
     id: "4",
     date: getDevotionalDate("4"),
     verse: {
-      text: {
-        NIV: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.",
-        ESV: "Do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God.",
-        KJV: "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.",
-        NKJV: "Be anxious for nothing, but in everything by prayer and supplication, with thanksgiving, let your requests be made known to God.",
-        NASB: "Do not be anxious about anything, but in everything by prayer and pleading with thanksgiving let your requests be made known to God.",
-      },
       reference: "Philippians 4:6",
       defaultVersion: "KJV",
     },
@@ -180,13 +152,6 @@ export const devotionals: Devotional[] = [
     id: "5",
     date: getDevotionalDate("5"),
     verse: {
-      text: {
-        NIV: "But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.",
-        ESV: "But they who wait for the Lord shall renew their strength; they shall mount up with wings like eagles; they shall run and not be weary; they shall walk and not faint.",
-        KJV: "But they that wait upon the Lord shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint.",
-        NKJV: "But those who wait on the Lord shall renew their strength; They shall mount up with wings like eagles, They shall run and not be weary, They shall walk and not faint.",
-        NASB: "Yet those who wait for the Lord will gain new strength; They will mount up with wings like eagles, They will run and not get tired, They will walk and not become weary.",
-      },
       reference: "Isaiah 40:31",
       defaultVersion: "KJV",
     },
@@ -223,13 +188,6 @@ export const devotionals: Devotional[] = [
     id: "6",
     date: getDevotionalDate("6"),
     verse: {
-      text: {
-        NIV: "Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth.",
-        ESV: "Be still, and know that I am God. I will be exalted among the nations, I will be exalted in the earth!",
-        KJV: "Be still, and know that I am God: I will be exalted among the heathen, I will be exalted in the earth.",
-        NKJV: "Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth!",
-        NASB: "Cease striving and know that I am God; I will be exalted among the nations, I will be exalted on the earth.",
-      },
       reference: "Psalm 46:10",
       defaultVersion: "KJV",
     },
@@ -265,13 +223,6 @@ export const devotionals: Devotional[] = [
     id: "7",
     date: getDevotionalDate("7"),
     verse: {
-      text: {
-        NIV: "Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!",
-        ESV: "Therefore, if anyone is in Christ, he is a new creation. The old has passed away; behold, the new has come.",
-        KJV: "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.",
-        NKJV: "Therefore, if anyone is in Christ, he is a new creation; old things have passed away; behold, all things have become new.",
-        NASB: "Therefore if anyone is in Christ, this person is a new creation; the old things passed away; behold, new things have come.",
-      },
       reference: "2 Corinthians 5:17",
       defaultVersion: "KJV",
     },
@@ -306,13 +257,6 @@ export const devotionals: Devotional[] = [
     id: "8",
     date: getDevotionalDate("8"),
     verse: {
-      text: {
-        NIV: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.",
-        ESV: "For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life.",
-        KJV: "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.",
-        NKJV: "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life.",
-        NASB: "For God so loved the world, that He gave His only Son, so that everyone who believes in Him will not perish, but have eternal life.",
-      },
       reference: "John 3:16",
       defaultVersion: "KJV",
     },
@@ -347,13 +291,6 @@ export const devotionals: Devotional[] = [
     id: "9",
     date: getDevotionalDate("9"),
     verse: {
-      text: {
-        NIV: "For it is by grace you have been saved, through faith—and this is not from yourselves, it is the gift of God— not by works, so that no one can boast.",
-        ESV: "For by grace you have been saved through faith. And this is not your own doing; it is the gift of God, not a result of works, so that no one may boast.",
-        KJV: "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God: Not of works, lest any man should boast.",
-        NKJV: "For by grace you have been saved through faith, and that not of yourselves; it is the gift of God, not of works, lest anyone should boast.",
-        NASB: "For by grace you have been saved through faith; and this is not of yourselves, it is the gift of God; not a result of works, so that no one may boast.",
-      },
       reference: "Ephesians 2:8-9",
       defaultVersion: "KJV",
     },
@@ -387,13 +324,6 @@ export const devotionals: Devotional[] = [
     id: "10",
     date: getDevotionalDate("10"),
     verse: {
-      text: {
-        NIV: "Jesus answered, 'I am the way and the truth and the life. No one comes to the Father except through me.'",
-        ESV: "Jesus said to him, 'I am the way, and the truth, and the life. No one comes to the Father except through me.'",
-        KJV: "Jesus saith unto him, I am the way, the truth, and the life: no man cometh unto the Father, but by me.",
-        NKJV: "Jesus said to him, 'I am the way, the truth, and the life. No one comes to the Father except through Me.'",
-        NASB: "Jesus said to him, 'I am the way, and the truth, and the life; no one comes to the Father except through Me.'",
-      },
       reference: "John 14:6",
       defaultVersion: "KJV",
     },
@@ -428,13 +358,6 @@ export const devotionals: Devotional[] = [
     id: "11",
     date: getDevotionalDate("11"),
     verse: {
-      text: {
-        NIV: "If you declare with your mouth, 'Jesus is Lord,' and believe in your heart that God raised him from the dead, you will be saved.",
-        ESV: "Because, if you confess with your mouth that Jesus is Lord and believe in your heart that God raised him from the dead, you will be saved.",
-        KJV: "That if thou shalt confess with thy mouth the Lord Jesus, and shalt believe in thine heart that God hath raised him from the dead, thou shalt be saved.",
-        NKJV: "That if you confess with your mouth the Lord Jesus and believe in your heart that God has raised Him from the dead, you will be saved.",
-        NASB: "that if you confess with your mouth Jesus as Lord, and believe in your heart that God raised Him from the dead, you will be saved;",
-      },
       reference: "Romans 10:9",
       defaultVersion: "KJV",
     },
@@ -469,13 +392,6 @@ export const devotionals: Devotional[] = [
     id: "12",
     date: getDevotionalDate("12"),
     verse: {
-      text: {
-        NIV: "For the wages of sin is death, but the gift of God is eternal life in Christ Jesus our Lord.",
-        ESV: "For the wages of sin is death, but the free gift of God is eternal life in Christ Jesus our Lord.",
-        KJV: "For the wages of sin is death; but the gift of God is eternal life through Jesus Christ our Lord.",
-        NKJV: "For the wages of sin is death, but the gift of God is eternal life in Christ Jesus our Lord.",
-        NASB: "For the wages of sin is death, but the gracious gift of God is eternal life in Christ Jesus our Lord.",
-      },
       reference: "Romans 6:23",
       defaultVersion: "KJV",
     },
@@ -510,13 +426,6 @@ export const devotionals: Devotional[] = [
     id: "13",
     date: getDevotionalDate("13"),
     verse: {
-      text: {
-        NIV: "Yet to all who did receive him, to those who believed in his name, he gave the right to become children of God—",
-        ESV: "But to all who did receive him, who believed in his name, he gave the right to become children of God,",
-        KJV: "But as many as received him, to them gave he power to become the sons of God, even to them that believe on his name:",
-        NKJV: "But as many as received Him, to them He gave the right to become children of God, to those who believe in His name:",
-        NASB: "But as many as received Him, to them He gave the right to become children of God, to those who believe in His name,",
-      },
       reference: "John 1:12",
       defaultVersion: "KJV",
     },
@@ -551,13 +460,6 @@ export const devotionals: Devotional[] = [
     id: "14",
     date: getDevotionalDate("14"),
     verse: {
-      text: {
-        NIV: "Therefore, since we have been justified through faith, we have peace with God through our Lord Jesus Christ,",
-        ESV: "Therefore, since we have been justified by faith, we have peace with God through our Lord Jesus Christ.",
-        KJV: "Therefore being justified by faith, we have peace with God through our Lord Jesus Christ:",
-        NKJV: "Therefore, having been justified by faith, we have peace with God through our Lord Jesus Christ,",
-        NASB: "Therefore, having been justified by faith, we have peace with God through our Lord Jesus Christ,",
-      },
       reference: "Romans 5:1",
       defaultVersion: "KJV",
     },
@@ -592,13 +494,6 @@ export const devotionals: Devotional[] = [
     id: "15",
     date: getDevotionalDate("15"),
     verse: {
-      text: {
-        NIV: "Jesus said to her, 'I am the resurrection and the life. The one who believes in me will live, even though they die;'",
-        ESV: "Jesus said to her, 'I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live,'",
-        KJV: "Jesus said unto her, I am the resurrection, and the life: he that believeth in me, though he were dead, yet shall he live:",
-        NKJV: "Jesus said to her, 'I am the resurrection and the life. He who believes in Me, though he may die, he shall live.'",
-        NASB: "Jesus said to her, 'I am the resurrection and the life; the one who believes in Me will live, even if he dies,'",
-      },
       reference: "John 11:25",
       defaultVersion: "KJV",
     },
@@ -633,13 +528,6 @@ export const devotionals: Devotional[] = [
     id: "16",
     date: getDevotionalDate("16"),
     verse: {
-      text: {
-        NIV: "For Christ also suffered once for sins, the righteous for the unrighteous, to bring you to God. He was put to death in the body but made alive in the Spirit.",
-        ESV: "For Christ also suffered once for sins, the righteous for the unrighteous, that he might bring us to God, being put to death in the flesh but made alive in the spirit,",
-        KJV: "For Christ also hath once suffered for sins, the just for the unjust, that he might bring us to God, being put to death in the flesh, but quickened by the Spirit:",
-        NKJV: "For Christ also suffered once for sins, the just for the unjust, that He might bring us to God, being put to death in the flesh but made alive by the Spirit,",
-        NASB: "For Christ also suffered for sins once for all time, the just for the unjust, so that He might bring us to God, having been put to death in the flesh, but made alive in the spirit;",
-      },
       reference: "1 Peter 3:18",
       defaultVersion: "KJV",
     },
@@ -673,13 +561,6 @@ export const devotionals: Devotional[] = [
     id: "17",
     date: getDevotionalDate("17"),
     verse: {
-      text: {
-        NIV: "And this is the testimony: God has given us eternal life, and this life is in his Son. Whoever has the Son has life; whoever does not have the Son of God does not have life.",
-        ESV: "And this is the testimony, that God gave us eternal life, and this life is in his Son. Whoever has the Son has life; whoever does not have the Son of God does not have life.",
-        KJV: "And this is the record, that God hath given to us eternal life, and this life is in his Son. He that hath the Son hath life; and he that hath not the Son of God hath not life.",
-        NKJV: "And this is the testimony: that God has given us eternal life, and this life is in His Son. He who has the Son has life; he who does not have the Son of God does not have life.",
-        NASB: "And the testimony is this, that God has given us eternal life, and this life is in His Son. The one who has the Son has the life; the one who does not have the Son of God does not have the life.",
-      },
       reference: "1 John 5:11-12",
       defaultVersion: "KJV",
     },
@@ -713,13 +594,6 @@ export const devotionals: Devotional[] = [
     id: "18",
     date: getDevotionalDate("18"),
     verse: {
-      text: {
-        NIV: "At that time people will see the Son of Man coming in clouds with great power and glory. And he will send his angels and gather his elect from the four winds, from the ends of the earth to the ends of the heavens.",
-        ESV: "And then they will see the Son of Man coming in clouds with great power and glory. And then he will send out the angels and gather his elect from the four winds, from the end of the earth to the end of the heaven.",
-        KJV: "And then shall they see the Son of man coming in the clouds with great power and glory. And then shall he send his angels, and shall gather together his elect from the four winds, from the uttermost part of the earth to the uttermost part of heaven.",
-        NKJV: "Then they will see the Son of Man coming in the clouds with great power and glory. And then He will send His angels, and gather together His elect from the four winds, from the farthest part of earth to the farthest part of heaven.",
-        NASB: "And then they will see the Son of Man coming in clouds with great power and glory. And then He will send forth the angels, and will gather together His elect from the four winds, from the farthest end of the earth to the farthest end of heaven.",
-      },
       reference: "Mark 13:26-27",
       defaultVersion: "KJV",
     },
@@ -747,13 +621,6 @@ export const devotionals: Devotional[] = [
     id: "19",
     date: getDevotionalDate("19"),
     verse: {
-      text: {
-        NIV: "But our citizenship is in heaven. And we eagerly await a Savior from there, the Lord Jesus Christ, who, by the power that enables him to bring everything under his control, will transform our lowly bodies so that they will be like his glorious body.",
-        ESV: "But our citizenship is in heaven, and from it we await a Savior, the Lord Jesus Christ, who will transform our lowly body to be like his glorious body, by the power that enables him even to subject all things to himself.",
-        KJV: "For our conversation is in heaven; from whence also we look for the Saviour, the Lord Jesus Christ: Who shall change our vile body, that it may be fashioned like unto his glorious body, according to the working whereby he is able even to subdue all things unto himself.",
-        NKJV: "For our citizenship is in heaven, from which we also eagerly wait for the Savior, the Lord Jesus Christ, who will transform our lowly body that it may be conformed to His glorious body, according to the working by which He is able even to subdue all things to Himself.",
-        NASB: "For our citizenship is in heaven, from which we also eagerly wait for a Savior, the Lord Jesus Christ; who will transform the body of our lowly condition into conformity with His glorious body, by the exertion of the power that He has even to subject all things to Himself.",
-      },
       reference: "Philippians 3:20-21",
       defaultVersion: "KJV",
     },
@@ -780,13 +647,6 @@ export const devotionals: Devotional[] = [
     id: "20",
     date: getDevotionalDate("20"),
     verse: {
-      text: {
-        NIV: "For the Lord himself will come down from heaven, with a loud command, with the voice of the archangel and with the trumpet call of God, and the dead in Christ will rise first.",
-        ESV: "For the Lord himself will descend from heaven with a cry of command, with the voice of an archangel, and with the sound of the trumpet of God. And the dead in Christ will rise first.",
-        KJV: "For the Lord himself shall descend from heaven with a shout, with the voice of the archangel, and with the trump of God: and the dead in Christ shall rise first.",
-        NKJV: "For the Lord Himself will descend from heaven with a shout, with the voice of an archangel, and with the trumpet of God. And the dead in Christ will rise first.",
-        NASB: "For the Lord Himself will descend from heaven with a shout, with the voice of the archangel and with the trumpet of God, and the dead in Christ will rise first.",
-      },
       reference: "1 Thessalonians 4:16",
       defaultVersion: "KJV",
     },
@@ -814,13 +674,6 @@ export const devotionals: Devotional[] = [
     id: "21",
     date: getDevotionalDate("21"),
     verse: {
-      text: {
-        NIV: "So Christ was sacrificed once to take away the sins of many; and he will appear a second time, not to bear sin, but to bring salvation to those who are waiting for him.",
-        ESV: "So Christ, having been offered once to bear the sins of many, will appear a second time, not to deal with sin but to save those who are eagerly waiting for him.",
-        KJV: "So Christ was once offered to bear the sins of many; and unto them that look for him shall he appear the second time without sin unto salvation.",
-        NKJV: "So Christ was offered once to bear the sins of many. To those who eagerly wait for Him He will appear a second time, apart from sin, for salvation.",
-        NASB: "So Christ also, having been offered once to bear the sins of many, will appear a second time for salvation without reference to sin, to those who eagerly await Him.",
-      },
       reference: "Hebrews 9:28",
       defaultVersion: "KJV",
     },
@@ -847,13 +700,6 @@ export const devotionals: Devotional[] = [
     id: "22",
     date: getDevotionalDate("22"),
     verse: {
-      text: {
-        NIV: "Look, I come like a thief! Blessed is the one who stays awake and remains clothed, so as not to go naked and be shamefully exposed.",
-        ESV: "Behold, I am coming like a thief! Blessed is the one who stays awake, keeping his garments on, that he may not go about naked and be seen exposed!",
-        KJV: "Behold, I come as a thief. Blessed is he that watcheth, and keepeth his garments, lest he walk naked, and they see his shame.",
-        NKJV: "Behold, I am coming as a thief. Blessed is he who watches, and keeps his garments, lest he walk naked and they see his shame.",
-        NASB: "Behold, I am coming like a thief. Blessed is the one who stays awake and keeps his clothes, so that he will not walk about naked and people will not see his shame.",
-      },
       reference: "Revelation 16:15",
       defaultVersion: "KJV",
     },
@@ -881,13 +727,6 @@ export const devotionals: Devotional[] = [
     id: "23",
     date: getDevotionalDate("23"),
     verse: {
-      text: {
-        NIV: "Then I saw heaven standing open, and there before me was a white horse, whose rider is called Faithful and True. With justice he judges and wages war.",
-        ESV: "Then I saw heaven opened, and behold, a white horse! The one sitting on it is called Faithful and True, and in righteousness he judges and makes war.",
-        KJV: "And I saw heaven opened, and behold a white horse; and he that sat upon him was called Faithful and True, and in righteousness he doth judge and make war.",
-        NKJV: "Now I saw heaven opened, and behold, a white horse. And He who sat on him was called Faithful and True, and in righteousness He judges and makes war.",
-        NASB: "And I saw heaven opened, and behold, a white horse, and He who sat on it is called Faithful and True, and in righteousness He judges and wages war.",
-      },
       reference: "Revelation 19:11",
       defaultVersion: "KJV",
     },
@@ -916,13 +755,6 @@ export const devotionals: Devotional[] = [
     id: "24",
     date: getDevotionalDate("24"),
     verse: {
-      text: {
-        NIV: "He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain, for the old order of things has passed away.",
-        ESV: "He will wipe away every tear from their eyes, and death shall be no more, neither shall there be mourning, nor crying, nor pain anymore, for the former things have passed away.",
-        KJV: "And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain: for the former things are passed away.",
-        NKJV: "And God will wipe away every tear from their eyes; there shall be no more death, nor sorrow, nor crying. There shall be no more pain, for the former things have passed away.",
-        NASB: "and He will wipe away every tear from their eyes; and there will no longer be any death; there will no longer be any mourning, or crying, or pain; the first things have passed away.",
-      },
       reference: "Revelation 21:4",
       defaultVersion: "KJV",
     },
@@ -949,13 +781,6 @@ export const devotionals: Devotional[] = [
     id: "25",
     date: getDevotionalDate("25"),
     verse: {
-      text: {
-        NIV: "You also must be ready, because the Son of Man will come at an hour when you do not expect him.",
-        ESV: "You also must be ready, for the Son of Man is coming at an hour you do not expect.",
-        KJV: "Therefore be ye also ready: for in such an hour as ye think not the Son of man cometh.",
-        NKJV: "Therefore you also be ready, for the Son of Man is coming at an hour you do not expect.",
-        NASB: "You too, be ready; for the Son of Man is coming at an hour that you do not expect.",
-      },
       reference: "Luke 12:40",
       defaultVersion: "KJV",
     },
@@ -981,13 +806,6 @@ export const devotionals: Devotional[] = [
     id: "26",
     date: getDevotionalDate("26"),
     verse: {
-      text: {
-        NIV: "For the grace of God has appeared that offers salvation to all people. It teaches us to say 'No' to ungodliness and worldly passions, and to live self-controlled, upright and godly lives in this present age, while we wait for the blessed hope—the appearing of the glory of our great God and Savior, Jesus Christ.",
-        ESV: "For the grace of God has appeared, bringing salvation for all people, training us to renounce ungodliness and worldly passions, and to live self-controlled, upright, and godly lives in the present age, waiting for our blessed hope, the appearing of the glory of our great God and Savior Jesus Christ.",
-        KJV: "For the grace of God that bringeth salvation hath appeared to all men, Teaching us that, denying ungodliness and worldly lusts, we should live soberly, righteously, and godly, in this present world; Looking for that blessed hope, and the glorious appearing of the great God and our Saviour Jesus Christ;",
-        NKJV: "For the grace of God that brings salvation has appeared to all men, teaching us that, denying ungodliness and worldly lusts, we should live soberly, righteously, and godly in the present age, looking for the blessed hope and glorious appearing of our great God and Savior Jesus Christ,",
-        NASB: "For the grace of God has appeared, bringing salvation to all people, instructing us to deny ungodliness and worldly desires and to live sensibly, righteously, and in a godly manner in the present age, as we look for the blessed hope and the appearing of the glory of our great God and Savior, Jesus Christ.",
-      },
       reference: "Titus 2:11-13",
       defaultVersion: "KJV",
     },
@@ -1014,13 +832,6 @@ export const devotionals: Devotional[] = [
     id: "27",
     date: getDevotionalDate("27"),
     verse: {
-      text: {
-        NIV: "Yes, I am coming soon. Amen. Come, Lord Jesus.",
-        ESV: "Surely I am coming soon. Amen. Come, Lord Jesus!",
-        KJV: "Surely I come quickly. Amen. Even so, come, Lord Jesus.",
-        NKJV: "Surely I am coming quickly. Amen. Even so, come, Lord Jesus!",
-        NASB: "Yes, I am coming quickly. Amen. Come, Lord Jesus.",
-      },
       reference: "Revelation 22:20",
       defaultVersion: "KJV",
     },
@@ -1047,13 +858,6 @@ export const devotionals: Devotional[] = [
     id: "28",
     date: getDevotionalDate("28"),
     verse: {
-      text: {
-        NIV: "The Lord is my shepherd, I lack nothing.",
-        ESV: "The Lord is my shepherd; I shall not want.",
-        KJV: "The Lord is my shepherd; I shall not want.",
-        NKJV: "The Lord is my shepherd; I shall not want.",
-        NASB: "The Lord is my shepherd, I will not lack.",
-      },
       reference: "Psalm 23:1",
       defaultVersion: "KJV",
     },
@@ -1080,13 +884,6 @@ export const devotionals: Devotional[] = [
     id: "29",
     date: getDevotionalDate("29"),
     verse: {
-      text: {
-        NIV: "Be still, and know that I am God.",
-        ESV: "Be still, and know that I am God.",
-        KJV: "Be still, and know that I am God.",
-        NKJV: "Be still, and know that I am God.",
-        NASB: "Cease striving and know that I am God.",
-      },
       reference: "Psalm 46:10",
       defaultVersion: "KJV",
     },
@@ -1114,13 +911,6 @@ export const devotionals: Devotional[] = [
     id: "30",
     date: getDevotionalDate("30"),
     verse: {
-      text: {
-        NIV: "And now these three remain: faith, hope and love. But the greatest of these is love.",
-        ESV: "So now faith, hope, and love abide, these three; but the greatest of these is love.",
-        KJV: "And now abideth faith, hope, charity, these three; but the greatest of these is charity.",
-        NKJV: "And now abide faith, hope, love, these three; but the greatest of these is love.",
-        NASB: "But now faith, hope, and love remain, these three; but the greatest of these is love.",
-      },
       reference: "1 Corinthians 13:13",
       defaultVersion: "KJV",
     },

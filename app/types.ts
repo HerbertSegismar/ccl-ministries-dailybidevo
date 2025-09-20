@@ -12,18 +12,11 @@ export interface ReflectionPrompt {
   placeholder: string;
 }
 
-export interface Verse {
-  text: Record<string, string>; // Key: version, Value: text
-  reference: string;
-  defaultVersion: string;
-}
-
 export interface Devotional {
   id: string;
   date: string;
   verse: {
     reference: string;
-    text: Record<string, string>;
     defaultVersion: string;
   };
   title: string;

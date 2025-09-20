@@ -185,78 +185,62 @@ const Devotionals = () => {
     [bibleVersion]
   );
 
-  const fetchDailyVerse = useCallback(
-      async (verseReference: string) => {
-        const parsedRef = parseVerseReference(verseReference);
-        if (!parsedRef) return null;
-  
-        const { book, chapter, verse, endVerse } = parsedRef;
-  
-        // If it's a single verse
-        if (verse === endVerse) {
-          try {
-            const response = await fetch(
-              `https://bible-api.com/${book}+${chapter}:${verse}?translation=${bibleVersion}`
-            );
-            if (response.ok) {
-              const data = await response.json();
-              return data.text?.replace(/\s+/g, " ").trim() || "";
-            }
-          } catch {
-            console.log(
-              `Failed to fetch verse with ${bibleVersion}, trying KJV...`
-            );
+  // Fixed function to fetch verse from API - now handles verse ranges
+  const fetchVerseFromAPI = useCallback(
+    async (verseReference: string) => {
+      try {
+        // Format the reference for the API by replacing spaces with '+'
+        const formattedReference = verseReference
+          .replace(/\s+/g, "+")
+          .replace(":", "%3A"); // URL encode colons
+
+        const response = await fetch(
+          `https://bible-api.com/${formattedReference}?translation=${bibleVersion}`
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+
+          // Handle both single verses and verse ranges
+          if (data.verses) {
+            // For verse ranges, combine all verses
+            return data.verses
+              .map((v: any) => v.text.trim().replace(/\s+/g, " "))
+              .join(" ");
+          } else if (data.text) {
+            return data.text.replace(/\s+/g, " ").trim();
           }
-        } else {
-          // If it's a verse range
-          try {
-            const response = await fetch(
-              `https://bible-api.com/${book}+${chapter}:${verse}-${endVerse}?translation=${bibleVersion}`
-            );
-            if (response.ok) {
-              const data = await response.json();
-  
-              // Return the text without verse numbers
-              if (data.verses) {
-                return data.verses
-                  .map((v: BibleVerse) => v.text.trim().replace(/\s+/g, " "))
-                  .join(" ");
-              }
-              return data.text?.replace(/\s+/g, " ").trim() || "";
-            }
-          } catch {
-            console.log(
-              `Failed to fetch verse range with ${bibleVersion}, trying KJV...`
-            );
-          }
+
+          return "Verse not available";
         }
-  
-        // Fallback to KJV
-        try {
-          const response = await fetch(
-            `https://bible-api.com/${book}+${chapter}:${verse}${
-              verse !== endVerse ? `-${endVerse}` : ""
-            }?translation=kjv`
-          );
-          if (response.ok) {
-            const data = await response.json();
-  
-            // Return the text without verse numbers
-            if (data.verses && verse !== endVerse) {
-              return data.verses
-                .map((v: BibleVerse) => v.text.trim().replace(/\s+/g, " "))
-                .join(" ");
-            }
-            return data.text?.replace(/\s+/g, " ").trim() || "";
+
+        // Fallback to KJV if the selected version fails
+        const fallbackResponse = await fetch(
+          `https://bible-api.com/${formattedReference}?translation=KJV`
+        );
+
+        if (fallbackResponse.ok) {
+          const data = await fallbackResponse.json();
+
+          if (data.verses) {
+            return data.versions
+              .map((v: any) => v.text.trim().replace(/\s+/g, " "))
+              .join(" ");
+          } else if (data.text) {
+            return data.text.replace(/\s+/g, " ").trim();
           }
-        } catch {
-          console.log("Failed to fetch verse with KJV");
+
+          return "Verse not available";
         }
-  
-        return null;
-      },
-      [bibleVersion]
-    );
+
+        return "Verse not available";
+      } catch (error) {
+        console.error("Error fetching verse:", error);
+        return "Verse not available";
+      }
+    },
+    [bibleVersion]
+  );
 
   const loadVerses = useCallback(
     async (plan: string) => {
@@ -339,54 +323,27 @@ const Devotionals = () => {
     [fetchBibleVerses, bibleVersion]
   );
 
+  // Updated loadDailyVerse function
   const loadDailyVerse = useCallback(
     async (devotional: Devotional) => {
-      // Check if the verse is available in the selected version
-      const verseText = devotional.verse.text[bibleVersion];
-      if (verseText) {
+      setIsLoadingDailyVerse(true);
+      try {
+        const verseText = await fetchVerseFromAPI(devotional.verse.reference);
         setDailyVerseText(verseText);
+
         // Store in localStorage for the Reflection component
         localStorage.setItem(
           `verse-${devotional.id}-${bibleVersion}`,
           verseText
         );
-        return;
-      }
-
-      // If not available, fetch it from the API
-      setIsLoadingDailyVerse(true);
-      try {
-        const fetchedVerse = await fetchDailyVerse(devotional.verse.reference);
-        if (fetchedVerse) {
-          setDailyVerseText(fetchedVerse);
-          // Store in localStorage for the Reflection component
-          localStorage.setItem(
-            `verse-${devotional.id}-${bibleVersion}`,
-            fetchedVerse
-          );
-        } else {
-          // If API fails, fall back to KJV version from the data
-          const fallbackText =
-            devotional.verse.text.kjv || "Verse not available";
-          setDailyVerseText(fallbackText);
-          localStorage.setItem(
-            `verse-${devotional.id}-${bibleVersion}`,
-            fallbackText
-          );
-        }
       } catch (error) {
         console.error("Error fetching daily verse:", error);
-        const fallbackText = devotional.verse.text.kjv || "Verse not available";
-        setDailyVerseText(fallbackText);
-        localStorage.setItem(
-          `verse-${devotional.id}-${bibleVersion}`,
-          fallbackText
-        );
+        setDailyVerseText("Verse not available");
       } finally {
         setIsLoadingDailyVerse(false);
       }
     },
-    [bibleVersion, fetchDailyVerse]
+    [bibleVersion, fetchVerseFromAPI]
   );
 
   // Page & card animations
@@ -459,14 +416,6 @@ const Devotionals = () => {
     } else {
       setSelectedDevotional(null);
     }
-  };
-
-  const getVerseText = (verse: Devotional["verse"]) => {
-    // First check if we have the API-fetched verse text
-    if (dailyVerseText) return dailyVerseText;
-
-    // Otherwise use the static text
-    return verse.text[bibleVersion] || verse.text[verse.defaultVersion];
   };
 
   // Function to render verses with proper formatting
@@ -648,7 +597,7 @@ const Devotionals = () => {
                         theme === "dark" ? "text-gray-300" : "text-gray-700"
                       }`}
                     >
-                      &ldquo;{getVerseText(selectedDevotional.verse)}&rdquo;
+                      &ldquo;{dailyVerseText}&rdquo;
                     </p>
                     <p className={`font-semibold ${colorClasses.text}`}>
                       - {selectedDevotional.verse.reference} ({bibleVersion})

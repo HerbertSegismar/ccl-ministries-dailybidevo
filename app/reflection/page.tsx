@@ -16,6 +16,9 @@ const Reflection = () => {
   const { bibleVersion } = useBibleVersion();
   const [devotional, setDevotional] = useState<Devotional | null>(null);
   const [reflections, setReflections] = useState<Record<string, string>>({});
+  const [verseText, setVerseText] = useState<string>("");
+  const [isLoadingVerse, setIsLoadingVerse] = useState(false);
+  const [verseError, setVerseError] = useState<string | null>(null);
   const pageRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
@@ -37,6 +40,9 @@ const Reflection = () => {
         if (savedReflections) {
           setReflections(JSON.parse(savedReflections));
         }
+
+        // Fetch verse text from API
+        fetchVerseFromAPI(parsedDevotional.verse.reference);
       } catch (error) {
         console.error("Error parsing devotional data:", error);
         router.push("/");
@@ -45,6 +51,59 @@ const Reflection = () => {
       router.push("/");
     }
   }, [router]);
+
+  // Fetch verse from API
+  const fetchVerseFromAPI = async (verseReference: string) => {
+    setIsLoadingVerse(true);
+    setVerseError(null);
+
+    try {
+      // Parse the reference to extract book, chapter, and verse range
+      const match = verseReference.match(/(\d?\s?\w+)\s(\d+):(\d+(?:-\d+)?)/);
+      if (!match) {
+        setVerseError("Invalid verse format");
+        return;
+      }
+
+      const book = match[1].toLowerCase().replace(/\s+/g, "+");
+      const chapter = match[2];
+      const verse = match[3];
+
+      const response = await fetch(
+        `https://bible-api.com/${book}+${chapter}:${verse}?translation=${bibleVersion}`
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        const text = data.text || "Verse not available";
+        setVerseText(text);
+
+        // Store in localStorage for future use
+        if (devotional) {
+          localStorage.setItem(`verse-${devotional.id}-${bibleVersion}`, text);
+        }
+      } else {
+        // Fallback to KJV if the selected version fails
+        const fallbackResponse = await fetch(
+          `https://bible-api.com/${book}+${chapter}:${verse}?translation=kjv`
+        );
+
+        if (fallbackResponse.ok) {
+          const data = await fallbackResponse.json();
+          const text = data.text || "Verse not available";
+          setVerseText(text);
+          setVerseError(`Using KJV (${bibleVersion} not available)`);
+        } else {
+          throw new Error("Failed to fetch verse");
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching verse:", error);
+      setVerseError("Unable to load verse. Please try again.");
+    } finally {
+      setIsLoadingVerse(false);
+    }
+  };
 
   // Page entrance animation
   useGSAP(() => {
@@ -68,18 +127,20 @@ const Reflection = () => {
     }
   }, [devotional]);
 
-  // Get the verse text for the selected Bible version
-  const getVerseText = (verse: Devotional["verse"]) => {
-    // First check if we have the API-fetched verse text in localStorage
+  // Get the verse text - prioritize API text, fallback to static text
+  const getVerseText = () => {
+    if (verseText) return verseText;
+
+    if (!devotional) return "";
+
+    // Check if we have the API-fetched verse text in localStorage
     const apiVerseText = localStorage.getItem(
-      `verse-${devotional?.id}-${bibleVersion}`
+      `verse-${devotional.id}-${bibleVersion}`
     );
 
     // If we have API-fetched text, use it, otherwise fall back to the static text
     return (
-      apiVerseText ||
-      verse.text[bibleVersion] ||
-      verse.text[verse.defaultVersion]
+      apiVerseText 
     );
   };
 
@@ -115,7 +176,7 @@ const Reflection = () => {
     // Create the content for the text file
     let content = `Reflections for ${devotional.title}\n`;
     content += `Date: ${devotional.date}\n`;
-    content += `Verse: ${getVerseText(devotional.verse)}\n`;
+    content += `Verse: ${getVerseText()}\n`;
     content += `Reference: ${devotional.verse.reference} (${bibleVersion})\n\n`;
 
     content += "MY REFLECTIONS:\n\n";
@@ -174,6 +235,7 @@ const Reflection = () => {
       );
     }
   };
+
   if (!devotional) {
     return (
       <div className="flex items-center justify-center h-screen bg-gray-50 dark:bg-gray-900">
@@ -265,13 +327,30 @@ const Reflection = () => {
               theme === "dark" ? "bg-gray-600/30" : `${colorClasses.lightBg}`
             }`}
           >
-            <p
-              className={`italic mb-2 ${
-                theme === "dark" ? "text-gray-400" : "text-gray-700"
-              }`}
-            >
-              &ldquo;{getVerseText(devotional.verse)}&rdquo;
-            </p>
+            {isLoadingVerse ? (
+              <p className="mb-2 italic">Loading verse...</p>
+            ) : verseError ? (
+              <>
+                <p
+                  className={`italic mb-2 ${
+                    theme === "dark" ? "text-gray-400" : "text-gray-700"
+                  }`}
+                >
+                  &ldquo;{getVerseText()}&rdquo;
+                </p>
+                <p className="text-sm text-yellow-600 dark:text-yellow-400 mb-2">
+                  {verseError}
+                </p>
+              </>
+            ) : (
+              <p
+                className={`italic mb-2 ${
+                  theme === "dark" ? "text-gray-400" : "text-gray-700"
+                }`}
+              >
+                &ldquo;{getVerseText()}&rdquo;
+              </p>
+            )}
             <p className={`font-semibold ${colorClasses.text}`}>
               - {devotional.verse.reference} ({bibleVersion})
             </p>

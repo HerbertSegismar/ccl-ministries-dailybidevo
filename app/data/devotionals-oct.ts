@@ -14,13 +14,6 @@ export const devotionals: Devotional[] = [
     id: "1",
     date: getDevotionalDate("1"),
     verse: {
-      text: {
-        NIV: "So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you; I will uphold you with my righteous right hand.",
-        ESV: "Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you, I will uphold you with my righteous right hand.",
-        KJV: "Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness.",
-        NKJV: "Fear not, for I am with you; Be not dismayed, for I am your God. I will strengthen you, Yes, I will help you, I will uphold you with My righteous right hand.",
-        NASB: "Do not fear, for I am with you; Do not be afraid, for I am your God. I will strengthen you, I will also help you, I will also uphold you with My righteous right hand.",
-      },
       reference: "Isaiah 41:10",
       defaultVersion: "KJV",
     },
@@ -57,13 +50,6 @@ export const devotionals: Devotional[] = [
     id: "2",
     date: getDevotionalDate("2"),
     verse: {
-      text: {
-        NIV: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.",
-        ESV: "Do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God.",
-        KJV: "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.",
-        NKJV: "Be anxious for nothing, but in everything by prayer and supplication, with thanksgiving, let your requests be made known to God.",
-        NASB: "Do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God.",
-      },
       reference: "Philippians 4:6",
       defaultVersion: "KJV",
     },
@@ -97,13 +83,6 @@ export const devotionals: Devotional[] = [
     id: "3",
     date: getDevotionalDate("3"),
     verse: {
-      text: {
-        NIV: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.",
-        ESV: "Trust in the Lord with all your heart, and do not lean on your own understanding. In all your ways acknowledge him, and he will make straight your paths.",
-        KJV: "Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.",
-        NKJV: "Trust in the Lord with all your heart, and lean not on your own understanding; In all your ways acknowledge Him, and He shall direct your paths.",
-        NASB: "Trust in the Lord with all your heart and do not lean on your own understanding. In all your ways acknowledge Him, and He will make your paths straight.",
-      },
       reference: "Proverbs 3:5-6",
       defaultVersion: "KJV",
     },
@@ -139,13 +118,6 @@ export const devotionals: Devotional[] = [
     id: "4",
     date: getDevotionalDate("4"),
     verse: {
-      text: {
-        NIV: "Above all else, guard your heart, for everything you do flows from it.",
-        ESV: "Keep your heart with all vigilance, for from it flow the springs of life.",
-        KJV: "Keep thy heart with all diligence; for out of it are the issues of life.",
-        NKJV: "Keep your heart with all diligence, For out of it spring the issues of life.",
-        NASB: "Watch over your heart with all diligence, For from it flow the springs of life.",
-      },
       reference: "Proverbs 4:23",
       defaultVersion: "KJV",
     },
@@ -182,13 +154,6 @@ export const devotionals: Devotional[] = [
     id: "5",
     date: getDevotionalDate("5"),
     verse: {
-      text: {
-        NIV: "Trust in the Lord with your wealth and with the firstfruits of all your crops; then your barns will be filled to overflowing, and your vats will brim over with new wine.",
-        ESV: "Honor the Lord with your wealth and with the firstfruits of all your produce; then your barns will be filled with plenty, and your vats will be bursting with wine.",
-        KJV: "Honour the Lord with thy substance, and with the firstfruits of all thine increase: So shall thy barns be filled with plenty, and thy presses shall burst out with new wine.",
-        NKJV: "Honor the Lord with your possessions, And with the firstfruits of all your increase; So your barns will be filled with plenty, And your vats will overflow with new wine.",
-        NASB: "Honor the Lord from your wealth, And from the first of all your produce; Then your barns will be filled with plenty, And your vats will overflow with new wine.",
-      },
       reference: "Proverbs 3:9-10",
       defaultVersion: "KJV",
     },
@@ -226,13 +191,6 @@ export const devotionals: Devotional[] = [
     id: "6",
     date: getDevotionalDate("6"),
     verse: {
-      text: {
-        NIV: "The fear of the Lord is the beginning of wisdom, and knowledge of the Holy One is understanding.",
-        ESV: "The fear of the Lord is the beginning of wisdom, and the knowledge of the Holy One is insight.",
-        KJV: "The fear of the Lord is the beginning of wisdom: and the knowledge of the holy is understanding.",
-        NKJV: "The fear of the Lord is the beginning of wisdom, And the knowledge of the Holy One is understanding.",
-        NASB: "The fear of the Lord is the beginning of wisdom, And the knowledge of the Holy One is understanding.",
-      },
       reference: "Proverbs 9:10",
       defaultVersion: "KJV",
     },
@@ -270,13 +228,6 @@ export const devotionals: Devotional[] = [
     id: "7",
     date: getDevotionalDate("7"),
     verse: {
-      text: {
-        NIV: "A gentle answer turns away wrath, but a harsh word stirs up anger.",
-        ESV: "A soft answer turns away wrath, but a harsh word stirs up anger.",
-        KJV: "A soft answer turneth away wrath: but grievous words stir up anger.",
-        NKJV: "A soft answer turns away wrath, But a harsh word stirs up anger.",
-        NASB: "A gentle answer turns away wrath, But a harsh word stirs up anger.",
-      },
       reference: "Proverbs 15:1",
       defaultVersion: "KJV",
     },
@@ -313,13 +264,6 @@ export const devotionals: Devotional[] = [
     id: "8",
     date: getDevotionalDate("8"),
     verse: {
-      text: {
-        NIV: "The name of the Lord is a fortified tower; the righteous run to it and are safe.",
-        ESV: "The name of the Lord is a strong tower; the righteous man runs into it and is safe.",
-        KJV: "The name of the Lord is a strong tower: the righteous runneth into it, and is safe.",
-        NKJV: "The name of the Lord is a strong tower; The righteous run to it and are safe.",
-        NASB: "The name of the Lord is a strong tower; The righteous runs into it and is safe.",
-      },
       reference: "Proverbs 18:10",
       defaultVersion: "KJV",
     },
@@ -356,13 +300,6 @@ export const devotionals: Devotional[] = [
     id: "9",
     date: getDevotionalDate("9"),
     verse: {
-      text: {
-        NIV: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.",
-        ESV: "Trust in the Lord with all your heart, and do not lean on your own understanding. In all your ways acknowledge him, and he will make straight your paths.",
-        KJV: "Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.",
-        NKJV: "Trust in the Lord with all your heart, And lean not on your own understanding; In all your ways acknowledge Him, And He shall direct your paths.",
-        NASB: "Trust in the Lord with all your heart And do not lean on your own understanding. In all your ways acknowledge Him, And He will make your paths straight.",
-      },
       reference: "Proverbs 3:5-6",
       defaultVersion: "KJV",
     },
@@ -398,13 +335,6 @@ text
     id: "10",
     date: getDevotionalDate("10"),
     verse: {
-      text: {
-        NIV: "I can do all this through him who gives me strength.",
-        ESV: "I can do all things through him who strengthens me.",
-        KJV: "I can do all things through Christ which strengtheneth me.",
-        NKJV: "I can do all things through Christ who strengthens me.",
-        NASB: "I can do all things through Him who strengthens me.",
-      },
       reference: "Philippians 4:13",
       defaultVersion: "KJV",
     },
@@ -440,13 +370,6 @@ text
     id: "11",
     date: getDevotionalDate("11"),
     verse: {
-      text: {
-        NIV: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.",
-        ESV: "do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God.",
-        KJV: "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.",
-        NKJV: "Be anxious for nothing, but in everything by prayer and supplication, with thanksgiving, let your requests be made known to God;",
-        NASB: "Do not be anxious about anything, but in everything by prayer and pleading with thanksgiving let your requests be made known to God.",
-      },
       reference: "Philippians 4:6",
       defaultVersion: "KJV",
     },
@@ -482,13 +405,6 @@ text
     id: "12",
     date: getDevotionalDate("12"),
     verse: {
-      text: {
-        NIV: "Your word is a lamp for my feet, a light on my path.",
-        ESV: "Your word is a lamp to my feet and a light to my path.",
-        KJV: "Thy word is a lamp unto my feet, and a light unto my path.",
-        NKJV: "Your word is a lamp to my feet And a light to my path.",
-        NASB: "Your word is a lamp to my feet And a light to my path.",
-      },
       reference: "Psalm 119:105",
       defaultVersion: "KJV",
     },
@@ -523,13 +439,6 @@ text
     id: "13",
     date: getDevotionalDate("13"),
     verse: {
-      text: {
-        NIV: "Come to me, all you who are weary and burdened, and I will give you rest.",
-        ESV: "Come to me, all who labor and are heavy laden, and I will give you rest.",
-        KJV: "Come unto me, all ye that labour and are heavy laden, and I will give you rest.",
-        NKJV: "Come to Me, all you who labor and are heavy laden, and I will give you rest.",
-        NASB: "Come to Me, all who are weary and heavy-laden, and I will give you rest.",
-      },
       reference: "Matthew 11:28",
       defaultVersion: "KJV",
     },
@@ -564,13 +473,6 @@ text
     id: "14",
     date: getDevotionalDate("14"),
     verse: {
-      text: {
-        NIV: "And we know that in all things God works for the good of those who love him, who have been called according to his purpose.",
-        ESV: "And we know that for those who love God all things work together for good, for those who are called according to his purpose.",
-        KJV: "And we know that all things work together for good to them that love God, to them who are the called according to his purpose.",
-        NKJV: "And we know that all things work together for good to those who love God, to those who are the called according to His purpose.",
-        NASB: "And we know that God causes all things to work together for good to those who love God, to those who are called according to His purpose.",
-      },
       reference: "Romans 8:28",
       defaultVersion: "KJV",
     },
@@ -606,13 +508,6 @@ text
     id: "15",
     date: getDevotionalDate("15"),
     verse: {
-      text: {
-        NIV: "Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth.",
-        ESV: "Be still, and know that I am God. I will be exalted among the nations, I will be exalted in the earth!",
-        KJV: "Be still, and know that I am God: I will be exalted among the heathen, I will be exalted in the earth.",
-        NKJV: "Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth!",
-        NASB: "Cease striving and know that I am God; I will be exalted among the nations, I will be exalted in the earth.",
-      },
       reference: "Psalm 46:10",
       defaultVersion: "KJV",
     },
@@ -648,13 +543,6 @@ text
     id: "16",
     date: getDevotionalDate("16"),
     verse: {
-      text: {
-        NIV: "Trust in the LORD with all your heart and lean not on your own understanding;",
-        ESV: "Trust in the LORD with all your heart, and do not lean on your own understanding.",
-        KJV: "Trust in the LORD with all thine heart; and lean not unto thine own understanding.",
-        NKJV: "Trust in the LORD with all your heart, and lean not on your own understanding;",
-        NASB: "Trust in the LORD with all your heart and do not lean on your own understanding.",
-      },
       reference: "Proverbs 3:5",
       defaultVersion: "KJV",
     },
@@ -684,13 +572,6 @@ text
     id: "17",
     date: getDevotionalDate("17"),
     verse: {
-      text: {
-        NIV: "The LORD is my strength and my shield; my heart trusts in him, and he helps me.",
-        ESV: "The LORD is my strength and my shield; in him my heart trusts, and I am helped;",
-        KJV: "The LORD is my strength and my shield; my heart trusted in him, and I am helped:",
-        NKJV: "The LORD is my strength and my shield; My heart trusted in Him, and I am helped;",
-        NASB: "The LORD is my strength and my shield; My heart trusts in Him, and I am helped;",
-      },
       reference: "Psalm 28:7",
       defaultVersion: "KJV",
     },
@@ -720,13 +601,6 @@ text
     id: "18",
     date: getDevotionalDate("18"),
     verse: {
-      text: {
-        NIV: "But those who hope in the LORD will renew their strength. They will soar on wings like eagles;",
-        ESV: "But they who wait for the LORD shall renew their strength; they shall mount up with wings like eagles;",
-        KJV: "But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles;",
-        NKJV: "But those who wait on the LORD Shall renew their strength; They shall mount up with wings like eagles,",
-        NASB: "Yet those who wait for the LORD Will gain new strength; They will mount up with wings like eagles;",
-      },
       reference: "Isaiah 40:31",
       defaultVersion: "KJV",
     },
@@ -757,13 +631,6 @@ text
     id: "19",
     date: getDevotionalDate("19"),
     verse: {
-      text: {
-        NIV: "For I am convinced that neither death nor life [...] nor anything else in all creation, will be able to separate us from the love of God",
-        ESV: "For I am sure that neither death nor life [...] nor anything else in all creation, will be able to separate us from the love of God",
-        KJV: "For I am persuaded, that neither death, nor life [...] nor any other creature, shall be able to separate us from the love of God",
-        NKJV: "For I am persuaded that neither death nor life [...] nor any other created thing, shall be able to separate us from the love of God",
-        NASB: "For I am convinced that neither death, nor life [...] nor any other created thing, will be able to separate us from the love of God",
-      },
       reference: "Romans 8:38-39",
       defaultVersion: "KJV",
     },
@@ -793,13 +660,6 @@ text
     id: "20",
     date: getDevotionalDate("20"),
     verse: {
-      text: {
-        NIV: "Let us then approach God's throne of grace with confidence, so that we may receive mercy and find grace to help us in our time of need.",
-        ESV: "Let us then with confidence draw near to the throne of grace, that we may receive mercy and find grace to help in time of need.",
-        KJV: "Let us therefore come boldly unto the throne of grace, that we may obtain mercy, and find grace to help in time of need.",
-        NKJV: "Let us therefore come boldly to the throne of grace, that we may obtain mercy and find grace to help in time of need.",
-        NASB: "Therefore let us draw near with confidence to the throne of grace, so that we may receive mercy and find grace to help in time of need.",
-      },
       reference: "Hebrews 4:16",
       defaultVersion: "KJV",
     },
@@ -829,13 +689,6 @@ text
     id: "21",
     date: getDevotionalDate("21"),
     verse: {
-      text: {
-        NIV: "And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.",
-        ESV: "And the peace of God, which surpasses all understanding, will guard your hearts and your minds in Christ Jesus.",
-        KJV: "And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.",
-        NKJV: "And the peace of God, which surpasses all understanding, will guard your hearts and minds through Christ Jesus.",
-        NASB: "And the peace of God, which surpasses all comprehension, will guard your hearts and your minds in Christ Jesus.",
-      },
       reference: "Philippians 4:7",
       defaultVersion: "KJV",
     },
@@ -866,13 +719,6 @@ Allow God's peace to be the guardian of your heart today.`,
     id: "22",
     date: getDevotionalDate("22"),
     verse: {
-      text: {
-        NIV: "Whether you turn to the right or to the left, your ears will hear a voice behind you, saying, 'This is the way; walk in it.'",
-        ESV: "And your ears shall hear a word behind you, saying, 'This is the way, walk in it,' when you turn to the right or when you turn to the left.",
-        KJV: "And thine ears shall hear a word behind thee, saying, This is the way, walk ye in it, when ye turn to the right hand, and when ye turn to the left.",
-        NKJV: "Your ears shall hear a word behind you, saying, 'This is the way, walk in it,' Whenever you turn to the right hand Or whenever you turn to the left.",
-        NASB: "Your ears will hear a word behind you, saying, 'This is the way, walk in it,' whenever you turn to the right or to the left.",
-      },
       reference: "Isaiah 30:21",
       defaultVersion: "KJV",
     },
@@ -902,13 +748,6 @@ Listen for His voice today. He is speaking.`,
     id: "23",
     date: getDevotionalDate("23"),
     verse: {
-      text: {
-        NIV: "Your word is a lamp for my feet, a light on my path.",
-        ESV: "Your word is a lamp to my feet and a light to my path.",
-        KJV: "Thy word is a lamp unto my feet, and a light unto my path.",
-        NKJV: "Your word is a lamp to my feet And a light to my path.",
-        NASB: "Your word is a lamp to my feet And a light to my path.",
-      },
       reference: "Psalm 119:105",
       defaultVersion: "KJV",
     },
@@ -939,13 +778,6 @@ Let Scripture be the light that guides your choices today.`,
     id: "24",
     date: getDevotionalDate("24"),
     verse: {
-      text: {
-        NIV: "The joy of the LORD is your strength.",
-        ESV: "The joy of the LORD is your strength.",
-        KJV: "The joy of the LORD is your strength.",
-        NKJV: "The joy of the LORD is your strength.",
-        NASB: "The joy of the LORD is your strength.",
-      },
       reference: "Nehemiah 8:10",
       defaultVersion: "KJV",
     },
@@ -974,13 +806,6 @@ Don't seek strength alone today. Seek the joy of the Lord, and strength will fol
     id: "25",
     date: getDevotionalDate("25"),
     verse: {
-      text: {
-        NIV: "The LORD himself goes before you and will be with you; he will never leave you nor forsake you. Do not be afraid; do not be discouraged.",
-        ESV: "It is the LORD who goes before you. He will be with you; he will not leave you or forsake you. Do not fear or be dismayed.",
-        KJV: "And the LORD, he it is that doth go before thee; he will be with thee, he will not fail thee, neither forsake thee: fear not, neither be dismayed.",
-        NKJV: "And the LORD, He is the One who goes before you. He will be with you, He will not leave you nor forsake you; do not fear nor be dismayed.",
-        NASB: "The LORD is the one who goes ahead of you; He will be with you. He will not fail you or forsake you. Do not fear or be dismayed.",
-      },
       reference: "Deuteronomy 31:8",
       defaultVersion: "KJV",
     },
@@ -1010,13 +835,6 @@ Wherever you are headed, remember: God is already there.`,
     id: "26",
     date: getDevotionalDate("26"),
     verse: {
-      text: {
-        NIV: "But those who hope in the LORD will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.",
-        ESV: "But they who wait for the LORD shall renew their strength; they shall mount up with wings like eagles; they shall run and not be weary; they shall walk and not faint.",
-        KJV: "But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint.",
-        NKJV: "But those who wait on the LORD shall renew their strength; They shall mount up with wings like eagles, They shall run and not be weary, They shall walk and not faint.",
-        NASB: "Yet those who wait for the LORD Will gain new strength; They will mount up with wings like eagles, They will run and not get tired, They will walk and not become weary.",
-      },
       reference: "Isaiah 40:31",
       defaultVersion: "KJV",
     },
@@ -1045,13 +863,6 @@ This kind of waiting—this hoping in the Lord—is the very source of our stren
     id: "27",
     date: getDevotionalDate("27"),
     verse: {
-      text: {
-        NIV: "And we know that in all things God works for the good of those who love him, who have been called according to his purpose.",
-        ESV: "And we know that for those who love God all things work together for good, for those who are called according to his purpose.",
-        KJV: "And we know that all things work together for good to them that love God, to them who are the called according to his purpose.",
-        NKJV: "And we know that all things work together for good to those who love God, to those who are the called according to His purpose.",
-        NASB: "And we know that God causes all things to work together for good to those who love God, to those who are called according to His purpose.",
-      },
       reference: "Romans 8:28",
       defaultVersion: "KJV",
     },
@@ -1079,13 +890,6 @@ Our God is so powerful and sovereign that He can even redeem our pain and mistak
     id: "28",
     date: getDevotionalDate("28"),
     verse: {
-      text: {
-        NIV: "The name of the LORD is a fortified tower; the righteous run to it and are safe.",
-        ESV: "The name of the LORD is a strong tower; the righteous man runs into it and is safe.",
-        KJV: "The name of the LORD is a strong tower: the righteous runneth into it, and is safe.",
-        NKJV: "The name of the LORD is a strong tower; The righteous run to it and are safe.",
-        NASB: "The name of the LORD is a strong tower; The righteous runs into it and is safe.",
-      },
       reference: "Proverbs 18:10",
       defaultVersion: "KJV",
     },
@@ -1114,13 +918,6 @@ When fear, anxiety, or trouble attacks, we don't have to stand and fight in our 
     id: "29",
     date: getDevotionalDate("29"),
     verse: {
-      text: {
-        NIV: "Cast all your anxiety on him because he cares for you.",
-        ESV: "Casting all your anxieties on him, because he cares for you.",
-        KJV: "Casting all your care upon him; for he careth for you.",
-        NKJV: "Casting all your care upon Him, for He cares for you.",
-        NASB: "Casting all your anxiety on Him, because He cares about you.",
-      },
       reference: "1 Peter 5:7",
       defaultVersion: "KJV",
     },
@@ -1149,13 +946,6 @@ Your worries are not trivial to God. Your anxieties are not a burden to Him. He 
     id: "30",
     date: getDevotionalDate("30"),
     verse: {
-      text: {
-        NIV: "Have I not commanded you? Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go.",
-        ESV: "Have I not commanded you? Be strong and courageous. Do not be frightened, and do not be dismayed, for the LORD your God is with you wherever you go.",
-        KJV: "Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.",
-        NKJV: "Have I not commanded you? Be strong and of good courage; do not be afraid, nor be dismayed, for the LORD your God is with you wherever you go.",
-        NASB: "Have I not commanded you? Be strong and courageous! Do not be terrified nor dismayed, for the LORD your God is with you wherever you go.",
-      },
       reference: "Joshua 1:9",
       defaultVersion: "KJV",
     },
@@ -1183,13 +973,6 @@ This same promise is for us. We are not called to be strong and courageous becau
     id: "31",
     date: getDevotionalDate("31"),
     verse: {
-      text: {
-        NIV: "Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!",
-        ESV: "Therefore, if anyone is in Christ, he is a new creation. The old has passed away; behold, the new has come.",
-        KJV: "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.",
-        NKJV: "Therefore, if anyone is in Christ, he is a new creation; old things have passed away; behold, all things have become new.",
-        NASB: "Therefore if anyone is in Christ, this person is a new creation; the old things passed away; behold, new things have come.",
-      },
       reference: "2 Corinthians 5:17",
       defaultVersion: "KJV",
     },
