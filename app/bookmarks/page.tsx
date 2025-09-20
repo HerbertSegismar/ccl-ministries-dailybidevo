@@ -31,6 +31,8 @@ const Bookmarks = () => {
   const [verseError, setVerseError] = useState<string | null>(null);
   const [isEditingReadingPlan, setIsEditingReadingPlan] = useState(false);
   const [customReadingPlan, setCustomReadingPlan] = useState("");
+  const [verseText, setVerseText] = useState<string>("");
+  const [isLoadingVerse, setIsLoadingVerse] = useState(false);
 
   const pageRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -74,6 +76,29 @@ const Bookmarks = () => {
     verse: number;
     text: string;
   }
+
+  // Function to fetch a single verse by reference
+  const fetchVerseByReference = useCallback(
+    async (reference: string) => {
+      setIsLoadingVerse(true);
+      try {
+        const response = await fetch(
+          `https://bible-api.com/${reference}?translation=${bibleVersion}`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          return data.text || "Unable to fetch verse text";
+        }
+        return "Unable to fetch verse text";
+      } catch (error) {
+        console.error("Error fetching verse:", error);
+        return "Unable to fetch verse text";
+      } finally {
+        setIsLoadingVerse(false);
+      }
+    },
+    [bibleVersion]
+  );
 
   const fetchBibleVerses = useCallback(
     async (parsedPlan: ParsedPlan, useFallback = false) => {
@@ -341,13 +366,21 @@ const Bookmarks = () => {
       loadVerses(selectedDevotional.readingPlan);
       setCustomReadingPlan(selectedDevotional.readingPlan);
       setIsEditingReadingPlan(false);
+
+      // Fetch verse text with current version
+      if (selectedDevotional.verse.reference) {
+        fetchVerseByReference(selectedDevotional.verse.reference).then((text) =>
+          setVerseText(text)
+        );
+      }
     } else {
       document.body.style.overflow = "auto";
       // Reset states when modal closes
       setReadingPlanVerses("");
       setVerseError(null);
+      setVerseText("");
     }
-  }, [selectedDevotional, loadVerses]);
+  }, [selectedDevotional, loadVerses, fetchVerseByReference]);
 
   const openDevotional = (devotional: Devotional) =>
     setSelectedDevotional(devotional);
@@ -371,10 +404,6 @@ const Bookmarks = () => {
     if (typeof window !== "undefined") {
       localStorage.setItem("bookmarks", JSON.stringify(updated));
     }
-  };
-
-  const getVerseText = (verse: Devotional["verse"]) => {
-    return verse.text[bibleVersion] || verse.text[verse.defaultVersion];
   };
 
   const handleReadingPlanEdit = () => {
@@ -525,6 +554,7 @@ const Bookmarks = () => {
                 <button
                   onClick={closeDevotional}
                   className={`p-2 rounded-full ${colorClasses.text} hover:bg-black/10 dark:hover:bg-white/10`}
+                  aria-label="Close"
                 >
                   <FaTimes />
                 </button>
@@ -543,16 +573,22 @@ const Bookmarks = () => {
                   theme === "dark" ? "bg-gray-600" : colorClasses.lightBg
                 }`}
               >
-                <p
-                  className={`italic mb-2 ${
-                    theme === "dark" ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  &ldquo;{getVerseText(selectedDevotional.verse)}&rdquo;
-                </p>
-                <p className={`font-semibold ${colorClasses.text}`}>
-                  - {selectedDevotional.verse.reference} ({bibleVersion})
-                </p>
+                {isLoadingVerse ? (
+                  <p className="italic mb-2 text-gray-500">Loading verse...</p>
+                ) : (
+                  <>
+                    <p
+                      className={`italic mb-2 ${
+                        theme === "dark" ? "text-gray-300" : "text-gray-700"
+                      }`}
+                    >
+                      &ldquo;{verseText}&rdquo;
+                    </p>
+                    <p className={`font-semibold ${colorClasses.text}`}>
+                      - {selectedDevotional.verse.reference} ({bibleVersion})
+                    </p>
+                  </>
+                )}
               </div>
 
               <div className="prose dark:prose-invert max-w-none">
