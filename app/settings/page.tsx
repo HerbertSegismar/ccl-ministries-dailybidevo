@@ -335,20 +335,6 @@ const Settings = () => {
               <option value="OEB-US">
                 Open English Bible, US Edition (OEB-US)
               </option>
-              <option value="CHEROKEE">
-                Cherokee New Testament (CHEROKEE)
-              </option>
-              <option value="CUV">Chinese Union Version (CUV)</option>
-              <option value="BKR">Bible kralická (BKR)</option>
-              <option value="CLEMENTINE">
-                Clementine Latin Vulgate (CLEMENTINE)
-              </option>
-              <option value="ALMEIDA">
-                João Ferreira de Almeida (ALMEIDA)
-              </option>
-              <option value="RCCV">
-                Protestant Romanian Corrected Cornilescu Version (RCCV)
-              </option>
             </select>
           </SettingCard>
         </div>

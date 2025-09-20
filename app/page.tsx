@@ -30,6 +30,15 @@ interface BibleVerse {
   text: string;
 }
 
+// List of single-chapter books
+const SINGLE_CHAPTER_BOOKS = new Set([
+  "obadiah",
+  "philemon",
+  "2john",
+  "3john",
+  "jude",
+]);
+
 const Home = () => {
   const router = useRouter();
   const { theme, colorScheme } = useTheme();
@@ -61,7 +70,6 @@ const Home = () => {
   const currentDay = new Date().getDate();
   const currentMonth = new Date().toLocaleString("default", { month: "long" });
 
-  // Bible versions available (same as in settings)
   const bibleVersions = [
     { value: "NIV", label: "NIV" },
     { value: "ESV", label: "ESV" },
@@ -71,18 +79,12 @@ const Home = () => {
     { value: "ASV", label: "ASV" },
     { value: "BBE", label: "BBE" },
     { value: "DARBY", label: "DARBY" },
-    { value: "DRA", label: "DOUAY-RHEIMS" },
+    { value: "DRA", label: "DOUAY-RHEIMS" }, 
     { value: "WEB", label: "WEB" },
     { value: "WEBBE", label: "WEBBE" },
     { value: "YLT", label: "YLT" },
     { value: "OEB-CW", label: "OEB-CW" },
     { value: "OEB-US", label: "OEB-US" },
-    { value: "CHEROKEE", label: "CHEROKEE" },
-    { value: "CUV", label: "CUV" },
-    { value: "BKR", label: "BKR" },
-    { value: "CLEMENTINE", label: "CLEMENTINE" },
-    { value: "ALMEIDA", label: "ALMEIDA" },
-    { value: "RCCV", label: "RCCV" },
   ];
 
   const getDevotionalForDate = useCallback(
@@ -91,7 +93,6 @@ const Home = () => {
     []
   );
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -110,54 +111,55 @@ const Home = () => {
     };
   }, []);
 
-  // Function to parse reading plan (e.g., "John 1:1-5", "John 3", "John 3-4")
   const parseReadingPlan = (plan: string) => {
-    // Match patterns like "John 1:1-5", "1 John 1:1-5", "John 1", or "John 3-4"
     const match = plan.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
     if (match) {
       return {
-        book: match[1].toLowerCase().replace(/\s+/g, ""), // Convert to lowercase and remove spaces
+        book: match[1].toLowerCase().replace(/\s+/g, ""),
         chapter: match[2],
-        startVerse: match[3] ? parseInt(match[3]) : undefined, // undefined means whole chapter
+        startVerse: match[3] ? parseInt(match[3]) : undefined,
         endVerse: match[4] ? parseInt(match[4]) : undefined,
       };
     }
     return null;
   };
 
-   const parseVerseReference = (reference: string) => {
-     // Match patterns like "John 3:1-5", "1 John 1:1-5", "John 3:1", or "John 3"
-     const match = reference.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
-     if (!match) return null;
+  const parseVerseReference = (reference: string) => {
+    const match = reference.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
+    if (!match) return null;
 
-     return {
-       book: match[1].toLowerCase().replace(/\s+/g, ""),
-       chapter: match[2],
-       verse: match[3] || "1", // Default to first verse if not specified
-       endVerse: match[4] || match[3] || "1", // Use start verse if no end verse
-     };
-   };
+    return {
+      book: match[1].toLowerCase().replace(/\s+/g, ""),
+      chapter: match[2],
+      verse: match[3] || "1",
+      endVerse: match[4] || match[3] || "1",
+    };
+  };
 
   interface ParsedPlan {
     book: string;
     chapter: string;
-    startVerse?: number; // undefined means whole chapter
+    startVerse?: number;
     endVerse?: number;
   }
 
   const fetchBibleVerses = useCallback(
     async (parsedPlan: ParsedPlan, useFallback = false) => {
       const { book, chapter, startVerse, endVerse } = parsedPlan;
-
-      // Determine which version to use
       const versionToUse = useFallback ? "kjv" : bibleVersion;
 
-      // Build the URL based on whether we want specific verses or whole chapter
       let url: string;
 
-      if (startVerse === undefined && endVerse === undefined) {
-        // Whole chapter request - use single_chapter_book_matching=indifferent
-        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}&single_chapter_book_matching=indifferent`;
+      // Check if it's a single-chapter book and we're fetching the entire chapter
+      const isSingleChapterBook = SINGLE_CHAPTER_BOOKS.has(book);
+      const isWholeChapter = startVerse === undefined && endVerse === undefined;
+
+      if (isSingleChapterBook && isWholeChapter) {
+        // Use special format for single-chapter books
+        url = `https://bible-api.com/${book}%201?translation=${versionToUse}&single_chapter_book_matching=indifferent`;
+      } else if (isWholeChapter) {
+        // Regular whole chapter request
+        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}`;
       } else if (
         startVerse !== undefined &&
         endVerse !== undefined &&
@@ -169,11 +171,10 @@ const Home = () => {
         // Verse range request
         url = `https://bible-api.com/${book}+${chapter}:${startVerse}-${endVerse}?translation=${versionToUse}`;
       } else {
-        // Default to whole chapter if only startVerse is provided
-        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}&single_chapter_book_matching=indifferent`;
+        // Default to whole chapter
+        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}`;
       }
 
-      // Try multiple API endpoints with fallbacks
       const apiEndpoints = [
         url,
         url.replace(`translation=${versionToUse}`, "translation=kjv"),
@@ -184,10 +185,7 @@ const Home = () => {
           const response = await fetch(endpoint);
           if (response.ok) {
             const data = await response.json();
-
-            // Handle different API response formats
             if (data.verses) {
-              // Format verses with numbers and remove unnecessary spaces
               const versesText = data.verses
                 .map(
                   (v: BibleVerse) =>
@@ -195,8 +193,7 @@ const Home = () => {
                 )
                 .join("\n\n");
 
-              // For full chapters, add chapter header
-              if (startVerse === undefined && endVerse === undefined) {
+              if (isWholeChapter) {
                 return {
                   text: `Chapter ${chapter}\n\n${versesText}`,
                   version: versionToUse,
@@ -210,18 +207,14 @@ const Home = () => {
                 isFullChapter: false,
               };
             } else if (data.text) {
-              // If we only get text, try to parse it and remove unnecessary spaces
               const text = data.text.replace(/\s+/g, " ").trim();
-
-              // For full chapters, add chapter header
-              if (startVerse === undefined && endVerse === undefined) {
+              if (isWholeChapter) {
                 return {
                   text: `Chapter ${chapter}\n\n${text}`,
                   version: versionToUse,
                   isFullChapter: true,
                 };
               }
-
               return {
                 text: text,
                 version: versionToUse,
