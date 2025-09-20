@@ -26,6 +26,62 @@ const Reflection = () => {
   const colorClasses = getColorClasses(colorScheme);
 
   useEffect(() => {
+    // Fetch verse from API
+    const fetchVerseFromAPI = async (verseReference: string) => {
+      setIsLoadingVerse(true);
+      setVerseError(null);
+
+      try {
+        // Parse the reference to extract book, chapter, and verse range
+        const match = verseReference.match(/(\d?\s?\w+)\s(\d+):(\d+(?:-\d+)?)/);
+        if (!match) {
+          setVerseError("Invalid verse format");
+          return;
+        }
+
+        const book = match[1].toLowerCase().replace(/\s+/g, "+");
+        const chapter = match[2];
+        const verse = match[3];
+
+        const response = await fetch(
+          `https://bible-api.com/${book}+${chapter}:${verse}?translation=${bibleVersion}`
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          const text = data.text || "Verse not available";
+          setVerseText(text);
+
+          // Store in localStorage for future use
+          if (devotional) {
+            localStorage.setItem(
+              `verse-${devotional.id}-${bibleVersion}`,
+              text
+            );
+          }
+        } else {
+          // Fallback to KJV if the selected version fails
+          const fallbackResponse = await fetch(
+            `https://bible-api.com/${book}+${chapter}:${verse}?translation=kjv`
+          );
+
+          if (fallbackResponse.ok) {
+            const data = await fallbackResponse.json();
+            const text = data.text || "Verse not available";
+            setVerseText(text);
+            setVerseError(`Using KJV (${bibleVersion} not available)`);
+          } else {
+            throw new Error("Failed to fetch verse");
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching verse:", error);
+        setVerseError("Unable to load verse. Please try again.");
+      } finally {
+        setIsLoadingVerse(false);
+      }
+    };
+
     // Get devotional data from localStorage instead of query params
     const devotionalData = localStorage.getItem("currentDevotional");
     if (devotionalData) {
@@ -50,60 +106,7 @@ const Reflection = () => {
     } else {
       router.push("/");
     }
-  }, [router]);
-
-  // Fetch verse from API
-  const fetchVerseFromAPI = async (verseReference: string) => {
-    setIsLoadingVerse(true);
-    setVerseError(null);
-
-    try {
-      // Parse the reference to extract book, chapter, and verse range
-      const match = verseReference.match(/(\d?\s?\w+)\s(\d+):(\d+(?:-\d+)?)/);
-      if (!match) {
-        setVerseError("Invalid verse format");
-        return;
-      }
-
-      const book = match[1].toLowerCase().replace(/\s+/g, "+");
-      const chapter = match[2];
-      const verse = match[3];
-
-      const response = await fetch(
-        `https://bible-api.com/${book}+${chapter}:${verse}?translation=${bibleVersion}`
-      );
-
-      if (response.ok) {
-        const data = await response.json();
-        const text = data.text || "Verse not available";
-        setVerseText(text);
-
-        // Store in localStorage for future use
-        if (devotional) {
-          localStorage.setItem(`verse-${devotional.id}-${bibleVersion}`, text);
-        }
-      } else {
-        // Fallback to KJV if the selected version fails
-        const fallbackResponse = await fetch(
-          `https://bible-api.com/${book}+${chapter}:${verse}?translation=kjv`
-        );
-
-        if (fallbackResponse.ok) {
-          const data = await fallbackResponse.json();
-          const text = data.text || "Verse not available";
-          setVerseText(text);
-          setVerseError(`Using KJV (${bibleVersion} not available)`);
-        } else {
-          throw new Error("Failed to fetch verse");
-        }
-      }
-    } catch (error) {
-      console.error("Error fetching verse:", error);
-      setVerseError("Unable to load verse. Please try again.");
-    } finally {
-      setIsLoadingVerse(false);
-    }
-  };
+  }, [router, bibleVersion, devotional]); // Added bibleVersion as dependency
 
   // Page entrance animation
   useGSAP(() => {
@@ -139,9 +142,7 @@ const Reflection = () => {
     );
 
     // If we have API-fetched text, use it, otherwise fall back to the static text
-    return (
-      apiVerseText 
-    );
+    return apiVerseText;
   };
 
   const handleReflectionChange = (promptId: string, value: string) => {

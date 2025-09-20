@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef, useCallback, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import {
   FaBook,
   FaPrayingHands,
@@ -48,6 +48,7 @@ const Home = () => {
   const colorClasses = getColorClasses(colorScheme);
   const currentDay = new Date().getDate();
   const currentMonth = new Date().toLocaleString("default", { month: "long" });
+
 
   const bibleVersions = [
     { value: "KJV", label: "KJV" },
@@ -260,7 +261,7 @@ const Home = () => {
   const handleDevotionalNavigation = useCallback(
     (direction: "prev" | "next") => {
       if (!currentDevotional) return;
-      const currentId = parseInt(currentDevotional.id);
+      const currentId = parseInt(String(currentDevotional.id));
       const targetId =
         direction === "prev"
           ? currentId > 1
@@ -277,6 +278,7 @@ const Home = () => {
     },
     [
       currentDevotional,
+      setCurrentDevotional,
       getDevotionalForDate,
       runContentAnimations,
       updateBookmarkStatus,
@@ -291,7 +293,12 @@ const Home = () => {
       updateBookmarkStatus(selectedDevotional);
       runContentAnimations();
     },
-    [getDevotionalForDate, runContentAnimations, updateBookmarkStatus]
+    [
+      getDevotionalForDate,
+      runContentAnimations,
+      updateBookmarkStatus,
+      setCurrentDevotional,
+    ]
   );
 
   const handleReflection = useCallback((): void => {
@@ -347,7 +354,7 @@ const Home = () => {
     );
   }
 
-  const currentId = parseInt(currentDevotional.id);
+      const currentId = parseInt(String(currentDevotional.id));
 
   // ------------------- Button Styles -------------------
   const actionButtonClass =
@@ -482,9 +489,11 @@ const Home = () => {
                   theme === "dark" ? "text-gray-200" : "text-gray-800"
                 }`}
               >
-                {currentDevotional.content.split("\n\n").map((p: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined, i: Key | null | undefined) => (
-                  <p key={i}>{p}</p>
-                ))}
+                {(currentDevotional.content as string)
+                  .split("\n\n")
+                  .map((p: string, i: number) => (
+                    <p key={i}>{p}</p>
+                  ))}
               </div>
             </div>
 

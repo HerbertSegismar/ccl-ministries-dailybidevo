@@ -1,10 +1,13 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, ReactNode } from "react";
 
-interface BibleVerse {
-  verse: number;
-  text: string;
-}
+export const SINGLE_CHAPTER_BOOKS = new Set([
+  "obadiah",
+  "philemon",
+  "2+john",
+  "3+john",
+  "jude",
+]);
 
 export interface ParsedPlan {
   book: string;
@@ -13,166 +16,166 @@ export interface ParsedPlan {
   endVerse?: number;
 }
 
+export interface BibleVerse {
+  verse: number;
+  text: string;
+}
+
+export interface BibleApiResult {
+  text: string;
+  version: string;
+  isFullChapter: boolean;
+}
+
 interface UseDevotionalDataProps {
   currentDay: number;
-  getDevotionalForDate: (day: number) => any;
+  getDevotionalForDate: (day: number) => Devotional; // Replaced any with Devotional
   bibleVersion: string;
 }
 
-const SINGLE_CHAPTER_BOOKS = new Set([
-  "obadiah",
-  "philemon",
-  "2+john",
-  "3+john",
-  "jude",
-]);
-
-export const useDevotionalData = ({
-  currentDay,
-  getDevotionalForDate,
-  bibleVersion,
-}: UseDevotionalDataProps) => {
-  const [currentDevotional, setCurrentDevotional] = useState<any>(null);
-  const [readingPlanVerses, setReadingPlanVerses] = useState<string>("");
-  const [isLoadingVerses, setIsLoadingVerses] = useState(false);
-  const [verseError, setVerseError] = useState<string | null>(null);
-  const [dailyVerseText, setDailyVerseText] = useState<string>("");
-  const [isLoadingDailyVerse, setIsLoadingDailyVerse] = useState(false);
-
-  const parseReadingPlan = (plan: string) => {
-    const match = plan.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
-    if (match) {
-      const bookPart = match[1].replace(/(\d)\s?(\w)/, "$1+$2").toLowerCase();
-      return {
-        book: bookPart.replace(/\s+/g, ""),
-        chapter: match[2],
-        startVerse: match[3] ? parseInt(match[3]) : undefined,
-        endVerse: match[4] ? parseInt(match[4]) : undefined,
-      };
-    }
-    return null;
+export interface Devotional {
+  content: ReactNode; // Changed from 'any' to 'ReactNode'
+  prayer: ReactNode;
+  date: ReactNode;
+  title: string | undefined;
+  id: string | number;
+  verse: {
+    reference: string;
   };
+  readingPlan: string;
+}
 
-  const fetchBibleVerses = useCallback(
-    async (parsedPlan: ParsedPlan, useFallback = false) => {
-      const { book, chapter, startVerse, endVerse } = parsedPlan;
-      const versionToUse = useFallback ? "kjv" : bibleVersion.toLowerCase();
+export function parseReadingPlan(plan: string): ParsedPlan | null {
+  const match = plan.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
+  if (match) {
+    const bookPart = match[1].replace(/(\d)\s?(\w)/, "$1+$2").toLowerCase();
+    return {
+      book: bookPart.replace(/\s+/g, ""),
+      chapter: match[2],
+      startVerse: match[3] ? parseInt(match[3]) : undefined,
+      endVerse: match[4] ? parseInt(match[4]) : undefined,
+    };
+  }
+  return null;
+}
 
-      let url: string;
-      const isSingleChapterBook = SINGLE_CHAPTER_BOOKS.has(book);
-      const isWholeChapter = startVerse === undefined && endVerse === undefined;
+export async function fetchVerseByReference(
+  reference: string,
+  bibleVersion: string
+): Promise<string> {
+  const apiEndpoints = [
+    `https://bible-api.com/${reference}?translation=${bibleVersion}`,
+    `https://bible-api.com/${reference}?translation=kjv`,
+  ];
 
-      if (isSingleChapterBook && isWholeChapter) {
-        url = `https://bible-api.com/${book}%201?translation=${versionToUse}&single_chapter_book_matching=indifferent`;
-      } else if (isWholeChapter) {
-        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}`;
-      } else if (startVerse !== undefined && endVerse === undefined) {
-        url = `https://bible-api.com/${book}+${chapter}:${startVerse}?translation=${versionToUse}`;
-      } else if (startVerse !== undefined && endVerse !== undefined) {
-        url = `https://bible-api.com/${book}+${chapter}:${startVerse}-${endVerse}?translation=${versionToUse}`;
-      } else {
-        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}`;
+  let lastError: Error | null = null;
+
+  for (const endpoint of apiEndpoints) {
+    try {
+      const response = await fetch(endpoint);
+      if (response.ok) {
+        const data = await response.json();
+        return data.text || "Verse not available";
       }
+    } catch (error) {
+      lastError = error instanceof Error ? error : new Error(String(error));
+      console.warn(`Failed to fetch from ${endpoint}, trying next endpoint...`);
+      continue;
+    }
+  }
 
-      const apiEndpoints = [
-        url,
-        url.replace(`translation=${versionToUse}`, "translation=kjv"),
-      ];
+  throw lastError || new Error("All API endpoints failed");
+}
 
-      for (const endpoint of apiEndpoints) {
-        try {
-          const response = await fetch(endpoint);
-          if (response.ok) {
-            const data = await response.json();
-            if (data.verses) {
-              const versesText = data.verses
-                .map(
-                  (v: BibleVerse) =>
-                    `${v.verse}. ${v.text.trim().replace(/\s+/g, " ")}`
-                )
-                .join("\n\n");
+export async function fetchBibleVerses(
+  parsedPlan: ParsedPlan,
+  bibleVersion: string
+): Promise<BibleApiResult> {
+  const { book, chapter, startVerse, endVerse } = parsedPlan;
 
-              if (isWholeChapter) {
-                return {
-                  text: `Chapter ${chapter}\n\n${versesText}`,
-                  version: versionToUse,
-                  isFullChapter: true,
-                };
-              }
+  let url: string;
+  const isSingleChapterBook = SINGLE_CHAPTER_BOOKS.has(book);
+  const isWholeChapter = startVerse === undefined && endVerse === undefined;
 
-              return {
-                text: versesText,
-                version: versionToUse,
-                isFullChapter: false,
-              };
-            } else if (data.text) {
-              const text = data.text.replace(/\s+/g, " ").trim();
-              if (isWholeChapter) {
-                return {
-                  text: `Chapter ${chapter}\n\n${text}`,
-                  version: versionToUse,
-                  isFullChapter: true,
-                };
-              }
-              return {
-                text: text,
-                version: versionToUse,
-                isFullChapter: false,
-              };
-            }
-          }
-        } catch {
-          console.log(
-            `Failed to fetch from ${endpoint}, trying next endpoint...`
-          );
+  if (isSingleChapterBook && isWholeChapter) {
+    url = `https://bible-api.com/${book}%201?translation=${bibleVersion}&single_chapter_book_matching=indifferent`;
+  } else if (isWholeChapter) {
+    url = `https://bible-api.com/${book}+${chapter}?translation=${bibleVersion}`;
+  } else if (startVerse !== undefined && endVerse === undefined) {
+    url = `https://bible-api.com/${book}+${chapter}:${startVerse}?translation=${bibleVersion}`;
+  } else if (startVerse !== undefined && endVerse !== undefined) {
+    url = `https://bible-api.com/${book}+${chapter}:${startVerse}-${endVerse}?translation=${bibleVersion}`;
+  } else {
+    url = `https://bible-api.com/${book}+${chapter}?translation=${bibleVersion}`;
+  }
+
+  const apiEndpoints = [
+    url,
+    url.replace(`translation=${bibleVersion}`, "translation=kjv"),
+  ];
+
+  for (const endpoint of apiEndpoints) {
+    try {
+      const response = await fetch(endpoint);
+      if (response.ok) {
+        const data = await response.json();
+
+        if (data.verses) {
+          const versesText = data.verses
+            .map(
+              (v: BibleVerse) =>
+                `${v.verse}. ${v.text.trim().replace(/\s+/g, " ")}`
+            )
+            .join("\n\n");
+
+          return {
+            text: isWholeChapter
+              ? `Chapter ${chapter}\n\n${versesText}`
+              : versesText,
+            version: bibleVersion,
+            isFullChapter: isWholeChapter,
+          };
+        } else if (data.text) {
+          const text = data.text.replace(/\s+/g, " ").trim();
+          return {
+            text: isWholeChapter ? `Chapter ${chapter}\n\n${text}` : text,
+            version: bibleVersion,
+            isFullChapter: isWholeChapter,
+          };
         }
       }
+    } catch {
+      console.log(`Failed to fetch from ${endpoint}, trying next endpoint...`);
+    }
+  }
 
-      throw new Error("All API endpoints failed");
-    },
+  throw new Error("All API endpoints failed");
+}
+
+export const useBibleAPI = (bibleVersion: string) => {
+  const fetchBibleVersesMemoized = useCallback(
+    (parsedPlan: ParsedPlan) => fetchBibleVerses(parsedPlan, bibleVersion),
     [bibleVersion]
   );
 
-  const fetchVerseFromAPI = useCallback(
-    async (verseReference: string) => {
-      try {
-        // Updated regex to capture verse ranges (e.g., John 3:16-18)
-        const match = verseReference.match(
-          /(\d?\s?\w+)\s(\d+):(\d+)(?:-(\d+))?/
-        );
-        if (!match) return "Verse not available";
-
-        const book = match[1].toLowerCase().replace(/\s+/g, "+");
-        const chapter = match[2];
-        const startVerse = match[3];
-        const endVerse = match[4]; // Will be undefined if no range
-
-        // Build URL with verse range if applicable
-        const versePath = endVerse ? `${startVerse}-${endVerse}` : startVerse;
-        const url = `https://bible-api.com/${book}+${chapter}:${versePath}?translation=${bibleVersion}`;
-        const fallbackUrl = `https://bible-api.com/${book}+${chapter}:${versePath}?translation=KJV`;
-
-        const response = await fetch(url);
-        if (response.ok) {
-          const data = await response.json();
-          return data.text || "Verse not available";
-        }
-
-        // Fallback to KJV if primary version fails
-        const fallbackResponse = await fetch(fallbackUrl);
-        if (fallbackResponse.ok) {
-          const data = await fallbackResponse.json();
-          return data.text || "Verse not available";
-        }
-
-        return "Verse not available";
-      } catch (error) {
-        console.error("Error fetching verse:", error);
-        return "Verse not available";
-      }
-    },
+  const fetchVerseFromAPIMemoized = useCallback(
+    (verseReference: string) =>
+      fetchVerseByReference(verseReference, bibleVersion),
     [bibleVersion]
   );
+
+  return {
+    fetchBibleVerses: fetchBibleVersesMemoized,
+    fetchVerseFromAPI: fetchVerseFromAPIMemoized,
+  };
+};
+
+export const useReadingPlan = (
+  fetchBibleVerses: (plan: ParsedPlan) => Promise<BibleApiResult>
+) => {
+  const [verses, setVerses] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const loadVerses = useCallback(
     async (plan: string) => {
@@ -183,8 +186,8 @@ export const useDevotionalData = ({
         const startChapter = parseInt(chapterRangeMatch[2]);
         const endChapter = parseInt(chapterRangeMatch[3]);
 
-        setIsLoadingVerses(true);
-        setVerseError(null);
+        setIsLoading(true);
+        setError(null);
 
         try {
           const allChaptersText: string[] = [];
@@ -201,76 +204,99 @@ export const useDevotionalData = ({
             allChaptersText.push(result.text);
           }
 
-          setReadingPlanVerses(allChaptersText.join("\n\n"));
+          setVerses(allChaptersText.join("\n\n"));
         } catch (error) {
           console.error("Error fetching chapter range:", error);
-          setVerseError(
+          setError(
             "Unable to load chapter range. Please check the book and chapter numbers."
           );
-          setReadingPlanVerses("");
+          setVerses("");
         } finally {
-          setIsLoadingVerses(false);
+          setIsLoading(false);
         }
         return;
       }
 
       const parsedPlan = parseReadingPlan(plan);
       if (!parsedPlan) {
-        setReadingPlanVerses("Unable to parse reading plan.");
+        setVerses("Unable to parse reading plan.");
         return;
       }
 
-      setIsLoadingVerses(true);
-      setVerseError(null);
+      setIsLoading(true);
+      setError(null);
 
       try {
         const result = await fetchBibleVerses(parsedPlan);
-        setReadingPlanVerses(result.text);
+        setVerses(result.text);
       } catch (error) {
         console.error("Error fetching verses:", error);
-
-        try {
-          const fallbackResult = await fetchBibleVerses(parsedPlan, true);
-          setReadingPlanVerses(fallbackResult.text);
-          setVerseError(`Using KJV (${bibleVersion} not available)`);
-        } catch (fallbackError) {
-          console.error(
-            "Error fetching verses with KJV fallback:",
-            fallbackError
-          );
-          setVerseError(
-            "Input may have exceeded available verses. Try typing the chapter only without verses."
-          );
-          setReadingPlanVerses("");
-        }
+        setError(
+          "Input may have exceeded available verses. Try typing the chapter only without verses."
+        );
+        setVerses("");
       } finally {
-        setIsLoadingVerses(false);
+        setIsLoading(false);
       }
     },
-    [fetchBibleVerses, bibleVersion]
+    [fetchBibleVerses]
   );
 
-  const loadDailyVerse = useCallback(async () => {
-    if (!currentDevotional) return;
+  return { verses, isLoading, error, loadVerses };
+};
 
-    setIsLoadingDailyVerse(true);
-    try {
-      const verseText = await fetchVerseFromAPI(
-        currentDevotional.verse.reference
-      );
-      setDailyVerseText(verseText);
+export const useDailyVerse = (
+  fetchVerseFromAPI: (verseReference: string) => Promise<string>,
+  bibleVersion: string
+) => {
+  const [verseText, setVerseText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-      localStorage.setItem(
-        `verse-${currentDevotional.id}-${bibleVersion}`,
-        verseText
-      );
-    } catch (error) {
-      console.error("Error fetching daily verse:", error);
-      setDailyVerseText("Verse not available");
-    } finally {
-      setIsLoadingDailyVerse(false);
-    }
-  }, [currentDevotional, bibleVersion, fetchVerseFromAPI]);
+  const loadDailyVerse = useCallback(
+    async (devotional: Devotional) => {
+      setIsLoading(true);
+      try {
+        const verse = await fetchVerseFromAPI(devotional.verse.reference);
+        setVerseText(verse);
+        // Convert id to string to avoid TypeScript error
+        localStorage.setItem(
+          `verse-${String(devotional.id)}-${bibleVersion}`,
+          verse
+        );
+      } catch (error) {
+        console.error("Error fetching daily verse:", error);
+        setVerseText("Verse not available");
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [fetchVerseFromAPI, bibleVersion]
+  );
+
+  return { verseText, isLoading, loadDailyVerse };
+};
+
+export const useDevotionalData = ({
+  currentDay,
+  getDevotionalForDate,
+  bibleVersion,
+}: UseDevotionalDataProps) => {
+  // Replace 'any' with 'Devotional | null'
+  const [currentDevotional, setCurrentDevotional] = useState<Devotional | null>(
+    null
+  );
+  const { fetchBibleVerses, fetchVerseFromAPI } = useBibleAPI(bibleVersion);
+  const {
+    verses: readingPlanVerses,
+    isLoading: isLoadingVerses,
+    error: verseError,
+    loadVerses,
+  } = useReadingPlan(fetchBibleVerses);
+  const {
+    verseText: dailyVerseText,
+    isLoading: isLoadingDailyVerse,
+    loadDailyVerse,
+  } = useDailyVerse(fetchVerseFromAPI, bibleVersion);
 
   useEffect(() => {
     const todayDevotional = getDevotionalForDate(currentDay);
@@ -281,7 +307,7 @@ export const useDevotionalData = ({
     if (!currentDevotional) return;
 
     loadVerses(currentDevotional.readingPlan);
-    loadDailyVerse();
+    loadDailyVerse(currentDevotional);
   }, [currentDevotional, bibleVersion, loadVerses, loadDailyVerse]);
 
   return {

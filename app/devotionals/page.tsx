@@ -15,6 +15,11 @@ import { getColorClasses } from "../contexts/ThemeContext";
 import type { Devotional } from "../types";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import {
+  useReadingPlan,
+  useDailyVerse,
+  useBibleAPI,
+} from "../components/DataFetcher";
 
 gsap.registerPlugin(useGSAP);
 
@@ -28,322 +33,29 @@ const Devotionals = () => {
     useState<Devotional | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const modalContentRef = useRef<HTMLDivElement>(null);
-  const [readingPlanVerses, setReadingPlanVerses] = useState<string>("");
-  const [isLoadingVerses, setIsLoadingVerses] = useState(false);
-  const [verseError, setVerseError] = useState<string | null>(null);
-  const [dailyVerseText, setDailyVerseText] = useState<string>("");
-  const [isLoadingDailyVerse, setIsLoadingDailyVerse] = useState(false);
   const [isEditingReadingPlan, setIsEditingReadingPlan] = useState(false);
   const [customReadingPlan, setCustomReadingPlan] = useState("");
 
+  const { fetchBibleVerses, fetchVerseFromAPI } = useBibleAPI(bibleVersion);
+  const {
+    verses: readingPlanVerses,
+    isLoading: isLoadingVerses,
+    error: verseError,
+    loadVerses,
+  } = useReadingPlan(fetchBibleVerses);
+  const {
+    verseText: dailyVerseText,
+    isLoading: isLoadingDailyVerse,
+    loadDailyVerse: loadDailyVerseHandler,
+  } = useDailyVerse(fetchVerseFromAPI, bibleVersion);
+
   const colorClasses = getColorClasses(colorScheme);
 
-  const SINGLE_CHAPTER_BOOKS = new Set([
-    "obadiah",
-    "philemon",
-    "2+john",
-    "3+john",
-    "jude",
-  ]);
-
-  const parseVerseReference = (reference: string) => {
-    const match = reference.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
-    if (!match) return null;
-
-    // Add '+' between number and book name
-    const bookPart = match[1].replace(/(\d)\s?(\w)/, "$1+$2").toLowerCase();
-
-    return {
-      book: bookPart.replace(/\s+/g, ""),
-      chapter: match[2],
-      verse: match[3] || "1",
-      endVerse: match[4] || match[3] || "1",
-    };
-  };
-
-  const parseReadingPlan = (plan: string) => {
-    // Updated regex to handle single verses and ranges
-    const match = plan.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
-    if (match) {
-      // Add '+' between number and book name
-      const bookPart = match[1].replace(/(\d)\s?(\w)/, "$1+$2").toLowerCase();
-      return {
-        book: bookPart.replace(/\s+/g, ""),
-        chapter: match[2],
-        startVerse: match[3] ? parseInt(match[3]) : undefined,
-        endVerse: match[4] ? parseInt(match[4]) : undefined,
-      };
-    }
-    return null;
-  };
-
-  interface ParsedPlan {
-    book: string;
-    chapter: string;
-    startVerse?: number; // undefined means whole chapter
-    endVerse?: number;
-  }
-
-  interface BibleVerse {
-    verse: number;
-    text: string;
-  }
-
-  const fetchBibleVerses = useCallback(
-    async (parsedPlan: ParsedPlan, useFallback = false) => {
-      const { book, chapter, startVerse, endVerse } = parsedPlan;
-      const versionToUse = useFallback ? "kjv" : bibleVersion;
-
-      let url: string;
-
-      // Check if it's a single-chapter book and we're fetching the entire chapter
-      const isSingleChapterBook = SINGLE_CHAPTER_BOOKS.has(book);
-      const isWholeChapter = startVerse === undefined && endVerse === undefined;
-
-      if (isSingleChapterBook && isWholeChapter) {
-        // Use special format for single-chapter books
-        url = `https://bible-api.com/${book}%201?translation=${versionToUse}&single_chapter_book_matching=indifferent`;
-      } else if (isWholeChapter) {
-        // Regular whole chapter request
-        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}`;
-      } else if (startVerse !== undefined && endVerse === undefined) {
-        // Single verse request
-        url = `https://bible-api.com/${book}+${chapter}:${startVerse}?translation=${versionToUse}`;
-      } else if (startVerse !== undefined && endVerse !== undefined) {
-        // Verse range request
-        url = `https://bible-api.com/${book}+${chapter}:${startVerse}-${endVerse}?translation=${versionToUse}`;
-      } else {
-        // Default to whole chapter
-        url = `https://bible-api.com/${book}+${chapter}?translation=${versionToUse}`;
-      }
-
-      // Try multiple API endpoints with fallbacks
-      const apiEndpoints = [
-        url,
-        url.replace(`translation=${versionToUse}`, "translation=kjv"),
-      ];
-
-      for (const endpoint of apiEndpoints) {
-        try {
-          const response = await fetch(endpoint);
-          if (response.ok) {
-            const data = await response.json();
-
-            // Handle different API response formats
-            if (data.verses) {
-              // Format verses with numbers and remove unnecessary spaces
-              const versesText = data.verses
-                .map(
-                  (v: BibleVerse) =>
-                    `${v.verse}. ${v.text.trim().replace(/\s+/g, " ")}`
-                )
-                .join("\n\n");
-
-              // For full chapters, add chapter header
-              if (startVerse === undefined && endVerse === undefined) {
-                return {
-                  text: `Chapter ${chapter}\n\n${versesText}`,
-                  version: versionToUse,
-                  isFullChapter: true,
-                };
-              }
-
-              return {
-                text: versesText,
-                version: versionToUse,
-                isFullChapter: false,
-              };
-            } else if (data.text) {
-              // If we only get text, try to parse it and remove unnecessary spaces
-              const text = data.text.replace(/\s+/g, " ").trim();
-
-              // For full chapters, add chapter header
-              if (startVerse === undefined && endVerse === undefined) {
-                return {
-                  text: `Chapter ${chapter}\n\n${text}`,
-                  version: versionToUse,
-                  isFullChapter: true,
-                };
-              }
-
-              return {
-                text: text,
-                version: versionToUse,
-                isFullChapter: false,
-              };
-            }
-          }
-        } catch {
-          console.log(
-            `Failed to fetch from ${endpoint}, trying next endpoint...`
-          );
-        }
-      }
-
-      throw new Error("All API endpoints failed");
-    },
-    [bibleVersion]
-  );
-
-  // Fixed function to fetch verse from API - now handles verse ranges
-  const fetchVerseFromAPI = useCallback(
-    async (verseReference: string) => {
-      try {
-        // Format the reference for the API by replacing spaces with '+'
-        const formattedReference = verseReference
-          .replace(/\s+/g, "+")
-          .replace(":", "%3A"); // URL encode colons
-
-        const response = await fetch(
-          `https://bible-api.com/${formattedReference}?translation=${bibleVersion}`
-        );
-
-        if (response.ok) {
-          const data = await response.json();
-
-          // Handle both single verses and verse ranges
-          if (data.verses) {
-            // For verse ranges, combine all verses
-            return data.verses
-              .map((v: any) => v.text.trim().replace(/\s+/g, " "))
-              .join(" ");
-          } else if (data.text) {
-            return data.text.replace(/\s+/g, " ").trim();
-          }
-
-          return "Verse not available";
-        }
-
-        // Fallback to KJV if the selected version fails
-        const fallbackResponse = await fetch(
-          `https://bible-api.com/${formattedReference}?translation=KJV`
-        );
-
-        if (fallbackResponse.ok) {
-          const data = await fallbackResponse.json();
-
-          if (data.verses) {
-            return data.versions
-              .map((v: any) => v.text.trim().replace(/\s+/g, " "))
-              .join(" ");
-          } else if (data.text) {
-            return data.text.replace(/\s+/g, " ").trim();
-          }
-
-          return "Verse not available";
-        }
-
-        return "Verse not available";
-      } catch (error) {
-        console.error("Error fetching verse:", error);
-        return "Verse not available";
-      }
-    },
-    [bibleVersion]
-  );
-
-  const loadVerses = useCallback(
-    async (plan: string) => {
-      // Check if this is a chapter range like "john 3-4"
-      const chapterRangeMatch = plan.match(/(\d?\s?\w+)\s(\d+)-(\d+)/);
-
-      if (chapterRangeMatch) {
-        // Handle chapter range by making multiple requests
-        const book = chapterRangeMatch[1].toLowerCase().replace(/\s+/g, "");
-        const startChapter = parseInt(chapterRangeMatch[2]);
-        const endChapter = parseInt(chapterRangeMatch[3]);
-
-        setIsLoadingVerses(true);
-        setVerseError(null);
-
-        try {
-          const allChaptersText: string[] = [];
-
-          for (let chapter = startChapter; chapter <= endChapter; chapter++) {
-            const parsedPlan = {
-              book,
-              chapter: chapter.toString(),
-              startVerse: undefined,
-              endVerse: undefined,
-            };
-
-            const result = await fetchBibleVerses(parsedPlan);
-            allChaptersText.push(result.text);
-          }
-
-          setReadingPlanVerses(allChaptersText.join("\n\n"));
-        } catch (error) {
-          console.error("Error fetching chapter range:", error);
-          setVerseError(
-            "Unable to load chapter range. Please check the book and chapter numbers."
-          );
-          setReadingPlanVerses("");
-        } finally {
-          setIsLoadingVerses(false);
-        }
-        return;
-      }
-
-      // Handle single chapter or verse range requests
-      const parsedPlan = parseReadingPlan(plan);
-      if (!parsedPlan) {
-        setReadingPlanVerses("Unable to parse reading plan.");
-        return;
-      }
-
-      setIsLoadingVerses(true);
-      setVerseError(null);
-
-      try {
-        // First try with the selected version
-        const result = await fetchBibleVerses(parsedPlan);
-        setReadingPlanVerses(result.text);
-      } catch (error) {
-        console.error("Error fetching verses:", error);
-
-        // If the selected version failed, try with KJV as fallback
-        try {
-          const fallbackResult = await fetchBibleVerses(parsedPlan, true);
-          setReadingPlanVerses(fallbackResult.text);
-          setVerseError(`Using KJV (${bibleVersion} not available)`);
-        } catch (fallbackError) {
-          console.error(
-            "Error fetching verses with KJV fallback:",
-            fallbackError
-          );
-          setVerseError(
-            "Input may have exceeded available verses. Try typing the chapter only without verses."
-          );
-          setReadingPlanVerses(""); // Clear any previous verses
-        }
-      } finally {
-        setIsLoadingVerses(false);
-      }
-    },
-    [fetchBibleVerses, bibleVersion]
-  );
-
-  // Updated loadDailyVerse function
   const loadDailyVerse = useCallback(
-    async (devotional: Devotional) => {
-      setIsLoadingDailyVerse(true);
-      try {
-        const verseText = await fetchVerseFromAPI(devotional.verse.reference);
-        setDailyVerseText(verseText);
-
-        // Store in localStorage for the Reflection component
-        localStorage.setItem(
-          `verse-${devotional.id}-${bibleVersion}`,
-          verseText
-        );
-      } catch (error) {
-        console.error("Error fetching daily verse:", error);
-        setDailyVerseText("Verse not available");
-      } finally {
-        setIsLoadingDailyVerse(false);
-      }
+    (devotional: Devotional) => {
+      loadDailyVerseHandler(devotional);
     },
-    [bibleVersion, fetchVerseFromAPI]
+    [loadDailyVerseHandler]
   );
 
   // Page & card animations
@@ -395,10 +107,6 @@ const Devotionals = () => {
       setIsEditingReadingPlan(false);
     } else {
       document.body.style.overflow = "auto";
-      // Reset states when modal closes
-      setReadingPlanVerses("");
-      setDailyVerseText("");
-      setVerseError(null);
     }
   }, [selectedDevotional, loadVerses, loadDailyVerse]);
 
