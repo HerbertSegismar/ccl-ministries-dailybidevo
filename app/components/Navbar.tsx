@@ -223,7 +223,7 @@ const Navbar = () => {
           className="md:hidden overflow-hidden h-0 opacity-0 mt-2"
         >
           <div
-            className={`py-2 space-y-1 bg-white/80 backdrop-blur-md rounded-lg border ${colors.lightBorder} shadow-sm`}
+            className={`py-2 space-y-1 bg-white/30 backdrop-blur-md rounded-lg shadow-sm`}
           >
             {navItems.map((item) => (
               <Link
@@ -233,7 +233,7 @@ const Navbar = () => {
                 className={`flex items-center px-4 py-3 text-sm font-medium transition-all duration-300 ${
                   pathname === item.path
                     ? `${colors.lightBg} ${colors.text}`
-                    : "text-gray-600 hover:text-purple-700 hover:bg-purple-50"
+                    : "text-gray-700 hover:text-purple-700 hover:bg-purple-50"
                 }`}
               >
                 <span className="mr-3">{item.icon}</span>
