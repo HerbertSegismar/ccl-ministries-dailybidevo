@@ -46,6 +46,21 @@ const Devotionals = () => {
     "jude",
   ]);
 
+  const parseVerseReference = (reference: string) => {
+    const match = reference.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
+    if (!match) return null;
+
+    // Add '+' between number and book name
+    const bookPart = match[1].replace(/(\d)\s?(\w)/, "$1+$2").toLowerCase();
+
+    return {
+      book: bookPart.replace(/\s+/g, ""),
+      chapter: match[2],
+      verse: match[3] || "1",
+      endVerse: match[4] || match[3] || "1",
+    };
+  };
+
   const parseReadingPlan = (plan: string) => {
     // Updated regex to handle single verses and ranges
     const match = plan.match(/(\d?\s?\w+)\s(\d+)(?::(\d+)(?:-(\d+))?)?/);
@@ -171,47 +186,77 @@ const Devotionals = () => {
   );
 
   const fetchDailyVerse = useCallback(
-    async (verseReference: string) => {
-      // Parse the verse reference (e.g., "John 1:1")
-      const match = verseReference.match(/(\d?\s?\w+)\s(\d+):(\d+)/);
-      if (!match) return null;
-
-      const book = match[1].toLowerCase().replace(/\s+/g, "");
-      const chapter = match[2];
-      const verse = match[3];
-
-      try {
-        // First try with the selected version
-        const response = await fetch(
-          `https://bible-api.com/${book}+${chapter}:${verse}?translation=${bibleVersion}`
-        );
-        if (response.ok) {
-          const data = await response.json();
-          return data.text?.replace(/\s+/g, " ").trim() || "";
+      async (verseReference: string) => {
+        const parsedRef = parseVerseReference(verseReference);
+        if (!parsedRef) return null;
+  
+        const { book, chapter, verse, endVerse } = parsedRef;
+  
+        // If it's a single verse
+        if (verse === endVerse) {
+          try {
+            const response = await fetch(
+              `https://bible-api.com/${book}+${chapter}:${verse}?translation=${bibleVersion}`
+            );
+            if (response.ok) {
+              const data = await response.json();
+              return data.text?.replace(/\s+/g, " ").trim() || "";
+            }
+          } catch {
+            console.log(
+              `Failed to fetch verse with ${bibleVersion}, trying KJV...`
+            );
+          }
+        } else {
+          // If it's a verse range
+          try {
+            const response = await fetch(
+              `https://bible-api.com/${book}+${chapter}:${verse}-${endVerse}?translation=${bibleVersion}`
+            );
+            if (response.ok) {
+              const data = await response.json();
+  
+              // Return the text without verse numbers
+              if (data.verses) {
+                return data.verses
+                  .map((v: BibleVerse) => v.text.trim().replace(/\s+/g, " "))
+                  .join(" ");
+              }
+              return data.text?.replace(/\s+/g, " ").trim() || "";
+            }
+          } catch {
+            console.log(
+              `Failed to fetch verse range with ${bibleVersion}, trying KJV...`
+            );
+          }
         }
-      } catch {
-        console.log(
-          `Failed to fetch daily verse with ${bibleVersion}, trying KJV...`
-        );
-      }
-
-      // If the selected version fails, try with KJV
-      try {
-        const response = await fetch(
-          `https://bible-api.com/${book}+${chapter}:${verse}?translation=kjv`
-        );
-        if (response.ok) {
-          const data = await response.json();
-          return data.text?.replace(/\s+/g, " ").trim() || "";
+  
+        // Fallback to KJV
+        try {
+          const response = await fetch(
+            `https://bible-api.com/${book}+${chapter}:${verse}${
+              verse !== endVerse ? `-${endVerse}` : ""
+            }?translation=kjv`
+          );
+          if (response.ok) {
+            const data = await response.json();
+  
+            // Return the text without verse numbers
+            if (data.verses && verse !== endVerse) {
+              return data.verses
+                .map((v: BibleVerse) => v.text.trim().replace(/\s+/g, " "))
+                .join(" ");
+            }
+            return data.text?.replace(/\s+/g, " ").trim() || "";
+          }
+        } catch {
+          console.log("Failed to fetch verse with KJV");
         }
-      } catch {
-        console.log("Failed to fetch daily verse with KJV");
-      }
-
-      return null;
-    },
-    [bibleVersion]
-  );
+  
+        return null;
+      },
+      [bibleVersion]
+    );
 
   const loadVerses = useCallback(
     async (plan: string) => {
