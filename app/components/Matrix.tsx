@@ -151,7 +151,7 @@ const Matrix = () => {
     if (theme === "dark") {
       switch (colorScheme) {
         case "green":
-          return "#10B981";
+          return "#1ad73dff";
         case "red":
           return "#EF4444";
         case "yellow":
@@ -162,9 +162,9 @@ const Matrix = () => {
     } else {
       switch (colorScheme) {
         case "green":
-          return "#059669";
+          return "#15c641ff";
         case "red":
-          return "#DC2626";
+          return "#cb2929ff";
         case "yellow":
           return "#D97706";
         default:
@@ -249,10 +249,9 @@ const Matrix = () => {
       textElement.textContent = randomAttribute;
       textElement.style.position = "absolute";
       textElement.style.color = matrixColor;
-      textElement.style.fontSize = `${Math.random() * 24 + 10}px`;
+      textElement.style.fontSize = `${Math.random() * 18 + 10 }px`;
       textElement.style.fontWeight = "thin";
-      textElement.style.fontFamily = "Oswald, sans-serif";
-      textElement.style.textShadow = `0 0 2px ${matrixColor}, 0 0 5px ${matrixColor}`;
+      textElement.style.fontFamily = "Rubik Glitch, Oswald, sans-serif";
       textElement.style.left = `${Math.random() * 80}%`;
       textElement.style.top = `${Math.random() * 80}%`;
       textElement.style.opacity = "0";

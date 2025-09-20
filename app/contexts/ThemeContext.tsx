@@ -113,32 +113,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     }
   }, [theme]);
 
-  // ✅ Sync color scheme with localStorage + CSS vars
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("colorScheme", colorScheme);
-
-      const root = document.documentElement;
-      switch (colorScheme) {
-        case "green":
-          root.style.setProperty("--color-primary", "16, 185, 129");
-          root.style.setProperty("--color-secondary", "45, 212, 191");
-          break;
-        case "red":
-          root.style.setProperty("--color-primary", "239, 68, 68");
-          root.style.setProperty("--color-secondary", "251, 146, 60");
-          break;
-        case "yellow":
-          root.style.setProperty("--color-primary", "234, 179, 8");
-          root.style.setProperty("--color-secondary", "251, 191, 36");
-          break;
-        default:
-          root.style.setProperty("--color-primary", "139, 92, 246");
-          root.style.setProperty("--color-secondary", "96, 165, 250");
-          break;
-      }
-    }
-  }, [colorScheme]);
+  
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
