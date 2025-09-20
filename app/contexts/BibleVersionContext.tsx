@@ -34,7 +34,7 @@ interface BibleVersionProviderProps {
 export const BibleVersionProvider: React.FC<BibleVersionProviderProps> = ({
   children,
 }) => {
-  const [bibleVersion, setBibleVersion] = useState<string>("NIV");
+  const [bibleVersion, setBibleVersion] = useState<string>("KJV");
 
   // ✅ Load saved version from localStorage (client-only)
   useEffect(() => {
