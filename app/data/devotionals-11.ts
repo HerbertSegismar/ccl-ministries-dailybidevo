@@ -698,4 +698,334 @@ export const devotionals: Devotional[] = [
       },
     ],
   },
+  {
+    id: "21",
+    date: getDevotionalDate("21"),
+    verse: {
+      reference: "Isaiah 41:10",
+      defaultVersion: "KJV",
+    },
+    title: "Fear Not, For I Am With Thee",
+    content: `God commands us not to fear because He is with us. This promise comes with four assurances: His presence ("I am with thee"), His protection ("I will strengthen thee"), His help ("I will help thee"), and His sustaining power ("I will uphold thee").
+
+    Fear often paralyzes us, but God's presence empowers us to face challenges with confidence. His promise isn't that we won't face difficulties, but that He will be with us through them.
+
+    What fear is currently gripping your heart? How can you appropriate God's promise of presence and protection today?`,
+    prayer: `Heavenly Father, when fear threatens to overwhelm me, remind me of thy faithful presence. Strengthen, help, and uphold me according to thy promise. Amen.`,
+    readingPlan: "Isaiah 41-42",
+    reflection: [
+      {
+        id: "21-1",
+        question: "What specific fear do you need to surrender to God today?",
+        placeholder: "Name the fear specifically...",
+      },
+      {
+        id: "21-2",
+        question: "How has God demonstrated His presence in past fearful situations?",
+        placeholder: "Recall a specific example...",
+      },
+      {
+        id: "21-3",
+        question: "Which of God's four assurances do you need most right now?",
+        placeholder: "Presence, strength, help, or upholding...",
+      },
+    ],
+  },
+  {
+    id: "22",
+    date: getDevotionalDate("22"),
+    verse: {
+      reference: "Matthew 6:33",
+      defaultVersion: "KJV",
+    },
+    title: "Seek First the Kingdom",
+    content: `Jesus instructs us to seek God's kingdom and righteousness above all else, with the promise that our practical needs will be provided. This reorients our priorities from anxiety about temporal things to passion for eternal realities.
+
+    Seeking God's kingdom means aligning our desires, decisions, and daily life with His values and purposes. It's about putting spiritual priorities above material concerns.
+
+    What temporal concerns are distracting you from seeking God's kingdom first? How might reordering your priorities change your perspective on needs?`,
+    prayer: `Heavenly Father, help me to seek first thy kingdom and righteousness. Align my desires with thy purposes and free me from anxiety about temporal needs. Amen.`,
+    readingPlan: "Matthew 6-7",
+    reflection: [
+      {
+        id: "22-1",
+        question: "What practical concern tends to distract you from seeking God's kingdom?",
+        placeholder: "Identify the specific concern...",
+      },
+      {
+        id: "22-2",
+        question: "What does seeking God's kingdom first look like in your current season?",
+        placeholder: "Describe practical applications...",
+      },
+      {
+        id: "22-3",
+        question: "How have you experienced God's provision when you put His kingdom first?",
+        placeholder: "Recall a specific example...",
+      },
+    ],
+  },
+  {
+    id: "23",
+    date: getDevotionalDate("23"),
+    verse: {
+      reference: "Psalm 119:105",
+      defaultVersion: "KJV",
+    },
+    title: "Thy Word Is a Lamp",
+    content: `God's Word provides illumination for our path, revealing obstacles and showing the way forward. It doesn't illuminate the entire journey at once but gives enough light for the next step.
+
+    This guidance is personal and practical - God's Word lights "my" path. Regular immersion in Scripture keeps our way illuminated and prevents stumbling in darkness.
+
+    What decision or situation requires God's Word to illuminate your path? How can you cultivate greater consistency in Scripture engagement?`,
+    prayer: `Heavenly Father, thank you for thy Word that illuminates my path. Help me to hide it in my heart that I might not sin against thee. Amen.`,
+    readingPlan: "Psalm 119:105-112",
+    reflection: [
+      {
+        id: "23-1",
+        question: "What specific area of your life needs the illumination of God's Word?",
+        placeholder: "Identify the situation needing guidance...",
+      },
+      {
+        id: "23-2",
+        question: "How has Scripture guided you in a past decision?",
+        placeholder: "Recall a specific example...",
+      },
+      {
+        id: "23-3",
+        question: "What practical step can you take to engage more consistently with God's Word?",
+        placeholder: "e.g., specific time, method, or plan...",
+      },
+    ],
+  },
+  {
+    id: "24",
+    date: getDevotionalDate("24"),
+    verse: {
+      reference: "John 14:27",
+      defaultVersion: "KJV",
+    },
+    title: "Peace I Leave With You",
+    content: `Jesus bequeaths His peace to us as a legacy gift - not as the world gives. The world's peace is circumstantial and temporary, but Christ's peace is supernatural and sustaining regardless of circumstances.
+
+    This peace guards our hearts and minds amid turmoil, serving as an internal stabilizer when external situations are unstable. It's rooted in Christ's victory over sin and death.
+
+    What turmoil are you facing that requires Christ's supernatural peace? How can you appropriate this gift today?`,
+    prayer: `Prince of Peace, thank you for the gift of thy peace that surpasses understanding. Guard my heart and mind in Christ Jesus amid life's storms. Amen.`,
+    readingPlan: "John 14-15",
+    reflection: [
+      {
+        id: "24-1",
+        question: "What situation is threatening your peace right now?",
+        placeholder: "Identify the source of turmoil...",
+      },
+      {
+        id: "24-2",
+        question: "How is Christ's peace different from worldly peace?",
+        placeholder: "Describe the contrast...",
+      },
+      {
+        id: "24-3",
+        question: "What practices help you appropriate Christ's peace in daily life?",
+        placeholder: "e.g., prayer, worship, Scripture meditation...",
+      },
+    ],
+  },
+  {
+    id: "25",
+    date: getDevotionalDate("25"),
+    verse: {
+      reference: "Romans 12:2",
+      defaultVersion: "KJV",
+    },
+    title: "Be Not Conformed",
+    content: `We're called to resist conformity to the world's pattern and instead be transformed by renewed minds. This transformation is ongoing ("be transformed") and internal ("renewing of your mind").
+
+    The world's pattern pressures us to adopt its values, priorities, and perspectives. Renewing our minds through Scripture allows us to discern and embrace God's good, acceptable, and perfect will.
+
+    What worldly pattern are you most tempted to conform to? How is God renewing your mind to discern His will?`,
+    prayer: `Heavenly Father, protect me from conformity to the world. Transform me by the renewing of my mind that I may discern and do thy perfect will. Amen.`,
+    readingPlan: "Romans 12-13",
+    reflection: [
+      {
+        id: "25-1",
+        question: "What worldly pattern are you most tempted to conform to?",
+        placeholder: "Identify the specific pressure...",
+      },
+      {
+        id: "25-2",
+        question: "How is God currently renewing your mind to discern His will?",
+        placeholder: "Describe the transformation process...",
+      },
+      {
+        id: "25-3",
+        question: "What practice most helps you renew your mind according to Scripture?",
+        placeholder: "e.g., specific study method, meditation...",
+      },
+    ],
+  },
+  {
+    id: "26",
+    date: getDevotionalDate("26"),
+    verse: {
+      reference: "1 Corinthians 10:13",
+      defaultVersion: "KJV",
+    },
+    title: "A Way of Escape",
+    content: `God faithfully provides a way of escape from every temptation, enabling us to endure without being overcome. His faithfulness isn't measured by preventing temptation but by providing deliverance in it.
+
+    Temptation is common to humanity, but God's way of escape is uniquely tailored to each situation. Recognizing and taking His provided exit requires spiritual alertness and willingness.
+
+    What temptation are you currently facing? How might God be providing a way of escape?`,
+    prayer: `Faithful God, thank you for providing a way of escape in every temptation. Give me eyes to see thy provided exit and willingness to take it. Amen.`,
+    readingPlan: "1 Corinthians 10-11",
+    reflection: [
+      {
+        id: "26-1",
+        question: "What specific temptation are you currently facing?",
+        placeholder: "Name the temptation specifically...",
+      },
+      {
+        id: "26-2",
+        question: "How has God provided escape from temptation in the past?",
+        placeholder: "Recall a specific example...",
+      },
+      {
+        id: "26-3",
+        question: "What practical step helps you recognize God's way of escape?",
+        placeholder: "e.g., prayer, accountability, Scripture memorization...",
+      },
+    ],
+  },
+  {
+    id: "27",
+    date: getDevotionalDate("27"),
+    verse: {
+      reference: "2 Corinthians 5:17",
+      defaultVersion: "KJV",
+    },
+    title: "A New Creation",
+    content: `In Christ, we become new creations - the old passes away and all things become new. This transformation is comprehensive ("all things") and fundamental ("new creation"), affecting every aspect of our being.
+
+    This newness isn't merely behavioral modification but spiritual transformation. Our identity, position, and potential are fundamentally changed through union with Christ.
+
+    What aspect of your "old self" are you still struggling to leave behind? How does embracing your new identity in Christ change your perspective?`,
+    prayer: `Heavenly Father, thank you for making me a new creation in Christ. Help me to live out this new identity and leave behind old patterns and perspectives. Amen.`,
+    readingPlan: "2 Corinthians 5-6",
+    reflection: [
+      {
+        id: "27-1",
+        question: "What old pattern or perspective are you struggling to leave behind?",
+        placeholder: "Identify the specific struggle...",
+      },
+      {
+        id: "27-2",
+        question: "How does your new identity in Christ change how you view yourself?",
+        placeholder: "Describe the identity shift...",
+      },
+      {
+        id: "27-3",
+        question: "What practical step helps you live out your new creation reality?",
+        placeholder: "e.g., affirming truth, practicing new patterns...",
+      },
+    ],
+  },
+  {
+    id: "28",
+    date: getDevotionalDate("28"),
+    verse: {
+      reference: "Psalm 34:8",
+      defaultVersion: "KJV",
+    },
+    title: "Taste and See",
+    content: `David invites us to personally experience God's goodness - to "taste and see" that the Lord is good. This isn't theoretical knowledge but experiential reality discovered through relationship.
+
+    Tasting implies personal participation rather than mere observation. As we experience God's faithfulness, our trust deepens and our testimony becomes more compelling.
+
+    How have you personally "tasted" God's goodness? How might you cultivate greater awareness of His goodness in daily life?`,
+    prayer: `Good Father, open my spiritual senses to taste and see thy goodness. Deepen my experience of thy faithful character and lovingkindness. Amen.`,
+    readingPlan: "Psalm 34-35",
+    reflection: [
+      {
+        id: "28-1",
+        question: "How have you personally experienced God's goodness recently?",
+        placeholder: "Describe a specific experience...",
+      },
+      {
+        id: "28-2",
+        question: "What spiritual practice helps you 'taste' God's goodness?",
+        placeholder: "e.g., gratitude journaling, remembrance...",
+      },
+      {
+        id: "28-3",
+        question: "How does experiencing God's goodness affect your trust in Him?",
+        placeholder: "Describe the relationship between experience and trust...",
+      },
+    ],
+  },
+  {
+    id: "29",
+    date: getDevotionalDate("29"),
+    verse: {
+      reference: "1 John 1:9",
+      defaultVersion: "KJV",
+    },
+    title: "Faithful to Forgive",
+    content: `God is faithful and just to forgive our sins when we confess them. His forgiveness isn't based on our merit but on Christ's sacrifice, making Him both faithful to His promise and just to Christ's payment.
+
+    Confession involves agreeing with God about our sin - acknowledging its reality, taking responsibility, and turning from it. God's response is immediate and complete forgiveness.
+
+    What sin do you need to confess to experience God's faithful forgiveness? How does understanding His justice and faithfulness impact your approach to confession?`,
+    prayer: `Faithful God, thank you for thy promise to forgive when I confess. Give me courage to acknowledge my sins and receive thy cleansing and restoration. Amen.`,
+    readingPlan: "1 John 1-2",
+    reflection: [
+      {
+        id: "29-1",
+        question: "What sin do you need to confess to God today?",
+        placeholder: "Be specific...",
+      },
+      {
+        id: "29-2",
+        question: "How does understanding God's faithfulness and justice impact your confession?",
+        placeholder: "Describe the difference it makes...",
+      },
+      {
+        id: "29-3",
+        question: "What practical step helps you maintain a lifestyle of repentance?",
+        placeholder: "e.g., daily examination, accountability...",
+      },
+    ],
+  },
+  {
+    id: "30",
+    date: getDevotionalDate("30"),
+    verse: {
+      reference: "Jeremiah 29:11",
+      defaultVersion: "KJV",
+    },
+    title: "Thoughts of Peace",
+    content: `God's thoughts toward us are thoughts of peace and not evil, to give us a future and a hope. This promise was given during exile, reminding us that God's good plans transcend difficult circumstances.
+
+    God's plans are purposeful ("to give you an expected end"), personal ("for you"), and promising ("hope"). Even when we can't see His purposes, we can trust His heart.
+
+    What difficult circumstance are you facing where you need to trust God's good plans? How does this promise change your perspective on your situation?`,
+    prayer: `Heavenly Father, thank you that thy thoughts toward me are thoughts of peace. Help me to trust thy good plans even when I cannot see them. Amen.`,
+    readingPlan: "Jeremiah 29-30",
+    reflection: [
+      {
+        id: "30-1",
+        question: "What difficult circumstance requires you to trust God's good plans?",
+        placeholder: "Describe the situation...",
+      },
+      {
+        id: "30-2",
+        question: "How does knowing God's thoughts toward you are peaceful change your perspective?",
+        placeholder: "Describe the emotional shift...",
+      },
+      {
+        id: "30-3",
+        question: "When have you seen God's good plans emerge from a difficult situation?",
+        placeholder: "Recall a specific example...",
+      },
+    ],
+  },
 ];
