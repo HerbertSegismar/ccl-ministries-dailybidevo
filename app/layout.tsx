@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import { ClerkProvider } from "@clerk/nextjs";
 import Footer from "./components/Footer";
 import OGDebug from "./components/OGDebug"; // New component for debugging
+import CreditsAndContact from "./components/CreditsAndContact";
 
 // Define your site's base URL (important for canonical URLs and OG tags)
 const baseUrl =
@@ -152,8 +153,12 @@ export default function RootLayout({
                 Skip to main content
               </a>
               <Navbar />
-              <main id="main-content" className="relative overflow-hidden mt-20 lg:mt-15">
+              <main
+                id="main-content"
+                className="relative overflow-hidden mt-20 lg:mt-15"
+              >
                 {children}
+                <CreditsAndContact />
               </main>
               <Footer />
               {/* Add OG Debug component in development */}

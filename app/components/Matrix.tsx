@@ -293,7 +293,7 @@ const Matrix = () => {
   }, [theme, colorScheme, getMatrixColor]); 
 
   return (
-    <div className="bg-black rounded-2xl">
+    <div className="bg-black rounded-2xl mt-8">
       <p className="p-2 glitched-text text-xs md:text-xl">Names & Attributes of the Lord Jesus Christ</p>
       <div className="relative mx-auto max-w-4xl h-128 overflow-hidden shadow-lg mb-6 rounded-2xl">
         <canvas

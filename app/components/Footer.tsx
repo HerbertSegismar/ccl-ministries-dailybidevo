@@ -95,7 +95,7 @@ const Footer = () => {
                 VE For All Believers Worldwide.
               </p>
               <p className="text-green-400 mb-2">
-                Email us at{" "}
+                Email us directly at{" "}
                 <span className="font-bold text-green-500">
                   fountofhopedevotionals@gmail.com
                 </span>

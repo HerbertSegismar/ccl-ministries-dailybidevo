@@ -1,4 +1,3 @@
-"use client";
 import { useState, useEffect, useCallback, ReactNode } from "react";
 
 export const SINGLE_CHAPTER_BOOKS = new Set([
