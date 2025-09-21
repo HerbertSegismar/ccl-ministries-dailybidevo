@@ -8,7 +8,6 @@ import {
   FaUsers,
   FaHandsHelping,
 } from "react-icons/fa";
-import CreditsAndContact from "../components/CreditsAndContact";
 
 const AboutUs = () => {
   const { theme, colorScheme } = useTheme();
@@ -228,8 +227,6 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
-        <CreditsAndContact />
-        <div />
       </div>
     </div>
   );
