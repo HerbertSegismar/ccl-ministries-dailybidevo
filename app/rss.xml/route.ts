@@ -1,5 +1,5 @@
 // app/rss.xml/route.ts
-import { devotionals } from "@/app/data/devotionals-sep";
+import { devotionals } from "@/app/data/devotionals-9";
 
 export async function GET() {
   const baseUrl =

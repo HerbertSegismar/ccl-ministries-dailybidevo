@@ -10,7 +10,6 @@ import {
 } from "react-icons/fa";
 import { useTheme } from "../contexts/ThemeContext";
 import { useBibleVersion } from "../contexts/BibleVersionContext";
-import { devotionals } from "../data/devotionals-sep";
 import { getColorClasses } from "../contexts/ThemeContext";
 import type { Devotional } from "../types";
 import gsap from "gsap";
@@ -20,6 +19,8 @@ import {
   useDailyVerse,
   useBibleAPI,
 } from "../components/DataFetcher";
+import useCurrentMonthDevotional from "../components/CurrentMonthDevotional";
+
 
 gsap.registerPlugin(useGSAP);
 
@@ -35,6 +36,10 @@ const Devotionals = () => {
   const modalContentRef = useRef<HTMLDivElement>(null);
   const [isEditingReadingPlan, setIsEditingReadingPlan] = useState(false);
   const [customReadingPlan, setCustomReadingPlan] = useState("");
+
+  // Use the custom hook to get devotionals for current month
+  const { devotionals, loading: devotionalsLoading } =
+    useCurrentMonthDevotional();
 
   const { fetchBibleVerses, fetchVerseFromAPI } = useBibleAPI(bibleVersion);
   const {
@@ -78,7 +83,7 @@ const Devotionals = () => {
       );
     }
 
-    if (cardsRef.current) {
+    if (cardsRef.current && !devotionalsLoading) {
       const cards = cardsRef.current.children;
       gsap.fromTo(
         cards,
@@ -86,7 +91,7 @@ const Devotionals = () => {
         { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, delay: 0.4 }
       );
     }
-  }, []);
+  }, [devotionalsLoading]); // Add dependency
 
   // Modal animation & body scroll lock
   useEffect(() => {
@@ -187,6 +192,15 @@ const Devotionals = () => {
       handleReadingPlanCancel();
     }
   };
+
+  // Show loading state while devotionals are being fetched
+  if (devotionalsLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-lg">Loading devotionals...</div>
+      </div>
+    );
+  }
 
   return (
     <div

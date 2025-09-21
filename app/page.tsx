@@ -19,12 +19,12 @@ import { gsap } from "gsap";
 import { useRouter } from "next/navigation";
 import { useTheme } from "./contexts/ThemeContext";
 import { useBibleVersion } from "./contexts/BibleVersionContext";
-import { devotionals } from "./data/devotionals-sep";
 import { getColorClasses } from "./contexts/ThemeContext";
 import type { Devotional } from "@/app/types";
 import ImageSection from "./components/ImageSection";
 import Matrix from "./components/Matrix";
 import { useDevotionalData } from "./components/DataFetcher";
+import  useCurrentMonthDevotional  from "./components/CurrentMonthDevotional";
 
 const Home = () => {
   const router = useRouter();
@@ -48,7 +48,8 @@ const Home = () => {
   const colorClasses = getColorClasses(colorScheme);
   const currentDay = new Date().getDate();
   const currentMonth = new Date().toLocaleString("default", { month: "long" });
-
+  const { devotionals, loading: devotionalsLoading } =
+    useCurrentMonthDevotional();
 
   const bibleVersions = [
     { value: "KJV", label: "KJV" },
@@ -62,10 +63,12 @@ const Home = () => {
     { value: "OEB-US", label: "OEB-US" },
   ];
 
+  // Update all references from CurrentMonthDevotional to devotionals
   const getDevotionalForDate = useCallback(
     (day: number) =>
-      devotionals.find((d) => parseInt(d.id) === day) || devotionals[0],
-    []
+      devotionals.find((d: { id: string }) => parseInt(d.id) === day) ||
+      devotionals[0],
+    [devotionals]
   );
 
   const {
@@ -260,7 +263,7 @@ const Home = () => {
 
   const handleDevotionalNavigation = useCallback(
     (direction: "prev" | "next") => {
-      if (!currentDevotional) return;
+      if (!currentDevotional || devotionals.length === 0) return;
       const currentId = parseInt(String(currentDevotional.id));
       const targetId =
         direction === "prev"
@@ -278,6 +281,7 @@ const Home = () => {
     },
     [
       currentDevotional,
+      devotionals.length,
       setCurrentDevotional,
       getDevotionalForDate,
       runContentAnimations,
@@ -346,7 +350,7 @@ const Home = () => {
     }
   }, [currentDevotional]);
 
-  if (!currentDevotional || !isMounted) {
+  if (!currentDevotional || !isMounted || devotionalsLoading) {
     return (
       <div className="flex items-center justify-center h-screen bg-gray-50 dark:bg-gray-900">
         Loading...
@@ -354,7 +358,7 @@ const Home = () => {
     );
   }
 
-      const currentId = parseInt(String(currentDevotional.id));
+  const currentId = parseInt(String(currentDevotional.id));
 
   // ------------------- Button Styles -------------------
   const actionButtonClass =
@@ -789,7 +793,7 @@ const Home = () => {
               theme === "dark"
                 ? "bg-gray-700/80 border-gray-600/30 text-gray-200"
                 : "bg-white/80 border-white/30 text-gray-700"
-            } hover:scale-105 transition-all duration-100` }
+            } hover:scale-105 transition-all duration-100`}
           >
             <FaHeart className="mr-2 text-red-500" /> Reflection
           </button>
