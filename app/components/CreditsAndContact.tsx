@@ -202,6 +202,7 @@ const CreditsAndContact = () => {
                 value={formData.name}
                 onChange={handleInputChange}
                 required
+                autoComplete="off"
                 className={`w-full p-3 rounded-lg border ${
                   theme === "dark"
                     ? "bg-gray-700 border-gray-600 text-white"
@@ -227,6 +228,7 @@ const CreditsAndContact = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
+                autoComplete="off"
                 className={`w-full p-3 rounded-lg border ${
                   theme === "dark"
                     ? "bg-gray-700 border-gray-600 text-white"
@@ -284,7 +286,7 @@ const CreditsAndContact = () => {
               onChange={handleInputChange}
               required
               rows={5}
-              className={`w-full p-3 rounded-lg border ${
+              className={`w-full p-3 rounded-lg border placeholder:text-gray-400 ${
                 theme === "dark"
                   ? "bg-gray-700 border-gray-600 text-white"
                   : "bg-white border-gray-300 text-gray-800"

@@ -308,6 +308,8 @@ const Settings = () => {
           >
             <select
               value={bibleVersion}
+              id="bible version selector"
+              name="bible version selector"
               onChange={(e) => setBibleVersion(e.target.value)}
               className="bg-white dark:bg-gray-600/80 border border-gray-400 dark:border-gray-500 text-gray-900 dark:text-gray-100 text-sm rounded-lg focus:ring-purple-700 focus:border-purple-700 block w-full p-2.5"
             >
