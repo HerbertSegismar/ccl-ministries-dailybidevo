@@ -42,6 +42,26 @@ const imageFilesSm = [
   "n31.jpg",
   "n32.jpg",
   "n33.jpg",
+  "n34.jpg",
+  "n35.jpg",
+  "n36.jpg",
+  "n37.jpg",
+  "n38.jpg",
+  "n39.jpg",
+  "n40.jpg",
+  "n41.jpg",
+  "n42.jpg",
+  "n43.jpg",
+  "n44.jpg",
+  "n45.jpg",
+  "n46.jpg",
+  "n47.jpg",
+  "n48.jpg",
+  "n49.jpg",
+  "n50.jpg",
+  "n51.jpg",
+  "n52.jpg",
+  "n53.jpg",
 ];
 
 const imageFilesMd = [
@@ -57,6 +77,20 @@ const imageFilesMd = [
   "nm10.jpg",
   "nm11.jpg",
   "nm12.jpg",
+  "nm13.jpg",
+  "nm14.jpg",
+  "nm15.jpg",
+  "nm16.jpg",
+  "nm17.jpg",
+  "nm18.jpg",
+  "nm19.jpg",
+  "nm20.jpg",
+  "nm21.jpg",
+  "nm22.jpg",
+  "nm23.jpg",
+  "nm24.jpg",
+  "nm25.jpg",
+  "nm26.jpg",
 ];
 
 const inspirationalTexts = [
@@ -228,7 +262,7 @@ const ImageSection: React.FC = () => {
   useEffect(() => {
     // Select random image based on screen size
     const imageFiles = isMobile ? imageFilesSm : imageFilesMd;
-    const imagePath = isMobile ? "/night-images/" : "/night-images-md/";
+    const imagePath = isMobile ? "/images/" : "/images-md/";
 
     const randomImageFile =
       imageFiles[Math.floor(Math.random() * imageFiles.length)];
