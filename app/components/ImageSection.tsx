@@ -249,19 +249,19 @@ const FallingSnow: React.FC<SimpleMeteorsProps> = React.memo(
 
           switch (layer) {
             case 0: // Close layer - larger, faster, more opaque, falls completely
-              size = Math.random() * 10 + 5;
+              size = Math.random() * 5 + 3;
               speed = Math.random() * 3 + 2;
               opacity = Math.random() * 0.9 + 0.1;
               blur = 1;
               break;
             case 1: // Medium layer
-              size = Math.random() * 6 + 3;
+              size = Math.random() * 4 + 2;
               speed = Math.random() * 5 + 4;
               opacity = Math.random() * 0.7 + 0.3;
               blur = 0.5;
               break;
             case 2: // Far layer - smaller, slower, more transparent
-              size = Math.random() * 4 + 1;
+              size = Math.random() * 3 + 1;
               speed = Math.random() * 7 + 6;
               opacity = Math.random() * 0.5 + 0.2;
               blur = 0.3;
