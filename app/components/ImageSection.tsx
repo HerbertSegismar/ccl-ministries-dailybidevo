@@ -180,8 +180,8 @@ const addRoundedCorners = (
 };
 
 // Update the SimpleMeteors component to accept a container height prop
-const SimpleMeteors: React.FC<SimpleMeteorsProps & { containerHeight?: number }> = React.memo(
-  ({ number = 5, containerHeight = 400 }) => {
+const SimpleMeteors: React.FC<SimpleMeteorsProps> = React.memo(
+  ({ number = 5 }) => {
     const [showMeteors, setShowMeteors] = useState(false);
 
     useEffect(() => {
@@ -223,8 +223,8 @@ const SimpleMeteors: React.FC<SimpleMeteorsProps & { containerHeight?: number }>
 
 SimpleMeteors.displayName = "SimpleMeteors";
 
-const FallingSnow: React.FC<SimpleMeteorsProps & { containerHeight?: number }> =
-  React.memo(({ number = 80, containerHeight = 400 }) => {
+const FallingSnow: React.FC<SimpleMeteorsProps> =
+  React.memo(({ number = 80 }) => {
     const [showSnow, setShowSnow] = useState(false);
 
     useEffect(() => {
@@ -314,9 +314,7 @@ const ImageSection: React.FC = () => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [isConverting, setIsConverting] = useState<boolean>(false);
-  const [containerHeight, setContainerHeight] = useState<number>(400); // Default height
   const sectionRef = useRef<HTMLDivElement>(null);
-  const imageContainerRef = useRef<HTMLDivElement>(null);
 
   // Throttle resize handler to prevent excessive updates
   const checkIsMobile = useCallback(() => {
@@ -361,9 +359,6 @@ const ImageSection: React.FC = () => {
   // Update container height when image loads
   const handleImageLoad = useCallback(() => {
     setImageLoaded(true);
-    if (imageContainerRef.current) {
-      setContainerHeight(imageContainerRef.current.clientHeight);
-    }
   }, []);
 
   const handleImageError = useCallback(() => {
@@ -524,7 +519,7 @@ const ImageSection: React.FC = () => {
         className="relative w-full rounded-2xl shadow-lg overflow-hidden"
         ref={sectionRef}
       >
-        <div ref={imageContainerRef}>
+        <div>
           {!imageLoaded && imageSrc && (
             <div
               className={`w-full h-64 ${
@@ -574,9 +569,9 @@ const ImageSection: React.FC = () => {
         {imageLoaded && currentImageFile && (
           <>
             {currentImageFile.includes('w') ? (
-              <FallingSnow number={50} containerHeight={containerHeight} />
+              <FallingSnow number={50} />
             ) : (
-              <SimpleMeteors number={5} containerHeight={containerHeight} />
+              <SimpleMeteors number={5} />
             )}
           </>
         )}
