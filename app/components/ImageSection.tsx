@@ -9,6 +9,18 @@ interface SimpleMeteorsProps {
 }
 
 const imageFilesSm = [
+  "w1.jpg",
+  "w2.jpg",
+  "w3.jpg",
+  "w4.jpg",
+  "w5.jpg",
+  "w6.jpg",
+  "w7.jpg",
+  "w8.jpg",
+  "w9.jpg",
+  "w10.jpg",
+  "w11.jpg",
+  "w12.jpg",
   "n1.jpg",
   "n2.jpg",
   "n3.jpg",
@@ -50,21 +62,16 @@ const imageFilesSm = [
   "n39.jpg",
   "n40.jpg",
   "n41.jpg",
-  "n42.jpg",
-  "n43.jpg",
-  "n44.jpg",
-  "n45.jpg",
-  "n46.jpg",
-  "n47.jpg",
-  "n48.jpg",
-  "n49.jpg",
-  "n50.jpg",
-  "n51.jpg",
-  "n52.jpg",
-  "n53.jpg",
 ];
 
 const imageFilesMd = [
+  "wm1.jpg",
+  "wm2.jpg",
+  "wm3.jpg",
+  "wm4.jpg",
+  "wm5.jpg",
+  "wm6.jpg",
+  "wm7.jpg",
   "nm1.jpg",
   "nm2.jpg",
   "nm3.jpg",
@@ -84,14 +91,8 @@ const imageFilesMd = [
   "nm17.jpg",
   "nm18.jpg",
   "nm19.jpg",
-  "nm20.jpg",
-  "nm21.jpg",
-  "nm22.jpg",
-  "nm23.jpg",
-  "nm24.jpg",
-  "nm25.jpg",
-  "nm26.jpg",
 ];
+
 
 const inspirationalTexts = [
   "Be still and know that I am God. - Psalm 46:10",
@@ -178,9 +179,9 @@ const addRoundedCorners = (
   });
 };
 
-// Memoize the SimpleMeteors component to prevent unnecessary re-renders
-const SimpleMeteors: React.FC<SimpleMeteorsProps> = React.memo(
-  ({ number = 5 }) => {
+// Update the SimpleMeteors component to accept a container height prop
+const SimpleMeteors: React.FC<SimpleMeteorsProps & { containerHeight?: number }> = React.memo(
+  ({ number = 5, containerHeight = 400 }) => {
     const [showMeteors, setShowMeteors] = useState(false);
 
     useEffect(() => {
@@ -222,17 +223,100 @@ const SimpleMeteors: React.FC<SimpleMeteorsProps> = React.memo(
 
 SimpleMeteors.displayName = "SimpleMeteors";
 
+const FallingSnow: React.FC<SimpleMeteorsProps & { containerHeight?: number }> =
+  React.memo(({ number = 80, containerHeight = 400 }) => {
+    const [showSnow, setShowSnow] = useState(false);
+
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setShowSnow(true);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }, []);
+
+    if (!showSnow) {
+      return null;
+    }
+
+    return (
+      <>
+        {[...Array(number)].map((_, i) => {
+          // Create different layers of snowflakes
+          const layer = Math.floor(Math.random() * 4); // 0-3 for different layers
+
+          let size, speed, opacity, blur;
+
+          switch (layer) {
+            case 0: // Close layer - larger, faster, more opaque
+              size = Math.random() * 10 + 5;
+              speed = Math.random() * 3 + 2;
+              opacity = Math.random() * 0.9 + 0.1;
+              blur = 1;
+              break;
+            case 1: // Medium layer
+              size = Math.random() * 6 + 3;
+              speed = Math.random() * 5 + 4;
+              opacity = Math.random() * 0.7 + 0.3;
+              blur = 0.5;
+              break;
+            case 2: // Far layer - smaller, slower, more transparent
+              size = Math.random() * 4 + 1;
+              speed = Math.random() * 7 + 6;
+              opacity = Math.random() * 0.5 + 0.2;
+              blur = 0.3;
+              break;
+            case 3: // Very far layer - tiny, very slow, very transparent
+              size = Math.random() * 2 + 0.5;
+              speed = Math.random() * 10 + 8;
+              opacity = Math.random() * 0.3 + 0.1;
+              blur = 0.2;
+              break;
+            default:
+              size = 3;
+              speed = 5;
+              opacity = 0.5;
+              blur = 0.5;
+          }
+
+          return (
+            <div
+              key={i}
+              className="absolute snowflake rounded-full bg-white"
+              style={{
+                top: `-10px`,
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${speed}s`,
+                width: `${size}px`,
+                height: `${size}px`,
+                opacity: opacity,
+                filter: `blur(${blur}px)`,
+                zIndex: 30 - layer * 5, // Higher z-index for closer layers
+              }}
+            />
+          );
+        })}
+      </>
+    );
+  });
+
+FallingSnow.displayName = "FallingSnow";
+
 const ImageSection: React.FC = () => {
   const { theme, colorScheme } = useTheme();
   const colorClasses = getColorClasses(colorScheme);
 
   const [imageSrc, setImageSrc] = useState<string | null>(null);
+  const [currentImageFile, setCurrentImageFile] = useState<string | null>(null);
   const [randomText, setRandomText] = useState<string>("");
   const [imageError, setImageError] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [isConverting, setIsConverting] = useState<boolean>(false);
+  const [containerHeight, setContainerHeight] = useState<number>(400); // Default height
   const sectionRef = useRef<HTMLDivElement>(null);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
 
   // Throttle resize handler to prevent excessive updates
   const checkIsMobile = useCallback(() => {
@@ -270,19 +354,25 @@ const ImageSection: React.FC = () => {
       inspirationalTexts[Math.floor(Math.random() * inspirationalTexts.length)];
 
     setImageSrc(`${imagePath}${randomImageFile}`);
+    setCurrentImageFile(randomImageFile);
     setRandomText(selectedText);
   }, [isMobile]);
+
+  // Update container height when image loads
+  const handleImageLoad = useCallback(() => {
+    setImageLoaded(true);
+    if (imageContainerRef.current) {
+      setContainerHeight(imageContainerRef.current.clientHeight);
+    }
+  }, []);
 
   const handleImageError = useCallback(() => {
     console.error(`Failed to load image: ${imageSrc}`);
     setImageError(true);
     const fallbackImage = "abstract.png";
     setImageSrc(`/images/${fallbackImage}`);
+    setCurrentImageFile(fallbackImage);
   }, [imageSrc]);
-
-  const handleImageLoad = useCallback(() => {
-    setImageLoaded(true);
-  }, []);
 
   const handleDownload = useCallback(async () => {
     if (sectionRef.current === null || isConverting) return;
@@ -434,51 +524,62 @@ const ImageSection: React.FC = () => {
         className="relative w-full rounded-2xl shadow-lg overflow-hidden"
         ref={sectionRef}
       >
-        {!imageLoaded && imageSrc && (
-          <div
-            className={`w-full h-64 ${
-              theme === "dark" ? "bg-gray-800" : "bg-gray-200"
-            } animate-pulse rounded-2xl flex items-center justify-center`}
-          >
+        <div ref={imageContainerRef}>
+          {!imageLoaded && imageSrc && (
             <div
-              className={`${
-                theme === "dark" ? "text-gray-400" : "text-gray-500"
-              }`}
+              className={`w-full h-64 ${
+                theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+              } animate-pulse rounded-2xl flex items-center justify-center`}
             >
-              Loading image...
+              <div
+                className={`${
+                  theme === "dark" ? "text-gray-400" : "text-gray-500"
+                }`}
+              >
+                Loading image...
+              </div>
             </div>
-          </div>
-        )}
-        {imageSrc ? (
-          <NextImage
-            src={imageSrc}
-            width={800}
-            height={400}
-            alt="Devotional image"
-            className={`object-cover w-full h-auto ${
-              imageLoaded ? "block" : "hidden"
-            }`}
-            priority
-            onError={handleImageError}
-            onLoad={handleImageLoad}
-          />
-        ) : (
-          <div
-            className={`w-full h-64 ${
-              theme === "dark" ? "bg-gray-800" : "bg-gray-200"
-            } animate-pulse rounded-2xl flex items-center justify-center`}
-          >
+          )}
+          {imageSrc ? (
+            <NextImage
+              src={imageSrc}
+              width={800}
+              height={400}
+              alt="Devotional image"
+              className={`object-cover w-full h-auto ${
+                imageLoaded ? "block" : "hidden"
+              }`}
+              priority
+              onError={handleImageError}
+              onLoad={handleImageLoad}
+            />
+          ) : (
             <div
-              className={`${
-                theme === "dark" ? "text-gray-400" : "text-gray-500"
-              }`}
+              className={`w-full h-64 ${
+                theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+              } animate-pulse rounded-2xl flex items-center justify-center`}
             >
-              Loading image...
+              <div
+                className={`${
+                  theme === "dark" ? "text-gray-400" : "text-gray-500"
+                }`}
+              >
+                Loading image...
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
 
-        <SimpleMeteors number={5} />
+        {/* Conditionally render effects only after image is loaded */}
+        {imageLoaded && currentImageFile && (
+          <>
+            {currentImageFile.includes('w') ? (
+              <FallingSnow number={50} containerHeight={containerHeight} />
+            ) : (
+              <SimpleMeteors number={5} containerHeight={containerHeight} />
+            )}
+          </>
+        )}
 
         {/* Text overlay positioned at the bottom */}
         {randomText && (
