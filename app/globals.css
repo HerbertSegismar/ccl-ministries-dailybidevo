@@ -20,7 +20,7 @@ h1, h2, h3 {
 }
 
 .overlay-text {
-  @apply text-lg md:text-4xl font-serif italic leading-tight md:leading-relaxed mb-2;
+  @apply text-lg md:text-xl font-serif italic leading-tight md:leading-relaxed mb-2;
 }
 
 .overlay-reference {
@@ -93,37 +93,75 @@ h1, h2, h3 {
   }
 }
 
-@keyframes snowfall {
-  0% {
-    transform: translateY(-10px) translateX(0) rotate(0deg);
-  }
-  25% {
-    transform: translateY(25vh) translateX(10px) rotate(90deg);
-  }
-  50% {
-    transform: translateY(50vh) translateX(-5px) rotate(180deg);
-  }
-  75% {
-    transform: translateY(75vh) translateX(5px) rotate(270deg);
-  }
-  100% {
-    transform: translateY(100vh) translateX(0) rotate(360deg);
-  }
-}
-
 .snowflake {
   animation: snowfall linear infinite;
   pointer-events: none;
   will-change: transform, opacity;
 }
 
-/* Add some subtle swaying animation for more realism */
+/* Enhanced snowflake layers with proper bottom percentage mapping */
+.snowflake.small {
+  /* Smallest snowflakes fall 80% of the way down */
+  animation: snowfall 8s linear infinite;
+  animation-delay: calc(var(--delay, 0) * 1s);
+}
+
+.snowflake.medium {
+  /* Medium snowflakes fall 90% of the way down */
+  animation: snowfall 6s linear infinite;
+  animation-delay: calc(var(--delay, 0) * 1s);
+}
+
+.snowflake.large {
+  /* Largest snowflakes fall 100% of the way down (to bottom) */
+  animation: snowfall 4s linear infinite;
+  animation-delay: calc(var(--delay, 0) * 1s);
+}
+
+/* Custom animation properties for each snowflake */
+.snowflake {
+  --translate-y-end: 80vh; /* Default fall distance */
+}
+
+.snowflake.large {
+  --translate-y-end: 100vh; /* Falls to bottom */
+}
+
+.snowflake.medium {
+  --translate-y-end: 90vh; /* Falls 90% down */
+}
+
+/* Apply the final position based on custom property */
+.snowflake {
+  animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-20px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(var(--translate-y-end, 80%)) translateX(calc(var(--sway-amount, 0) * 100px)) rotate(360deg);
+  }
+}
+
+/* Swaying animation for realism */
 @keyframes sway {
   0%, 100% {
     transform: translateX(0);
   }
   50% {
-    transform: translateX(5px);
+    transform: translateX(20px);
   }
 }
 

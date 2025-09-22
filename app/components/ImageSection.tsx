@@ -223,8 +223,8 @@ const SimpleMeteors: React.FC<SimpleMeteorsProps> = React.memo(
 
 SimpleMeteors.displayName = "SimpleMeteors";
 
-const FallingSnow: React.FC<SimpleMeteorsProps> =
-  React.memo(({ number = 80 }) => {
+const FallingSnow: React.FC<SimpleMeteorsProps> = React.memo(
+  ({ number = 80 }) => {
     const [showSnow, setShowSnow] = useState(false);
 
     useEffect(() => {
@@ -245,61 +245,70 @@ const FallingSnow: React.FC<SimpleMeteorsProps> =
           // Create different layers of snowflakes
           const layer = Math.floor(Math.random() * 4); // 0-3 for different layers
 
-          let size, speed, opacity, blur;
+          let size, speed, opacity, blur, fallDistance;
 
           switch (layer) {
-            case 0: // Close layer - larger, faster, more opaque
+            case 0: // Close layer - larger, faster, more opaque, falls completely
               size = Math.random() * 10 + 5;
               speed = Math.random() * 3 + 2;
               opacity = Math.random() * 0.9 + 0.1;
               blur = 1;
+              fallDistance = "100%"; // Falls all the way to bottom
               break;
             case 1: // Medium layer
               size = Math.random() * 6 + 3;
               speed = Math.random() * 5 + 4;
               opacity = Math.random() * 0.7 + 0.3;
               blur = 0.5;
+              fallDistance = "85%"; // Falls to 85% of container
               break;
             case 2: // Far layer - smaller, slower, more transparent
               size = Math.random() * 4 + 1;
               speed = Math.random() * 7 + 6;
               opacity = Math.random() * 0.5 + 0.2;
               blur = 0.3;
+              fallDistance = "70%"; // Falls to 70% of container
               break;
             case 3: // Very far layer - tiny, very slow, very transparent
               size = Math.random() * 2 + 0.5;
               speed = Math.random() * 10 + 8;
               opacity = Math.random() * 0.3 + 0.1;
               blur = 0.2;
+              fallDistance = "55%"; // Falls to 55% of container
               break;
             default:
               size = 3;
               speed = 5;
               opacity = 0.5;
               blur = 0.5;
+              fallDistance = "100%";
           }
 
           return (
             <div
               key={i}
-              className="absolute snowflake rounded-full bg-white"
+              className="absolute rounded-full bg-white snowflake"
               style={{
                 top: `-20px`,
                 left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
                 animationDuration: `${speed}s`,
+                animationDelay: `${Math.random() * 5}s`,
                 width: `${size}px`,
                 height: `${size}px`,
                 opacity: opacity,
                 filter: `blur(${blur}px)`,
-                zIndex: 30 - layer * 5, // Higher z-index for closer layers
+                zIndex: 30 - layer * 5,
+                // Custom properties for animation
+                ["--fall-distance" as any]: fallDistance,
+                ["--sway-distance" as any]: "0px",
               }}
             />
           );
         })}
       </>
     );
-  });
+  }
+);
 
 FallingSnow.displayName = "FallingSnow";
 
@@ -315,6 +324,12 @@ const ImageSection: React.FC = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [isConverting, setIsConverting] = useState<boolean>(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  const imageRef = useRef<HTMLImageElement>(null);
+  const [imageDimensions, setImageDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
 
   // Throttle resize handler to prevent excessive updates
   const checkIsMobile = useCallback(() => {
@@ -356,8 +371,13 @@ const ImageSection: React.FC = () => {
     setRandomText(selectedText);
   }, [isMobile]);
 
-  // Update container height when image loads
   const handleImageLoad = useCallback(() => {
+    if (imageRef.current) {
+      setImageDimensions({
+        width: imageRef.current.naturalWidth,
+        height: imageRef.current.naturalHeight,
+      });
+    }
     setImageLoaded(true);
   }, []);
 
@@ -537,6 +557,7 @@ const ImageSection: React.FC = () => {
           )}
           {imageSrc ? (
             <NextImage
+              ref={imageRef}
               src={imageSrc}
               width={800}
               height={400}
@@ -565,10 +586,10 @@ const ImageSection: React.FC = () => {
           )}
         </div>
 
-        {/* Conditionally render effects only after image is loaded */}
-        {imageLoaded && currentImageFile && (
+        {/* Conditionally render effects only after image is fully loaded */}
+        {imageLoaded && imageDimensions.width > 0 && currentImageFile && (
           <>
-            {currentImageFile.includes('w') ? (
+            {currentImageFile.includes("w") ? (
               <FallingSnow number={50} />
             ) : (
               <SimpleMeteors number={5} />
