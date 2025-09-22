@@ -253,7 +253,7 @@ const Home = () => {
         .share({
           title: currentDevotional.title,
           text: dailyVerseText + " " + currentDevotional.verse.reference,
-          url: window.location.href,
+          //url: window.location.href,
         })
         .catch(() => alert("Devotional shared!"));
     } else {
