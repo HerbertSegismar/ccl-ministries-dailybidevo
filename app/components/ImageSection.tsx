@@ -284,7 +284,7 @@ const FallingSnow: React.FC<SimpleMeteorsProps> =
               key={i}
               className="absolute snowflake rounded-full bg-white"
               style={{
-                top: `-10px`,
+                top: `-20px`,
                 left: `${Math.random() * 100}%`,
                 animationDelay: `${Math.random() * 5}s`,
                 animationDuration: `${speed}s`,
