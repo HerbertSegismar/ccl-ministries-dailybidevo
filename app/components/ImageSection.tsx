@@ -59,18 +59,13 @@ const imageFilesSm = [
   "n32.jpg",
   "n33.jpg",
   "n34.jpg",
-  "n35.jpg",
-  "n36.jpg",
-  "n37.jpg",
-  "n38.jpg",
-  "n39.jpg",
-  "n40.jpg",
-  "n41.jpg",
-  "o1.jpg", // Added orb images
+  "o1.jpg",
   "o2.jpg",
   "o3.jpg",
   "o4.jpg",
   "o5.jpg",
+  "o6.jpg",
+  "o7.jpg",
 ];
 
 const imageFilesMd = [
@@ -95,14 +90,11 @@ const imageFilesMd = [
   "nm12.jpg",
   "nm13.jpg",
   "nm14.jpg",
-  "nm15.jpg",
-  "nm16.jpg",
-  "nm17.jpg",
-  "nm18.jpg",
-  "nm19.jpg",
-  "om1.jpg", // Added orb images
+  "om1.jpg",
   "om2.jpg",
   "om3.jpg",
+  "om4.jpg",
+  "om5.jpg",
 ];
 
 const inspirationalTexts = [
