@@ -313,8 +313,6 @@ const FallingSnow: React.FC<SimpleMeteorsProps> = React.memo(
         {[...Array(number)].map((_, i) => {
           // Create different layers of snowflakes
           const layer = Math.floor(Math.random() * 4); // 0-3 for different layers
-          const swayAmount = Math.random() * 2 - 1; // Random sway between -1 and 1
-          const swayFrequency = Math.random() * 2 + 1; // Random sway frequency
 
           let size, speed, opacity, blur;
 
