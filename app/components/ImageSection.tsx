@@ -202,13 +202,13 @@ const FloatingOrbs: React.FC<FloatingOrbsProps> = React.memo(({ number = 25 }) =
       {[...Array(number)].map((_, i) => {
         // Three vibrant colors for the orbs with better opacity
         const colors = [
-          "rgba(96, 165, 250, 0.8)",    // brighter blue
-          "rgba(240, 245, 168, 0.8)",   // coral pink/red
-          "rgba(52, 211, 153, 0.8)",    // emerald green
+          "rgba(150, 190, 239, 0.8)",    // brighter blue
+          "rgba(228, 234, 152, 0.8)",   // coral pink/red
+          "rgba(109, 241, 193, 0.8)",    // emerald green
         ];
         
         const color = colors[i % 3];
-        const size = Math.random() * 40 + 10; 
+        const size = Math.random() * 20 + 10; 
         const duration = Math.random() * 15 + 15; // 15-30 seconds
         const delay = Math.random() * 1; // 0-3 seconds delay
         const blur = Math.random() * 4 + 12;
