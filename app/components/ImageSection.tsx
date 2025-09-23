@@ -8,6 +8,10 @@ interface SimpleMeteorsProps {
   number?: number;
 }
 
+interface FloatingOrbsProps {
+  number?: number;
+}
+
 const imageFilesSm = [
   "w1.jpg",
   "w2.jpg",
@@ -62,6 +66,11 @@ const imageFilesSm = [
   "n39.jpg",
   "n40.jpg",
   "n41.jpg",
+  "o1.jpg", // Added orb images
+  "o2.jpg",
+  "o3.jpg",
+  "o4.jpg",
+  "o5.jpg",
 ];
 
 const imageFilesMd = [
@@ -91,8 +100,10 @@ const imageFilesMd = [
   "nm17.jpg",
   "nm18.jpg",
   "nm19.jpg",
+  "om1.jpg", // Added orb images
+  "om2.jpg",
+  "om3.jpg",
 ];
-
 
 const inspirationalTexts = [
   "Be still and know that I am God. - Psalm 46:10",
@@ -179,6 +190,64 @@ const addRoundedCorners = (
   });
 };
 
+// Floating Orbs Component - Updated for better visibility
+const FloatingOrbs: React.FC<FloatingOrbsProps> = React.memo(({ number = 25 }) => {
+  const [showOrbs, setShowOrbs] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowOrbs(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!showOrbs) {
+    return null;
+  }
+
+  return (
+    <>
+      {[...Array(number)].map((_, i) => {
+        // Three vibrant colors for the orbs with better opacity
+        const colors = [
+          "rgba(96, 165, 250, 0.8)",    // brighter blue
+          "rgba(240, 245, 168, 0.8)",   // coral pink/red
+          "rgba(52, 211, 153, 0.8)",    // emerald green
+        ];
+        
+        const color = colors[i % 3];
+        const size = Math.random() * 40 + 10; 
+        const duration = Math.random() * 15 + 15; // 15-30 seconds
+        const delay = Math.random() * 1; // 0-3 seconds delay
+        const blur = Math.random() * 4 + 12;
+        
+        return (
+          <div
+            key={i}
+            className="absolute rounded-full floating-orb"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${size}px`,
+              height: `${size}px`,
+              background: color,
+              filter: `blur(${blur}px)`,
+              animationDuration: `${duration}s`,
+              animationDelay: `${delay}s`,
+              opacity: Math.random() * 0.4 + 0.6, // 0.6-1.0 opacity
+              zIndex: 10,
+              boxShadow: `0 0 ${size/2}px ${size/4}px ${color.replace('0.8', '0.3')}`, // glow effect
+            }}
+          />
+        );
+      })}
+    </>
+  );
+});
+
+FloatingOrbs.displayName = "FloatingOrbs";
+
 // Update the SimpleMeteors component to accept a container height prop
 const SimpleMeteors: React.FC<SimpleMeteorsProps> = React.memo(
   ({ number = 5 }) => {
@@ -244,11 +313,13 @@ const FallingSnow: React.FC<SimpleMeteorsProps> = React.memo(
         {[...Array(number)].map((_, i) => {
           // Create different layers of snowflakes
           const layer = Math.floor(Math.random() * 4); // 0-3 for different layers
+          const swayAmount = Math.random() * 2 - 1; // Random sway between -1 and 1
+          const swayFrequency = Math.random() * 2 + 1; // Random sway frequency
 
           let size, speed, opacity, blur;
 
           switch (layer) {
-            case 0: // Close layer - larger, faster, more opaque, falls completely
+            case 0: // Close layer - larger, faster, more opaque
               size = Math.random() * 5 + 3;
               speed = Math.random() * 3 + 2;
               opacity = Math.random() * 0.9 + 0.1;
@@ -583,9 +654,11 @@ const ImageSection: React.FC = () => {
           <>
             {currentImageFile.includes("w") ? (
               <FallingSnow number={50} />
-            ) : (
+            ) : currentImageFile.includes("n") ? (
               <SimpleMeteors number={5} />
-            )}
+            ) : currentImageFile.includes("o") ? (
+              <FloatingOrbs number={15} />
+            ) : null}
           </>
         )}
 

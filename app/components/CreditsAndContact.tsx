@@ -122,8 +122,7 @@ const CreditsAndContact = () => {
         >
           We&apos;re grateful for this valuable resource that enables us to
           bring God&apos;s Word to our users in an accessible and reliable
-          format. The API provides access to various Bible translations while
-          maintaining respect for the sacred text.
+          format. The API provides access to various Bible translations via a JSON file.
         </p>
       </div>
 
