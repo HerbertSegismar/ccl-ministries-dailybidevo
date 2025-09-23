@@ -21,10 +21,6 @@ const imageFilesSm = [
   "w6.jpg",
   "w7.jpg",
   "w8.jpg",
-  "w9.jpg",
-  "w10.jpg",
-  "w11.jpg",
-  "w12.jpg",
   "n1.jpg",
   "n2.jpg",
   "n3.jpg",
@@ -66,6 +62,9 @@ const imageFilesSm = [
   "o5.jpg",
   "o6.jpg",
   "o7.jpg",
+  "o8.jpg",
+  "o9.jpg",
+  "o10.jpg",
 ];
 
 const imageFilesMd = [
