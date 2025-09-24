@@ -69,8 +69,11 @@ h3 {
     transform: rotate(205deg) translateX(0);
     opacity: 1;
   }
-  70% {
+  40% {
     opacity: 1;
+  }
+  70% {
+    opacity: 0;
   }
   100% {
     transform: rotate(210deg) translateX(-1000px);
@@ -84,8 +87,11 @@ h3 {
     transform: rotate(220deg) translateX(0);
     opacity: 1;
   }
-  70% {
+  40% {
     opacity: 1;
+  }
+  70% {
+    opacity: 0;
   }
   100% {
     transform: rotate(225deg) translateX(-1000px);

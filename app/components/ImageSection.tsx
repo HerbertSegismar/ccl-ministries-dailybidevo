@@ -211,7 +211,7 @@ const FloatingOrbs: React.FC<FloatingOrbsProps> = React.memo(({ number = 25 }) =
         const size = Math.random() * 20 + 10; 
         const duration = Math.random() * 15 + 15; // 15-30 seconds
         const delay = Math.random() * 1; // 0-3 seconds delay
-        const blur = Math.random() * 4 + 12;
+        const blur = Math.random() * 4 + 10;
         
         return (
           <div
