@@ -87,10 +87,10 @@ h3 {
     transform: rotate(220deg) translateX(0);
     opacity: 1;
   }
-  40% {
+  20% {
     opacity: 1;
   }
-  70% {
+  50% {
     opacity: 0;
   }
   100% {
