@@ -646,7 +646,7 @@ const ImageSection: React.FC = () => {
             ) : currentImageFile.includes("n") ? (
               <SimpleMeteors number={5} />
             ) : currentImageFile.includes("o") ? (
-              <FloatingOrbs number={15} />
+              <FloatingOrbs number={8} />
             ) : null}
           </>
         )}
