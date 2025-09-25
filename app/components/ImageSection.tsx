@@ -200,18 +200,17 @@ const FloatingOrbs: React.FC<FloatingOrbsProps> = React.memo(({ number = 25 }) =
   return (
     <>
       {[...Array(number)].map((_, i) => {
-        // Three vibrant colors for the orbs with better opacity
         const colors = [
-          "rgba(150, 190, 239, 0.8)",    // brighter blue
-          "rgba(228, 234, 152, 0.8)",   // coral pink/red
-          "rgba(109, 241, 193, 0.8)",    // emerald green
+          "rgba(150, 190, 239, 0.8)",   
+          "rgba(255, 181, 152, 0.8)",   
+          "rgba(109, 241, 193, 0.8)",    
         ];
         
         const color = colors[i % 3];
-        const size = Math.random() * 20 + 10; 
-        const duration = Math.random() * 15 + 15; // 15-30 seconds
-        const delay = Math.random() * 1; // 0-3 seconds delay
-        const blur = Math.random() * 4 + 10;
+        const size = Math.random() * 20 + 160; 
+        const duration = Math.random() * 15 + 15;
+        const delay = Math.random() * 1;
+        const blur = Math.random() * 4 + 12;
         
         return (
           <div
@@ -646,7 +645,7 @@ const ImageSection: React.FC = () => {
             ) : currentImageFile.includes("n") ? (
               <SimpleMeteors number={5} />
             ) : currentImageFile.includes("o") ? (
-              <FloatingOrbs number={8} />
+              <FloatingOrbs number={3} />
             ) : null}
           </>
         )}
