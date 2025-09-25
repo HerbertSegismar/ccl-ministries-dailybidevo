@@ -6,6 +6,6 @@ export default function robots() {
       allow: "/",
       disallow: "/private/",
     },
-    sitemap: "https://www.fountofhope.org/sitemap.xml",
+    sitemap: "https://www.fountofhope.org/sitemap.js",
   };
 }
