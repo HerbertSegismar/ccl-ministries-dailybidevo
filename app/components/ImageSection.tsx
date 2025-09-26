@@ -2,15 +2,10 @@ import NextImage from "next/image";
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { toPng } from "html-to-image";
 import { useTheme, getColorClasses } from "../contexts/ThemeContext";
+import FallingSnow from "./FallingSnow";
+import SimpleMeteors from "./SimpleMeteors";
+import FloatingOrbs from "./FloatingOrbs";
 
-// Define TypeScript interfaces
-interface SimpleMeteorsProps {
-  number?: number;
-}
-
-interface FloatingOrbsProps {
-  number?: number;
-}
 
 const imageFilesSm = [
   "w1.jpg",
@@ -180,188 +175,6 @@ const addRoundedCorners = (
     img.onerror = reject;
   });
 };
-
-// Floating Orbs Component - Updated for better visibility
-const FloatingOrbs: React.FC<FloatingOrbsProps> = React.memo(({ number = 25 }) => {
-  const [showOrbs, setShowOrbs] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowOrbs(true);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (!showOrbs) {
-    return null;
-  }
-
-  return (
-    <>
-      {[...Array(number)].map((_, i) => {
-        const colors = [
-          "rgba(150, 190, 239, 0.8)",   
-          "rgba(255, 181, 152, 0.8)",   
-          "rgba(109, 241, 193, 0.8)",    
-        ];
-        
-        const color = colors[i % 3];
-        const size = Math.random() * 20 + 160; 
-        const duration = Math.random() * 15 + 15;
-        const delay = Math.random() * 1;
-        const blur = Math.random() * 4 + 12;
-        
-        return (
-          <div
-            key={i}
-            className="absolute rounded-full floating-orb"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              width: `${size}px`,
-              height: `${size}px`,
-              background: color,
-              filter: `blur(${blur}px)`,
-              animationDuration: `${duration}s`,
-              animationDelay: `${delay}s`,
-              opacity: Math.random() * 0.4 + 0.6, // 0.6-1.0 opacity
-              zIndex: 10,
-              boxShadow: `0 0 ${size/2}px ${size/4}px ${color.replace('0.8', '0.3')}`, // glow effect
-            }}
-          />
-        );
-      })}
-    </>
-  );
-});
-
-FloatingOrbs.displayName = "FloatingOrbs";
-
-// Update the SimpleMeteors component to accept a container height prop
-const SimpleMeteors: React.FC<SimpleMeteorsProps> = React.memo(
-  ({ number = 5 }) => {
-    const [showMeteors, setShowMeteors] = useState(false);
-
-    useEffect(() => {
-      const timer = setTimeout(() => {
-        setShowMeteors(true);
-      }, 1000);
-
-      return () => clearTimeout(timer);
-    }, []);
-
-    if (!showMeteors) {
-      return null;
-    }
-
-    return (
-      <>
-        {[...Array(number)].map((_, i) => (
-          <span
-            key={i}
-            className="absolute meteor-effect rounded-full bg-white shadow-[0_0_0_1px_#ffffff10]"
-            style={{
-              top: `-10px`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 2}s`,
-              animationDuration: `${Math.random() * 8 + 8}s`,
-              width: `${Math.random() * 3 + 0.5}px`,
-              height: `${Math.random() * 3 + 0.5}px`,
-              opacity: Math.random() * 0.6 + 0.2,
-              transform: `rotate(${Math.random() * 30 + 210}deg)`,
-            }}
-          >
-            <div className="absolute top-1/2 -translate-y-1/2 w-[50px] h-[1px] bg-gradient-to-r from-amber-100 to-transparent" />
-          </span>
-        ))}
-      </>
-    );
-  }
-);
-
-SimpleMeteors.displayName = "SimpleMeteors";
-
-const FallingSnow: React.FC<SimpleMeteorsProps> = React.memo(
-  ({ number = 80 }) => {
-    const [showSnow, setShowSnow] = useState(false);
-
-    useEffect(() => {
-      const timer = setTimeout(() => {
-        setShowSnow(true);
-      }, 1000);
-
-      return () => clearTimeout(timer);
-    }, []);
-
-    if (!showSnow) {
-      return null;
-    }
-
-    return (
-      <>
-        {[...Array(number)].map((_, i) => {
-          // Create different layers of snowflakes
-          const layer = Math.floor(Math.random() * 4); // 0-3 for different layers
-
-          let size, speed, opacity, blur;
-
-          switch (layer) {
-            case 0: // Close layer - larger, faster, more opaque
-              size = Math.random() * 5 + 3;
-              speed = Math.random() * 3 + 2;
-              opacity = Math.random() * 0.9 + 0.1;
-              blur = 1;
-              break;
-            case 1: // Medium layer
-              size = Math.random() * 4 + 2;
-              speed = Math.random() * 5 + 4;
-              opacity = Math.random() * 0.7 + 0.3;
-              blur = 0.5;
-              break;
-            case 2: // Far layer - smaller, slower, more transparent
-              size = Math.random() * 3 + 1;
-              speed = Math.random() * 7 + 6;
-              opacity = Math.random() * 0.5 + 0.2;
-              blur = 0.3;
-              break;
-            case 3: // Very far layer - tiny, very slow, very transparent
-              size = Math.random() * 2 + 0.5;
-              speed = Math.random() * 10 + 8;
-              opacity = Math.random() * 0.3 + 0.1;
-              blur = 0.2;
-              break;
-            default:
-              size = 3;
-              speed = 5;
-              opacity = 0.5;
-              blur = 0.5;
-          }
-
-          return (
-            <div
-              key={i}
-              className="absolute rounded-full bg-white snowflake"
-              style={{
-                top: `-20px`,
-                left: `${Math.random() * 100}%`,
-                animationDuration: `${speed}s`,
-                animationDelay: `${Math.random() * 5}s`,
-                width: `${size}px`,
-                height: `${size}px`,
-                opacity: opacity,
-                filter: `blur(${blur}px)`,
-                zIndex: 30 - layer * 5,
-              }}
-            />
-          );
-        })}
-      </>
-    );
-  }
-);
-
-FallingSnow.displayName = "FallingSnow";
 
 const ImageSection: React.FC = () => {
   const { theme, colorScheme } = useTheme();
@@ -642,11 +455,9 @@ const ImageSection: React.FC = () => {
           <>
             {currentImageFile.includes("w") ? (
               <FallingSnow number={50} />
-            ) : currentImageFile.includes("n") ? (
-              <SimpleMeteors number={5} />
             ) : currentImageFile.includes("o") ? (
               <FloatingOrbs number={3} />
-            ) : null}
+            ) : <SimpleMeteors number={5} />}
           </>
         )}
 
