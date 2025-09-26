@@ -83,4 +83,6 @@ const FallingSnow: React.FC<FallingSnowProps> = React.memo(
   }
 );
 
+FallingSnow.displayName = "FallingSnow";
+
 export default FallingSnow;

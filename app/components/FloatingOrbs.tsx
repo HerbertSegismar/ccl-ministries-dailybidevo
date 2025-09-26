@@ -73,4 +73,7 @@ const FloatingOrbs: React.FC<FloatingOrbsProps> = React.memo(
   }
 );
 
+FloatingOrbs.displayName = "FloatingOrbs";
+
+
 export default FloatingOrbs;

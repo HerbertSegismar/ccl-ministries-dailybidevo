@@ -45,4 +45,6 @@ const SimpleMeteors: React.FC<SimpleMeteorsProps> = React.memo(
   }
 );
 
+SimpleMeteors.displayName = "SimpleMeteors";
+
 export default SimpleMeteors;
