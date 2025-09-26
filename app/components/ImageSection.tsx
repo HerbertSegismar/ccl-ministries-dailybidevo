@@ -311,18 +311,57 @@ const ImageSection: React.FC = () => {
         { type: blob.type }
       );
 
-      if (navigator.share && navigator.canShare({ files: [file] })) {
-        await navigator.share({
-          files: [file],
-          title: "Daily Inspiration",
-          text: randomText,
-        });
+      // Check if Web Share API is supported
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            files: [file],
+            title: "Daily Inspiration",
+            text: randomText,
+          });
+          // If share is successful, return early without downloading
+          return;
+        } catch (shareError) {
+          // Type guard to check if it's an Error object
+          if (shareError instanceof Error) {
+            // Only fall back to download if it's not a user cancellation
+            if (
+              shareError.name !== "AbortError" &&
+              shareError.name !== "NotAllowedError"
+            ) {
+              console.warn(
+                "Share failed, falling back to download:",
+                shareError
+              );
+              handleDownload();
+            } else {
+              console.log("Share was cancelled by user");
+            }
+          } else {
+            // If it's not an Error object, fall back to download
+            console.warn(
+              "Unknown share error, falling back to download:",
+              shareError
+            );
+            handleDownload();
+          }
+        }
       } else {
+        // Web Share API not supported, use download
         handleDownload();
       }
     } catch (err) {
-      console.error("Error sharing:", err);
-      handleDownload();
+      console.error("Error creating share image:", err);
+      // Type guard to check if it's an Error object
+      if (err instanceof Error) {
+        // Only fall back if it's not a user cancellation
+        if (err.name !== "AbortError" && err.name !== "NotAllowedError") {
+          handleDownload();
+        }
+      } else {
+        // If it's not an Error object, fall back to download
+        handleDownload();
+      }
     } finally {
       setIsConverting(false);
     }
