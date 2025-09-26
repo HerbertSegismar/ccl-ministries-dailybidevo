@@ -206,7 +206,7 @@ const Navbar = () => {
               {theme === "dark" ? <FaSun size={18} /> : <FaMoon size={18} />}
             </button>
           </div>
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <ThemeColors>
               <div className="flex space-x-3">
                 {colorSchemes.map((scheme) => {
