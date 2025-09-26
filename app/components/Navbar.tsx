@@ -14,12 +14,10 @@ import {
   FaTimes,
   FaMoon,
   FaSun,
-  FaPalette,
 } from "react-icons/fa";
 import {
   useTheme,
   getColorClasses,
-  colorSchemes,
 } from "@/app/contexts/ThemeContext";
 import type { NavItem } from "@/app/types";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
