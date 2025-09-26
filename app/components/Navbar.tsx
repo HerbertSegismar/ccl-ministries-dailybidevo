@@ -14,8 +14,13 @@ import {
   FaTimes,
   FaMoon,
   FaSun,
+  FaPalette,
 } from "react-icons/fa";
-import { useTheme, getColorClasses } from "@/app/contexts/ThemeContext";
+import {
+  useTheme,
+  getColorClasses,
+  colorSchemes,
+} from "@/app/contexts/ThemeContext";
 import type { NavItem } from "@/app/types";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
@@ -27,8 +32,13 @@ const Navbar = () => {
   const pathname = usePathname();
   const navbarRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
-  const { theme, colorScheme, toggleTheme } = useTheme();
+  const { theme, colorScheme, toggleTheme, setColorScheme, colorSchemes } =
+    useTheme();
   const colors = getColorClasses(colorScheme);
+
+  const ThemeColors = ({ children }: { children: React.ReactNode }) => {
+    return <div>{children}</div>;
+  };
 
   const navItems: NavItem[] = [
     { label: "Home", path: "/", icon: <FaHome /> },
@@ -198,6 +208,30 @@ const Navbar = () => {
               {theme === "dark" ? <FaSun size={18} /> : <FaMoon size={18} />}
             </button>
           </div>
+          <div className="hidden md:block">
+            <ThemeColors>
+              <div className="flex space-x-3">
+                {colorSchemes.map((scheme) => {
+                  const colorVariant =
+                    theme === "dark" ? scheme.dark : scheme.light;
+                  return (
+                    <button
+                      key={scheme.name}
+                      onClick={() => setColorScheme(scheme.name)}
+                      className={`size-8 rounded-full bg-gradient-to-r shadow shadow-black ${
+                        colorVariant.from
+                      } ${colorVariant.to} ${
+                        colorScheme === scheme.name
+                          ? "ring-2 ring-offset-2 ring-purple-700 dark:ring-purple-400"
+                          : "opacity-70 hover:opacity-100"
+                      } transition-all duration-200`}
+                      aria-label={`${scheme.name} theme`}
+                    />
+                  );
+                })}
+              </div>
+            </ThemeColors>
+          </div>
 
           {/* Mobile Menu + Auth */}
           <div className="flex items-center space-x-2">
@@ -250,7 +284,7 @@ const Navbar = () => {
                 key={item.path}
                 href={item.path}
                 onClick={() => setIsMenuOpen(false)}
-                className={`flex items-center px-4 py-3 text-sm font-medium transition-all duration-300 ${
+                className={`flex items-center justify-center px-4 py-3 text-sm font-medium transition-all duration-300 ${
                   pathname === item.path
                     ? `${colors.lightBg} ${colors.text}`
                     : "text-gray-700 hover:text-purple-700 hover:bg-purple-50"
@@ -260,6 +294,30 @@ const Navbar = () => {
                 {item.label}
               </Link>
             ))}
+            <div className="flex items-center justify-center">
+              <ThemeColors>
+                <div className="flex space-x-3">
+                  {colorSchemes.map((scheme) => {
+                    const colorVariant =
+                      theme === "dark" ? scheme.dark : scheme.light;
+                    return (
+                      <button
+                        key={scheme.name}
+                        onClick={() => setColorScheme(scheme.name)}
+                        className={`size-6 rounded-full bg-gradient-to-r shadow shadow-black ${
+                          colorVariant.from
+                        } ${colorVariant.to} ${
+                          colorScheme === scheme.name
+                            ? "ring-2 ring-offset-2 ring-purple-700 dark:ring-purple-400"
+                            : "opacity-70 hover:opacity-100"
+                        } transition-all duration-200`}
+                        aria-label={`${scheme.name} theme`}
+                      />
+                    );
+                  })}
+                </div>
+              </ThemeColors>
+            </div>
           </div>
         </div>
       </div>
