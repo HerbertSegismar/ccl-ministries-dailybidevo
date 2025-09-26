@@ -452,13 +452,13 @@ const ImageSection: React.FC = () => {
 
         {/* Conditionally render effects only after image is fully loaded */}
         {imageLoaded && imageDimensions.width > 0 && currentImageFile && (
-          <>
+          <div className="z-8">
             {currentImageFile.includes("w") ? (
               <FallingSnow number={50} />
             ) : currentImageFile.includes("o") ? (
               <FloatingOrbs number={3} />
             ) : <SimpleMeteors number={5} />}
-          </>
+          </div>
         )}
 
         {/* Text overlay positioned at the bottom */}
