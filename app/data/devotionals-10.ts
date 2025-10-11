@@ -411,7 +411,6 @@ text
     title: "Light for the Next Step",
     content: `In the ancient world, a small oil lamp provided just enough light to see the next step on a dark, treacherous path. God's Word often functions the same way for us. We may want a floodlight illuminating the next ten years, but God faithfully gives us enough light for the next step.
 
-text
   This requires daily engagement with Scripture. We don't charge up on Sunday for the whole week; we need daily manna. His Word provides guidance, warning, and comfort for the immediate decisions and challenges we face. Trust that the light for your next step is always available in Him.`,
     prayer: `Lord, thank You for the gift of Your Word. Forgive me for the times I seek a full blueprint instead of trusting You for the next step. Help me to consistently come to Scripture, allowing it to guide my decisions and illuminate my path today. Amen.`,
     readingPlan: "Psalm 119:105-112",
