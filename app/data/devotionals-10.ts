@@ -306,7 +306,6 @@ export const devotionals: Devotional[] = [
     title: "The Path Maker",
     content: `Our own understanding is limited, shaped by our fears, past experiences, and finite perspective. God's understanding is infinite. This famous proverb isn't a call to abandon intellect, but to place our confidence in a Person, not our own perception of the problem.
 
-text
   Trusting with "all your heart" is an active surrender. It's choosing to believe that God is good and sovereign even when the path ahead is foggy. As we acknowledge Him in every decision—big and small—we release the burden of figuring it all out ourselves. He promises to clear the way, not necessarily the easiest way, but the right one.`,
     prayer: `Father, I confess I often rely on my own limited understanding. Today, I choose to trust You with all my heart. I submit my plans, my worries, and my dreams to You. Please guide my steps and make my path straight, for Your glory. Amen.`,
     readingPlan: "Proverbs 3",
@@ -341,7 +340,6 @@ text
     title: "Strength for the Journey",
     content: `This verse is often quoted for athletic achievements, but its context is one of profound contentment. Paul wrote this from prison, having learned the secret of being content in plenty and in want. The "all things" is the ability to endure any circumstance through the strength Christ provides.
 
-text
   It's not a promise of superhuman ability to achieve personal goals, but a declaration of divine empowerment to withstand life's highs and lows. His strength is made perfect in our weakness. Whether you are facing a great challenge or a deep need, the same power that sustained Paul is available to you today.`,
     prayer: `Lord Jesus, I admit my weakness and my need for You. Thank you that Your power is made perfect in my inability. Strengthen me today not just to achieve, but to endure, to be content, and to remain faithful in every circumstance I face. Amen.`,
     readingPlan: "Philippians 4",
@@ -376,7 +374,6 @@ text
     title: "The Antidote to Anxiety",
     content: `Anxiety is a natural human response, but it doesn't have to be our master. This verse gives us a divine alternative: intentional prayer. Notice the progression. We are to replace anxiety not with nothing, but with something—a conscious turning to God.
 
-text
   "Prayer and petition" is about honestly sharing our worries with Him. The key ingredient is "thanksgiving." Gratitude reorients our heart from what we lack to what we already have in God. It shifts our focus from the size of our problem to the greatness of our God. You are invited to transfer the weight of your anxiety into His capable hands.`,
     prayer: `Heavenly Father, I come to You with the things that make me anxious. I choose to turn my worries into prayers. Thank You for Your past faithfulness, Your present help, and Your future promises. I place my trust in You. Amen.`,
     readingPlan: "Philippians 4",
@@ -444,7 +441,6 @@ text
     title: "The Gift of Rest",
     content: `This is one of the most tender invitations in all of Scripture. Jesus doesn't stand at a distance and shout instructions. He draws near and offers Himself as the solution to our soul-deep exhaustion. The rest He offers is more than a nap; it's a rest of the soul—a ceasing from striving, performing, and earning.
 
-text
   The qualification for receiving this rest is simply to come. To acknowledge our weariness and burden. You don't need to clean yourself up first. You just need to come, exactly as you are, and transfer the weight of your burdens to the One who is gentle and humble in heart.`,
     prayer: `Jesus, I come to You today. I am weary and burdened from [name it]. I lay these burdens down at Your feet. I receive the rest You freely offer. Teach me to walk in Your easy yoke and light burden. Thank you for Your kindness. Amen.`,
     readingPlan: "Matthew 11:25-30",
@@ -478,7 +474,6 @@ text
     title: "The Weaver of Good",
     content: `This is not a promise that all things are good. Evil, pain, and suffering are very real. This is a promise that God is so powerful and sovereign that He can weave every thread of our lives—even the painful, dark, and confusing ones—into a tapestry of ultimate good.
 
-text
   This good is defined by His purpose: to conform us to the image of His Son. He doesn't waste a single experience. Our part is to trust the Weaver even when we can only see the tangled threads underneath. Our confidence is not in a formula, but in the faithful character of a God who is always at work for our eternal good.`,
     prayer: `God, I confess that I don't always see how good can come from my current struggles. I choose to trust Your character and Your promise. Help me to believe that You are working even now, weaving all things together for my good and Your glory. Amen.`,
     readingPlan: "Romans 8:26-30",
