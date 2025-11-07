@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa";
 import TermsOfService from "./TermsOfService";
 import PrivacyPolicy from "./PrivacyPolicy";
+import BibleAppPrivacyPolicy from "./BibleAppPrivacyPolicy";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,6 +23,7 @@ const Footer = () => {
   const [showModal, setShowModal] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showAppPrivacy, setShowAppPrivacy] = useState(false);
   const [activeTab, setActiveTab] = useState<"bank" | "card">("bank");
   const [copied, setCopied] = useState({
     account: false,
@@ -161,6 +163,14 @@ const Footer = () => {
               >
                 <FaShieldAlt className="inline" />
                 Privacy Policy
+              </button>
+              <div className="size-1 bg-purple-600 rounded-full" />
+              <button
+                onClick={() => setShowAppPrivacy(true)}
+                className="text-xs text-purple-600 hover:text-purple-800 flex items-center gap-1"
+              >
+                <FaShieldAlt className="inline" />
+                Bible App Privacy Policy
               </button>
             </div>
             <p className="text-xs text-gray-500 capitalize">
@@ -424,6 +434,16 @@ const Footer = () => {
                     >
                       Privacy Policy
                     </button>
+                    , and{" "}
+                    <button
+                      onClick={() => {
+                        setShowModal(false);
+                        setShowAppPrivacy(true);
+                      }}
+                      className="text-purple-600 hover:underline"
+                    >
+                      Bible App Privacy Policy
+                    </button>
                     . After making your donation, please email us at
                     fountofhopedevotionals@gmail.com with your details so we can
                     properly acknowledge your gift. Fount Of Hope Devotionals is
@@ -450,6 +470,10 @@ const Footer = () => {
       <PrivacyPolicy
         isOpen={showPrivacy}
         onClose={() => setShowPrivacy(false)}
+      />
+      <BibleAppPrivacyPolicy
+        isOpen={showAppPrivacy}
+        onClose={() => setShowAppPrivacy(false)}
       />
     </>
   );
