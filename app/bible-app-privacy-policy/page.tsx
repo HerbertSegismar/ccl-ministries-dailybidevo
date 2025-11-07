@@ -1,7 +1,5 @@
-// app/privacy-bible/page.tsx
 import React from "react";
-import { FaShieldAlt } from "react-icons/fa";
-import Link from "next/link";
+
 
 const BibleAppPrivacyPolicyPage: React.FC = () => {
   return (
