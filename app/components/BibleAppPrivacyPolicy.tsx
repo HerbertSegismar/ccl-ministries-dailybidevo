@@ -31,11 +31,11 @@ const BibleAppPrivacyPolicy: React.FC<BibleAppPrivacyPolicyProps> = ({
           </p>
 
           <p className="text-gray-700 leading-relaxed mb-6 text-center">
-            Fount Of Hope Bible ("the App") is committed to protecting your
-            privacy. This Privacy Policy explains how we handle any information
-            related to your use of the App. We are dedicated to providing a
-            safe, offline experience for users seeking spiritual guidance
-            through the Bible.
+            Fount Of Hope Bible (&quot;the App&quot;) is committed to protecting
+            your privacy. This Privacy Policy explains how we handle any
+            information related to your use of the App. We are dedicated to
+            providing a safe, offline experience for users seeking spiritual
+            guidance through the Bible.
           </p>
 
           <h2 className="text-xl font-semibold text-purple-800 mt-8 mb-4">
@@ -79,8 +79,8 @@ const BibleAppPrivacyPolicy: React.FC<BibleAppPrivacyPolicyProps> = ({
           </h2>
           <p className="text-gray-700 leading-relaxed mb-6">
             We do not share, sell, or disclose any information about you. All
-            data remains on your device, and the App's offline nature ensures
-            complete isolation from external parties.
+            data remains on your device, and the App&#x27;s offline nature
+            ensures complete isolation from external parties.
           </p>
 
           <h2 className="text-xl font-semibold text-purple-800 mt-8 mb-4">
@@ -95,15 +95,15 @@ const BibleAppPrivacyPolicy: React.FC<BibleAppPrivacyPolicyProps> = ({
           </p>
 
           <h2 className="text-xl font-semibold text-purple-800 mt-8 mb-4">
-            5. Children's Privacy
+            5. Children&#x27;s Privacy
           </h2>
           <p className="text-gray-700 leading-relaxed mb-6">
             The App is primarily intended for users aged 18 and above. However,
             individuals under 18 may use the App without any harm, as it is a
             wholesome Bible study tool that does not collect any data. As such,
             there are no special considerations under laws like COPPA
-            (Children's Online Privacy Protection Act). Parents are encouraged
-            to monitor usage by younger individuals.
+            (Children&#x27;s Online Privacy Protection Act). Parents are
+            encouraged to monitor usage by younger individuals.
           </p>
 
           <h2 className="text-xl font-semibold text-purple-800 mt-8 mb-4">
