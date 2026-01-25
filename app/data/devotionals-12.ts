@@ -22,7 +22,7 @@ export const devotionals: Devotional[] = [
     True trust acknowledges God's sovereignty in every aspect of life - relationships, decisions, and uncertainties. When we lean on His understanding rather than our own, we align ourselves with His perfect will.
 
     Where are you relying on human understanding instead of divine wisdom? How might your decisions change if you fully trusted God's guidance?`,
-    prayer: `Heavenly Father, help me to trust You with all my heart today. When I'm tempted to rely on my own understanding, remind me of Your infinite wisdom. Direct my paths and make my ways pleasing to You. In Jesus' name, Amen.`,
+    prayer: `Heavenly Father, help me to trust You with all my heart today. When I'm tempted to rely on my own understanding, remind me of Your infinite wisdom. Direct my paths and make my ways pleasing to You. In Jesus' name, In Jesus' mighty name. Amen.`,
     readingPlan: "Proverbs 3-4",
     reflection: [
       {
@@ -56,7 +56,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus invites all who labor under life's heavy burdens to find rest in Him. This isn't merely physical rest but soul-deep restoration that comes through relationship with Him. 
     
     His yoke is easy because He bears the weight with us, and His burden is light because it's fueled by grace rather than performance.`,
-    prayer: `Lord Jesus, I come to You today weary and heavy-laden. Teach me to take Your yoke upon me and find rest for my soul. Help me to learn from Your gentle and humble heart. Amen.`,
+    prayer: `Lord Jesus, I come to You today weary and heavy-laden. Teach me to take Your yoke upon me and find rest for my soul. Help me to learn from Your gentle and humble heart. In Jesus' mighty name. Amen.`,
     readingPlan: "Matthew 11-12",
     reflection: [
       {
@@ -82,7 +82,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Renewed Strength",
     content: `Those who wait upon the Lord will find new strength to soar above life's challenges. This waiting isn't passive but active expectation of God's faithfulness.`,
-    prayer: `Father, teach me to wait upon You with hopeful expectation. Renew my strength when I feel weary and help me to soar on wings like eagles. Amen.`,
+    prayer: `Father, teach me to wait upon You with hopeful expectation. Renew my strength when I feel weary and help me to soar on wings like eagles. In Jesus' mighty name. Amen.`,
     readingPlan: "Isaiah 40-41",
     reflection: [
       {
@@ -102,7 +102,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Peace Beyond Understanding",
     content: `God's peace stands guard over our hearts and minds when we choose prayer over anxiety. This supernatural peace transcends human comprehension and circumstances.`,
-    prayer: `Lord, teach me to bring every concern to You in prayer. Guard my heart and mind with Your perfect peace that surpasses all understanding. Amen.`,
+    prayer: `Lord, teach me to bring every concern to You in prayer. Guard my heart and mind with Your perfect peace that surpasses all understanding. In Jesus' mighty name. Amen.`,
     readingPlan: "Philippians 4",
     reflection: [
       {
@@ -122,7 +122,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Be Strong and Courageous",
     content: `God's command to be strong and courageous comes with the promise of His constant presence. Our courage is rooted in His faithfulness, not our capabilities.`,
-    prayer: `Heavenly Father, help me to be strong and courageous today. Remind me of Your constant presence in every situation I face. Amen.`,
+    prayer: `Heavenly Father, help me to be strong and courageous today. Remind me of Your constant presence in every situation I face. In Jesus' mighty name. Amen.`,
     readingPlan: "Joshua 1-2",
     reflection: [
       {
@@ -141,7 +141,7 @@ export const devotionals: Devotional[] = [
     },
     title: "All Things Work Together",
     content: `God's sovereignty ensures that even difficult circumstances work for our good when we love Him. This doesn't mean all things are good, but that God works through all things.`,
-    prayer: `God, help me to trust that You are working all things together for my good. Strengthen my faith during challenging times. Amen.`,
+    prayer: `God, help me to trust that You are working all things together for my good. Strengthen my faith during challenging times. In Jesus' mighty name. Amen.`,
     readingPlan: "Romans 8",
     reflection: [
       {
@@ -161,7 +161,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Grace Sufficient",
     content: `God's grace is most evident in our weakness. His power is perfected in our dependence rather than our self-sufficiency.`,
-    prayer: `Lord, thank You that Your grace is sufficient for me. Help me to boast in my weaknesses that Christ's power may rest upon me. Amen.`,
+    prayer: `Lord, thank You that Your grace is sufficient for me. Help me to boast in my weaknesses that Christ's power may rest upon me. In Jesus' mighty name. Amen.`,
     readingPlan: "2 Corinthians 12",
     reflection: [
       {
@@ -181,7 +181,7 @@ export const devotionals: Devotional[] = [
     },
     title: "The Lord is My Shepherd",
     content: `As our Shepherd, God provides, guides, and protects. We lack nothing when we follow His lead and trust His care.`,
-    prayer: `Shepherd of my soul, thank You for Your faithful provision. Help me to follow Your guidance and rest in Your protection. Amen.`,
+    prayer: `Shepherd of my soul, thank You for Your faithful provision. Help me to follow Your guidance and rest in Your protection. In Jesus' mighty name. Amen.`,
     readingPlan: "Psalm 23-24",
     reflection: [
       {
@@ -200,7 +200,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Overcoming Peace",
     content: `Jesus offers peace in the midst of trouble, not freedom from trouble. His victory over the world gives us courage to face life's challenges.`,
-    prayer: `Prince of Peace, help me to find peace in You despite life's troubles. Remind me that You have overcome the world. Amen.`,
+    prayer: `Prince of Peace, help me to find peace in You despite life's troubles. Remind me that You have overcome the world. In Jesus' mighty name. Amen.`,
     readingPlan: "John 16-17",
     reflection: [
       {
@@ -220,7 +220,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Substance of Faith",
     content: `Faith gives substance to our hopes and evidence to unseen realities. It's the foundation of our relationship with God and the basis for our eternal perspective.`,
-    prayer: `Father, strengthen my faith today. Help me to see with spiritual eyes and trust in Your unseen realities. Amen.`,
+    prayer: `Father, strengthen my faith today. Help me to see with spiritual eyes and trust in Your unseen realities. In Jesus' mighty name. Amen.`,
     readingPlan: "Hebrews 11",
     reflection: [
       {
@@ -249,7 +249,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Light to My Path",
     content: `God's Word serves as a lamp to guide our steps and a light for our path. In times of uncertainty and darkness, Scripture provides clarity and direction.`,
-    prayer: `Heavenly Father, thank You for Your Word that illuminates my path. Help me to hide it in my heart that I might not sin against You. Amen.`,
+    prayer: `Heavenly Father, thank You for Your Word that illuminates my path. Help me to hide it in my heart that I might not sin against You. In Jesus' mighty name. Amen.`,
     readingPlan: "Psalm 119:105-112",
     reflection: [
       {
@@ -280,7 +280,7 @@ export const devotionals: Devotional[] = [
     },
     title: "God's Faithfulness in Temptation",
     content: `God promises that no temptation will overcome us without providing a way of escape. His faithfulness extends to helping us in our moments of weakness.`,
-    prayer: `Lord, thank You for Your faithfulness in providing escape from temptation. Help me to recognize Your way out when tested. Amen.`,
+    prayer: `Lord, thank You for Your faithfulness in providing escape from temptation. Help me to recognize Your way out when tested. In Jesus' mighty name. Amen.`,
     readingPlan: "1 Corinthians 10",
     reflection: [
       {
@@ -311,7 +311,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Fruit of the Spirit",
     content: `The Holy Spirit produces spiritual fruit in believers' lives as we remain connected to Christ. These qualities reflect God's character to the world.`,
-    prayer: `Holy Spirit, produce Your fruit in my life. Help me to abide in Christ so that His character may be evident through me. Amen.`,
+    prayer: `Holy Spirit, produce Your fruit in my life. Help me to abide in Christ so that His character may be evident through me. In Jesus' mighty name. Amen.`,
     readingPlan: "Galatians 5",
     reflection: [
       {
@@ -343,7 +343,7 @@ export const devotionals: Devotional[] = [
     },
     title: "The Armor of God",
     content: `God provides spiritual armor to stand against the enemy's schemes. Each piece represents a different aspect of our spiritual defense and offense.`,
-    prayer: `Heavenly Father, help me to put on the full armor of God daily. Teach me to stand firm against spiritual attacks. Amen.`,
+    prayer: `Heavenly Father, help me to put on the full armor of God daily. Teach me to stand firm against spiritual attacks. In Jesus' mighty name. Amen.`,
     readingPlan: "Ephesians 6:10-18",
     reflection: [
       {
@@ -372,7 +372,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Joy in Trials",
     content: `God calls us to consider trials as opportunities for joy because they produce perseverance and maturity in our faith.`,
-    prayer: `Lord, give me Your perspective on the trials I face. Help me to see them as opportunities for growth rather than obstacles. Amen.`,
+    prayer: `Lord, give me Your perspective on the trials I face. Help me to see them as opportunities for growth rather than obstacles. In Jesus' mighty name. Amen.`,
     readingPlan: "James 1",
     reflection: [
       {
@@ -401,7 +401,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Casting All Cares",
     content: `God invites us to cast all our anxieties on Him because He cares for us deeply. We don't have to carry our burdens alone.`,
-    prayer: `Heavenly Father, I cast all my cares upon You today. Thank You for caring about every detail of my life. Amen.`,
+    prayer: `Heavenly Father, I cast all my cares upon You today. Thank You for caring about every detail of my life. In Jesus' mighty name. Amen.`,
     readingPlan: "1 Peter 5",
     reflection: [
       {
@@ -431,7 +431,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Perfect Love Casts Out Fear",
     content: `God's perfect love drives out fear from our lives. As we grow in understanding His love, fear loses its power over us.`,
-    prayer: `Lord, help me to comprehend the depth of Your perfect love. Drive fear from my heart as I trust in You. Amen.`,
+    prayer: `Lord, help me to comprehend the depth of Your perfect love. Drive fear from my heart as I trust in You. In Jesus' mighty name. Amen.`,
     readingPlan: "1 John 4",
     reflection: [
       {
@@ -461,7 +461,7 @@ export const devotionals: Devotional[] = [
     },
     title: "No More Tears",
     content: `God promises a future where He will wipe away every tear. This hope sustains us through present sorrows and difficulties.`,
-    prayer: `Heavenly Father, thank You for the hope of eternity with You. Comfort me in my sorrows with the promise of Your future restoration. Amen.`,
+    prayer: `Heavenly Father, thank You for the hope of eternity with You. Comfort me in my sorrows with the promise of Your future restoration. In Jesus' mighty name. Amen.`,
     readingPlan: "Revelation 21",
     reflection: [
       {
@@ -492,7 +492,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Working for the Lord",
     content: `Whatever we do, we're called to work heartily as for the Lord rather than for people. This perspective transforms ordinary tasks into worship.`,
-    prayer: `Lord, help me to work with all my heart as unto You. Transform my attitude toward daily tasks as acts of worship. Amen.`,
+    prayer: `Lord, help me to work with all my heart as unto You. Transform my attitude toward daily tasks as acts of worship. In Jesus' mighty name. Amen.`,
     readingPlan: "Colossians 3",
     reflection: [
       {
@@ -522,7 +522,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Spirit of Power, Love, and Sound Mind",
     content: `God has given us a spirit of power, love, and self-discipline, not fear. We can live confidently through the Holy Spirit's work in us.`,
-    prayer: `Holy Spirit, help me to walk in the power, love, and sound mind You've given me. Drive out fear and timidity from my life. Amen.`,
+    prayer: `Holy Spirit, help me to walk in the power, love, and sound mind You've given me. Drive out fear and timidity from my life. In Jesus' mighty name. Amen.`,
     readingPlan: "2 Timothy 1",
     reflection: [
       {
@@ -553,7 +553,7 @@ export const devotionals: Devotional[] = [
     },
     title: "The Way, The Truth, The Life",
     content: `Jesus declares Himself as the only way to the Father. In a world of many paths, this exclusive claim reminds us of the centrality of Christ in salvation.`,
-    prayer: `Lord Jesus, thank You for being the way to the Father. Help me to follow You faithfully and share this truth with others. Amen.`,
+    prayer: `Lord Jesus, thank You for being the way to the Father. Help me to follow You faithfully and share this truth with others. In Jesus' mighty name. Amen.`,
     readingPlan: "John 14",
     reflection: [
       {
@@ -579,7 +579,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Living Sacrifice",
     content: `Paul urges believers to offer themselves as living sacrifices, holy and pleasing to God. This involves a transformation through renewed thinking.`,
-    prayer: `Heavenly Father, I offer myself as a living sacrifice today. Transform my mind to discern and follow Your perfect will. Amen.`,
+    prayer: `Heavenly Father, I offer myself as a living sacrifice today. Transform my mind to discern and follow Your perfect will. In Jesus' mighty name. Amen.`,
     readingPlan: "Romans 12",
     reflection: [
       {
@@ -605,7 +605,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Enter with Thanksgiving",
     content: `We are called to enter God's presence with thanksgiving and praise. Gratitude opens our hearts to experience more of God's goodness.`,
-    prayer: `Lord, teach me to approach You with thanksgiving in my heart. Help me to remember Your faithfulness in all circumstances. Amen.`,
+    prayer: `Lord, teach me to approach You with thanksgiving in my heart. Help me to remember Your faithfulness in all circumstances. In Jesus' mighty name. Amen.`,
     readingPlan: "Psalm 100-101",
     reflection: [
       {
@@ -629,7 +629,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Throne of Grace",
     content: `We can approach God's throne of grace with confidence to receive mercy and help in time of need. Jesus our High Priest makes this access possible.`,
-    prayer: `Heavenly Father, thank You for providing access to Your throne of grace. Help me to come boldly to receive Your mercy. Amen.`,
+    prayer: `Heavenly Father, thank You for providing access to Your throne of grace. Help me to come boldly to receive Your mercy. In Jesus' mighty name. Amen.`,
     readingPlan: "Hebrews 4",
     reflection: [
       {
@@ -655,7 +655,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Adding to Your Faith",
     content: `Peter outlines the process of spiritual growth - adding virtue to faith, knowledge to virtue, and so on. Spiritual maturity requires intentional development.`,
-    prayer: `Lord, help me to diligently add these qualities to my faith. Grow me into spiritual maturity for Your glory. Amen.`,
+    prayer: `Lord, help me to diligently add these qualities to my faith. Grow me into spiritual maturity for Your glory. In Jesus' mighty name. Amen.`,
     readingPlan: "2 Peter 1",
     reflection: [
       {
@@ -680,7 +680,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Rejoice, Pray, Give Thanks",
     content: `Paul gives three concise commands: rejoice always, pray continually, give thanks in all circumstances. These practices transform our perspective regardless of situation.`,
-    prayer: `Heavenly Father, teach me to rejoice always, pray continually, and give thanks in all circumstances. Transform my heart through these disciplines. Amen.`,
+    prayer: `Heavenly Father, teach me to rejoice always, pray continually, and give thanks in all circumstances. Transform my heart through these disciplines. In Jesus' mighty name. Amen.`,
     readingPlan: "1 Thessalonians 5",
     reflection: [
       {
@@ -705,7 +705,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Light of the World",
     content: `Jesus calls His followers the light of the world. Our lives should shine brightly so others see our good works and glorify our Father in heaven.`,
-    prayer: `Lord Jesus, help me to shine as Your light in this world. May my life point others to You and bring glory to the Father. Amen.`,
+    prayer: `Lord Jesus, help me to shine as Your light in this world. May my life point others to You and bring glory to the Father. In Jesus' mighty name. Amen.`,
     readingPlan: "Matthew 5:13-20",
     reflection: [
       {
@@ -730,7 +730,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Crucified with Christ",
     content: `Paul declares that he has been crucified with Christ and now Christ lives in him. This represents the exchanged life - our life for His.`,
-    prayer: `Heavenly Father, I thank You that I have been crucified with Christ. Help me to live by faith in the Son of God who loved me. Amen.`,
+    prayer: `Heavenly Father, I thank You that I have been crucified with Christ. Help me to live by faith in the Son of God who loved me. In Jesus' mighty name. Amen.`,
     readingPlan: "Galatians 2",
     reflection: [
       {
@@ -755,7 +755,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Search Me, O God",
     content: `David invites God to search his heart and reveal any offensive ways. This prayer requires vulnerability and a desire for holiness.`,
-    prayer: `Search me, O God, and know my heart. Test me and know my anxious thoughts. See if there is any offensive way in me and lead me in the way everlasting. Amen.`,
+    prayer: `Search me, O God, and know my heart. Test me and know my anxious thoughts. See if there is any offensive way in me and lead me in the way everlasting. In Jesus' mighty name. Amen.`,
     readingPlan: "Psalm 139",
     reflection: [
       {
@@ -780,7 +780,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Resist the Devil",
     content: `James gives clear instructions: submit to God, resist the devil, and he will flee. Then draw near to God and He will draw near to you.`,
-    prayer: `Heavenly Father, help me to submit to You fully and resist the devil's schemes. Draw near to me as I draw near to You. Amen.`,
+    prayer: `Heavenly Father, help me to submit to You fully and resist the devil's schemes. Draw near to me as I draw near to You. In Jesus' mighty name. Amen.`,
     readingPlan: "James 4",
     reflection: [
       {
@@ -805,7 +805,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Behold, I Stand at the Door",
     content: `Jesus stands at the door of our hearts and knocks. He invites intimate fellowship with all who will open to Him.`,
-    prayer: `Lord Jesus, I open the door of my heart to You. Come in and fellowship with me. Transform me through Your presence. Amen.`,
+    prayer: `Lord Jesus, I open the door of my heart to You. Come in and fellowship with me. Transform me through Your presence. In Jesus' mighty name. Amen.`,
     readingPlan: "Revelation 3",
     reflection: [
       {

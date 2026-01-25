@@ -22,7 +22,7 @@ export const devotionals: Devotional[] = [
     This command comes in the context of chaos - mountains shaking, waters roaring, nations raging. In the midst of turmoil, God reveals Himself as our ultimate refuge and strength. Being still means consciously ceasing our striving and acknowledging that He is God - supreme, sovereign, and sufficient.
 
     What would it look like today to intentionally create space for stillness before God? How might this practice change your perspective on current challenges?`,
-    prayer: `Almighty God, in a world of noise and hurry, teach me the sacred discipline of stillness. Help me to cease my striving and remember that you are God. Quiet my heart before you that I might know you more deeply and trust you more fully. Amen.`,
+    prayer: `Almighty God, in a world of noise and hurry, teach me the sacred discipline of stillness. Help me to cease my striving and remember that you are God. Quiet my heart before you that I might know you more deeply and trust you more fully. In Jesus' mighty name. Amen.`,
     readingPlan: "Psalm 46-47",
     reflection: [
       {
@@ -58,7 +58,7 @@ export const devotionals: Devotional[] = [
     When we acknowledge Him in all our ways, He promises to make our paths straight. This doesn't mean absence of challenges, but rather alignment with His perfect will. His direction often comes step by step, requiring ongoing dependence rather than a one-time consultation.
 
     Where are you currently relying on your own understanding rather than seeking God's wisdom? How can you practice acknowledging Him in your daily decisions this week?`,
-    prayer: `Heavenly Father, help me to trust thee with all my heart and lean not unto mine own understanding. In all my ways, help me to acknowledge thee, and direct my paths according to thy perfect will. Amen.`,
+    prayer: `Heavenly Father, help me to trust thee with all my heart and lean not unto mine own understanding. In all my ways, help me to acknowledge thee, and direct my paths according to thy perfect will. In Jesus' mighty name. Amen.`,
     readingPlan: "Proverbs 3-4",
     reflection: [
       {
@@ -94,7 +94,7 @@ export const devotionals: Devotional[] = [
     This promise isn't for those who never grow tired, but for those who turn to God in their weariness. The eagle's wings remind us of God's empowering presence that lifts us above our circumstances. His strength is made perfect in our weakness.
 
     What areas of your life feel weary right now? How might waiting on God change your perspective and renew your strength?`,
-    prayer: `Lord God, when I am weary and faint, teach me to wait upon thee. Renew my strength according to thy promise, that I might soar above my circumstances and persevere in the path you've set before me. Amen.`,
+    prayer: `Lord God, when I am weary and faint, teach me to wait upon thee. Renew my strength according to thy promise, that I might soar above my circumstances and persevere in the path you've set before me. In Jesus' mighty name. Amen.`,
     readingPlan: "Isaiah 40-41",
     reflection: [
       {
@@ -130,7 +130,7 @@ export const devotionals: Devotional[] = [
     The yoke was a wooden frame joining two animals together for work. When we take Christ's yoke, we join ourselves to Him, learning from His gentleness and humility. His burden is light because He bears it with us.
 
     What burdens are you carrying that Jesus invites you to exchange for His rest? How might surrendering to His yoke change your daily life?`,
-    prayer: `Lord Jesus, I come to thee weary and heavy laden. I accept thy invitation to take thy yoke upon me and learn of thee. Give me rest for my soul and help me to walk in the lightness of thy burden. Amen.`,
+    prayer: `Lord Jesus, I come to thee weary and heavy laden. I accept thy invitation to take thy yoke upon me and learn of thee. Give me rest for my soul and help me to walk in the lightness of thy burden. In Jesus' mighty name. Amen.`,
     readingPlan: "Matthew 11-12",
     reflection: [
       {
@@ -166,7 +166,7 @@ export const devotionals: Devotional[] = [
     This peace transcends human understanding because it doesn't depend on circumstances changing. It's a garrison peace that stands guard over our inner being, protecting us from the assaults of worry and fear.
 
     What anxieties are you currently facing? How might bringing them to God with thanksgiving change your perspective?`,
-    prayer: `Heavenly Father, when anxiety rises in my heart, help me to bring my concerns to thee with thanksgiving. Guard my heart and mind with the peace that passes all understanding through Christ Jesus. Amen.`,
+    prayer: `Heavenly Father, when anxiety rises in my heart, help me to bring my concerns to thee with thanksgiving. Guard my heart and mind with the peace that passes all understanding through Christ Jesus. In Jesus' mighty name. Amen.`,
     readingPlan: "Philippians 4",
     reflection: [
       {
@@ -202,7 +202,7 @@ export const devotionals: Devotional[] = [
     This command was given to Joshua as he faced the daunting task of leading Israel into the Promised Land. Like Joshua, we're called to courage not because circumstances are easy, but because God is with us in the challenge.
 
     What daunting task or challenge are you facing that requires God's strength and courage? How does His promise to be with you change your perspective?`,
-    prayer: `Almighty God, when I am afraid and discouraged, remind me of thy presence. Help me to be strong and of good courage, not trusting in my own strength but in thy faithful promise to be with me. Amen.`,
+    prayer: `Almighty God, when I am afraid and discouraged, remind me of thy presence. Help me to be strong and of good courage, not trusting in my own strength but in thy faithful promise to be with me. In Jesus' mighty name. Amen.`,
     readingPlan: "Joshua 1-2",
     reflection: [
       {
@@ -237,7 +237,7 @@ export const devotionals: Devotional[] = [
     This doesn't minimize pain or difficulty, but it does provide eternal perspective. God's definition of "good" ultimately means conforming us to the image of Christ and fulfilling His purposes in our lives.
 
     What difficult circumstance are you facing that you need to trust God is working for your good? How might this perspective change how you approach this situation?`,
-    prayer: `Heavenly Father, help me to trust that thou workest all things together for good to them that love thee. When I cannot see thy purpose, give me faith to believe in thy sovereign goodness. Amen.`,
+    prayer: `Heavenly Father, help me to trust that thou workest all things together for good to them that love thee. When I cannot see thy purpose, give me faith to believe in thy sovereign goodness. In Jesus' mighty name. Amen.`,
     readingPlan: "Romans 8",
     reflection: [
       {
@@ -273,7 +273,7 @@ export const devotionals: Devotional[] = [
     Paul discovered that his "thorn in the flesh" - whatever it was - became the means through which he experienced Christ's power most profoundly. Rather than removing the difficulty, God provided grace sufficient to endure it triumphantly.
 
     Where do you feel weak or inadequate? How might God want to demonstrate His strength through your weakness?`,
-    prayer: `Lord Jesus, I bring my weaknesses and inadequacies to thee. May thy strength be made perfect in my weakness, and thy grace prove sufficient for all my needs. Amen.`,
+    prayer: `Lord Jesus, I bring my weaknesses and inadequacies to thee. May thy strength be made perfect in my weakness, and thy grace prove sufficient for all my needs. In Jesus' mighty name. Amen.`,
     readingPlan: "2 Corinthians 12",
     reflection: [
       {
@@ -309,7 +309,7 @@ export const devotionals: Devotional[] = [
     The shepherd-sheep relationship requires trust and responsiveness from the sheep. We must learn to recognize our Shepherd's voice and follow where He leads, even when the path seems uncertain.
 
     How does viewing God as your Shepherd change your perspective on your needs and circumstances? What does it mean to lack nothing when the Lord is your Shepherd?`,
-    prayer: `Lord, my Shepherd, thank thee that I shall not want. Help me to trust thy provision, follow thy guidance, and rest in thy protection. Teach me to know thy voice and follow thee faithfully. Amen.`,
+    prayer: `Lord, my Shepherd, thank thee that I shall not want. Help me to trust thy provision, follow thy guidance, and rest in thy protection. Teach me to know thy voice and follow thee faithfully. In Jesus' mighty name. Amen.`,
     readingPlan: "Psalm 23-24",
     reflection: [
       {
@@ -345,7 +345,7 @@ export const devotionals: Devotional[] = [
     The branch doesn't strive to produce fruit; it simply remains connected to the vine, and fruitfulness becomes the natural outcome. Our role is to abide; God's role is to produce fruit through us.
 
     What does abiding in Christ look like in your daily life? How might you cultivate a deeper connection with the Vine this week?`,
-    prayer: `Lord Jesus, the true Vine, help me to abide in thee that I might bear much fruit. Teach me what it means to remain in vital connection with thee through prayer, obedience, and thy Word. Amen.`,
+    prayer: `Lord Jesus, the true Vine, help me to abide in thee that I might bear much fruit. Teach me what it means to remain in vital connection with thee through prayer, obedience, and thy Word. In Jesus' mighty name. Amen.`,
     readingPlan: "John 15",
     reflection: [
       {
@@ -381,7 +381,7 @@ export const devotionals: Devotional[] = [
     We serve a God who is not distant or disinterested but deeply cares for us personally. His care isn't general but specific - encompassing every anxiety, worry, and concern we carry.
 
     What cares do you need to deliberately cast upon God today? How does knowing He personally cares for you change how you approach your burdens?`,
-    prayer: `Heavenly Father, thank you for caring about every detail of my life. Help me to cast all my cares upon thee, trusting in thy loving concern and sovereign power. Teach me to leave my burdens at thy feet. Amen.`,
+    prayer: `Heavenly Father, thank you for caring about every detail of my life. Help me to cast all my cares upon thee, trusting in thy loving concern and sovereign power. Teach me to leave my burdens at thy feet. In Jesus' mighty name. Amen.`,
     readingPlan: "1 Peter 5-6",
     reflection: [
       {
@@ -414,7 +414,7 @@ export const devotionals: Devotional[] = [
     This access is both a privilege and a promise. We don't come based on our worthiness but on Christ's finished work. Our needs become opportunities to experience God's sufficient grace and timely help.
 
     What need are you bringing to the throne of grace today? How does understanding this access as a gift of grace change how you approach God?`,
-    prayer: ` merciful God, thank you for providing access to your throne through Jesus Christ. Help me to come boldly to find mercy and grace in my time of need. Amen.`,
+    prayer: ` merciful God, thank you for providing access to your throne through Jesus Christ. Help me to come boldly to find mercy and grace in my time of need. In Jesus' mighty name. Amen.`,
     readingPlan: "Hebrews 4-5",
     reflection: [
       {
@@ -438,7 +438,7 @@ export const devotionals: Devotional[] = [
     id: "13",
     date: getDevotionalDate("13"),
     verse: {
-      reference: "Lamentations 3:22-23",
+      reference: "LIn Jesus' mighty name. Amentations 3:22-23",
       defaultVersion: "KJV",
     },
     title: "New Mercies Every Morning",
@@ -447,8 +447,8 @@ export const devotionals: Devotional[] = [
     This promise comes in the context of deep suffering - reminding us that God's faithfulness isn't dependent on our circumstances. Even in darkness, His mercies continue and His compassion never fails.
 
     How can you become more aware of God's new mercies each day? What difference might this awareness make in your daily outlook?`,
-    prayer: `Faithful God, thank you for your mercies that are new every morning and your great faithfulness. Open my eyes to recognize your fresh grace each day and trust your unwavering faithfulness. Amen.`,
-    readingPlan: "Lamentations 3-4",
+    prayer: `Faithful God, thank you for your mercies that are new every morning and your great faithfulness. Open my eyes to recognize your fresh grace each day and trust your unwavering faithfulness. In Jesus' mighty name. Amen.`,
+    readingPlan: "LIn Jesus' mighty name. Amentations 3-4",
     reflection: [
       {
         id: "13-1",
@@ -480,7 +480,7 @@ export const devotionals: Devotional[] = [
     The condition is asking in faith, without doubting God's willingness or ability to provide the wisdom we need. He gives generously without finding fault, even when we've made poor decisions in the past.
 
     What decision or situation requires God's wisdom in your life right now? How can you ask in faith without doubting?`,
-    prayer: `God of all wisdom, I ask for your divine insight into the situations I face. Help me to ask in faith, trusting your generous nature and perfect guidance. Amen.`,
+    prayer: `God of all wisdom, I ask for your divine insight into the situations I face. Help me to ask in faith, trusting your generous nature and perfect guidance. In Jesus' mighty name. Amen.`,
     readingPlan: "James 1-2",
     reflection: [
       {
@@ -513,7 +513,7 @@ export const devotionals: Devotional[] = [
     Fear often paralyzes and distorts, but God's Spirit empowers us to face difficulties with confidence in His presence and provision. His power is perfected in our weakness, His love casts out fear, and His sound mind brings clarity.
 
     What fears are you facing that need to be replaced by God's spirit of power, love, and sound mind?`,
-    prayer: `Heavenly Father, thank you for giving me a spirit of power, love, and a sound mind. Help me to walk in this reality rather than yielding to fear. Amen.`,
+    prayer: `Heavenly Father, thank you for giving me a spirit of power, love, and a sound mind. Help me to walk in this reality rather than yielding to fear. In Jesus' mighty name. Amen.`,
     readingPlan: "2 Timothy 1-2",
     reflection: [
       {
@@ -546,7 +546,7 @@ export const devotionals: Devotional[] = [
     Delighting in God means enjoying His presence, cherishing His character, and finding satisfaction in relationship with Him. When God becomes our chief delight, our desires reflect His priorities.
 
     What does delighting in the Lord look like in your daily life? How might this delight transform your desires?`,
-    prayer: `Lord God, teach me to delight in thee above all else. Align the desires of my heart with thy will and purposes. May my greatest joy be found in relationship with thee. Amen.`,
+    prayer: `Lord God, teach me to delight in thee above all else. Align the desires of my heart with thy will and purposes. May my greatest joy be found in relationship with thee. In Jesus' mighty name. Amen.`,
     readingPlan: "Psalm 37-38",
     reflection: [
       {
@@ -579,7 +579,7 @@ export const devotionals: Devotional[] = [
     This power is not merely something we observe but something that works within us as we yield to Him. God's exceeding abundance often comes in unexpected ways and timing.
 
     What limitation are you placing on God's ability to work in your situation? How might opening yourself to His exceeding abundance change your expectations?`,
-    prayer: `Almighty God, help me to trust in your ability to do exceedingly abundantly above all I can ask or imagine. Work your power in me to accomplish your purposes. Amen.`,
+    prayer: `Almighty God, help me to trust in your ability to do exceedingly abundantly above all I can ask or imagine. Work your power in me to accomplish your purposes. In Jesus' mighty name. Amen.`,
     readingPlan: "Ephesians 3-4",
     reflection: [
       {
@@ -612,7 +612,7 @@ export const devotionals: Devotional[] = [
     Setting our affection on heavenly things doesn't mean neglecting earthly responsibilities but viewing them through an eternal lens. It's about living with eternity in mind, valuing what God values.
 
     What earthly things tend to capture your affection disproportionately? How can you practically set your mind on things above today?`,
-    prayer: `Heavenly Father, help me to set my affection on things above, not on earthly things. Give me an eternal perspective that values what you value. Amen.`,
+    prayer: `Heavenly Father, help me to set my affection on things above, not on earthly things. Give me an eternal perspective that values what you value. In Jesus' mighty name. Amen.`,
     readingPlan: "Colossians 3-4",
     reflection: [
       {
@@ -645,7 +645,7 @@ export const devotionals: Devotional[] = [
     These qualities - love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control - reflect Christ's character being formed in us. They can't be manufactured through self-effort but only cultivated through relationship.
 
     Which fruit of the Spirit is God particularly developing in your life right now? How are you cooperating with His cultivating work?`,
-    prayer: `Holy Spirit, produce your fruit in my life as I yield to your work. Develop in me love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control. Amen.`,
+    prayer: `Holy Spirit, produce your fruit in my life as I yield to your work. Develop in me love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control. In Jesus' mighty name. Amen.`,
     readingPlan: "Galatians 5-6",
     reflection: [
       {
@@ -678,7 +678,7 @@ export const devotionals: Devotional[] = [
     The same God who will make all things new in the future is at work making us new today. His renewing work touches every area of our lives - relationships, perspectives, priorities, and purposes.
 
     What area of your life needs God's renewing work today? How does the hope of ultimate renewal encourage you in present challenges?`,
-    prayer: `God of new beginnings, thank you for your promise to make all things new. Work your renewing power in my life today and give me hope for the future restoration of all things. Amen.`,
+    prayer: `God of new beginnings, thank you for your promise to make all things new. Work your renewing power in my life today and give me hope for the future restoration of all things. In Jesus' mighty name. Amen.`,
     readingPlan: "Revelation 21-22",
     reflection: [
       {
@@ -711,7 +711,7 @@ export const devotionals: Devotional[] = [
     Fear often paralyzes us, but God's presence empowers us to face challenges with confidence. His promise isn't that we won't face difficulties, but that He will be with us through them.
 
     What fear is currently gripping your heart? How can you appropriate God's promise of presence and protection today?`,
-    prayer: `Heavenly Father, when fear threatens to overwhelm me, remind me of thy faithful presence. Strengthen, help, and uphold me according to thy promise. Amen.`,
+    prayer: `Heavenly Father, when fear threatens to overwhelm me, remind me of thy faithful presence. Strengthen, help, and uphold me according to thy promise. In Jesus' mighty name. Amen.`,
     readingPlan: "Isaiah 41-42",
     reflection: [
       {
@@ -744,7 +744,7 @@ export const devotionals: Devotional[] = [
     Seeking God's kingdom means aligning our desires, decisions, and daily life with His values and purposes. It's about putting spiritual priorities above material concerns.
 
     What temporal concerns are distracting you from seeking God's kingdom first? How might reordering your priorities change your perspective on needs?`,
-    prayer: `Heavenly Father, help me to seek first thy kingdom and righteousness. Align my desires with thy purposes and free me from anxiety about temporal needs. Amen.`,
+    prayer: `Heavenly Father, help me to seek first thy kingdom and righteousness. Align my desires with thy purposes and free me from anxiety about temporal needs. In Jesus' mighty name. Amen.`,
     readingPlan: "Matthew 6-7",
     reflection: [
       {
@@ -777,7 +777,7 @@ export const devotionals: Devotional[] = [
     This guidance is personal and practical - God's Word lights "my" path. Regular immersion in Scripture keeps our way illuminated and prevents stumbling in darkness.
 
     What decision or situation requires God's Word to illuminate your path? How can you cultivate greater consistency in Scripture engagement?`,
-    prayer: `Heavenly Father, thank you for thy Word that illuminates my path. Help me to hide it in my heart that I might not sin against thee. Amen.`,
+    prayer: `Heavenly Father, thank you for thy Word that illuminates my path. Help me to hide it in my heart that I might not sin against thee. In Jesus' mighty name. Amen.`,
     readingPlan: "Psalm 119:105-112",
     reflection: [
       {
@@ -810,7 +810,7 @@ export const devotionals: Devotional[] = [
     This peace guards our hearts and minds amid turmoil, serving as an internal stabilizer when external situations are unstable. It's rooted in Christ's victory over sin and death.
 
     What turmoil are you facing that requires Christ's supernatural peace? How can you appropriate this gift today?`,
-    prayer: `Prince of Peace, thank you for the gift of thy peace that surpasses understanding. Guard my heart and mind in Christ Jesus amid life's storms. Amen.`,
+    prayer: `Prince of Peace, thank you for the gift of thy peace that surpasses understanding. Guard my heart and mind in Christ Jesus amid life's storms. In Jesus' mighty name. Amen.`,
     readingPlan: "John 14-15",
     reflection: [
       {
@@ -843,7 +843,7 @@ export const devotionals: Devotional[] = [
     The world's pattern pressures us to adopt its values, priorities, and perspectives. Renewing our minds through Scripture allows us to discern and embrace God's good, acceptable, and perfect will.
 
     What worldly pattern are you most tempted to conform to? How is God renewing your mind to discern His will?`,
-    prayer: `Heavenly Father, protect me from conformity to the world. Transform me by the renewing of my mind that I may discern and do thy perfect will. Amen.`,
+    prayer: `Heavenly Father, protect me from conformity to the world. Transform me by the renewing of my mind that I may discern and do thy perfect will. In Jesus' mighty name. Amen.`,
     readingPlan: "Romans 12-13",
     reflection: [
       {
@@ -876,7 +876,7 @@ export const devotionals: Devotional[] = [
     Temptation is common to humanity, but God's way of escape is uniquely tailored to each situation. Recognizing and taking His provided exit requires spiritual alertness and willingness.
 
     What temptation are you currently facing? How might God be providing a way of escape?`,
-    prayer: `Faithful God, thank you for providing a way of escape in every temptation. Give me eyes to see thy provided exit and willingness to take it. Amen.`,
+    prayer: `Faithful God, thank you for providing a way of escape in every temptation. Give me eyes to see thy provided exit and willingness to take it. In Jesus' mighty name. Amen.`,
     readingPlan: "1 Corinthians 10-11",
     reflection: [
       {
@@ -904,12 +904,12 @@ export const devotionals: Devotional[] = [
       defaultVersion: "KJV",
     },
     title: "A New Creation",
-    content: `In Christ, we become new creations - the old passes away and all things become new. This transformation is comprehensive ("all things") and fundamental ("new creation"), affecting every aspect of our being.
+    content: `In Christ, we become new creations - the old passes away and all things become new. This transformation is comprehensive ("all things") and fundIn Jesus' mighty name. Amental ("new creation"), affecting every aspect of our being.
 
-    This newness isn't merely behavioral modification but spiritual transformation. Our identity, position, and potential are fundamentally changed through union with Christ.
+    This newness isn't merely behavioral modification but spiritual transformation. Our identity, position, and potential are fundIn Jesus' mighty name. Amentally changed through union with Christ.
 
     What aspect of your "old self" are you still struggling to leave behind? How does embracing your new identity in Christ change your perspective?`,
-    prayer: `Heavenly Father, thank you for making me a new creation in Christ. Help me to live out this new identity and leave behind old patterns and perspectives. Amen.`,
+    prayer: `Heavenly Father, thank you for making me a new creation in Christ. Help me to live out this new identity and leave behind old patterns and perspectives. In Jesus' mighty name. Amen.`,
     readingPlan: "2 Corinthians 5-6",
     reflection: [
       {
@@ -942,7 +942,7 @@ export const devotionals: Devotional[] = [
     Tasting implies personal participation rather than mere observation. As we experience God's faithfulness, our trust deepens and our testimony becomes more compelling.
 
     How have you personally "tasted" God's goodness? How might you cultivate greater awareness of His goodness in daily life?`,
-    prayer: `Good Father, open my spiritual senses to taste and see thy goodness. Deepen my experience of thy faithful character and lovingkindness. Amen.`,
+    prayer: `Good Father, open my spiritual senses to taste and see thy goodness. Deepen my experience of thy faithful character and lovingkindness. In Jesus' mighty name. Amen.`,
     readingPlan: "Psalm 34-35",
     reflection: [
       {
@@ -975,7 +975,7 @@ export const devotionals: Devotional[] = [
     Confession involves agreeing with God about our sin - acknowledging its reality, taking responsibility, and turning from it. God's response is immediate and complete forgiveness.
 
     What sin do you need to confess to experience God's faithful forgiveness? How does understanding His justice and faithfulness impact your approach to confession?`,
-    prayer: `Faithful God, thank you for thy promise to forgive when I confess. Give me courage to acknowledge my sins and receive thy cleansing and restoration. Amen.`,
+    prayer: `Faithful God, thank you for thy promise to forgive when I confess. Give me courage to acknowledge my sins and receive thy cleansing and restoration. In Jesus' mighty name. Amen.`,
     readingPlan: "1 John 1-2",
     reflection: [
       {
@@ -1008,7 +1008,7 @@ export const devotionals: Devotional[] = [
     God's plans are purposeful ("to give you an expected end"), personal ("for you"), and promising ("hope"). Even when we can't see His purposes, we can trust His heart.
 
     What difficult circumstance are you facing where you need to trust God's good plans? How does this promise change your perspective on your situation?`,
-    prayer: `Heavenly Father, thank you that thy thoughts toward me are thoughts of peace. Help me to trust thy good plans even when I cannot see them. Amen.`,
+    prayer: `Heavenly Father, thank you that thy thoughts toward me are thoughts of peace. Help me to trust thy good plans even when I cannot see them. In Jesus' mighty name. Amen.`,
     readingPlan: "Jeremiah 29-30",
     reflection: [
       {

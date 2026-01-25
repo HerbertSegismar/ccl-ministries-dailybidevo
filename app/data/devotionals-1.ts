@@ -21,7 +21,7 @@ export const devotionals: Devotional[] = [
     As the embodiment of truth, Jesus cuts through deception and shows us the Father's heart. His life demonstrates the perfect revelation of God's character - full of grace and truth.
 
     How does knowing Jesus as the ultimate truth change your perspective on life's questions? In what areas do you need His revelation today?`,
-    prayer: `Heavenly Father, thank You for revealing Yourself through Jesus Christ. Help me to see You more clearly through His life and teachings. Guide me into all truth and give me Your peace. In Jesus' name, Amen.`,
+    prayer: `Heavenly Father, thank You for revealing Yourself through Jesus Christ. Help me to see You more clearly through His life and teachings. Guide me into all truth and give me Your peace. In Jesus' name, In Jesus' mighty name. Amen.`,
     readingPlan: "John 14-15",
     reflection: [
       {
@@ -53,7 +53,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus offers a peace that the world cannot give - a peace rooted in truth and His revelation of the Father. This divine peace calms our fears and anchors our souls in God's faithfulness.
 
     Unlike temporary worldly peace, Christ's peace withstands storms and uncertainties. It flows from our relationship with Him and our understanding of God's character.`,
-    prayer: `Prince of Peace, I receive Your gift of peace today. Quiet my heart with the truth of Your presence and Your promises. Reveal the Father's love to me in fresh ways. Amen.`,
+    prayer: `Prince of Peace, I receive Your gift of peace today. Quiet my heart with the truth of Your presence and Your promises. Reveal the Father's love to me in fresh ways. In Jesus' mighty name. Amen.`,
     readingPlan: "John 14-16",
     reflection: [
       {
@@ -85,7 +85,7 @@ export const devotionals: Devotional[] = [
     content: `In Jesus, God's truth took on human form. The invisible God became visible, full of grace and truth. This ultimate revelation shows us God's heart and brings peace through understanding His nature.
 
     Every word Jesus spoke, every action He took, revealed the Father's character. Through Christ, we see God's glory manifested in human life.`,
-    prayer: `Father, thank You for making Yourself known through Jesus. Help me to behold His glory and understand the truth of Your grace. Give me peace as I see Your character revealed. Amen.`,
+    prayer: `Father, thank You for making Yourself known through Jesus. Help me to behold His glory and understand the truth of Your grace. Give me peace as I see Your character revealed. In Jesus' mighty name. Amen.`,
     readingPlan: "John 1",
     reflection: [
       {
@@ -116,7 +116,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus promised the Holy Spirit would guide us into all truth. This ongoing revelation brings peace as we understand God's will and character more deeply.
 
     The Spirit reveals truth about God, ourselves, and our purpose. He brings clarity where there's confusion and peace where there's turmoil.`,
-    prayer: `Holy Spirit, guide me into all truth today. Reveal what I need to know about God and His will for me. Bring Your peace as I follow Your guidance. Amen.`,
+    prayer: `Holy Spirit, guide me into all truth today. Reveal what I need to know about God and His will for me. Bring Your peace as I follow Your guidance. In Jesus' mighty name. Amen.`,
     readingPlan: "John 16",
     reflection: [
       {
@@ -147,7 +147,7 @@ export const devotionals: Devotional[] = [
     content: `Knowing the truth that Jesus reveals brings genuine freedom. This isn't just intellectual knowledge but relational understanding of God's character and purposes.
 
     God's truth exposes lies we've believed and brings peace to troubled hearts. Freedom comes as we embrace what God says about us and His world.`,
-    prayer: `Lord Jesus, thank You for the freedom Your truth brings. Help me to know Your truth deeply and experience the peace that comes from walking in it. Amen.`,
+    prayer: `Lord Jesus, thank You for the freedom Your truth brings. Help me to know Your truth deeply and experience the peace that comes from walking in it. In Jesus' mighty name. Amen.`,
     readingPlan: "John 8",
     reflection: [
       {
@@ -178,7 +178,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus is the exact representation of the invisible God. When we look at Christ, we see the Father's heart, character, and purposes perfectly revealed.
 
     This revelation brings peace because we no longer have to guess what God is like. Jesus shows us a loving, compassionate, and holy Father.`,
-    prayer: `Heavenly Father, thank You for revealing Yourself perfectly through Jesus. Help me to see You more clearly as I study Christ's life and teachings. Amen.`,
+    prayer: `Heavenly Father, thank You for revealing Yourself perfectly through Jesus. Help me to see You more clearly as I study Christ's life and teachings. In Jesus' mighty name. Amen.`,
     readingPlan: "Colossians 1",
     reflection: [
       {
@@ -204,7 +204,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus Himself is our peace, breaking down walls of separation between us and God, and between one another. His revelation brings reconciliation and unity.
 
     True peace comes not from circumstances but from relationship with the Prince of Peace. He makes us whole and restores broken relationships.`,
-    prayer: `Prince of Peace, thank You for being my peace. Heal my relationships and bring unity where there's division. Reveal Your peace in every situation. Amen.`,
+    prayer: `Prince of Peace, thank You for being my peace. Heal my relationships and bring unity where there's division. Reveal Your peace in every situation. In Jesus' mighty name. Amen.`,
     readingPlan: "Ephesians 2",
     reflection: [
       {
@@ -235,7 +235,7 @@ export const devotionals: Devotional[] = [
     content: `Through Jesus Christ, grace and truth came into full expression. God's revelation balances perfect truth with abundant grace, bringing peace to guilty hearts.
 
     We don't have to choose between truth and love - in Jesus, we see both perfectly embodied. His truth confronts while His grace restores.`,
-    prayer: `Lord Jesus, thank You for bringing both grace and truth. Help me to speak truth in love and extend grace as You have to me. Amen.`,
+    prayer: `Lord Jesus, thank You for bringing both grace and truth. Help me to speak truth in love and extend grace as You have to me. In Jesus' mighty name. Amen.`,
     readingPlan: "John 1",
     reflection: [
       {
@@ -262,7 +262,7 @@ export const devotionals: Devotional[] = [
     content: `God's peace stands guard over our hearts and minds when we trust in Christ's revelation. This supernatural peace transcends human understanding and circumstances.
 
     Like a soldier guarding a fortress, God's peace protects us from anxiety and fear when we rest in His truth.`,
-    prayer: `Heavenly Father, I receive Your peace that guards my heart and mind. Help me to trust in Your revelations and promises today. Amen.`,
+    prayer: `Heavenly Father, I receive Your peace that guards my heart and mind. Help me to trust in Your revelations and promises today. In Jesus' mighty name. Amen.`,
     readingPlan: "Philippians 4",
     reflection: [
       {
@@ -293,7 +293,7 @@ export const devotionals: Devotional[] = [
     content: `God shines His light in our hearts to give us the knowledge of His glory in the face of Jesus Christ. This revelation illuminates our understanding and brings peace.
 
     The same God who said "Let there be light" shines spiritual light to reveal Jesus to us. This light brings truth and dispels darkness.`,
-    prayer: `Father of lights, shine in my heart today. Reveal Jesus to me in fresh ways and give me peace through knowing Him better. Amen.`,
+    prayer: `Father of lights, shine in my heart today. Reveal Jesus to me in fresh ways and give me peace through knowing Him better. In Jesus' mighty name. Amen.`,
     readingPlan: "2 Corinthians 4",
     reflection: [
       {
@@ -324,7 +324,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus offers peace in the midst of trouble, not freedom from trouble. His revelation of overcoming the world gives us courage and peace in challenges.
 
     Our peace comes from knowing Jesus has already overcome everything we face. His victory becomes our victory through faith.`,
-    prayer: `Lord Jesus, thank You for Your peace in my troubles. Help me to remember Your victory and find courage in Your overcoming power. Amen.`,
+    prayer: `Lord Jesus, thank You for Your peace in my troubles. Help me to remember Your victory and find courage in Your overcoming power. In Jesus' mighty name. Amen.`,
     readingPlan: "John 16",
     reflection: [
       {
@@ -350,7 +350,7 @@ export const devotionals: Devotional[] = [
     content: `The Son of God has come and given us understanding so we may know the true God. This revelation brings peace through certainty about who God is.
 
     In a world of spiritual confusion, Jesus gives us clear understanding of the Father's nature and character.`,
-    prayer: `Heavenly Father, thank You for giving understanding through Jesus. Help me to know You truly and find peace in Your revealed character. Amen.`,
+    prayer: `Heavenly Father, thank You for giving understanding through Jesus. Help me to know You truly and find peace in Your revealed character. In Jesus' mighty name. Amen.`,
     readingPlan: "1 John 5",
     reflection: [
       {
@@ -381,7 +381,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus is prophesied as the Prince of Peace, whose government and peace will never end. This revelation brings hope and stability in uncertain times.
 
     His peace isn't temporary or circumstantial but eternal and governmental. He brings order where there's chaos and calm where there's storm.`,
-    prayer: `Prince of Peace, rule in my heart today. Bring Your governmental peace to every area of my life and circumstances. Amen.`,
+    prayer: `Prince of Peace, rule in my heart today. Bring Your governmental peace to every area of my life and circumstances. In Jesus' mighty name. Amen.`,
     readingPlan: "Isaiah 9",
     reflection: [
       {
@@ -407,7 +407,7 @@ export const devotionals: Devotional[] = [
     content: `God's word is truth that sanctifies us. Jesus prayed that we would be set apart through the truth of God's revelation.
 
     Truth transforms us, making us more like Christ. It cleanses our thinking and aligns our lives with God's purposes.`,
-    prayer: `Holy Father, sanctify me through Your truth. Help me to embrace Your word and allow it to transform every area of my life. Amen.`,
+    prayer: `Holy Father, sanctify me through Your truth. Help me to embrace Your word and allow it to transform every area of my life. In Jesus' mighty name. Amen.`,
     readingPlan: "John 17",
     reflection: [
       {
@@ -438,7 +438,7 @@ export const devotionals: Devotional[] = [
     content: `Through faith in Jesus, we have peace with God. This reconciliation is the foundation for all other peace, bringing us into right relationship with our Creator.
 
     Being at peace with God means the conflict caused by sin is resolved. We can approach Him with confidence and intimacy.`,
-    prayer: `Heavenly Father, thank You for peace through Jesus. Help me to live in the reality of this reconciliation every day. Amen.`,
+    prayer: `Heavenly Father, thank You for peace through Jesus. Help me to live in the reality of this reconciliation every day. In Jesus' mighty name. Amen.`,
     readingPlan: "Romans 5",
     reflection: [
       {
@@ -464,7 +464,7 @@ export const devotionals: Devotional[] = [
     content: `The Lord of peace Himself gives us peace always and in every way. This revelation reminds us that peace is a Person, not just a feeling.
 
     Jesus as Lord of Peace means He rules over every circumstance that threatens our peace. We can trust His governance.`,
-    prayer: `Lord of Peace, give me Your peace in every situation today. Help me to remember that You reign over all my circumstances. Amen.`,
+    prayer: `Lord of Peace, give me Your peace in every situation today. Help me to remember that You reign over all my circumstances. In Jesus' mighty name. Amen.`,
     readingPlan: "2 Thessalonians 3",
     reflection: [
       {
@@ -497,7 +497,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus declared He came into the world to testify to the truth. Everyone who belongs to the truth listens to His voice.
 
     Jesus' entire mission was revelatory - to show us what truth looks like in human form. His life testifies to God's character and kingdom.`,
-    prayer: `Lord Jesus, help me to hear Your voice of truth today. Give me ears to recognize Your testimony about the Father. Amen.`,
+    prayer: `Lord Jesus, help me to hear Your voice of truth today. Give me ears to recognize Your testimony about the Father. In Jesus' mighty name. Amen.`,
     readingPlan: "John 18",
     reflection: [
       {
@@ -524,7 +524,7 @@ export const devotionals: Devotional[] = [
     content: `Let the peace of Christ rule in your hearts. The word "rule" means to act as an umpire, making calls in our decisions and relationships.
 
     God's peace serves as a guidance system, showing us when we're in His will and when we're not.`,
-    prayer: `Prince of Peace, let Your peace rule in my heart today. Guide my decisions and relationships through Your peaceful presence. Amen.`,
+    prayer: `Prince of Peace, let Your peace rule in my heart today. Guide my decisions and relationships through Your peaceful presence. In Jesus' mighty name. Amen.`,
     readingPlan: "Colossians 3",
     reflection: [
       {
@@ -555,7 +555,7 @@ export const devotionals: Devotional[] = [
     content: `God wants all people to be saved and come to knowledge of the truth. There is one mediator between God and humanity - Christ Jesus.
 
     Salvation comes through understanding and embracing the truth about Jesus. He alone bridges the gap between us and God.`,
-    prayer: `Heavenly Father, thank You for providing salvation through Jesus. Help me to grow in knowledge of Your truth and share it with others. Amen.`,
+    prayer: `Heavenly Father, thank You for providing salvation through Jesus. Help me to grow in knowledge of Your truth and share it with others. In Jesus' mighty name. Amen.`,
     readingPlan: "1 Timothy 2",
     reflection: [
       {
@@ -582,7 +582,7 @@ export const devotionals: Devotional[] = [
     content: `In these last days, God has spoken to us by His Son. Jesus is the final and complete revelation of God, superior to all previous revelations.
 
     Everything God wants to say to humanity, He has said through Jesus. We don't need to look for new revelations beyond Christ.`,
-    prayer: `Father, thank You for speaking through Your Son. Help me to listen to Jesus as Your final word and find complete revelation in Him. Amen.`,
+    prayer: `Father, thank You for speaking through Your Son. Help me to listen to Jesus as Your final word and find complete revelation in Him. In Jesus' mighty name. Amen.`,
     readingPlan: "Hebrews 1",
     reflection: [
       {
@@ -613,7 +613,7 @@ export const devotionals: Devotional[] = [
     content: `Mercy and truth have met together; righteousness and peace have kissed. This beautiful picture shows how God's attributes work in perfect harmony to bring us salvation.
 
     God's truth without mercy would condemn us; His mercy without truth would compromise His holiness. In Christ, we see both perfectly united for our redemption.`,
-    prayer: `Heavenly Father, thank You for the perfect union of mercy and truth in Jesus. Help me to extend both mercy and truth to others as You have to me. Amen.`,
+    prayer: `Heavenly Father, thank You for the perfect union of mercy and truth in Jesus. Help me to extend both mercy and truth to others as You have to me. In Jesus' mighty name. Amen.`,
     readingPlan: "Psalm 85",
     reflection: [
       {
@@ -644,7 +644,7 @@ export const devotionals: Devotional[] = [
     content: `Do not let mercy and truth forsake you; bind them around your neck, write them on the tablet of your heart. God's truth should be our constant companion and inner guide.
 
     When truth becomes part of our identity, it shapes our character and decisions. This internal compass brings peace through consistent godly living.`,
-    prayer: `Lord, help me to bind Your truth to my heart today. May it guide my thoughts, words, and actions, bringing peace to my journey. Amen.`,
+    prayer: `Lord, help me to bind Your truth to my heart today. May it guide my thoughts, words, and actions, bringing peace to my journey. In Jesus' mighty name. Amen.`,
     readingPlan: "Proverbs 3",
     reflection: [
       {
@@ -675,7 +675,7 @@ export const devotionals: Devotional[] = [
     content: `The Father seeks worshippers who will worship in spirit and truth. True worship connects with God's reality and responds from our inner being.
 
     Worship grounded in truth brings peace because we're engaging with God as He truly is, not as we imagine Him to be.`,
-    prayer: `Father, teach me to worship You in spirit and truth. May my worship be grounded in Your reality and flow from a sincere heart. Amen.`,
+    prayer: `Father, teach me to worship You in spirit and truth. May my worship be grounded in Your reality and flow from a sincere heart. In Jesus' mighty name. Amen.`,
     readingPlan: "John 4",
     reflection: [
       {
@@ -706,7 +706,7 @@ export const devotionals: Devotional[] = [
     content: `Stand firm with the belt of truth buckled around your waist. Truth is the foundational piece of spiritual armor that holds everything else together.
 
     Just as a belt provides stability and readiness, God's truth prepares us for spiritual battles and brings peace through certainty.`,
-    prayer: `Lord Jesus, clothe me with Your truth today. Help me to stand firm in Your revelations and experience Your peace in every battle. Amen.`,
+    prayer: `Lord Jesus, clothe me with Your truth today. Help me to stand firm in Your revelations and experience Your peace in every battle. In Jesus' mighty name. Amen.`,
     readingPlan: "Ephesians 6:10-18",
     reflection: [
       {
@@ -737,8 +737,8 @@ export const devotionals: Devotional[] = [
     content: `Grace, mercy, and peace will be with us from God the Father and from Jesus Christ, in truth and love. These blessings flow from God's character and are experienced through relationship.
 
     Truth is the channel through which God's grace, mercy, and peace reach us. Without truth, we would misunderstand these precious gifts.`,
-    prayer: `Heavenly Father, thank You for grace, mercy, and peace that come through truth. Help me to receive these gifts fully today. Amen.`,
-    readingPlan: "2 John",
+    prayer: `Heavenly Father, thank You for grace, mercy, and peace that come through truth. Help me to receive these gifts fully today. In Jesus' mighty name. Amen.`,
+    readingPlan: "2 John 1",
     reflection: [
       {
         id: "25-1",
@@ -768,7 +768,7 @@ export const devotionals: Devotional[] = [
     content: `Lead me in Your truth and teach me, for You are the God of my salvation. This prayer acknowledges our need for God's guidance and instruction.
 
     Following God's truth brings peace because we're walking in the path designed by our loving Creator who knows what's best for us.`,
-    prayer: `God of salvation, lead me in Your truth today. Teach me Your ways and guide my steps into the peace of Your perfect will. Amen.`,
+    prayer: `God of salvation, lead me in Your truth today. Teach me Your ways and guide my steps into the peace of Your perfect will. In Jesus' mighty name. Amen.`,
     readingPlan: "Psalm 25",
     reflection: [
       {
@@ -799,7 +799,7 @@ export const devotionals: Devotional[] = [
     content: `I have no greater joy than to hear that my children walk in truth. There's profound joy and peace when we see others living according to God's revelations.
 
     Walking in truth isn't just intellectual agreement but practical obedience that transforms our lives and relationships.`,
-    prayer: `Lord, help me to walk in Your truth today in practical ways. May my life bring joy to You and peace to those around me. Amen.`,
+    prayer: `Lord, help me to walk in Your truth today in practical ways. May my life bring joy to You and peace to those around me. In Jesus' mighty name. Amen.`,
     readingPlan: "3 John",
     reflection: [
       {
@@ -830,7 +830,7 @@ export const devotionals: Devotional[] = [
     content: `Teach me Your way, O Lord; I will walk in Your truth; unite my heart to fear Your name. A divided heart finds no peace, but truth brings integration and wholeness.
 
     When God's truth unites our heart, we experience peace through singular devotion and clear purpose.`,
-    prayer: `Lord, unite my heart through Your truth today. Deliver me from divided loyalties and give me peace through wholehearted devotion. Amen.`,
+    prayer: `Lord, unite my heart through Your truth today. Deliver me from divided loyalties and give me peace through wholehearted devotion. In Jesus' mighty name. Amen.`,
     readingPlan: "Psalm 86",
     reflection: [
       {
@@ -861,7 +861,7 @@ export const devotionals: Devotional[] = [
     content: `Therefore love truth and peace. This simple command connects our affection for truth with our experience of peace. We cannot have one without the other.
 
     Loving truth means valuing God's revelations above human opinions. This love naturally produces peace in our souls and relationships.`,
-    prayer: `Heavenly Father, give me a love for Your truth and peace. Help me to value what You value and experience the peace that follows. Amen.`,
+    prayer: `Heavenly Father, give me a love for Your truth and peace. Help me to value what You value and experience the peace that follows. In Jesus' mighty name. Amen.`,
     readingPlan: "Zechariah 8",
     reflection: [
       {
@@ -892,7 +892,7 @@ export const devotionals: Devotional[] = [
     content: `True instruction was in his mouth, and no wrong was found on his lips. He walked with Me in peace and uprightness. Truth spoken and lived brings peace to the speaker and hearer.
 
     When our words align with God's truth and our lives match our message, we experience authentic peace and influence others positively.`,
-    prayer: `Lord, put true instruction in my mouth today. Help me to walk with You in peace and integrity, bringing glory to Your name. Amen.`,
+    prayer: `Lord, put true instruction in my mouth today. Help me to walk with You in peace and integrity, bringing glory to Your name. In Jesus' mighty name. Amen.`,
     readingPlan: "Malachi 2",
     reflection: [
       {
@@ -919,11 +919,11 @@ export const devotionals: Devotional[] = [
       reference: "Revelation 3:14",
       defaultVersion: "KJV",
     },
-    title: "The Amen, The Faithful Witness",
-    content: `Jesus is the Amen, the faithful and true witness. As the ultimate affirmation of truth, He confirms all God's promises and reveals the Father's heart perfectly.
+    title: "The In Jesus' mighty name. Amen, The Faithful Witness",
+    content: `Jesus is the In Jesus' mighty name. Amen, the faithful and true witness. As the ultimate affirmation of truth, He confirms all God's promises and reveals the Father's heart perfectly.
 
     Knowing Jesus as the faithful witness brings peace because we can trust every word He speaks and every promise He makes.`,
-    prayer: `Lord Jesus, faithful Witness, help me to trust Your testimony completely. Give me peace through confidence in Your faithful character. Amen.`,
+    prayer: `Lord Jesus, faithful Witness, help me to trust Your testimony completely. Give me peace through confidence in Your faithful character. In Jesus' mighty name. Amen.`,
     readingPlan: "Revelation 3:14-22",
     reflection: [
       {
@@ -938,7 +938,7 @@ export const devotionals: Devotional[] = [
       },
       {
         id: "31-3",
-        question: "How does Jesus being 'the Amen' affect your prayers?",
+        question: "How does Jesus being 'the In Jesus' mighty name. Amen' affect your prayers?",
         placeholder: "Consider confidence...",
       },
     ],
