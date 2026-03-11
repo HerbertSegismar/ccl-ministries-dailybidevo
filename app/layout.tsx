@@ -7,6 +7,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Footer from "./components/Footer";
 import OGDebug from "./components/OGDebug"; // New component for debugging
 import ConditionalCreditsAndContact from "./components/ConditionalCreditsAndContact"; // New conditional client component
+import { Analytics } from "@vercel/analytics/next";
 
 // Define your site's base URL (important for canonical URLs and OG tags)
 const baseUrl =
@@ -166,6 +167,7 @@ export default function RootLayout({
             </ClerkProvider>
           </BibleVersionProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
