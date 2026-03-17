@@ -22,7 +22,7 @@ export const devotionals: Devotional[] = [
     True trust acknowledges God's sovereignty in every aspect of life - relationships, decisions, and uncertainties. When we lean on His understanding rather than our own, we align ourselves with His perfect will.
 
     Where are you relying on human understanding instead of divine wisdom? How might your decisions change if you fully trusted God's guidance?`,
-    prayer: `Heavenly Father, help me to trust You with all my heart today. When I'm tempted to rely on my own understanding, remind me of Your infinite wisdom. Direct my paths and make my ways pleasing to You. In Jesus' name, In Jesus' mighty name. Amen.`,
+    prayer: `Heavenly Father, help me to trust You with all my heart today. When I'm tempted to rely on my own understanding, remind me of Your infinite wisdom. Direct my paths and make my ways pleasing to You. In Jesus' mighty name. Amen.`,
     readingPlan: "Proverbs 3-4",
     reflection: [
       {

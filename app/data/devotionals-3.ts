@@ -19,7 +19,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus revealed His glory by turning water into wine at the wedding in Cana. This first miracle demonstrated His power over creation and His willingness to bring joy to ordinary life. The miraculous transformation points to Jesus as the source of true abundance.
 
     The servants' obedience in filling the jars with water shows how God works through our simple acts of faith. When we bring our ordinary resources to Jesus, He can perform extraordinary miracles.`,
-    prayer: `Lord Jesus, thank You for demonstrating Your power through miracles. Help me to trust You with my ordinary circumstances and believe You can do the extraordinary. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for demonstrating Your power through miracles. Help me to trust You with my ordinary circumstances and believe You can do the extraordinary. In Jesus' mighty name. Amen.`,
     readingPlan: "John 2:1-11",
     reflection: [
       {
@@ -46,7 +46,7 @@ export const devotionals: Devotional[] = [
     content: `In the midst of a storm, Jesus walked on water to reach His disciples. This miracle demonstrates His authority over natural laws and His commitment to be with us in our storms. When Peter stepped out in faith, he experienced the impossible.
 
     Even when our faith wavers, Jesus reaches out to save us. His presence in our storms brings peace where there should be panic.`,
-    prayer: `Lord Jesus, thank You for coming to me in life's storms. Help me to keep my eyes on You and trust Your power over every impossible situation. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for coming to me in life's storms. Help me to keep my eyes on You and trust Your power over every impossible situation. In Jesus' mighty name. Amen.`,
     readingPlan: "Matthew 14:22-33",
     reflection: [
       {
@@ -74,7 +74,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus called Lazarus out of the tomb after four days, demonstrating His power over death itself. This miracle confirms that Jesus is the resurrection and the life. No situation is too hopeless for His power.
 
     Just as Jesus called Lazarus by name, He knows your specific situation and speaks life into your dead places. His timing may not be ours, but His power is never limited.`,
-    prayer: `Lord Jesus, thank You that You have power over death. Speak life into the dead areas of my life and help me to trust Your timing. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You that You have power over death. Speak life into the dead areas of my life and help me to trust Your timing. In Jesus' mighty name. Amen.`,
     readingPlan: "John 11:1-44",
     reflection: [
       {
@@ -102,7 +102,7 @@ export const devotionals: Devotional[] = [
     content: `With just three words, "Peace, be still," Jesus calmed a violent storm that terrified experienced fishermen. This miracle shows His absolute authority over nature and His care for His followers' fears.
 
     The same voice that created the universe speaks peace into our chaos. When life feels out of control, Jesus remains in complete control.`,
-    prayer: `Prince of Peace, speak Your calming word over the storms in my life. Help me to trust Your authority when I feel afraid. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Prince of Peace, speak Your calming word over the storms in my life. Help me to trust Your authority when I feel afraid. In Jesus' mighty name. Amen.`,
     readingPlan: "Mark 4:35-41",
     reflection: [
       {
@@ -128,7 +128,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus healed a man blind from birth, showing that He is the light of the world. This miracle involved both the man's obedience in washing and Jesus' power to heal. The physical healing pointed to spiritual sight.
 
     Sometimes Jesus works through our participation in miracles. Our simple obedience can become the channel for His extraordinary power.`,
-    prayer: `Lord Jesus, light of the world, open my eyes to see You clearly. Use my simple acts of obedience to display Your miraculous power. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, light of the world, open my eyes to see You clearly. Use my simple acts of obedience to display Your miraculous power. In Jesus' mighty name. Amen.`,
     readingPlan: "John 9:1-41",
     reflection: [
       {
@@ -154,7 +154,7 @@ export const devotionals: Devotional[] = [
     content: `After a night of catching nothing, Peter obeyed Jesus' command to let down the nets and experienced a catch so great it nearly sank two boats. This miracle demonstrated Jesus' power over nature and His provision for our needs.
 
     Jesus often asks us to try again when we feel we've failed. Our obedience in the face of disappointment can lead to overwhelming blessing.`,
-    prayer: `Lord Jesus, thank You for Your miraculous provision. Help me to obey even when I don't understand and trust Your timing for blessing. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for Your miraculous provision. Help me to obey even when I don't understand and trust Your timing for blessing. In Jesus' mighty name. Amen.`,
     readingPlan: "Luke 5:1-11",
     reflection: [
       {
@@ -181,7 +181,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus touched and healed a man with leprosy, demonstrating His power over disease and His compassion for the outcast. In a society where lepers were untouchable, Jesus' physical touch showed unprecedented love.
 
     No one is too unclean for Jesus' touch. His power can heal our deepest wounds and restore us to community.`,
-    prayer: `Lord Jesus, thank You for Your healing touch. Help me to believe that no situation is beyond Your power to heal and restore. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for Your healing touch. Help me to believe that no situation is beyond Your power to heal and restore. In Jesus' mighty name. Amen.`,
     readingPlan: "Matthew 8:1-4",
     reflection: [
       {
@@ -208,7 +208,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus took a dead girl by the hand and said, "Talitha cumi" - "Little girl, arise." Immediately she stood up and walked. This miracle shows Jesus' power over death and His tender care for children.
 
     Jesus speaks life into hopeless situations. His words have creative power to bring dead things back to life.`,
-    prayer: `Lord Jesus, thank You for Your life-giving power. Speak Your resurrecting word over the dead areas of my life and family. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for Your life-giving power. Speak Your resurrecting word over the dead areas of my life and family. In Jesus' mighty name. Amen.`,
     readingPlan: "Mark 5:21-43",
     reflection: [
       {
@@ -236,7 +236,7 @@ export const devotionals: Devotional[] = [
     content: `With five loaves and two fish, Jesus fed over five thousand people with twelve baskets left over. This miracle demonstrates God's abundant provision and His ability to multiply our small offerings.
 
     When we bring our limited resources to Jesus, He can multiply them to meet overwhelming needs. God's economy operates on multiplication, not addition.`,
-    prayer: `Lord Jesus, thank You for Your abundant provision. Take my small resources and multiply them for Your glory and others' needs. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for Your abundant provision. Take my small resources and multiply them for Your glory and others' needs. In Jesus' mighty name. Amen.`,
     readingPlan: "Matthew 14:13-21",
     reflection: [
       {
@@ -262,7 +262,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus healed a man who had been invalid for thirty-eight years, telling him to rise, take up his bed, and walk. This miracle shows Jesus' power to heal long-standing conditions and His authority to command action.
 
     Sometimes Jesus tells us to do what seems impossible. Our obedience activates His healing power in our lives.`,
-    prayer: `Lord Jesus, thank You for healing long-standing conditions. Give me faith to obey when You command me to do the impossible. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for healing long-standing conditions. Give me faith to obey when You command me to do the impossible. In Jesus' mighty name. Amen.`,
     readingPlan: "John 5:1-15",
     reflection: [
       {
@@ -288,7 +288,7 @@ export const devotionals: Devotional[] = [
     content: `God miraculously parted the Red Sea, allowing the Israelites to escape Pharaoh's army. This great miracle demonstrated God's power over nature and His deliverance of His people.
 
     When there seems to be no way forward, God can make a way through impossible circumstances. His power is displayed when we're trapped between the enemy and the sea.`,
-    prayer: `Almighty God, thank You for making a way when there seems to be no way. Help me to trust Your deliverance in impossible situations. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Almighty God, thank You for making a way when there seems to be no way. Help me to trust Your deliverance in impossible situations. In Jesus' mighty name. Amen.`,
     readingPlan: "Exodus 14:1-31",
     reflection: [
       {
@@ -315,7 +315,7 @@ export const devotionals: Devotional[] = [
     content: `God miraculously protected Shadrach, Meshach, and Abednego in the fiery furnace, sending a fourth figure who looked like "the Son of God." This miracle shows God's presence with us in our trials and His power to protect us from harm.
 
     The God we serve is able to deliver us, but even if He doesn't, He will be with us in the fire.`,
-    prayer: `Lord God, thank You for being with me in life's fires. Help me to trust Your presence and protection no matter what I face. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord God, thank You for being with me in life's fires. Help me to trust Your presence and protection no matter what I face. In Jesus' mighty name. Amen.`,
     readingPlan: "Daniel 3:1-30",
     reflection: [
       {
@@ -342,7 +342,7 @@ export const devotionals: Devotional[] = [
     content: `At Joshua's request, God made the sun stand still for about a full day, allowing Israel to complete their victory. This miracle demonstrates God's power over the universe and His responsiveness to bold faith.
 
     When we pray according to God's purposes, He can intervene in nature itself to accomplish His will.`,
-    prayer: `Lord God, thank You for hearing bold prayers. Help me to pray with faith that believes You can do the impossible. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord God, thank You for hearing bold prayers. Help me to pray with faith that believes You can do the impossible. In Jesus' mighty name. Amen.`,
     readingPlan: "Joshua 10:1-14",
     reflection: [
       {
@@ -369,7 +369,7 @@ export const devotionals: Devotional[] = [
     content: `God sent fire from heaven to consume Elijah's water-drenched sacrifice, demonstrating His power and proving He is the true God. This miracle led to a national revival and the end of a drought.
 
     When we stand for truth in difficult times, God can display His power in ways that turn hearts back to Him.`,
-    prayer: `Lord God, thank You for demonstrating Your power. Help me to stand for truth and trust You to reveal Yourself mightily. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord God, thank You for demonstrating Your power. Help me to stand for truth and trust You to reveal Yourself mightily. In Jesus' mighty name. Amen.`,
     readingPlan: "1 Kings 18:20-39",
     reflection: [
       {
@@ -396,7 +396,7 @@ export const devotionals: Devotional[] = [
     content: `Great crowds came to Jesus, bringing the lame, blind, crippled, mute, and many others. He healed them all, and the people were amazed. This demonstrates Jesus' comprehensive healing power and compassion for all types of suffering.
 
     No condition is beyond Jesus' healing touch. His power extends to every area of human need.`,
-    prayer: `Lord Jesus, thank You for Your comprehensive healing power. I bring all my needs to You, trusting in Your compassion and ability. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for Your comprehensive healing power. I bring all my needs to You, trusting in Your compassion and ability. In Jesus' mighty name. Amen.`,
     readingPlan: "Matthew 15:29-31",
     reflection: [
       {
@@ -422,7 +422,7 @@ export const devotionals: Devotional[] = [
     content: `Peter and John healed a lame man in Jesus' name, saying, "Silver and gold have I none, but such as I have give I thee." The man began walking and leaping and praising God.
 
     The power of Jesus' name continues to work miracles through His followers today. Our authority comes from Him, not our resources.`,
-    prayer: `Lord Jesus, thank You for working miracles through Your name. Help me to minister in Your power and for Your glory. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for working miracles through Your name. Help me to minister in Your power and for Your glory. In Jesus' mighty name. Amen.`,
     readingPlan: "Acts 3:1-10",
     reflection: [
       {
@@ -448,7 +448,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus healed ten lepers as they went to show themselves to the priests. Only one returned to thank Him. This miracle shows Jesus' power to heal and His desire for grateful hearts.
 
     God's miracles should always lead us to worship. Gratitude recognizes the source of our blessing.`,
-    prayer: `Lord Jesus, thank You for Your healing power. Help me to always return with gratitude for what You have done. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for Your healing power. Help me to always return with gratitude for what You have done. In Jesus' mighty name. Amen.`,
     readingPlan: "Luke 17:11-19",
     reflection: [
       {
@@ -474,7 +474,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus put His fingers in the man's ears, spat and touched his tongue, looked to heaven, and said, "Ephphatha" - "Be opened." Immediately the man could hear and speak.
 
     Jesus' personalized approach to miracles shows His care for individual needs. He meets us exactly where we are.`,
-    prayer: `Lord Jesus, thank You for Your personal touch. Open my ears to hear You and my mouth to speak Your praise. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for Your personal touch. Open my ears to hear You and my mouth to speak Your praise. In Jesus' mighty name. Amen.`,
     readingPlan: "Mark 7:31-37",
     reflection: [
       {
@@ -500,7 +500,7 @@ export const devotionals: Devotional[] = [
     content: `In the fourth watch of the night, Jesus came walking on the sea toward His disciples. When they saw Him, they were terrified, but He said, "It is I; be not afraid."
 
     Jesus comes to us in our darkest hours, walking on the very waves that frighten us. His presence turns fear into faith.`,
-    prayer: `Lord Jesus, thank You for coming to me in life's storms. Help me to recognize Your presence and not be afraid. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for coming to me in life's storms. Help me to recognize Your presence and not be afraid. In Jesus' mighty name. Amen.`,
     readingPlan: "John 6:16-21",
     reflection: [
       {
@@ -526,7 +526,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus healed a paralyzed man, first forgiving his sins and then commanding him to rise and walk. This miracle demonstrated Jesus' authority both to forgive sins and to heal physically.
 
     Our greatest need is spiritual healing, but Jesus cares about our physical needs too. His power addresses every dimension of human need.`,
-    prayer: `Lord Jesus, thank You for Your authority to forgive and heal. Touch every area of my life with Your restoring power. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for Your authority to forgive and heal. Touch every area of my life with Your restoring power. In Jesus' mighty name. Amen.`,
     readingPlan: "Matthew 9:1-8",
     reflection: [
       {
@@ -553,7 +553,7 @@ export const devotionals: Devotional[] = [
     content: `God provided manna from heaven to feed the Israelites in the wilderness. Each morning this bread appeared, showing God's daily provision and faithfulness.
 
     God still provides for our daily needs. His faithfulness is new every morning, and His resources never run out.`,
-    prayer: `Heavenly Father, thank You for Your daily provision. Help me to trust You for today's needs and not worry about tomorrow. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Heavenly Father, thank You for Your daily provision. Help me to trust You for today's needs and not worry about tomorrow. In Jesus' mighty name. Amen.`,
     readingPlan: "Exodus 16:1-36",
     reflection: [
       {
@@ -579,7 +579,7 @@ export const devotionals: Devotional[] = [
     content: `God multiplied a widow's oil and flour during a famine, providing continuously until the drought ended. This miracle shows God's power to multiply our resources in times of scarcity.
 
     When we give God our last resources in obedience, He can multiply them to meet our needs and bless others.`,
-    prayer: `Lord God, thank You for Your multiplication power. Help me to trust You with my limited resources and obey Your directions. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord God, thank You for Your multiplication power. Help me to trust You with my limited resources and obey Your directions. In Jesus' mighty name. Amen.`,
     readingPlan: "1 Kings 17:7-16",
     reflection: [
       {
@@ -606,7 +606,7 @@ export const devotionals: Devotional[] = [
     content: `Peter prayed and raised Dorcas from the dead, restoring her to the community that loved her. This miracle demonstrates that the power Jesus demonstrated continues through His church.
 
     God still works resurrection power today. He cares about individuals and the impact of their lives on others.`,
-    prayer: `Lord Jesus, thank You for continuing to work miracles through Your people. Use me to bring life and hope to others. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for continuing to work miracles through Your people. Use me to bring life and hope to others. In Jesus' mighty name. Amen.`,
     readingPlan: "Acts 9:36-42",
     reflection: [
       {
@@ -632,7 +632,7 @@ export const devotionals: Devotional[] = [
     content: `Moses struck the rock and water gushed out to quench the thirst of the Israelites. This miracle shows God's provision in barren places and His faithfulness to meet basic needs.
 
     Even in our spiritual deserts, God can bring refreshing streams of living water. His provision flows from unexpected sources.`,
-    prayer: `Lord God, thank You for providing living water. Quench my thirst and refresh me in dry places. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord God, thank You for providing living water. Quench my thirst and refresh me in dry places. In Jesus' mighty name. Amen.`,
     readingPlan: "Numbers 20:1-13",
     reflection: [
       {
@@ -658,7 +658,7 @@ export const devotionals: Devotional[] = [
     content: `Elisha stretched himself over a dead child, and the boy came back to life. This miracle shows God's power over death and His compassion for grieving parents.
 
     God's heart breaks with ours in loss, and His power can restore what seems irrevocably gone.`,
-    prayer: `Lord God, thank You for Your power over death. Comfort those who grieve and restore hope where there is loss. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord God, thank You for Your power over death. Comfort those who grieve and restore hope where there is loss. In Jesus' mighty name. Amen.`,
     readingPlan: "2 Kings 4:8-37",
     reflection: [
       {
@@ -684,7 +684,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus rebuked the winds and the sea, and there was a great calm. The disciples marveled, saying, "What manner of man is this, that even the winds and the sea obey him!"
 
     Jesus' authority over creation reveals His divine nature. The same power that controls nature can bring peace to our troubled hearts.`,
-    prayer: `Lord Jesus, thank You for Your authority over all creation. Speak peace to the storms in my heart and circumstances. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for Your authority over all creation. Speak peace to the storms in my heart and circumstances. In Jesus' mighty name. Amen.`,
     readingPlan: "Matthew 8:23-27",
     reflection: [
       {
@@ -710,7 +710,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus healed a royal official's son from a distance, simply by speaking the word. The man believed Jesus' word and found his son healed at exactly that time.
 
     Jesus' power is not limited by distance. His word alone can accomplish miracles in situations we cannot physically reach.`,
-    prayer: `Lord Jesus, thank You that Your power works beyond our limitations. I trust Your word to accomplish what I cannot. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You that Your power works beyond our limitations. I trust Your word to accomplish what I cannot. In Jesus' mighty name. Amen.`,
     readingPlan: "John 4:46-54",
     reflection: [
       {
@@ -737,7 +737,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus saw a woman who had been crippled for eighteen years, called her forward, and said, "Woman, you are loosed from your infirmity." He laid hands on her, and immediately she stood straight.
 
     Jesus sees those whom society overlooks. His touch can straighten what life has bent out of shape.`,
-    prayer: `Lord Jesus, thank You for seeing and healing those whom others overlook. Touch the bent areas of my life and make me straight. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for seeing and healing those whom others overlook. Touch the bent areas of my life and make me straight. In Jesus' mighty name. Amen.`,
     readingPlan: "Luke 13:10-17",
     reflection: [
       {
@@ -764,7 +764,7 @@ export const devotionals: Devotional[] = [
     content: `Jesus healed a blind man in two stages - first partial sight, then complete healing. This unique miracle shows that Jesus adapts His methods to individual needs and sometimes works progressively.
 
     God's healing power sometimes works gradually rather than instantly. We can trust His process and timing.`,
-    prayer: `Lord Jesus, thank You for Your patient work in my life. Help me to trust Your process even when healing comes gradually. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for Your patient work in my life. Help me to trust Your process even when healing comes gradually. In Jesus' mighty name. Amen.`,
     readingPlan: "Mark 8:22-26",
     reflection: [
       {
@@ -790,7 +790,7 @@ export const devotionals: Devotional[] = [
     content: `Before raising Lazarus, Jesus reminded Martha, "Did I not say to you that if you would believe you would see the glory of God?" This miracle required faith before the manifestation.
 
     Sometimes God asks us to believe before we see. Our faith positions us to witness His glory.`,
-    prayer: `Lord Jesus, help me to believe before I see. Strengthen my faith to trust Your promises and anticipate Your glory. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, help me to believe before I see. Strengthen my faith to trust Your promises and anticipate Your glory. In Jesus' mighty name. Amen.`,
     readingPlan: "John 11:38-44",
     reflection: [
       {
@@ -817,7 +817,7 @@ export const devotionals: Devotional[] = [
     content: `The angel announced, "He is not here, for He is risen!" The resurrection of Jesus is the greatest miracle, validating His divinity and guaranteeing our salvation.
 
     Because Jesus conquered death, we have hope for eternal life. Every other miracle points to this ultimate victory.`,
-    prayer: `Lord Jesus, thank You for conquering death and giving me eternal life. Help me to live in the power of Your resurrection every day. In Jesus' mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank You for conquering death and giving me eternal life. Help me to live in the power of Your resurrection every day. In Jesus' mighty name. Amen.`,
     readingPlan: "Matthew 28:1-10",
     reflection: [
       {
