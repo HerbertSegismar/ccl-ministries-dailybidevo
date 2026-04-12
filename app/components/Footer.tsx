@@ -130,13 +130,13 @@ const Footer = () => {
           </div>
 
           <div className="mt-6 pt-6 border-t border-gray-200 text-center footer2">
-            <div className="flex items-center justify-center text-sm mb-1 gap-2">
+            <div className="flex items-center justify-center text-sm mb-1 gap-2 flex-wrap">
               <Link
                 href="/about-us"
                 className="flex items-center justify-center gap-1 text-purple-600 hover:text-purple-800"
               >
                 <FaInfoCircle className="inline" />
-                About Us
+                About Uss
               </Link>
               <div className="size-1 bg-purple-600 rounded-full" />
               <a
@@ -147,8 +147,18 @@ const Footer = () => {
                 <FaRss className="mr-1" />
                 RSS Feed
               </a>
+              <div className="size-1 bg-purple-600 rounded-full" />
+              <a
+                href="https://herbsegis.itch.io/fount-of-hope-study-bible"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-purple-600 hover:text-purple-800"
+                aria-label="Fount of Hope Study Bible App (opens in new tab)"
+              >
+                Study Bible App
+              </a>
             </div>
-            <div className="flex justify-center items-center gap-2 mb-4">
+            <div className="flex justify-center items-center gap-2 mb-4 flex-wrap">
               <button
                 onClick={() => setShowTerms(true)}
                 className="text-xs text-purple-600 hover:text-purple-800 flex items-center gap-1"

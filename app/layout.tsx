@@ -161,8 +161,6 @@ export default function RootLayout({
                 <ConditionalCreditsAndContact />
               </main>
               <Footer />
-              {/* Add OG Debug component in development */}
-              {process.env.NODE_ENV === "development" && <OGDebug />}
             </ClerkProvider>
           </BibleVersionProvider>
         </ThemeProvider>

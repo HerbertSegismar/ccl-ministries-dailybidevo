@@ -31,7 +31,7 @@ const BibleAppPrivacyPolicy: React.FC<BibleAppPrivacyPolicyProps> = ({
           </p>
 
           <p className="text-gray-700 leading-relaxed mb-6 text-center">
-            Fount Of Hope Bible (&quot;the App&quot;) is committed to protecting
+            Fount Of Hope Study Bible (&quot;the App&quot;) is committed to protecting
             your privacy. This Privacy Policy explains how we handle any
             information related to your use of the App. We are dedicated to
             providing a safe, offline experience for users seeking spiritual
@@ -135,7 +135,7 @@ const BibleAppPrivacyPolicy: React.FC<BibleAppPrivacyPolicyProps> = ({
           </p>
 
           <p className="text-purple-600 italic text-center mt-8 mb-4">
-            Thank you for trusting Fount Of Hope Bible as your companion for
+            Thank you for trusting Fount Of Hope Study Bible as your companion for
             faith and reflection. Your privacy is our priority.
           </p>
         </div>

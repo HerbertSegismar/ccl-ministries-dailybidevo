@@ -808,8 +808,25 @@ const Home = () => {
             Next <FaChevronRight className="ml-2" />
           </button>
         </div>
-
-        {/* Progress */}
+        <div className="mt-8 text-center">
+          <a
+            href="https://herbsegis.itch.io/fount-of-hope-study-bible"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold shadow-md transition-all duration-300 hover:scale-105 ${
+              theme === "dark"
+                ? "bg-purple-700 text-white hover:bg-purple-600"
+                : `bg-gradient-to-r ${colorClasses.gradient} text-white hover:opacity-90`
+            }`}
+          >
+            <FaBook className="text-lg" />
+            Try Our Study Bible App
+            <FaHeart className="text-red-400" />
+          </a>
+          <p className={`text-xs mt-2 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
+            Dive deeper into Scripture with our dedicated study Bible app – free and feature-rich!
+          </p>
+        </div>
         <div
           className={`mt-6 backdrop-blur-sm rounded-full shadow-inner p-1 border ${
             theme === "dark"
