@@ -813,11 +813,7 @@ const Home = () => {
             href="https://herbsegis.itch.io/fount-of-hope-study-bible"
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold shadow-md transition-all duration-300 hover:scale-105 ${
-              theme === "dark"
-                ? "bg-purple-700 text-white hover:bg-purple-600"
-                : `bg-gradient-to-r ${colorClasses.gradient} text-white hover:opacity-90`
-            }`}
+            className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold shadow-md transition-all duration-300 hover:scale-105 bg-gradient-to-r ${colorClasses.gradient} text-white hover:opacity-90`}
           >
             <FaBook className="text-lg" />
             Try Our Study Bible App
