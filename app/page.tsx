@@ -376,8 +376,43 @@ const Home = () => {
       } p-4 md:p-8`}
     >
       <ImageSection />
+        // Inside the main return, after <ImageSection /> and before the max-w-4xl div:
+
+<ImageSection />
+<div className="mx-auto max-w-4xl mt-4 px-4">
+  <div className={`rounded-xl p-4 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4 ${
+    theme === "dark"
+      ? "bg-gradient-to-r from-purple-900 to-indigo-900 border border-purple-700"
+      : "bg-gradient-to-r from-purple-100 to-blue-100 border border-purple-200"
+  }`}>
+    <div className="flex items-center gap-3">
+      <div className={`text-3xl ${colorClasses.text}`}>📖</div>
+      <div>
+        <h3 className={`font-bold text-lg ${colorClasses.text}`}>
+          🎉 Now Available: Fount of Hope Study Bible App!
+        </h3>
+        <p className={`text-sm ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
+          Dive deeper with cross-references, commentaries, and offline access.
+        </p>
+      </div>
+    </div>
+    <a
+      href="https://herbsegis.itch.io/fount-of-hope-study-bible"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-center gap-2 px-5 py-2 rounded-full font-semibold shadow-md transition-all duration-300 hover:scale-105 whitespace-nowrap ${
+        theme === "dark"
+          ? "bg-purple-600 text-white hover:bg-purple-500"
+          : `bg-gradient-to-r ${colorClasses.gradient} text-white hover:opacity-90`
+      }`}
+    >
+      <FaBook />
+      Get It Free
+      <FaHeart className="text-red-300" />
+    </a>
+  </div>
+</div>
       <div className="mx-auto max-w-4xl">
-        {/* Devotional Card */}
         <div
           ref={cardRef}
           className={`backdrop-blur-lg rounded-2xl shadow-lg overflow-hidden mb-6 relative border ${
