@@ -23,7 +23,7 @@ export const devotionals: Devotional[] = [
       He gives us five specific promises: He is *with* us, He is *our* God, He will *strengthen* us, He will *help* us, and He will *uphold* us. His presence is active and powerful, not passive. When we feel weak and on the verge of falling, His righteous right hand is there to keep us steady.
 
       Today, consider what fears or sources of dismay you are facing. How can the truth of God's steadfast presence change your perspective?`,
-    prayer: `Lord God, thank you that you are always with me. When fear and anxiety rise up, help me to hear your voice saying, "Do not be dismayed, for I am your God." I choose to trust in your strength today, not my own. Uphold me by your righteous right hand. In Jesus' mighty name. Amen.`,
+    prayer: `Lord God, thank you that you are always with me. When fear and anxiety rise up, help me to hear your voice saying, "Do not be dismayed, for I am your God." I choose to trust in your strength today, not my own. Uphold me by your righteous right hand. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Isaiah 40-41",
     reflection: [
       {
@@ -59,7 +59,7 @@ export const devotionals: Devotional[] = [
       Notice that this verse doesn't say "some things" but "everything." No concern is too small or too big for God. The key is approaching Him with thanksgiving, remembering His faithfulness in the past as we present our current requests.
 
       Today, when anxiety arises, let it be a prompt to pray rather than to worry.`,
-    prayer: `Lord, I bring my anxieties to You today. Help me to remember Your faithfulness and to approach You with a thankful heart, trusting that You care about every detail of my life. In Jesus' mighty name. Amen.`,
+    prayer: `Lord, I bring my anxieties to You today. Help me to remember Your faithfulness and to approach You with a thankful heart, trusting that You care about every detail of my life. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Philippians 4",
     reflection: [
       {
@@ -92,7 +92,7 @@ export const devotionals: Devotional[] = [
       Leaning on our own understanding often leads to anxiety and confusion. But trusting in God's character and sovereignty brings peace and direction.
 
       Where is God calling you to trust Him rather than relying on your limited perspective?`,
-    prayer: `Heavenly Father, I confess that I often try to figure things out on my own. Help me to trust You with all my heart and to acknowledge You in all my ways. Direct my paths according to Your perfect will. In Jesus' mighty name. Amen.`,
+    prayer: `Heavenly Father, I confess that I often try to figure things out on my own. Help me to trust You with all my heart and to acknowledge You in all my ways. Direct my paths according to Your perfect will. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Proverbs 3",
     reflection: [
       {
@@ -127,7 +127,7 @@ export const devotionals: Devotional[] = [
       This verse is a call to vigilant protection. It urges us to be intentional about what we watch, listen to, and dwell on. Protecting our heart isn't about building walls but about nurturing its connection to God, the true source of living water.
 
       What influences do you need to filter out? What truth do you need to let in to keep your heart healthy and aligned with God?`,
-    prayer: `Lord, my heart is so easily influenced by the world. Give me wisdom and discernment to guard it diligently. Help me to fill it with Your truth and Your love, so that my life may flow from a pure and faithful source. In Jesus' mighty name. Amen.`,
+    prayer: `Lord, my heart is so easily influenced by the world. Give me wisdom and discernment to guard it diligently. Help me to fill it with Your truth and Your love, so that my life may flow from a pure and faithful source. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Proverbs 4",
     reflection: [
       {
@@ -163,7 +163,7 @@ export const devotionals: Devotional[] = [
       It reverses our natural instinct. Instead of seeing what we have and then deciding if we can give God a portion, we are called to give to Him first, trusting that He will provide for all that comes after.
 
       Honoring God with our resources is less about a transaction and more about a transformation of the heart, placing Him in His rightful position of Lord over all we have.`,
-    prayer: `Father, everything I have is a gift from You. Forgive me for the times I have clung tightly to my possessions. Help me to honor You first with my finances, my time, and my talents, trusting You completely to meet my every need. In Jesus' mighty name. Amen.`,
+    prayer: `Father, everything I have is a gift from You. Forgive me for the times I have clung tightly to my possessions. Help me to honor You first with my finances, my time, and my talents, trusting You completely to meet my every need. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Proverbs 3 (re-read v9-10)",
     reflection: [
       {
@@ -200,7 +200,7 @@ export const devotionals: Devotional[] = [
       This is the starting point. Worldly knowledge can be accumulated, but godly wisdom is received. It begins when we humble ourselves before God, recognizing that His ways are higher than ours.
 
       Pursuing knowledge without this foundation leads to pride. Pursuing wisdom with this foundation leads to a life of purpose, clarity, and grace.`,
-    prayer: `Holy God, I stand in awe of You. Forgive me for seeking wisdom from the world without first coming to You. Be the foundation of all my understanding. Let my knowledge of who You are shape every thought and decision I make today. In Jesus' mighty name. Amen.`,
+    prayer: `Holy God, I stand in awe of You. Forgive me for seeking wisdom from the world without first coming to You. Be the foundation of all my understanding. Let my knowledge of who You are shape every thought and decision I make today. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Proverbs 9",
     reflection: [
       {
@@ -237,7 +237,7 @@ export const devotionals: Devotional[] = [
       Our natural reaction when attacked is to retaliate—to match anger with anger. But God's way is counter-intuitive: overcome evil with good, and harshness with gentleness. This requires Spirit-led self-control and a heart that seeks peace over winning an argument.
 
       Your words today can either be a spark that ignites a fire or water that cools a flame.`,
-    prayer: `Lord, I need Your help to control my tongue. When I am provoked, fill me with Your Spirit so that my first response is gentleness and grace, not harshness and pride. Let my words be life-giving and peace-making. In Jesus' mighty name. Amen.`,
+    prayer: `Lord, I need Your help to control my tongue. When I am provoked, fill me with Your Spirit so that my first response is gentleness and grace, not harshness and pride. Let my words be life-giving and peace-making. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Proverbs 15",
     reflection: [
       {
@@ -273,7 +273,7 @@ export const devotionals: Devotional[] = [
       His "name" represents His entire character—His faithfulness, power, love, and mercy. When fear, anxiety, or trouble comes, we aren't called to stand and fight in our own strength. We are invited to run. To turn away from the threat and sprint toward the safety of His presence.
 
       Where do you need to run to Him today? You are not just hiding; you are finding true security in the unshakable character of God.`,
-    prayer: `Lord, You are my refuge and my strength. When I am afraid or overwhelmed, remind my heart to run to You. Thank you that in Your presence, I find true safety and peace that the world cannot give. I trust in Your mighty name. In Jesus' mighty name. Amen.`,
+    prayer: `Lord, You are my refuge and my strength. When I am afraid or overwhelmed, remind my heart to run to You. Thank you that in Your presence, I find true safety and peace that the world cannot give. I trust in Your mighty name. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Proverbs 18",
     reflection: [
       {
@@ -307,7 +307,7 @@ export const devotionals: Devotional[] = [
     content: `Our own understanding is limited, shaped by our fears, past experiences, and finite perspective. God's understanding is infinite. This famous proverb isn't a call to abandon intellect, but to place our confidence in a Person, not our own perception of the problem.
 
   Trusting with "all your heart" is an active surrender. It's choosing to believe that God is good and sovereign even when the path ahead is foggy. As we acknowledge Him in every decision—big and small—we release the burden of figuring it all out ourselves. He promises to clear the way, not necessarily the easiest way, but the right one.`,
-    prayer: `Father, I confess I often rely on my own limited understanding. Today, I choose to trust You with all my heart. I submit my plans, my worries, and my dreams to You. Please guide my steps and make my path straight, for Your glory. In Jesus' mighty name. Amen.`,
+    prayer: `Father, I confess I often rely on my own limited understanding. Today, I choose to trust You with all my heart. I submit my plans, my worries, and my dreams to You. Please guide my steps and make my path straight, for Your glory. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Proverbs 3",
     reflection: [
       {
@@ -341,7 +341,7 @@ export const devotionals: Devotional[] = [
     content: `This verse is often quoted for athletic achievements, but its context is one of profound contentment. Paul wrote this from prison, having learned the secret of being content in plenty and in want. The "all things" is the ability to endure any circumstance through the strength Christ provides.
 
   It's not a promise of superhuman ability to achieve personal goals, but a declaration of divine empowerment to withstand life's highs and lows. His strength is made perfect in our weakness. Whether you are facing a great challenge or a deep need, the same power that sustained Paul is available to you today.`,
-    prayer: `Lord Jesus, I admit my weakness and my need for You. Thank you that Your power is made perfect in my inability. Strengthen me today not just to achieve, but to endure, to be content, and to remain faithful in every circumstance I face. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, I admit my weakness and my need for You. Thank you that Your power is made perfect in my inability. Strengthen me today not just to achieve, but to endure, to be content, and to remain faithful in every circumstance I face. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Philippians 4",
     reflection: [
       {
@@ -375,7 +375,7 @@ export const devotionals: Devotional[] = [
     content: `Anxiety is a natural human response, but it doesn't have to be our master. This verse gives us a divine alternative: intentional prayer. Notice the progression. We are to replace anxiety not with nothing, but with something—a conscious turning to God.
 
   "Prayer and petition" is about honestly sharing our worries with Him. The key ingredient is "thanksgiving." Gratitude reorients our heart from what we lack to what we already have in God. It shifts our focus from the size of our problem to the greatness of our God. You are invited to transfer the weight of your anxiety into His capable hands.`,
-    prayer: `Heavenly Father, I come to You with the things that make me anxious. I choose to turn my worries into prayers. Thank You for Your past faithfulness, Your present help, and Your future promises. I place my trust in You. In Jesus' mighty name. Amen.`,
+    prayer: `Heavenly Father, I come to You with the things that make me anxious. I choose to turn my worries into prayers. Thank You for Your past faithfulness, Your present help, and Your future promises. I place my trust in You. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Philippians 4",
     reflection: [
       {
@@ -409,7 +409,7 @@ export const devotionals: Devotional[] = [
     content: `In the ancient world, a small oil lamp provided just enough light to see the next step on a dark, treacherous path. God's Word often functions the same way for us. We may want a floodlight illuminating the next ten years, but God faithfully gives us enough light for the next step.
 
   This requires daily engagement with Scripture. We don't charge up on Sunday for the whole week; we need daily manna. His Word provides guidance, warning, and comfort for the immediate decisions and challenges we face. Trust that the light for your next step is always available in Him.`,
-    prayer: `Lord, thank You for the gift of Your Word. Forgive me for the times I seek a full blueprint instead of trusting You for the next step. Help me to consistently come to Scripture, allowing it to guide my decisions and illuminate my path today. In Jesus' mighty name. Amen.`,
+    prayer: `Lord, thank You for the gift of Your Word. Forgive me for the times I seek a full blueprint instead of trusting You for the next step. Help me to consistently come to Scripture, allowing it to guide my decisions and illuminate my path today. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Psalm 119:105-112",
     reflection: [
       {
@@ -442,7 +442,7 @@ export const devotionals: Devotional[] = [
     content: `This is one of the most tender invitations in all of Scripture. Jesus doesn't stand at a distance and shout instructions. He draws near and offers Himself as the solution to our soul-deep exhaustion. The rest He offers is more than a nap; it's a rest of the soul—a ceasing from striving, performing, and earning.
 
   The qualification for receiving this rest is simply to come. To acknowledge our weariness and burden. You don't need to clean yourself up first. You just need to come, exactly as you are, and transfer the weight of your burdens to the One who is gentle and humble in heart.`,
-    prayer: `Jesus, I come to You today. I am weary and burdened from [name it]. I lay these burdens down at Your feet. I receive the rest You freely offer. Teach me to walk in Your easy yoke and light burden. Thank you for Your kindness. In Jesus' mighty name. Amen.`,
+    prayer: `Jesus, I come to You today. I am weary and burdened from [name it]. I lay these burdens down at Your feet. I receive the rest You freely offer. Teach me to walk in Your easy yoke and light burden. Thank you for Your kindness. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Matthew 11:25-30",
     reflection: [
       {
@@ -475,7 +475,7 @@ export const devotionals: Devotional[] = [
     content: `This is not a promise that all things are good. Evil, pain, and suffering are very real. This is a promise that God is so powerful and sovereign that He can weave every thread of our lives—even the painful, dark, and confusing ones—into a tapestry of ultimate good.
 
   This good is defined by His purpose: to conform us to the image of His Son. He doesn't waste a single experience. Our part is to trust the Weaver even when we can only see the tangled threads underneath. Our confidence is not in a formula, but in the faithful character of a God who is always at work for our eternal good.`,
-    prayer: `God, I confess that I don't always see how good can come from my current struggles. I choose to trust Your character and Your promise. Help me to believe that You are working even now, weaving all things together for my good and Your glory. In Jesus' mighty name. Amen.`,
+    prayer: `God, I confess that I don't always see how good can come from my current struggles. I choose to trust Your character and Your promise. Help me to believe that You are working even now, weaving all things together for my good and Your glory. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Romans 8:26-30",
     reflection: [
       {
@@ -511,7 +511,7 @@ export const devotionals: Devotional[] = [
       When we still our hearts, we create space to remember who God is—the Almighty, sovereign Lord over all creation. This perspective puts our problems in their proper place.
 
       Today, carve out moments of stillness to simply be with God and acknowledge His majesty.`,
-    prayer: `God, help me to be still before You today. Quiet my heart and mind so that I can truly know You as God. May Your presence put everything else in perspective. In Jesus' mighty name. Amen.`,
+    prayer: `God, help me to be still before You today. Quiet my heart and mind so that I can truly know You as God. May Your presence put everything else in perspective. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Psalm 46",
     reflection: [
       {
@@ -546,7 +546,7 @@ export const devotionals: Devotional[] = [
     Trusting God doesn't mean abandoning reason—it means acknowledging that His wisdom surpasses ours. When we choose to trust despite uncertainty, we invite God's guidance into our situations.
 
     Consider areas where you've been relying on your own understanding. How might you practice active trust today?`,
-    prayer: `Father, I choose to trust You beyond what I can see or understand. Help me to rely on Your wisdom rather than my limited perspective. Guide my steps today. In Jesus' mighty name. Amen.`,
+    prayer: `Father, I choose to trust You beyond what I can see or understand. Help me to rely on Your wisdom rather than my limited perspective. Guide my steps today. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Proverbs 3:1-8",
     reflection: [
       {
@@ -575,7 +575,7 @@ export const devotionals: Devotional[] = [
     When we feel exposed to life's battles, we can take refuge in His presence. Our trust activates His helping hand—not merely as a distant observer but as an active participant in our struggles.
 
     Whatever you face today, remember that God is both your sustainer and protector.`,
-    prayer: `Lord, thank you for being my strength and shield. I take refuge in You today. Help me to sense Your protection and empowering presence. In Jesus' mighty name. Amen.`,
+    prayer: `Lord, thank you for being my strength and shield. I take refuge in You today. Help me to sense Your protection and empowering presence. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Psalm 28",
     reflection: [
       {
@@ -604,7 +604,7 @@ export const devotionals: Devotional[] = [
     Like eagles catching thermal currents, we can rise above life's struggles when we tap into God's strength. This renewal isn't just physical; it encompasses emotional and spiritual revitalization.
 
     If you feel weary today, position yourself in hopeful waiting before God.`,
-    prayer: `God, I place my hope in You. Renew my strength and help me to rise above my circumstances through Your empowering Spirit. In Jesus' mighty name. Amen.`,
+    prayer: `God, I place my hope in You. Renew my strength and help me to rise above my circumstances through Your empowering Spirit. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Isaiah 40:28-31",
     reflection: [
       {
@@ -634,7 +634,7 @@ export const devotionals: Devotional[] = [
     No failure, no crisis, no spiritual attack can diminish His love. This truth doesn't eliminate life's challenges, but it gives us an unshakable foundation amid them.
 
     Whatever tries to convince you of God's absence today, remember: His love holds you securely.`,
-    prayer: `Father, thank you for Your inseparable love. Help me to live securely in this truth, especially when I feel unworthy or distant from You. In Jesus' mighty name. Amen.`,
+    prayer: `Father, thank you for Your inseparable love. Help me to live securely in this truth, especially when I feel unworthy or distant from You. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Romans 8:31-39",
     reflection: [
       {
@@ -663,7 +663,7 @@ export const devotionals: Devotional[] = [
     We can come boldly, not because of our perfection, but because of Christ's sacrifice. Here we exchange our weaknesses for His strength, our failures for His forgiveness.
 
     Whatever need you carry today, bring it confidently to His throne.`,
-    prayer: `Jesus, thank you for making a way for me to approach God. I come to Your throne today, receiving Your mercy and grace for my needs. In Jesus' mighty name. Amen.`,
+    prayer: `Jesus, thank you for making a way for me to approach God. I come to Your throne today, receiving Your mercy and grace for my needs. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Hebrews 4:14-16",
     reflection: [
       {
@@ -692,7 +692,7 @@ export const devotionals: Devotional[] = [
 When anxiety and worry threaten to overwhelm, we can present our requests to God. In return, He gives a peace that acts as a sentinel, protecting our inner being from fear and despair.
 
 Allow God's peace to be the guardian of your heart today.`,
-    prayer: `Lord, I receive Your peace that is beyond my understanding. Stand guard over my heart and mind, protecting me from anxiety and filling me with Your calm presence. In Jesus' mighty name. Amen.`,
+    prayer: `Lord, I receive Your peace that is beyond my understanding. Stand guard over my heart and mind, protecting me from anxiety and filling me with Your calm presence. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Philippians 4:4-9",
     reflection: [
       {
@@ -722,7 +722,7 @@ Allow God's peace to be the guardian of your heart today.`,
 We must cultivate a listening heart, attentive to the quiet promptings of His Spirit. As we commit our ways to Him, we can trust that He will make our paths straight and clear.
 
 Listen for His voice today. He is speaking.`,
-    prayer: `Holy Spirit, make me sensitive to Your guidance. Help me to quiet the noise around me and within me so I can clearly hear Your voice saying, 'This is the way.' In Jesus' mighty name. Amen.`,
+    prayer: `Holy Spirit, make me sensitive to Your guidance. Help me to quiet the noise around me and within me so I can clearly hear Your voice saying, 'This is the way.' In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Isaiah 30:19-21",
     reflection: [
       {
@@ -751,7 +751,7 @@ Listen for His voice today. He is speaking.`,
 Scripture is practical and personal. It guides our moral choices, comforts our sorrows, corrects our errors, and shapes our character. Consistent time in God's Word ensures we never have to walk in darkness.
 
 Let Scripture be the light that guides your choices today.`,
-    prayer: `Father, thank You for the gift of Your Word. Help me to treasure it and rely on it. May it light my path and keep me from stumbling today. In Jesus' mighty name. Amen.`,
+    prayer: `Father, thank You for the gift of Your Word. Help me to treasure it and rely on it. May it light my path and keep me from stumbling today. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Psalm 119:105-112",
     reflection: [
       {
@@ -781,7 +781,7 @@ Let Scripture be the light that guides your choices today.`,
 This divine joy becomes our fortitude and resilience. It gives us the strength to endure, to persevere, and to hope when our own emotional and physical energy is depleted.
 
 Don't seek strength alone today. Seek the joy of the Lord, and strength will follow.`,
-    prayer: `God, fill me with Your joy—a joy that is rooted in who You are. Let that joy be the source of my strength and resilience today. In Jesus' mighty name. Amen.`,
+    prayer: `God, fill me with Your joy—a joy that is rooted in who You are. Let that joy be the source of my strength and resilience today. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Nehemiah 8:1-12",
     reflection: [
       {
@@ -809,7 +809,7 @@ Don't seek strength alone today. Seek the joy of the Lord, and strength will fol
 This truth is the ultimate antidote to fear and discouragement. We are not walking into the unknown alone. We are following a Leader who is all-powerful, all-knowing, and utterly faithful.
 
 Wherever you are headed, remember: God is already there.`,
-    prayer: `Father, thank you for going before me today. Help me to walk in courage and faith, trusting that You have already prepared the way and that You are with me every step. In Jesus' mighty name. Amen.`,
+    prayer: `Father, thank you for going before me today. Help me to walk in courage and faith, trusting that You have already prepared the way and that You are with me every step. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Deuteronomy 31:1-8",
     reflection: [
       {
@@ -836,7 +836,7 @@ Wherever you are headed, remember: God is already there.`,
     content: `Waiting can be one of the most difficult disciplines of the faith. We wait for answers, for healing, for direction, for change. But this verse redefines waiting. It is not a passive, hopeless inactivity; it is an active, hopeful trust in the Lord.
 
 This kind of waiting—this hoping in the Lord—is the very source of our strength. It connects us to the limitless power of God, allowing us to rise above our circumstances, to persevere through long trials, and to continue steadily when our own energy has long since expired.`,
-    prayer: `Lord, teach me to wait on You. When I am weary and faint, be my source of strength. Lift me up on eagle's wings and empower me to run this race with endurance. In Jesus' mighty name. Amen.`,
+    prayer: `Lord, teach me to wait on You. When I am weary and faint, be my source of strength. Lift me up on eagle's wings and empower me to run this race with endurance. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Isaiah 40:27-31",
     reflection: [
       {
@@ -864,7 +864,7 @@ This kind of waiting—this hoping in the Lord—is the very source of our stren
     content: `This is not a promise that all things *are* good. Pain, loss, and evil are very real. Instead, it is the profound promise that God is a master weaver, taking every thread of our lives—the bright colors of joy and the dark hues of suffering—and weaving them together into a tapestry of purpose and good.
 
 Our God is so powerful and sovereign that He can even redeem our pain and mistakes for our ultimate good and His glory. This promise is for those who are in a loving, trusting relationship with Him, aligning their lives with His eternal purpose.`,
-    prayer: `God, I confess that I don't always see how good can come from my struggles. Help me to trust Your sovereign hand, believing that You are working even now to bring about good from this situation. In Jesus' mighty name. Amen.`,
+    prayer: `God, I confess that I don't always see how good can come from my struggles. Help me to trust Your sovereign hand, believing that You are working even now to bring about good from this situation. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Romans 8:26-30",
     reflection: [
       {
@@ -891,7 +891,7 @@ Our God is so powerful and sovereign that He can even redeem our pain and mistak
     content: `In ancient times, a strong tower was a place of refuge from attacking enemies. It represented safety, security, and a vantage point from which to see clearly. This verse tells us that the very name of the Lord—His character, His reputation, all that He is—is such a place for us.
 
 When fear, anxiety, or trouble attacks, we don't have to stand and fight in our own strength. We are invited to *run*. To turn our backs on the chaos and sprint toward the safety of our God. In Him, we find true protection and perspective.`,
-    prayer: `Lord, You are my safe place. When I feel overwhelmed, remind me to run to You first. Thank you for being my fortress and my deliverer. In Your name I find my peace. In Jesus' mighty name. Amen.`,
+    prayer: `Lord, You are my safe place. When I feel overwhelmed, remind me to run to You first. Thank you for being my fortress and my deliverer. In Your name I find my peace. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Psalm 61:1-4",
     reflection: [
       {
@@ -919,7 +919,7 @@ When fear, anxiety, or trouble attacks, we don't have to stand and fight in our 
     content: `The word "cast" is an action word. It implies a deliberate, forceful throwing. We are not gently suggesting our worries to God; we are hurling them at Him. Why can we do this with such confidence? Because of the profound truth that follows: *He cares for you.*
 
 Your worries are not trivial to God. Your anxieties are not a burden to Him. He is not annoyed by your needs. The Creator of the universe is personally, intimately, and deeply concerned with your well-being. You are invited to transfer the weight from your shoulders to His.`,
-    prayer: `Father, I come to You today with all my worries and fears. I choose to cast them upon You, because I know You are strong enough to hold them and You love me enough to want to. Thank you for Your care. In Jesus' mighty name. Amen.`,
+    prayer: `Father, I come to You today with all my worries and fears. I choose to cast them upon You, because I know You are strong enough to hold them and You love me enough to want to. Thank you for Your care. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "1 Peter 5:6-11",
     reflection: [
       {
@@ -947,7 +947,7 @@ Your worries are not trivial to God. Your anxieties are not a burden to Him. He 
     content: `This command was given to Joshua as he faced the daunting task of leading Israel into the Promised Land. It is a command rooted not in Joshua's own ability, but in God's faithful presence. The call to courage is directly tied to the promise of companionship.
 
 This same promise is for us. We are not called to be strong and courageous because we are capable, but because He is present. His "wherever you go" covers every new job, every difficult conversation, every season of grief, and every unknown path. You are never alone.`,
-    prayer: `Lord God, thank you for Your command and Your promise. Forgive me for when I operate in fear. Fill me with Your strength and courage today, based entirely on the truth that You are with me. In Jesus' mighty name. Amen.`,
+    prayer: `Lord God, thank you for Your command and Your promise. Forgive me for when I operate in fear. Fill me with Your strength and courage today, based entirely on the truth that You are with me. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Joshua 1:1-9",
     reflection: [
       {
@@ -976,7 +976,7 @@ This same promise is for us. We are not called to be strong and courageous becau
       This transformation isn't something we achieve but something we receive through faith in Christ. The old life with its patterns, guilt, and brokenness has been replaced with new life in Him.
 
       Today, embrace your identity as a new creation, not based on your feelings but on God's declaration.`,
-    prayer: `Heavenly Father, thank you for making me a new creation in Christ. Help me to live out this new identity today, leaving behind old patterns and embracing the life You have for me. In Jesus' mighty name. Amen.`,
+    prayer: `Heavenly Father, thank you for making me a new creation in Christ. Help me to live out this new identity today, leaving behind old patterns and embracing the life You have for me. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "2 Corinthians 5",
     reflection: [
       {

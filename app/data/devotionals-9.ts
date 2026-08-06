@@ -23,7 +23,7 @@ export const devotionals: Devotional[] = [
       His plans are not to harm us but to give us hope and a future. This doesn't mean we won't face difficulties, but rather that in the midst of them, we can trust that God is with us, guiding us toward a purposeful life.
 
       Today, reflect on areas where you need to trust God's plan more fully. Where might you be trying to control outcomes instead of surrendering to His will?`,
-    prayer: `Heavenly Father, thank you for having good plans for my life. Help me to trust you more completely, especially when the path ahead seems unclear. Give me the faith to believe that you are working all things together for my good. In Jesus' mighty name. Amen.`,
+    prayer: `Heavenly Father, thank you for having good plans for my life. Help me to trust you more completely, especially when the path ahead seems unclear. Give me the faith to believe that you are working all things together for my good. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Jeremiah 29-30",
     reflection: [
       {
@@ -58,7 +58,7 @@ export const devotionals: Devotional[] = [
       When we surrender our plans and desires to God, He promises to guide our steps and direct our paths. This doesn't mean life will be without challenges, but that we can have confidence God is leading us in the right direction.
 
       Consider areas where you're struggling to trust God fully. What would it look like to release those concerns to Him today?`,
-    prayer: `Lord, help me to trust You with all my heart and not rely on my own understanding. Guide my steps and make my paths straight as I submit my ways to You. In Jesus' mighty name. Amen.`,
+    prayer: `Lord, help me to trust You with all my heart and not rely on my own understanding. Guide my steps and make my paths straight as I submit my ways to You. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Proverbs 3-4",
     reflection: [
       {
@@ -92,7 +92,7 @@ export const devotionals: Devotional[] = [
     The imagery of green pastures and quiet waters speaks of God's desire to restore our souls. He doesn't merely provide for our physical needs but tends to our emotional and spiritual well-being.
 
     Where do you need God's shepherding today? Are you carrying burdens you could surrender to the One who promises to refresh your soul?`,
-    prayer: `Lord, thank you for being my Shepherd. Help me to trust your guidance and rest in your provision. Renew my soul today and teach me to follow your voice. In Jesus' mighty name. Amen.`,
+    prayer: `Lord, thank you for being my Shepherd. Help me to trust your guidance and rest in your provision. Renew my soul today and teach me to follow your voice. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Psalm 22-24",
     reflection: [
       {
@@ -126,7 +126,7 @@ export const devotionals: Devotional[] = [
     Notice the emphasis on thanksgiving—even before answers come. Gratitude shifts our focus from problems to God's faithfulness in past situations.
 
     What anxieties are you holding today? Practice writing down your concerns as prayers, then list things you're thankful for in each situation.`,
-    prayer: `Heavenly Father, I bring my worries to you today. Thank you for your constant care. Help me to replace anxiety with grateful prayer and trust in your goodness. In Jesus' mighty name. Amen.`,
+    prayer: `Heavenly Father, I bring my worries to you today. Thank you for your constant care. Help me to replace anxiety with grateful prayer and trust in your goodness. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Philippians 3-4",
     reflection: [
       {
@@ -161,7 +161,7 @@ export const devotionals: Devotional[] = [
     The imagery progresses from soaring to running to walking, reminding us that God provides strength for both extraordinary moments and daily perseverance.
 
     Are you feeling weary? How might God be inviting you to wait on him rather than striving in your own power?`,
-    prayer: `Lord, I wait on you today. Renew my strength and help me to trust your timing. Teach me to rely on your power rather than my own limited resources. In Jesus' mighty name. Amen.`,
+    prayer: `Lord, I wait on you today. Renew my strength and help me to trust your timing. Teach me to rely on your power rather than my own limited resources. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Isaiah 40-41",
     reflection: [
       {
@@ -197,7 +197,7 @@ export const devotionals: Devotional[] = [
     When we pause to remember who God is—his power, faithfulness, and majesty—our problems and worries shrink in perspective.
 
     Create space for stillness today. Even five minutes of silent meditation on God's character can recenter your soul on what truly matters.`,
-    prayer: `God, help me to be still in your presence today. Remind me of your sovereignty over all things. Quiet my heart and help me to worship you above all else. In Jesus' mighty name. Amen.`,
+    prayer: `God, help me to be still in your presence today. Remind me of your sovereignty over all things. Quiet my heart and help me to worship you above all else. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Psalm 46-48",
     reflection: [
       {
@@ -232,7 +232,7 @@ export const devotionals: Devotional[] = [
     God doesn't just improve us; he makes us new. The old patterns, guilt, and brokenness are replaced with purpose, forgiveness, and healing.
 
     What areas of your life still need to align with this new identity? How can you live today as someone truly made new in Christ?`,
-    prayer: `Jesus, thank you for making me a new creation. Help me to live out this reality daily, leaving behind old patterns and embracing the identity you've given me. In Jesus' mighty name. Amen.`,
+    prayer: `Jesus, thank you for making me a new creation. Help me to live out this reality daily, leaving behind old patterns and embracing the identity you've given me. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "2 Corinthians 4-6",
     reflection: [
       {
@@ -264,7 +264,7 @@ export const devotionals: Devotional[] = [
     content: `This is perhaps the most well-known verse in the Bible, and for good reason. It summarizes the entire gospel: God's motivation (love), God's action (gave His Son), our response (belief), and the result (eternal life, not perishing).
 
     Salvation is not a reward for good behavior but a gift born from the immense, personal love of God for you and for the world. It's offered to "whoever" places their trust in Him.`,
-    prayer: `Heavenly Father, I am overwhelmed by your love that would give so much for me. Thank you for the gift of your Son. I believe in Jesus; help my unbelief and anchor my life in this incredible truth. In Jesus' mighty name. Amen.`,
+    prayer: `Heavenly Father, I am overwhelmed by your love that would give so much for me. Thank you for the gift of your Son. I believe in Jesus; help my unbelief and anchor my life in this incredible truth. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "John 3:1-21",
     reflection: [
       {
@@ -298,7 +298,7 @@ export const devotionals: Devotional[] = [
     content: `This is the great equalizer of the faith. No one is beyond salvation because of their past, and no one earns it through their performance. Our rescue from sin and death is entirely God's work—His grace, His gift.
 
     We simply receive it through faith. This truth frees us from the exhausting treadmill of trying to earn God's favor and allows us to rest in what Christ has already accomplished.`,
-    prayer: `Lord, I confess I often try to earn your love. Thank you for the freeing truth that my salvation is a gift, paid for by Jesus. Help me to rest in your grace and live from a place of gratitude, not obligation. In Jesus' mighty name. Amen.`,
+    prayer: `Lord, I confess I often try to earn your love. Thank you for the freeing truth that my salvation is a gift, paid for by Jesus. Help me to rest in your grace and live from a place of gratitude, not obligation. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Ephesians 2:1-10",
     reflection: [
       {
@@ -331,7 +331,7 @@ export const devotionals: Devotional[] = [
     content: `In our pluralistic world, this is a challenging but essential truth. Jesus makes an exclusive claim about salvation. He doesn't present himself as one path among many, but as *the* path to God.
 
     This isn't arrogance; it's the confident declaration of the only one who could bridge the gap between a holy God and sinful humanity. Our access to the Father is found exclusively in the person and work of Jesus Christ.`,
-    prayer: `Jesus, thank you for being the way. In a world of confusion, I am grateful for the clarity and certainty you offer. I trust you alone for my access to the Father and my eternal life. In Jesus' mighty name. Amen.`,
+    prayer: `Jesus, thank you for being the way. In a world of confusion, I am grateful for the clarity and certainty you offer. I trust you alone for my access to the Father and my eternal life. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "John 14:1-14",
     reflection: [
       {
@@ -365,7 +365,7 @@ export const devotionals: Devotional[] = [
     content: `This verse provides a clear, two-part description of the response that leads to salvation: belief in the heart and confession with the mouth. It's an internal reality that produces an external expression.
 
     Believing in the resurrection is essential—it confirms Jesus' victory over sin and death. Confessing Him as Lord means surrendering ultimate authority of your life to Him. This is the simple, powerful path to salvation.`,
-    prayer: `Jesus, I believe in my heart that you died for my sins and that God raised you from the dead. I confess with my mouth that you are my Lord. Thank you for the salvation you promise to all who call on you. In Jesus' mighty name. Amen.`,
+    prayer: `Jesus, I believe in my heart that you died for my sins and that God raised you from the dead. I confess with my mouth that you are my Lord. Thank you for the salvation you promise to all who call on you. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Romans 10:5-17",
     reflection: [
       {
@@ -399,7 +399,7 @@ export const devotionals: Devotional[] = [
     content: `This verse presents a stark contrast between what we deserve and what God offers. A wage is earned, and the earned consequence of our sin is spiritual death—separation from God.
 
     But God intervenes with a gift. We cannot earn eternal life; it is given freely through Jesus Christ. He paid the wage we earned so we could receive the gift we never could.`,
-    prayer: `Father, I acknowledge that I have earned the wages of my sin. Thank you for the incredible gift of eternal life through Jesus, who paid my debt. I receive your gift with a humble and grateful heart. In Jesus' mighty name. Amen.`,
+    prayer: `Father, I acknowledge that I have earned the wages of my sin. Thank you for the incredible gift of eternal life through Jesus, who paid my debt. I receive your gift with a humble and grateful heart. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Romans 6:15-23",
     reflection: [
       {
@@ -433,7 +433,7 @@ export const devotionals: Devotional[] = [
     content: `Salvation is more than a transaction; it's an adoption. When we receive Christ and believe in Him, we are given the right—the authority—to become children of God.
 
     Our identity shifts from outsider to family member, from orphan to heir. This intimate relationship with God as our Father is at the very heart of the salvation Jesus offers.`,
-    prayer: `Heavenly Father, thank you for not just saving me, but for adopting me into your family. I am in awe that I can call you 'Father.' Help me to live today in the security and love of being your child. In Jesus' mighty name. Amen.`,
+    prayer: `Heavenly Father, thank you for not just saving me, but for adopting me into your family. I am in awe that I can call you 'Father.' Help me to live today in the security and love of being your child. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "John 1:1-18",
     reflection: [
       {
@@ -467,7 +467,7 @@ export const devotionals: Devotional[] = [
     content: `Because of our sin, we were once enemies of God, alienated from Him. But through faith in Christ, we are "justified"—declared righteous, just as if we'd never sinned.
 
     The primary result of this legal standing is peace. The war is over. The hostility is gone. We are reconciled to our Creator. This peace is not a feeling but a objective reality for everyone in Christ.`,
-    prayer: `Lord Jesus, thank you for making peace between me and God through your sacrifice. I receive the reality of being declared righteous by faith. Help me to rest in this peace, even when my feelings are turbulent. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, thank you for making peace between me and God through your sacrifice. I receive the reality of being declared righteous by faith. Help me to rest in this peace, even when my feelings are turbulent. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Romans 5:1-11",
     reflection: [
       {
@@ -501,7 +501,7 @@ export const devotionals: Devotional[] = [
     content: `Christ's message of salvation isn't only for this life; it conquers our final enemy: death. Jesus doesn't just offer resurrection; He *is* the resurrection.
 
     For the believer, physical death is not the end but a transition into eternal life in God's presence. This hope changes how we live now and how we face the future without fear.`,
-    prayer: `Jesus, you are my hope beyond the grave. Thank you for defeating death and promising that whoever believes in you will never truly die. Fix this hope in my heart and let it remove all fear. In Jesus' mighty name. Amen.`,
+    prayer: `Jesus, you are my hope beyond the grave. Thank you for defeating death and promising that whoever believes in you will never truly die. Fix this hope in my heart and let it remove all fear. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "John 11:17-44",
     reflection: [
       {
@@ -535,7 +535,7 @@ export const devotionals: Devotional[] = [
     content: `This verse is a perfect summary of the gospel. It tells us *who* (Christ), *what* (suffered for sins), *how* (the righteous for the unrighteous), and *why* (to bring you to God).
 
     The ultimate purpose of salvation is not just forgiveness or heaven, but reconciliation. The barrier of sin is removed, and we are brought near to God, into intimate relationship with Him.`,
-    prayer: `Jesus, thank you for your once-for-all sacrifice. You took my place, the just for the unjust, to bring me to God. I am in awe of this love. Draw me near to the Father today. In Jesus' mighty name. Amen.`,
+    prayer: `Jesus, thank you for your once-for-all sacrifice. You took my place, the just for the unjust, to bring me to God. I am in awe of this love. Draw me near to the Father today. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "1 Peter 3:13-22",
     reflection: [
       {
@@ -568,7 +568,7 @@ export const devotionals: Devotional[] = [
     content: `The message of salvation is presented here with stunning clarity. Eternal life is not a vague concept; it is a person—Jesus Christ. Therefore, possessing eternal life is not about having enough religion or goodness; it's about having a relationship with the Son.
 
     The equation is simple: Have the Son = Have life. No Son = No life. Our assurance rests entirely on whether we are in Christ.`,
-    prayer: `Father, thank you for the clarity of your Word. I acknowledge that eternal life is found only in your Son, Jesus. I have Him by faith, and so I thank you that I have life—both now and forever. In Jesus' mighty name. Amen.`,
+    prayer: `Father, thank you for the clarity of your Word. I acknowledge that eternal life is found only in your Son, Jesus. I have Him by faith, and so I thank you that I have life—both now and forever. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "1 John 5:6-13",
     reflection: [
       {
@@ -599,7 +599,7 @@ export const devotionals: Devotional[] = [
     },
     title: "The Great Homecoming",
     content: `The Second Coming is not a hidden, secret event. It will be a glorious, universal, and triumphant revelation of the King. Christ will return not as a suffering servant but as a conquering King. His mission: to gather His people from every nation, tribe, and tongue. This is the great homecoming for which all creation groans. Every believer from every age will be united with Him, forever.`,
-    prayer: `Lord Jesus, the thought of your glorious return takes my breath away. Thank you that your purpose is to gather, not to scatter; to redeem, not to destroy. I long for that day and find hope in the promise of being finally and fully gathered to you. Come, Lord Jesus. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, the thought of your glorious return takes my breath away. Thank you that your purpose is to gather, not to scatter; to redeem, not to destroy. I long for that day and find hope in the promise of being finally and fully gathered to you. Come, Lord Jesus. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Mark 13:24-37",
     reflection: [
       {
@@ -626,7 +626,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Citizens of Heaven",
     content: `As believers, our primary identity is not tied to an earthly nation but to a heavenly kingdom. This world is not our home; we are ambassadors living abroad. The hope of the Second Coming reshapes our entire perspective. We aren't just waiting for an event; we are eagerly awaiting a Person—our Savior. And His return means the ultimate upgrade: our broken, mortal bodies will be exchanged for glorious, immortal, resurrection bodies like His.`,
-    prayer: `Heavenly Father, help me to live today as a true citizen of heaven. When I get too comfortable or too distressed by this world, remind me that I am an ambassador for Christ, eagerly awaiting His return and the glorious transformation of all things. My hope is in you. In Jesus' mighty name. Amen.`,
+    prayer: `Heavenly Father, help me to live today as a true citizen of heaven. When I get too comfortable or too distressed by this world, remind me that I am an ambassador for Christ, eagerly awaiting His return and the glorious transformation of all things. My hope is in you. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Philippians 3:17-21",
     reflection: [
       {
@@ -652,7 +652,7 @@ export const devotionals: Devotional[] = [
     },
     title: "The Lord Himself",
     content: `The promise is emphatic: "the Lord himself." Our redemption will not be accomplished by a proxy or an angel. The One who loved us and gave Himself for us will personally return to complete our salvation. His descent will be announced with undeniable authority—a shout, a commanding voice, a divine trumpet. The first order of business: the resurrection of every believer who has died. Death's defeat will be made final and public.`,
-    prayer: `Jesus, thank you that you are personally coming back for us. The same hands that were pierced for me will welcome me. Help me to live in the hope of the resurrection, knowing that because you live, I too will live with you. In Jesus' mighty name. Amen.`,
+    prayer: `Jesus, thank you that you are personally coming back for us. The same hands that were pierced for me will welcome me. Help me to live in the hope of the resurrection, knowing that because you live, I too will live with you. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "1 Thessalonians 4:13-18",
     reflection: [
       {
@@ -679,7 +679,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Two Appearances",
     content: `The work of Christ is perfectly bookended by two appearances. His first appearance was to deal with the problem of sin through His sacrifice. His second appearance will have nothing to do with sin, for that work is finished. Instead, He will come to complete the salvation of His people—to rescue us fully from the very presence of sin and evil. Our posture is to be one of eager waiting, confident that the One who finished the work of redemption will return to finish our deliverance.`,
-    prayer: `Savior, thank you that your work on the cross is completely sufficient. There is no more sacrifice for sin. I eagerly wait for your second appearance, not with fear, but with anticipation for the full salvation you will bring. In Jesus' mighty name. Amen.`,
+    prayer: `Savior, thank you that your work on the cross is completely sufficient. There is no more sacrifice for sin. I eagerly wait for your second appearance, not with fear, but with anticipation for the full salvation you will bring. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Hebrews 9:23-28",
     reflection: [
       {
@@ -705,7 +705,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Staying Awake",
     content: `The timing of Christ's return will be unexpected, like a thief in the night. This is not meant to scare us, but to spur us to constant readiness. The blessing is for those who are spiritually "awake" and alert, living in a state of preparedness. To "keep our garments" is a metaphor for maintaining a life of holiness and obedience, so we are not caught in the shame of unfaithfulness when He suddenly appears.`,
-    prayer: `Lord, keep my heart awake and alert. Guard me from spiritual drowsiness and the temptation to live as if you are never coming back. Clothe me in the righteousness of Christ and help me to live a life that is ready to meet you at any moment. In Jesus' mighty name. Amen.`,
+    prayer: `Lord, keep my heart awake and alert. Guard me from spiritual drowsiness and the temptation to live as if you are never coming back. Clothe me in the righteousness of Christ and help me to live a life that is ready to meet you at any moment. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Revelation 16:12-16",
     reflection: [
       {
@@ -732,7 +732,7 @@ export const devotionals: Devotional[] = [
     },
     title: "Faithful and True",
     content: `The book of Revelation pulls back the curtain on the cosmic reality of Christ's return. He is not just a gentle shepherd; He is a divine warrior King. His names reveal His character: He is "Faithful" to fulfill every promise and "True" in contrast to all the lies and deception of the enemy. His mission is to finally and completely establish God's righteous justice on earth, judging evil and waging a victorious war against it.`,
-    prayer: `Faithful and True King, I am in awe of your power and majesty. In a world full of injustice and falsehood, I find deep comfort in knowing that you will one day set everything right. I trust in your perfect justice and your faithful promises. In Jesus' mighty name. Amen.`,
+    prayer: `Faithful and True King, I am in awe of your power and majesty. In a world full of injustice and falsehood, I find deep comfort in knowing that you will one day set everything right. I trust in your perfect justice and your faithful promises. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Revelation 19:11-16",
     reflection: [
       {
@@ -760,7 +760,7 @@ export const devotionals: Devotional[] = [
     },
     title: "The End of Tears",
     content: `The hope of the Second Coming is not merely about escaping this world, but about the ushering in of a new and perfect reality. The culmination of Christ's return is a restored creation where every source of human sorrow is utterly abolished. God Himself will personally comfort His people, tenderly wiping away every tear. This is the ultimate destination: a place where the brokenness of the "old order" is replaced by the shalom of the new.`,
-    prayer: `God of all comfort, I hold onto this promise today. When I experience grief, pain, and loss, remind me that these are temporary realities of a broken world. Thank you that a day is coming when you will personally wipe away my tears forever. I long for that day. In Jesus' mighty name. Amen.`,
+    prayer: `God of all comfort, I hold onto this promise today. When I experience grief, pain, and loss, remind me that these are temporary realities of a broken world. Thank you that a day is coming when you will personally wipe away my tears forever. I long for that day. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Revelation 21:1-7",
     reflection: [
       {
@@ -786,7 +786,7 @@ export const devotionals: Devotional[] = [
     },
     title: "The Unexpected Hour",
     content: `Jesus emphasizes the unpredictability of His return. It is a certainty, but its timing is a divine secret. This teaching is a call to constant vigilance, not frantic date-setting. Readiness is not about calculating timelines but about cultivating a faithful life. It is the daily, consistent practice of following Jesus, so that whenever He comes, He finds us doing what He has called us to do.`,
-    prayer: `Lord, protect me from both obsession with prophecy and indifference to your return. Help me to live in a state of healthy readiness—faithful in my responsibilities, passionate in my worship, and earnest in my love for others, today and every day. In Jesus' mighty name. Amen.`,
+    prayer: `Lord, protect me from both obsession with prophecy and indifference to your return. Help me to live in a state of healthy readiness—faithful in my responsibilities, passionate in my worship, and earnest in my love for others, today and every day. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Luke 12:35-40",
     reflection: [
       {
@@ -811,7 +811,7 @@ export const devotionals: Devotional[] = [
     },
     title: "The Blessed Hope",
     content: `The Second Coming is called the "blessed hope." It is not a source of fear, but of joyful anticipation. This hope is not passive; it is dynamically connected to how we live now. God's grace, which saved us, is also actively training us to reject sin and live godly lives. Our waiting for Christ's glorious appearing should be the motivating force behind our pursuit of holiness.`,
-    prayer: `Gracious God, thank you that my hope is not a vague wish but a sure promise. Let the certain return of Jesus train my heart today. Empower me by your Spirit to say 'no' to sin and 'yes' to a life that reflects your goodness, as I look forward to that glorious day. In Jesus' mighty name. Amen.`,
+    prayer: `Gracious God, thank you that my hope is not a vague wish but a sure promise. Let the certain return of Jesus train my heart today. Empower me by your Spirit to say 'no' to sin and 'yes' to a life that reflects your goodness, as I look forward to that glorious day. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Titus 2:11-14",
     reflection: [
       {
@@ -837,7 +837,7 @@ export const devotionals: Devotional[] = [
     },
     title: "The Final Prayer",
     content: `The Bible ends not with a whimper, but with a promise and a prayer. The promise comes from Jesus: "I am coming soon." The prayer comes from the church—the appropriate response of every believer across history: "Come, Lord Jesus." This is the cry of a bride yearning for her Groom. It is an expression of hope, love, and longing. To pray this prayer is to align our deepest desires with God's ultimate plan.`,
-    prayer: `Jesus, your final promise echoes in my heart: "I am coming soon." Until that day, my prayer is the prayer of your church: Come, Lord Jesus. Come into my world today. Come into my struggles. Come and finally make all things new. In Jesus' mighty name. Amen. Come, Lord Jesus.`,
+    prayer: `Jesus, your final promise echoes in my heart: "I am coming soon." Until that day, my prayer is the prayer of your church: Come, Lord Jesus. Come into my world today. Come into my struggles. Come and finally make all things new. In Jesus' mighty name I pray. Amen. Come, Lord Jesus.`,
     readingPlan: "Revelation 22:6-21",
     reflection: [
       {
@@ -863,7 +863,7 @@ export const devotionals: Devotional[] = [
     },
     title: "The Shepherd's Provision",
     content: `In a world of striving and scarcity, the psalmist's declaration is a radical act of trust. To say "I lack nothing" is not a claim about material abundance but a confession of faith in the Shepherd's care. When we follow His lead, we discover that true contentment comes not from what we possess, but from who walks with us through every valley and mountain.`,
-    prayer: `Shepherd of my soul, teach me to trust your provision. When anxiety whispers of lack, help me remember your faithfulness. Guide me to green pastures and still waters, and remind my heart that in your presence, I have everything I need. In Jesus' mighty name. Amen.`,
+    prayer: `Shepherd of my soul, teach me to trust your provision. When anxiety whispers of lack, help me remember your faithfulness. Guide me to green pastures and still waters, and remind my heart that in your presence, I have everything I need. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Psalm 23",
     reflection: [
       {
@@ -889,7 +889,7 @@ export const devotionals: Devotional[] = [
     },
     title: "The Stillness of Knowing",
     content: `God’s command to "be still" is an invitation to relinquish our frantic striving and acknowledge His sovereignty. In the silence, we exchange our anxieties for awe, our worries for worship. This stillness is not passive inaction but active trust—a deliberate pause to remember that the same God who holds mountains in place holds our tomorrows.`,
-    prayer: `God of all peace, quiet my heart before you. Forgive my restless striving and help me to cease relying on my own strength. In the stillness, give me a fresh revelation of who you are. In Jesus' mighty name. Amen.`,
+    prayer: `God of all peace, quiet my heart before you. Forgive my restless striving and help me to cease relying on my own strength. In the stillness, give me a fresh revelation of who you are. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "Psalm 46",
     reflection: [
       {
@@ -916,7 +916,7 @@ export const devotionals: Devotional[] = [
     },
     title: "The Greatest Thing",
     content: `In the economy of God’s kingdom, love is the eternal currency. Faith will become sight, hope will be fulfilled, but love will never end. This perfect love—sacrificial, steadfast, and unconditional—is both our destination and our journey. It is the mark of Christ’s followers and the ultimate evidence of His Spirit within us.`,
-    prayer: `Lord Jesus, teach me to love as you love. Where I am weak, fill me with your Spirit. Help me to prioritize love above gifts, achievements, or knowledge. May my life reflect the greatest thing—your eternal love. In Jesus' mighty name. Amen.`,
+    prayer: `Lord Jesus, teach me to love as you love. Where I am weak, fill me with your Spirit. Help me to prioritize love above gifts, achievements, or knowledge. May my life reflect the greatest thing—your eternal love. In Jesus' mighty name I pray. Amen.`,
     readingPlan: "1 Corinthians 13",
     reflection: [
       {
