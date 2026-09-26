@@ -136,7 +136,7 @@ const Footer = () => {
                 className="flex items-center justify-center gap-1 text-purple-600 hover:text-purple-800"
               >
                 <FaInfoCircle className="inline" />
-                About Uss
+                About Us
               </Link>
               <div className="size-1 bg-purple-600 rounded-full" />
               <a
